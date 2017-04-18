@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>MVC</title>
 <?php
         echo "<link rel='stylesheet' type='text/css' href='".__SITE_PATH."public/css/bootstrap.min.css' />";
         echo "<link rel='stylesheet' type='text/css' href='".__SITE_PATH."public/css/global.css' />";
