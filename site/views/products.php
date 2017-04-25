@@ -1,2 +1,0 @@
-
-<b>Products page!</b>
