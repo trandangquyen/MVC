@@ -1,4 +1,4 @@
-			<!-- End main content -->
+			</div><!-- End main content -->
 			<!-- Begin footer -->
 			<div class="footer">
 				<img src="public/images/footer.png" alt="">			
