@@ -1,4 +1,56 @@
+* {
+	margin:0;
+	padding: 0;
+}
 #wrapper{
 	width: 1000px;
 	margin: 0 auto;
 }
+
+.clear {
+	clear:both;
+}
+/*** top menu **/
+#top-menu {
+	list-style: none;
+	width: 100%;
+	overflow: hidden;
+	margin:0;
+	padding: 0;
+	background-color: rgb(223,223,223);
+	border-bottom: 1px solid rgb(76,102,164);
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+
+
+}
+#top-menu li{
+	list-style: none;
+	float: left;
+	margin:0;
+	padding: 0;
+
+}
+#top-menu a {
+	padding: 5px 10px 5px 10px;
+	display: block;	
+	font-weight: bold;
+	color: black;
+
+}
+#top-menu a:hover {
+
+} 
+#top-menu li.current {
+	background-color: rgb(76,102,164);
+
+}
+#top-menu li.current a {
+	
+}
+#top-menu li.current a:hover {
+	
+}
+
+/*** page Gioithieu ****/
+
