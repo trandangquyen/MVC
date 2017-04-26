@@ -1,0 +1,18 @@
+@media (min-width: 1200px) {
+
+}
+
+/*
+  Rules for resolutions between 768 and 979px
+*/
+
+@media (max-width: 979px) and (min-width: 768px) {
+
+}
+
+/*
+  Rules for resolutions below 768px
+*/
+
+@media (max-width: 767px) {
+}
