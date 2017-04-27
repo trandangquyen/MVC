@@ -20,11 +20,30 @@
 	    <div id="wrapper" class="container">
 	    <!-- Begin Header -->
 			<div class="header">
-				<img src="public/images/header.png" alt="">	
+
+<!-- 				<img src="public/images/header.png" alt=""> -->
+				<div class="row">
+					<div class="col-xs-4">
+						<div class="logo"><a href=""><img src="public/themes/images/logo.jpg" alt=""></a></div>
+					</div>
+					<div class="col-xs-6">
+						<div class="input-group">
+					      <input type="text" class="form-control" placeholder="Search for...">
+					      <span class="input-group-btn">
+					        <button class="btn btn-default" type="button">Go!</button>
+					      </span>
+					    </div>
+					</div>
+					<div class="col-xs-2">
+						<span>Giỏ Hàng</span>
+						<span><img src="public/themes/images/cart.jpg" alt=""></span>
+					</div>
+				</div>
+				
 				<ul id='top-menu'>
-					<li class='item current'><a href='index.php/gioithieu/view'>Gioi thieu</a></li>
-					<li class='item'><a href='index.php/tintuc/list'>Tin tuc</a></li>
-					<li class='item'><a href='index.php/lienhe/view'>Lien he</a></li>
+					<li <?php echo (isset($active) && $active == 'gioithieu')?'class = "item current"' :'class="item"'?>><a href='index.php/gioithieu/view'>Giới thiệu</a></li>
+					<li <?php echo (isset($active) && $active == 'tintuc')?'class = "item current"' :'class="item"'?>><a href='index.php/tintuc/list'>Tin tức</a></li>
+					<li  <?php echo (isset($active) && $active == 'lienhe')?'class = "item current"' :'class="item"'?>><a href='index.php/lienhe/view'>Liên hệ</a></li>
 				</ul>			
 			</div>
 		<!-- End Header -->
