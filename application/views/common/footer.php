@@ -1,8 +1,16 @@
 			</div><!-- End main content -->
 			<!-- Begin footer -->
 			<div class="footer">
-				<img src="public/images/footer.png" alt="">			
-			</div>
+                            
+				Chấp nhận : <img src="public/images/Image_footer.png" alt="">	
+                          
+                               <h4> Học lập trình online miễn phí.</h4>
+                               <p>Hướng dẫn xây dựng website bán hàng và thanh toán trực tuyến.</p>
+                               Website :<br/>
+                               Fanpage :
+                              
+                                <img id="image_footer2" src="public/images/Image2_footer.png" alt="">
+			
 			<!-- End footer -->
 		</div>
 		<!-- scripts -->
