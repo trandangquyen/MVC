@@ -2,10 +2,7 @@
 	margin:0;
 	padding: 0;	
 }
-#wrapper{
-	width: 1000px;
-	margin: 0 auto;
-}
+
 
 .clear {
 	clear:both;
@@ -88,5 +85,135 @@
 
 /*** End top menu ***/
 
-/*** page Gioithieu ****/
+/*** page Home ****/
 
+#main_right img {
+    margin-right: 10px;
+}
+
+#main_right p {
+    padding-left: 29px;
+}
+
+a {
+    color: black;
+}
+.boder_menu{
+    border: 1px dashed #ccc;
+    padding-bottom: 10px;
+}
+#main_left li {
+    margin-left: 24px;
+    margin-right: 18px;
+    line-height: 18px;
+    display: block;
+    border-bottom: 1px dotted #CCCCCC;
+    list-style: disc inside url(img/icon-02.png);
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+.end_menu{
+    border-bottom: 0px;
+}
+#main_left img {
+    padding-right: 10px;
+}
+
+#main_left li a:hover {
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+span {}
+
+span {
+    background-color: #4C66A4;
+    display: block;
+    color: white;
+    line-height: 28px;
+    padding-left: 11px;
+}
+
+li {
+    list-style: none;
+}
+
+/*-----------css chung ----------*/
+
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 0px;
+}
+.tittle-box-left, .tittle-box-right {
+    /*background: url("") repeat-x;*/
+    font-size: 22px;
+    padding-left: 5px;
+    border-bottom: 4px solid #FF9900;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: #D6D6D6;
+}
+.icon_tittle{
+    display: inline-block;
+    float: left;
+    padding-top: 13px;
+}
+.tittle-box-left h2, .tittle-box-right h2 {
+    /*background: url("img/icon.png") no-repeat left center;*/
+    padding-left: 19px;
+    font-size: 15px;
+    line-height: 21px;
+    padding-top: 7px;
+}
+
+/*-----------css main_right----------*/
+#main_right h3 {
+    color: #800000;
+    font-weight: bold;
+    font-size: 22px;
+    padding-left: 16px;
+}
+#main_right li {
+    padding-left: 10px;
+    line-height: 25px;
+    display: block;
+    font-size: 18px;
+    border-bottom: 1px dotted #CCCCCC;
+}
+
+/*-----------css main_center----------*/
+
+.product_item {
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    height: 261px;
+    padding: 1px 0px;
+}
+.product_item:hover{
+    border: 1px solid #ff5e5e;
+}
+.product_img {
+    /* width: 219px; */
+    overflow: hidden;
+    display: block;
+}
+.product_img img {
+    width: 85%;
+}
+.raty{
+    display: block;
+    text-align: -webkit-center;
+}
+.price_old {
+    text-decoration: line-through;
+    color: #555;
+    font-weight: normal;
+    margin-left: 5px;
+}
+.conten_product,  .product_list{
+    padding-left: 0px;
+    padding-right: 0px;
+}
