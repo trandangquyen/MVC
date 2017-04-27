@@ -35,8 +35,10 @@
 					    </div>
 					</div>
 					<div class="col-xs-2">
-						<span>Giỏ Hàng</span>
-						<span><img src="public/themes/images/cart.jpg" alt=""></span>
+						<div class="cart">
+							<span>Giỏ Hàng</span>
+							<span><img src="public/themes/images/cart.jpg" alt=""></span>
+						</div>						
 					</div>
 				</div>
 				
