@@ -14,6 +14,7 @@
         <link href="public/themes/css/bootstrappage.css" rel="stylesheet"/>		
         <!-- global styles -->
         <link href="public/themes/css/flexslider.css" rel="stylesheet"/>
+        <link href="public/themes/css/lienhe.css" rel="stylesheet"/>
         <link href="public/themes/css/main.css" rel="stylesheet"/>
     </head>
     <body>
@@ -21,29 +22,20 @@
             <!-- Begin Header -->
             <div class="header">
                 <div id="Icon_search">
-                <img src="public/images/header.png" alt="">
-                <input  id="text" type="text" width=287px height= 30px value ="Tìm kiếm sản phẩm"/>
-                <input type="button" value ="Tìm kiếm"/>
-                Giỏ hàng 0  Sản phẩm <img src="public/images/giohang.png" alt="giohang">
+                    <img src="public/images/header.png" alt="">
                 </div>
 
                 <ul id='top-menu'>
                     <li class='item current' id="lintrangchu"><a href='index.php/trangchu/view'>Trang chủ</a></li>
-                    <li class='item'><a href='index.php/gioithieu/view'>Giới thiệu</a></li><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu">
-                    <li class='item'><a href='index.php/huongdan/list'>Hướng dẫn</a></li><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu">
-                    <li class='item'><a href='index.php/sanpham/view'>Sản phẩm</a></li><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu">
-                    <li class='item'><a href='index.php/tintuc/list'>Tin tức</a>
-<!--                        <ul class="sub-menu">
-                                <li><a href="#">Tin tức 1</a></li>
-                                <li><a href="#">Tin tức  2</a></li>
-                                <li><a href="#">Tin tức  3</a></li>
-                            </ul>-->
+                    <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
+                    <li  <?php echo (isset($active) && $active == 'gioithieu') ? 'class = "item current"' : 'class="item"' ?>><a href='index.php/gioithieu/view'>Giới thiệu</a></li>
+                    <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
+                    <li <?php echo (isset($active) && $active == 'tintuc') ? 'class = "item current"' : 'class="item"' ?>><a href='index.php/tintuc/list'>Tin tức</a>
+                    </li>
+                    <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
+                    <li <?php echo (isset($active) && $active == 'lienhe') ? 'class = "item current"' : 'class="item"' ?>><a href='index.php/lienhe/view'>Liên hệ</a></li>
+                    <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
 
-                    </li><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu">
-                    <li class='item'><a href='index.php/video/view'>Video</a></li><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu">
-                    <li class='item'><a href='index.php/lienhe/view'>Liên hệ</a></li><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu">
-                    <li class='item'><a href='index.php/dangky/view'>Đăng ký</a></li><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu">
-                    <li class='item'><a href='index.php/dangnhap/view'>Đăng nhập</a></li><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu">
                 </ul>			
             </div>
             <!-- End Header -->

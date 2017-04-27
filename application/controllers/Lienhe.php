@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Tintuc extends CI_Controller {
+class Lienhe extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,19 +18,11 @@ class Tintuc extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function list_view()
+	public function view()
 	{
-		$data['active'] = 'tintuc';
+		$data['active'] = 'lienhe';
 		$this->load->view('common/header', $data);
-        $this->load->view('tintuc/list',$data);
+        $this->load->view('lienhe',$data);
         $this->load->view('common/footer', $data);
 	}
-	public function details($id)
-	{
-		$this->load->view('common/header', $data);
-        $this->load->view("tintuc/details_$id",$data);
-        $this->load->view('common/footer', $data);
-	}
-	
-
 }

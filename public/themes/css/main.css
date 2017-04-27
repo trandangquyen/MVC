@@ -35,6 +35,32 @@
     margin:0;
     padding: 0;
 }
+#top-menu li::after{
+	content: '';
+	display: block;
+	width: 3px;
+	height: 32px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: url(../images/split-line.jpg) no-repeat;
+}
+#top-menu li:hover{
+	background-color: rgb(76,102,164);
+}
+#top-menu li:hover:after{
+	background: none;
+}
+#top-menu li:hover a{
+	color: #fff;
+}
+#top-menu li.current::after{
+	background: none;
+}
+#top-menu li a{
+	font-size: 12px;
+	text-decoration: none;
+}
 #top-menu a {
     padding: 5px 17px 5px 10px;
     display: block;	

@@ -20,8 +20,9 @@ class Gioithieu extends CI_Controller {
 	 */
 	public function view()
 	{
-		$this->load->view('common/header', NULL);
-        $this->load->view('gioithieu',NULL);
-        $this->load->view('common/footer', NULL);
+		$data['active'] = 'gioithieu';
+		$this->load->view('common/header', $data);
+        $this->load->view('gioithieu',$data);
+        $this->load->view('common/footer', $data);
 	}
 }
