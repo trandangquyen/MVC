@@ -1,0 +1,65 @@
+/* ---Begin Css of Contact Us page--- */
+#section-top-contact {
+    background-image: url(../images/bg_contact.jpg);
+}
+#section-top-contact .contact-us {
+    position: relative;
+    height: 100%;
+}
+#section-top-contact h1 {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    left: 5%;
+    top: 35%;
+    position: absolute;
+    color: #42475c;
+}
+#section-top-contact {
+    height: 300px;
+}
+h1.h-title {
+    font-size: 50px;
+}
+.space10 {
+    height: 10px;
+    clear: both;
+    display: block;
+}
+.space20 {
+    height: 20px;
+    clear: both;
+    display: block;
+}
+h1.h-title {
+    font-size: 50px;
+}
+h2.h-title, h1.h-title {
+    font-family: Roboto Condensed;
+    color: #000;
+}
+style.css?v=3.1.1:55
+.h-title {
+    font-weight: 500;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    outline: none;
+}
+
+/* ---End Css of Contact Us page--- */
