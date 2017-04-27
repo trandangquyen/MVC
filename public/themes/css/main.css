@@ -79,6 +79,13 @@
 #top-menu li.current a:hover {
 	
 }
+.header .input-group{
+	padding-top: 30px;
+}
+.header .cart{
+	padding-top: 30px;
+}
+
 /*** End top menu ***/
 
 /*** page Gioithieu ****/
