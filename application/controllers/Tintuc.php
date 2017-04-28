@@ -27,9 +27,9 @@ class Tintuc extends CI_Controller {
 	}
 	public function details($id)
 	{
-		$this->load->view('common/header', $data);
-        $this->load->view("tintuc/details_$id",$data);
-        $this->load->view('common/footer', $data);
+		$this->load->view('common/header', NULL);
+        $this->load->view("tintuc/details_$id",NULL);
+        $this->load->view('common/footer', NULL);
 	}
 	
 
