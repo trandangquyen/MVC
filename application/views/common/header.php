@@ -26,7 +26,7 @@
                 </div>
 
                 <ul id='top-menu'>
-                    <li class='item current' id="lintrangchu"><a href='index.php/trangchu/view'>Trang chủ</a></li>
+                    <li class='item current' id="lintrangchu"><a href='index.php/home'>Trang chủ</a></li>
                     <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
                     <li  <?php echo (isset($active) && $active == 'gioithieu') ? 'class = "item current"' : 'class="item"' ?>><a href='index.php/gioithieu/view'>Giới thiệu</a></li>
                     <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
