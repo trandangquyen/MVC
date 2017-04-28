@@ -86,46 +86,9 @@
 /*** End top menu ***/
 
 /*** page Home ****/
-
-#main_right img {
-    margin-right: 10px;
-}
-
-#main_right p {
-    padding-left: 29px;
-}
-
 a {
     color: black;
 }
-.boder_menu{
-    border: 1px dashed #ccc;
-    padding-bottom: 10px;
-}
-#main_left li {
-    margin-left: 24px;
-    margin-right: 18px;
-    line-height: 18px;
-    display: block;
-    border-bottom: 1px dotted #CCCCCC;
-    list-style: disc inside url(img/icon-02.png);
-    padding-bottom: 8px;
-    padding-top: 8px;
-}
-.end_menu{
-    border-bottom: 0px;
-}
-#main_left img {
-    padding-right: 10px;
-}
-
-#main_left li a:hover {
-    text-decoration: none;
-    color: antiquewhite;
-}
-
-span {}
-
 span {
     background-color: #4C66A4;
     display: block;
@@ -137,42 +100,59 @@ span {
 li {
     list-style: none;
 }
-
-/*-----------css chung ----------*/
-
 ol, ul {
     margin-top: 0;
     margin-bottom: 0px;
 }
-.tittle-box-left, .tittle-box-right {
-    /*background: url("") repeat-x;*/
+.tittle-box {
     font-size: 22px;
     padding-left: 5px;
     border-bottom: 4px solid #FF9900;
     margin-top: 15px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     border-radius: 5px;
     background-color: #D6D6D6;
 }
-.icon_tittle{
+.icon_tittle {
     display: inline-block;
     float: left;
     padding-top: 13px;
+    padding-right: 10px;
 }
-.tittle-box-left h2, .tittle-box-right h2 {
-    /*background: url("img/icon.png") no-repeat left center;*/
-    padding-left: 19px;
+.icon_list{
+    padding-right: 10px;
+}
+.tittle-box h3 {
+    padding-left: 15px;
     font-size: 15px;
     line-height: 21px;
-    padding-top: 7px;
+    padding-top: 8px;
+    font-weight: bold;
+}
+.boder_menu{
+    border: 1px dashed #ccc;
+}
+/*main left*/
+
+#main_left li {
+    margin-left: 20px;
+    margin-right: 18px;
+    line-height: 18px;
+    display: block;
+    border-bottom: 1px dotted #CCCCCC;
+    padding-bottom: 8px;
+    padding-top: 8px;
 }
 
-/*-----------css main_right----------*/
-#main_right h3 {
-    color: #800000;
+#main_left li a:hover {
+    text-decoration: none;
+    color: antiquewhite;
+}
+/*main right*/
+#main_right h4{
+    color: maroon;
     font-weight: bold;
-    font-size: 22px;
-    padding-left: 16px;
+    margin-left: 15px;
 }
 #main_right li {
     padding-left: 10px;
@@ -190,7 +170,7 @@ ol, ul {
     border: 1px solid #DDDDDD;
     border-radius: 10px;
     height: 261px;
-    padding: 1px 0px;
+    padding: 6px 0px;
 }
 .product_item:hover{
     border: 1px solid #ff5e5e;
@@ -202,6 +182,11 @@ ol, ul {
 }
 .product_img img {
     width: 85%;
+}
+.action p {
+    float: left;
+    margin-left: 10px;
+    font-size: 13px;
 }
 .raty{
     display: block;
@@ -216,4 +201,8 @@ ol, ul {
 .conten_product,  .product_list{
     padding-left: 0px;
     padding-right: 0px;
+}
+
+.box-center {
+    margin-bottom: 10px;
 }
