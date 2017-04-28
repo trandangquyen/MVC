@@ -1,10 +1,10 @@
 <h3>WordPress 4.7.2 Security Release</h3>
-<p>
+<p class='details'>
 Posted January 26, 2017 by Aaron D. Campbell. Filed under Releases, Security.
 
 WordPress 4.7.2 is now available. This is a security release for all previous versions and we strongly encourage you to update your sites immediately.
 </p>
-</p>
+<p class='details'>
 WordPress versions 4.7.1 and earlier are affected by three security issues:
 
     The user interface for assigning taxonomy terms in Press This is shown to users who do not have permissions to use it. Reported by David Herrera of Alley Interactive.

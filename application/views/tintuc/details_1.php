@@ -1,6 +1,6 @@
 
 <h3>WordPress.org</h3>
-<p>
+<p class= details'>
 Search WordPress.org for:
 
     Showcase
@@ -14,7 +14,7 @@ Search WordPress.org for:
     Hosting
     Download WordPress
 </p>
-<p>
+<p class='details'>
 WordPress 4.7.4 Maintenance Release
 Posted April 20, 2017 by Pascal Birchler. Filed under Releases.
 

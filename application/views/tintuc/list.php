@@ -48,7 +48,7 @@ After almost sixty million downloads of WordPress 4.7, we are pleased to announc
 
 This release contains 47 maintenance fixes and enhancements, chief among them an incompatibility between the upcoming Chrome version and the visual editor, inconsistencies in media handling, and further improvements to the REST API. For a full list of changes, consult the release notes and the list of changes.
 <br />
-<a class="readmore" href="index.php/tintuc/details/wordpress">read more...</a>
+<a class="readmore" href="index.php/tintuc/details/4">read more...</a>
 
 </p>
 
