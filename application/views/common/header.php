@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <base href="http://localhost:8888/gitTranning/MVC/">
+        <base href="http://localhost/mvc_grop/MVC/">
         <meta charset="utf-8">
         <title>Training E-commerce Templates</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,9 +21,6 @@
         <div id="wrapper" class="container">
             <!-- Begin Header -->
             <div class="header">
-                <div id="Icon_search">
-                    <img src="public/images/header.png" alt="">
-                </div>
 
                 <ul id='top-menu'>
                     <li class='item current' id="lintrangchu"><a href='index.php/trangchu/view'>Trang chủ</a></li>
