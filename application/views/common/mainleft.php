@@ -1,19 +1,19 @@
 <div class="col-xs-3">
   <div id="main_left">
 
-    <div class="tittle-box-left">
+    <div class="tittle-box">
       <img src="public/themes/images/icon.png" alt="" class="icon_tittle">
-      <h2>Danh mục sản phẩm</h2>
+      <h3>Danh mục sản phẩm</h3>
     </div> <!-- end tittle -->
     <div class="boder_menu">
       <ul>
         <span>Tivi</span>
-        <li><img src="public/themes/images/icon-02.png" alt=""><a href="#">Toshiba</a></li>
-        <li><img src="public/themes/images/icon-02.png" alt=""><a href="#">Samsung</a></li>
-        <li><img src="public/themes/images/icon-02.png" alt=""><a href="#">Panasonic</a></li>
-        <li><img src="public/themes/images/icon-02.png" alt=""><a href="#">LG</a></li>
-        <li><img src="public/themes/images/icon-02.png" alt=""><a href="#">JVC</a></li>
-        <li><img src="public/themes/images/icon-02.png" alt=""><a href="#">AKAI</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="#">Toshiba</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="#">Samsung</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="#">Panasonic</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="#">LG</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="#">JVC</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="#">AKAI</a></li>
       </ul>
       <ul>
         <span>Điện thoại</span>
