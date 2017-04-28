@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <base href="http://localhost/training/MVC/">
+
+        <base href="http://localhost/mvc_grop/MVC/">
         <meta charset="utf-8">
         <title>Training E-commerce Templates</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,12 +22,12 @@
         <div id="wrapper" class="container">
             <!-- Begin Header -->
             <div class="header">
-                <div id="Icon_search">
+				<div id="Icon_search">
                     <img src="public/images/header.png" alt="">
                 </div>
 
                 <ul id='top-menu'>
-                    <li class='item current' id="lintrangchu"><a href='index.php/trangchu/view'>Trang chủ</a></li>
+                    <li class='item current' id="lintrangchu"><a href='index.php/home'>Trang chủ</a></li>
                     <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
                     <li  <?php echo (isset($active) && $active == 'gioithieu') ? 'class = "item current"' : 'class="item"' ?>><a href='index.php/gioithieu/view'>Giới thiệu</a></li>
                     <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
@@ -41,3 +42,8 @@
             <!-- End Header -->
             <!-- Begin main content -->
             <div id="main-content">
+            <!-- End Header -->
+		<!-- Begin main content -->
+		<div id="main-content">
+			<div class="container">
+		      	<div class="row">
