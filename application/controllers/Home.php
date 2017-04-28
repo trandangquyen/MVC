@@ -33,7 +33,10 @@ class Home extends CI_Controller {
         $data['title'] = ucfirst($page); // Capitalize the first letter
 
         $this->load->view('common/header', $data);
+        $this->load->view('common/mainleft', $data);
         $this->load->view($page, $data);
+        $this->load->view('common/mainright', $data);
         $this->load->view('common/footer', $data);
 	}
 }
+
