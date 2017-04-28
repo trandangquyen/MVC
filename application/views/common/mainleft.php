@@ -17,18 +17,18 @@
       </ul>
       <ul>
         <span>Điện thoại</span>
-        <li><img src="public/themes/images/icon-02.png" alt=""><a href="#">HTC</a></li>
-        <li><img src="public/themes/images/icon-02.png" alt=""><a href="#">BlackBerry</a></li>
-        <li><img src="public/themes/images/icon-02.png" alt=""><a href="#">Asus</a></li>
-        <li><img src="public/themes/images/icon-02.png" alt=""><a href="#">Apple</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="#">HTC</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="#">BlackBerry</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="#">Asus</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="#">Apple</a></li>
       </ul>
       <ul>
         <span>Laptop</span>
-        <li><img src="public/themes/images/icon-02.png" alt=""><a href="#">HP</a></li>
-        <li><img src="public/themes/images/icon-02.png" alt=""><a href="#">Dell</a></li>
-        <li><img src="public/themes/images/icon-02.png" alt=""><a href="#">Asus</a></li>
-        <li><img src="public/themes/images/icon-02.png" alt=""><a href="#">Apple</a></li>
-        <li class="end_menu"><img src="public/themes/images/icon-02.png" alt=""><a href="#">Acer</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="#">HP</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="#">Dell</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="#">Asus</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="#">Apple</a></li>
+        <li><img src="public/themes/images/icon-02.png" alt="" alt="" class="icon_list"><a href="#">Acer</a></li>
       </ul>
     </div> <!-- end boder_menu -->
 

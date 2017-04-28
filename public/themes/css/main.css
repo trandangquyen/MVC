@@ -176,7 +176,6 @@ ol, ul {
     border: 1px solid #ff5e5e;
 }
 .product_img {
-    /* width: 219px; */
     overflow: hidden;
     display: block;
 }
@@ -205,4 +204,8 @@ ol, ul {
 
 .box-center {
     margin-bottom: 10px;
+}
+.button{
+    border-radius: 2px 
+    background-color: blue;
 }
