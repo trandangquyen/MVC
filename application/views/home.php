@@ -25,7 +25,9 @@
 								Lượt xem:
 								<b>19</b>
 							</p>
-							<a class="button" href="#" title="Mua ngay">Mua ngay</a>
+							<div class="button">
+								<a href="#" title="Mua ngay">Mua ngay</a>
+							</div>
 						</div> <!-- end action -->
 					</div>
 				</div><!-- end product_item -->
@@ -33,7 +35,7 @@
 				<div class="col-xs-4" style="padding-left: 6px; padding-right: 6px;">
 					<div class="product_item">
 						<h3>TIVI LG 520</h3>
-						<div class="product_img"><a href="#"><img src="public/themes/images/product13.jpg" alt=""></a></div>
+						<div class="product_img"><a href="#"><img src="public/themes/images/product1.jpg" alt=""></a></div>
 						<p class="price"> 5,400,000 đ</p>
 						<div id="9" class="raty"  data-score="4" title="good">
 							<img src="public/themes/images/star-on.png" alt="1" title="good">
@@ -48,7 +50,9 @@
 								Lượt xem:
 								<b>19</b>
 							</p>
-							<a class="button" href="#" title="Mua ngay">Mua ngay</a>
+							<div class="button">
+								<a href="#" title="Mua ngay">Mua ngay</a>
+							</div>
 						</div> <!-- end action -->
 				</div>
 				</div><!-- end product_item -->
@@ -57,7 +61,7 @@
 				<div class="col-xs-4" style="padding-left: 10px; padding-right: 2px;">
 					<div class="product_item">
 						<h3>TIVI LG 520</h3>
-						<div class="product_img"><a href="#"><img src="public/themes/images/product13.jpg" alt=""></a></div>
+						<div class="product_img"><a href="#"><img src="public/themes/images/product3.jpg" alt=""></a></div>
 						<p class="price"> 5,400,000 đ</p>
 						<div id="9" class="raty"  data-score="4" title="good">
 							<img src="public/themes/images/star-on.png" alt="1" title="good">
@@ -72,7 +76,9 @@
 								Lượt xem:
 								<b>19</b>
 							</p>
-							<a class="button" href="#" title="Mua ngay">Mua ngay</a>
+							<div class="button">
+								<a href="#" title="Mua ngay">Mua ngay</a>
+							</div>
 						</div> <!-- end action -->
 				</div>
 				</div><!-- end product_item -->
@@ -89,7 +95,7 @@
 				<div class="col-xs-4" style="padding-left: 2px; padding-right: 10px;">
 					<div class="product_item">
 						<h3>TIVI LG 520</h3>
-						<div class="product_img"><a href="#"><img src="public/themes/images/product13.jpg" alt=""></a></div>
+						<div class="product_img"><a href="#"><img src="public/themes/images/product2.jpg" alt=""></a></div>
 						<p class="price"> 5,400,000 đ</p>
 						<div id="9" class="raty" data-score="4" title="good">
 							<img src="public/themes/images/star-on.png" alt="1" title="good">
@@ -104,7 +110,9 @@
 								Lượt xem:
 								<b>19</b>
 							</p>
-							<a class="button" href="#" title="Mua ngay">Mua ngay</a>
+							<div class="button">
+								<a href="#" title="Mua ngay">Mua ngay</a>
+							</div>
 						</div> <!-- end action -->
 					</div>
 				</div><!-- end product_item -->
@@ -112,7 +120,7 @@
 				<div class="col-xs-4" style="padding-left: 6px; padding-right: 6px;">
 					<div class="product_item">
 						<h3>TIVI LG 520</h3>
-						<div class="product_img"><a href="#"><img src="public/themes/images/product13.jpg" alt=""></a></div>
+						<div class="product_img"><a href="#"><img src="public/themes/images/product4.jpg" alt=""></a></div>
 						<p class="price"> 5,400,000 đ</p>
 						<div id="9" class="raty"  data-score="4" title="good">
 							<img src="public/themes/images/star-on.png" alt="1" title="good">
@@ -127,7 +135,9 @@
 								Lượt xem:
 								<b>19</b>
 							</p>
-							<a class="button" href="#" title="Mua ngay">Mua ngay</a>
+							<div class="button">
+								<a href="#" title="Mua ngay">Mua ngay</a>
+							</div>
 						</div> <!-- end action -->
 				</div>
 				</div><!-- end product_item -->
@@ -136,7 +146,7 @@
 				<div class="col-xs-4" style="padding-left: 10px; padding-right: 2px;">
 					<div class="product_item">
 						<h3>TIVI LG 520</h3>
-						<div class="product_img"><a href="#"><img src="public/themes/images/product13.jpg" alt=""></a></div>
+						<div class="product_img"><a href="#"><img src="public/themes/images/product5.jpg" alt=""></a></div>
 						<p class="price"> 5,400,000 đ</p>
 						<div id="9" class="raty"  data-score="4" title="good">
 							<img src="public/themes/images/star-on.png" alt="1" title="good">
@@ -151,7 +161,9 @@
 								Lượt xem:
 								<b>19</b>
 							</p>
-							<a class="button" href="#" title="Mua ngay">Mua ngay</a>
+							<div class="button">
+								<a href="#" title="Mua ngay">Mua ngay</a>
+							</div>
 						</div> <!-- end action -->
 				</div>
 				</div><!-- end product_item -->
@@ -168,7 +180,7 @@
 				<div class="col-xs-4" style="padding-left: 2px; padding-right: 10px;">
 					<div class="product_item">
 						<h3>TIVI LG 520</h3>
-						<div class="product_img"><a href="#"><img src="public/themes/images/product13.jpg" alt=""></a></div>
+						<div class="product_img"><a href="#"><img src="public/themes/images/product6.jpg" alt=""></a></div>
 						<p class="price"> 5,400,000 đ</p>
 						<div id="9" class="raty" data-score="4" title="good">
 							<img src="public/themes/images/star-on.png" alt="1" title="good">
@@ -183,7 +195,9 @@
 								Lượt xem:
 								<b>19</b>
 							</p>
-							<a class="button" href="#" title="Mua ngay">Mua ngay</a>
+							<div class="button">
+								<a href="#" title="Mua ngay">Mua ngay</a>
+							</div>
 						</div> <!-- end action -->
 					</div>
 				</div><!-- end product_item -->
@@ -191,7 +205,7 @@
 				<div class="col-xs-4" style="padding-left: 6px; padding-right: 6px;">
 					<div class="product_item">
 						<h3>TIVI LG 520</h3>
-						<div class="product_img"><a href="#"><img src="public/themes/images/product13.jpg" alt=""></a></div>
+						<div class="product_img"><a href="#"><img src="public/themes/images/product7.jpg" alt=""></a></div>
 						<p class="price"> 5,400,000 đ</p>
 						<div id="9" class="raty"  data-score="4" title="good">
 							<img src="public/themes/images/star-on.png" alt="1" title="good">
@@ -206,7 +220,9 @@
 								Lượt xem:
 								<b>19</b>
 							</p>
-							<a class="button" href="#" title="Mua ngay">Mua ngay</a>
+							<div class="button">
+								<a href="#" title="Mua ngay">Mua ngay</a>
+							</div>
 						</div> <!-- end action -->
 				</div>
 				</div><!-- end product_item -->
@@ -230,7 +246,9 @@
 								Lượt xem:
 								<b>19</b>
 							</p>
-							<a class="button" href="#" title="Mua ngay">Mua ngay</a>
+							<div class="button">
+								<a href="#" title="Mua ngay">Mua ngay</a>
+							</div>
 						</div> <!-- end action -->
 				</div>
 				</div><!-- end product_item -->
