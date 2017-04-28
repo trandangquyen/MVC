@@ -1,6 +1,7 @@
 /* ---Begin Css of Contact Us page--- */
 #section-top-contact {
-    background-image: url(../images/bg_contact.jpg);
+    background: url(../images/bg_contact.jpg) top left no-repeat scroll;
+    background-size: 1140px;
 }
 #section-top-contact .contact-us {
     position: relative;
