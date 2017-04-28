@@ -1,32 +1,36 @@
 * {
-	margin:0;
-	padding: 0;	
+    margin:0;
+    padding: 0;
 }
 
 
 .clear {
-	clear:both;
+    clear:both;
 }
-/*** Begin top menu **/
-#top-menu {
-	list-style: none;
-	width: 100%;
-	overflow: hidden;
-	margin:0;
-	padding: 0;
-	background: url(../images/bg-topmenu.jpg) repeat-x scroll ;
-	border-top-left-radius: 4px;
-	border-top-right-radius: 4px;
+/***phan header****/
+.header{
 
+}
+
+
+/*** top menu **/
+#top-menu {
+    list-style: none;
+    width: 100%;
+    overflow: hidden;
+    margin:0;
+    padding: 0;
+    background-color: rgb(223,223,223);
+    border-bottom: 3px solid rgb(76,102,164);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 
 }
 #top-menu li{
-	list-style: none;
-	float: left;
-	margin:0;
-	padding: 0;
-	position: relative;
-	height: 32px;
+    list-style: none;
+    float: left;
+    margin:0;
+    padding: 0;
 }
 #top-menu li::after{
 	content: '';
@@ -55,36 +59,62 @@
 	text-decoration: none;
 }
 #top-menu a {
-	padding: 0 15px 0 15px;
-	display: block;	
-	line-height: 32px;
-	font-weight: bold;
-	color: black;
-
+    padding: 5px 17px 5px 10px;
+    display: block;	
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
 }
 #top-menu a:hover {
+    background-color: #ff9900;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 
 } 
 #top-menu li.current {
-	background-color: rgb(76,102,164);
+    background-color: rgb(76,102,164);
 
 }
 #top-menu li.current a {
-	color: #fff;
-	
+
 }
 #top-menu li.current a:hover {
-	
+
 }
-.header .input-group{
-	padding-top: 30px;
+#menu ul li > .sub-menu{
+    display: none;
+    position: absolute;
 }
-.header .cart{
-	padding-top: 30px;
+#menu ul li:hover .sub-menu{
+    display: block;
+}
+#top-menu #lintrangchu a{
+    color: white;
+
 }
 
-/*** End top menu ***/
+input {
+    height: 33px;
+    clear: both;
+    background-color: #f99704;
+    margin-left: -6px;
+    border-radius: 3px;
 
+}
+#text {
+    width: 310px;
+    margin-left: 114px;
+    color: #bdb3a8;
+    margin-top: 12px;
+}
+.anhmenu{
+    float: left;
+    padding: 0;
+    padding: 0;
+}
+
+
+/*** page Gioithieu ****/
 /*** page Home ****/
 a {
     color: black;
@@ -95,6 +125,10 @@ span {
     color: white;
     line-height: 28px;
     padding-left: 11px;
+}
+/*** page footer****/
+#mage_footer2 {
+	margin-left: 800px;
 }
 
 li {
