@@ -22,8 +22,7 @@ class Home extends CI_Controller {
 
 	public function index($page = 'home')
 	{
-
-
+		$this->load->model('Products_model');
 		if ( ! file_exists(APPPATH.'views/'.$page.'.php'))
         {
                 // Whoops, we don't have a page for that!
