@@ -35,6 +35,9 @@ class Tintuc extends CI_Controller {
         $this->load->view('common/mainright', $data);
         $this->load->view('common/footer', $data);
 	}
+}
+		
+			
 	
 
-}
+
