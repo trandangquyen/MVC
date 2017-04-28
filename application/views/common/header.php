@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <base href="http://localhost:8888/gitTranning/MVC/">
+        <base href="http://localhost/mvc_grop/MVC/">
         <meta charset="utf-8">
         <title>Training E-commerce Templates</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
