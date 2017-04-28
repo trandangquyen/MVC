@@ -21,6 +21,9 @@
         <div id="wrapper" class="container">
             <!-- Begin Header -->
             <div class="header">
+				<div id="Icon_search">
+                    <img src="public/images/header.png" alt="">
+                </div>
 
                 <ul id='top-menu'>
                     <li class='item current' id="lintrangchu"><a href='index.php/trangchu/view'>Trang chủ</a></li>
