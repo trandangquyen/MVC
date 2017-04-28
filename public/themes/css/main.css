@@ -113,7 +113,6 @@ input {
 .anhmenu{
     float: left;
     padding: 0;
-    padding: 0;
 }
 
 
@@ -121,7 +120,7 @@ input {
 .head3{
     text-align: center;
 }
-.content{
+.content, .details {
     text-align: justify;
 }
 /*** page footer****/
@@ -137,7 +136,3 @@ input {
     margin: 12px  0 0 790px;
    
 }
-
-
-
-s
