@@ -2,11 +2,11 @@
 			<!-- Begin footer -->
 			<div class="footer">
                             
-				Ch?p nh?n : <img src="public/images/Image_footer.png" alt="">	
+				Chấp nhận : <img src="public/images/Image_footer.png" alt="">	
                           
-                               <h4> H?c l?p tr�nh online mi?n ph�.</h4>
-                               <p>Hu?ng d?n x�y d?ng website b�n h�ng v� thanh to�n tr?c tuy?n.</p>
-                               Website :<br/>
+                               <h4> Học lập trình online miễn phí.</h4>
+                               <p>Hướng dẫn xây dựng website bán hàng miễn phí.</p>
+                               website :<br/>
                                Fanpage :
                               
                                 <img id="image_footer2" src="public/images/Image2_footer.png" alt="">
