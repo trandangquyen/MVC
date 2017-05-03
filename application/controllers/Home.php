@@ -19,8 +19,11 @@ class Home extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-
-	public function index($page = 'home')
+	public function __construct(){
+          parent::__construct();
+          $this->load->helper(array('url'));
+     }
+	public function index($page = 'site/home')
 	{
 		$this->load->model('Products_model');
 		if ( ! file_exists(APPPATH.'views/'.$page.'.php'))
@@ -31,11 +34,12 @@ class Home extends CI_Controller {
 
         $data['title'] = ucfirst($page); // Capitalize the first letter
 
-        $this->load->view('common/header', $data);
-        $this->load->view('common/mainleft', $data);
+        $this->load->view('site/common/header', $data);
+        $this->load->view('site/common/mainleft', $data);
         $this->load->view($page, $data);
-        $this->load->view('common/mainright', $data);
-        $this->load->view('common/footer', $data);
+        $this->load->view('site/common/mainright', $data);
+        $this->load->view('site/common/footer', $data);
 	}
 }
+
 
