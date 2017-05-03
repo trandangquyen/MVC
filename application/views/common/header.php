@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
 
-        <base href="http://localhost/training/MVC/">
+        <base href="http://localhost:8080/training/MVC/">
         <meta charset="utf-8">
         <title>Training E-commerce Templates</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
