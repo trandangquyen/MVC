@@ -2,10 +2,7 @@
     margin:0;
     padding: 0;
 }
-#wrapper{
-    width: 1000px;
-    margin: 0 auto;
-}
+
 
 .clear {
     clear:both;
@@ -36,30 +33,30 @@
     padding: 0;
 }
 #top-menu li::after{
-    content: '';
-    display: block;
-    width: 3px;
-    height: 32px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    background: url(../images/split-line.jpg) no-repeat;
+	content: '';
+	display: block;
+	width: 3px;
+	height: 32px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: url(../images/split-line.jpg) no-repeat;
 }
 #top-menu li:hover{
-    background-color: rgb(76,102,164);
+	background-color: rgb(76,102,164);
 }
 #top-menu li:hover:after{
-    background: none;
+	background: none;
 }
 #top-menu li:hover a{
-    color: #fff;
+	color: #fff;
 }
 #top-menu li.current::after{
-    background: none;
+	background: none;
 }
 #top-menu li a{
-    font-size: 12px;
-    text-decoration: none;
+	font-size: 12px;
+	text-decoration: none;
 }
 #top-menu a {
     padding: 5px 17px 5px 10px;
@@ -113,26 +110,134 @@ input {
 .anhmenu{
     float: left;
     padding: 0;
+    padding: 0;
 }
 
 
 /*** page Gioithieu ****/
-.head3{
-    text-align: center;
-}
-.content, .details {
-    text-align: justify;
-}
 /*** page footer****/
-.footer{
-    border-top: 3px solid #4c66a4;
-   
+#mage_footer2 {
+	margin-left: 800px;
 }
-#footerL {
+/*** page Home ****/
+a {
+    color: black;
+}
+span {
+    background-color: #4C66A4;
+    display: block;
+    color: white;
+    line-height: 28px;
+    padding-left: 11px;
+}
+
+li {
+    list-style: none;
+}
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 0px;
+}
+.tittle-box {
+    font-size: 22px;
+    padding-left: 5px;
+    border-bottom: 4px solid #FF9900;
+    margin-top: 15px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    background-color: #D6D6D6;
+}
+.icon_tittle {
+    display: inline-block;
+    float: left;
+    padding-top: 13px;
+    padding-right: 10px;
+}
+.icon_list{
+    padding-right: 10px;
+}
+.tittle-box h3 {
+    padding-left: 15px;
+    font-size: 15px;
+    line-height: 21px;
+    padding-top: 8px;
+    font-weight: bold;
+}
+.boder_menu{
+    border: 1px dashed #ccc;
+}
+/*main left*/
+
+#main_left li {
+    margin-left: 20px;
+    margin-right: 18px;
+    line-height: 18px;
+    display: block;
+    border-bottom: 1px dotted #CCCCCC;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+
+#main_left li a:hover {
+    text-decoration: none;
+    color: antiquewhite;
+}
+/*main right*/
+#main_right h4{
+    color: maroon;
+    font-weight: bold;
+    margin-left: 15px;
+}
+#main_right li {
+    padding-left: 10px;
+    line-height: 25px;
+    display: block;
+    font-size: 18px;
+    border-bottom: 1px dotted #CCCCCC;
+}
+
+/*-----------css main_center----------*/
+
+.product_item {
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    height: 261px;
+    padding: 6px 0px;
+}
+.product_item:hover{
+    border: 1px solid #ff5e5e;
+}
+.product_img {
+    /* width: 219px; */
+    overflow: hidden;
+    display: block;
+}
+.product_img img {
+    width: 85%;
+}
+.action p {
     float: left;
     margin-left: 10px;
+    font-size: 13px;
 }
-#footerR {
-    margin: 12px  0 0 790px;
-   
+.raty{
+    display: block;
+    text-align: -webkit-center;
+}
+.price_old {
+    text-decoration: line-through;
+    color: #555;
+    font-weight: normal;
+    margin-left: 5px;
+}
+.conten_product,  .product_list{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.box-center {
+    margin-bottom: 10px;
+}
 }

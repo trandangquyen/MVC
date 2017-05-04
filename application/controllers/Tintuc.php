@@ -18,18 +18,26 @@ class Tintuc extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function __construct(){
+          parent::__construct();
+          $this->load->helper(array('url'));
+     }
 	public function list_view()
 	{
 		$data['active'] = 'tintuc';
-		$this->load->view('common/header', $data);
-        $this->load->view('tintuc/list',$data);
-        $this->load->view('common/footer', $data);
+		$this->load->view('site/common/header', $data);
+		$this->load->view('site/common/mainleft', $data);
+        $this->load->view('tintuc/list',$data);        
+        $this->load->view('site/common/mainright', $data);
+        $this->load->view('site/common/footer', $data);
 	}
 	public function details($id)
 	{
-		$this->load->view('common/header', NULL);
-        $this->load->view("tintuc/details_$id",NULL);
-        $this->load->view('common/footer', NULL);
+		$this->load->view('site/common/header', $data);
+		$this->load->view('site/common/mainleft', $data);
+        $this->load->view("tintuc/details_$id",$data);        
+        $this->load->view('site/common/mainright', $data);
+        $this->load->view('site/common/footer', $data);
 	}
 	
 

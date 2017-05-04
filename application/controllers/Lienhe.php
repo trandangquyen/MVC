@@ -18,11 +18,15 @@ class Lienhe extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function __construct(){
+          parent::__construct();
+          $this->load->helper(array('url'));
+     }
 	public function view()
 	{
 		$data['active'] = 'lienhe';
-		$this->load->view('common/header', $data);
-        $this->load->view('lienhe',$data);
-        $this->load->view('common/footer', $data);
+		$this->load->view('site/common/header', $data);
+        $this->load->view('site/lienhe',$data);
+        $this->load->view('site/common/footer', $data);
 	}
 }
