@@ -32,9 +32,19 @@ class Sanpham extends CI_Controller {
         $this->printCategory();
 
         $this->load->model('Products_model');
-        $products = $this->Products_model->listProducts();
+        $this->load->model('Category_model');
+        if($category) {
+        	$name = $this->Category_model->getNameCategory($category);
+        	$data['products'][] = $this->Products_model->listProducts($category);
+        }
+        else {
+        	//$name = $this->Category_model->getNameCategory(1);
+        	$data['products'][$this->Category_model->getNameCategory(1)] = $this->Products_model->listProducts(1);
+        	$data['products'][$this->Category_model->getNameCategory(2)] = $this->Products_model->listProducts(2);
+        	$data['products'][$this->Category_model->getNameCategory(3)] = $this->Products_model->listProducts(3);
 
-
+        }
+        //var_dump($data);exit;
         $this->load->view('site/sanpham', $data);
         $this->load->view('site/common/mainright', $data);
         $this->load->view('site/common/footer', $data);
