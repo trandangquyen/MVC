@@ -18,11 +18,14 @@ class Home extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-
+	public function __construct(){
+          parent::__construct();
+          $this->load->helper(array('url'));
+     }
 
 	public function index($page = 'home')
 	{
-		$this->load->model('Products_model');
+		//$this->load->model('Products_model');
 		if ( ! file_exists(APPPATH.'views/'.$page.'.php'))
         {
                 // Whoops, we don't have a page for that!

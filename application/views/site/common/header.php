@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+
         <base href="<?php echo base_url(); ?>">
         <meta charset="utf-8">
         <title>Training E-commerce Templates</title>
@@ -26,14 +27,14 @@
                 </div>
 
                 <ul id='top-menu'>
-                    <li class='item current' id="lintrangchu"><a href='index.php/home'>Trang chủ</a></li>
+                    <li class='item current' id="lintrangchu"><a href='home'>Trang chủ</a></li>
                     <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
-                    <li  <?php echo (isset($active) && $active == 'gioithieu') ? 'class = "item current"' : 'class="item"' ?>><a href='index.php/gioithieu/view'>Giới thiệu</a></li>
+                    <li  <?php echo (isset($active) && $active == 'gioithieu') ? 'class = "item current"' : 'class="item"' ?>><a href='gioithieu/view'>Giới thiệu</a></li>
                     <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
-                    <li <?php echo (isset($active) && $active == 'tintuc') ? 'class = "item current"' : 'class="item"' ?>><a href='index.php/tintuc/list'>Tin tức</a>
+                    <li <?php echo (isset($active) && $active == 'tintuc') ? 'class = "item current"' : 'class="item"' ?>><a href='tintuc/list'>Tin tức</a>
                     </li>
                     <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
-                    <li <?php echo (isset($active) && $active == 'lienhe') ? 'class = "item current"' : 'class="item"' ?>><a href='index.php/lienhe/view'>Liên hệ</a></li>
+                    <li <?php echo (isset($active) && $active == 'lienhe') ? 'class = "item current"' : 'class="item"' ?>><a href='lienhe/view'>Liên hệ</a></li>
                     <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
 
                 </ul>			

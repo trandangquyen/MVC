@@ -55,3 +55,6 @@ $route['translate_uri_dashes'] = FALSE;
 $route['gioithieu'] = 'gioithieu/view';
 $route['tintuc/list'] = 'tintuc/list_view';
 $route['lienhe'] = 'lienhe/view';
+$route['tintuc'] = 'tintuc';
+$route['sanpham'] = 'sanpham';
+$route['theloai/(:num)'] = 'sanpham/index/$1';
