@@ -57,4 +57,6 @@ $route['tintuc/list'] = 'tintuc/list_view';
 $route['lienhe'] = 'lienhe/view';
 $route['tintuc'] = 'tintuc';
 $route['sanpham'] = 'sanpham';
+$route['sanpham/(:num)'] = 'sanpham/viewProduct/$1';
 $route['theloai/(:num)'] = 'sanpham/index/$1';
+$route['theloai/(:num)/page/(:num)'] = 'sanpham/index/$1/$2';

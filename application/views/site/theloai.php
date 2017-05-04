@@ -10,9 +10,9 @@
     foreach ($category as $mainCategory) {
       //var_dump($mainCategory);
       echo '<ul>
-        <span><a href="theloai/'.$mainCategory['id'].'">'.$mainCategory['name'].'</a></span>';
+        <span><a href="index.php/theloai/'.$mainCategory['id'].'">'.$mainCategory['name'].'</a></span>';
         if(!empty($mainCategory['data'])) foreach ($mainCategory['data'] as $subCategory) {
-          echo '<li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="/theloai/'.$subCategory['id'].'">'.$subCategory['name'].'</a></li>';
+          echo '<li><img src="public/themes/images/icon-02.png" alt="" class="icon_list"><a href="index.php/theloai/'.$subCategory['id'].'">'.$subCategory['name'].'</a></li>';
         }
       echo '</ul>';
       }

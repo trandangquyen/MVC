@@ -23,10 +23,11 @@ class Sanpham extends CI_Controller {
           $this->load->helper(array('url'));
      }
 
-	public function index($category=null) {
+	public function index($category=null,$page=0) {
 
-        $data['title'] = ucfirst('Sản phẩm'); // Capitalize the first letter
-
+        $this->load->library('pagination');
+        $data['title'] = ucfirst('Sản phẩm');
+        $data['active'] = 'sanpham';
         $this->load->view('site/common/header', $data);
         //$this->load->view('site/common/mainleft', $data);
         $this->printCategory();
@@ -34,16 +35,32 @@ class Sanpham extends CI_Controller {
         $this->load->model('Products_model');
         $this->load->model('Category_model');
         if($category) {
-        	$name = $this->Category_model->getNameCategory($category);
-        	$data['products'][] = $this->Products_model->listProducts($category);
+            $name = $this->Category_model->getNameCategory($category);
+            $data['products'][$name] = $this->Products_model->listProducts($category);
+        } else {
+            $mainCategory = $this->Category_model->getMainCategory();
+            for ($i=0; $i < 3; $i++) { 
+                $data['products'][$mainCategory[$i]['name']] =  $this->Products_model->listProducts($mainCategory[$i]['id']);
+            }
+            //var_dump($mainCategory);exit;
         }
-        else {
-        	//$name = $this->Category_model->getNameCategory(1);
-        	$data['products'][$this->Category_model->getNameCategory(1)] = $this->Products_model->listProducts(1);
-        	$data['products'][$this->Category_model->getNameCategory(2)] = $this->Products_model->listProducts(2);
-        	$data['products'][$this->Category_model->getNameCategory(3)] = $this->Products_model->listProducts(3);
+        
+        $this->load->view('site/listsanpham', $data);
+        $this->load->view('site/common/mainright', $data);
+        $this->load->view('site/common/footer', $data);
+    }
+    public function viewProduct($id) {
+        $data['title'] = ucfirst('Sản phẩm'); // Capitalize the first letter
+        $data['active'] = 'sanpham';
+        $this->load->view('site/common/header', $data);
+        //$this->load->view('site/common/mainleft', $data);
+        $this->printCategory();
 
-        }
+        $this->load->model('Products_model');
+        $this->load->model('Category_model');
+        
+        $data['product'] = $this->Products_model->getProducts($id);
+        
         //var_dump($data);exit;
         $this->load->view('site/sanpham', $data);
         $this->load->view('site/common/mainright', $data);

@@ -25,8 +25,8 @@ class Lienhe extends CI_Controller {
 	public function view()
 	{
 		$data['active'] = 'lienhe';
-		$this->load->view('common/header', $data);
-        $this->load->view('lienhe',$data);
-        $this->load->view('common/footer', $data);
+		$this->load->view('site/common/header', $data);
+        $this->load->view('site/lienhe',$data);
+        $this->load->view('site/common/footer', $data);
 	}
 }

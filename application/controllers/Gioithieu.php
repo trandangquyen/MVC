@@ -26,8 +26,8 @@ class Gioithieu extends CI_Controller {
 	{
 		$this->config->base_url();
 		$data['active'] = 'gioithieu';
-		$this->load->view('common/header', $data);
-        $this->load->view('gioithieu',$data);
-        $this->load->view('common/footer', $data);
+		$this->load->view('site/common/header', $data);
+        $this->load->view('site/gioithieu',$data);
+        $this->load->view('site/common/footer', $data);
 	}
 }
