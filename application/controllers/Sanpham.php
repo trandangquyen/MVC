@@ -27,12 +27,14 @@ class Sanpham extends CI_Controller {
 
         $data['title'] = ucfirst('Sản phẩm'); // Capitalize the first letter
 
-		//$this->load->library(__DIR__ .'/Theloai.php');
-
         $this->load->view('site/common/header', $data);
         //$this->load->view('site/common/mainleft', $data);
-       // $this->Theloai->index();
         $this->printCategory();
+
+        $this->load->model('Products_model');
+        $products = $this->Products_model->listProducts();
+
+
         $this->load->view('site/sanpham', $data);
         $this->load->view('site/common/mainright', $data);
         $this->load->view('site/common/footer', $data);

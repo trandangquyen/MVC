@@ -1,18 +1,21 @@
 <?php
-class Theloai_model extends CI_Model
+class Products_model extends CI_Model
 {
 	public function __construct()
     {
     	parent::__construct();
         $this->load->database();
     }
-	public function getMainCategory(){
-		$category = DB::table('category')->where('parent', 0)->get();
-		return $category;
+	public function listProducts($category=null){
+		$this->db->select("*");
+        if($category) $this->db->where("category",$category);
+        $this->db->order_by("name desc");
+        //$this->db->limit(1,0);
+        $query=$this->db->get("product");
+        return $query->result_array();
 	}
-	public function getSubCategory($parent){
-		$category = DB::table('category')->where('parent', $parent)->get();
-		return $category;
+	public function searchProducts($parent){
+		
 	}
 }
 

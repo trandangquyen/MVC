@@ -18,7 +18,6 @@ class Category_model extends CI_Model
 		$this->db->select("*");
         $this->db->where("parent",$parent);
         $this->db->order_by("name desc");
-        //$this->db->limit(1,0);
         $query=$this->db->get("category");
         return $query->result_array();
 	}
