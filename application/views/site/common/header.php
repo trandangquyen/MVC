@@ -4,7 +4,7 @@
 
         <base href="<?php echo base_url(); ?>">
         <meta charset="utf-8">
-        <title>Training E-commerce Templates</title>
+        <title><?=isset($title) ? $title : 'Training E-commerce Templates'?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
