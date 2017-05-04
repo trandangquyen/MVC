@@ -21,6 +21,9 @@ class Lienhe extends CI_Controller {
 	public function view()
 	{
 		$data['active'] = 'lienhe';
+		//get all methods in class by class name
+		// print_r(get_class_methods(get_class($this->load)));
+		print_r(get_object_vars ($this->load));
 		$this->load->view('common/header', $data);
         $this->load->view('lienhe',$data);
         $this->load->view('common/footer', $data);
