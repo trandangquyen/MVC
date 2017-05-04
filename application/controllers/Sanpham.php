@@ -38,10 +38,14 @@ class Sanpham extends CI_Controller {
             if(!$name) show_404();
             $data['products'][$name] = $this->Products_model->listProducts($category);
         } else {
-            $mainCategory = $this->Category_model->getMainCategory();
-            for ($i=0; $i < 3; $i++) { 
-                $data['products'][$mainCategory[$i]['name']] =  $this->Products_model->listProducts($mainCategory[$i]['id']);
-            }
+            //$mainCategory = $this->Category_model->getMainCategory();
+            //for ($i=0; $i < 3; $i++) { 
+                //$data['products'][$mainCategory[$i]['name']] =  $this->Products_model->listProducts($mainCategory[$i]['id']);
+            //}
+            $data['products']['Xem nhiều nhất'] = $this->Products_model->listProducts(null,'views');
+            $data['products']['Đánh giá cao nhất'] = $this->Products_model->listProducts(null,'rate');
+            $data['products']['Lượt mua'] = $this->Products_model->listProducts(null,'buys');
+
         }
         
         $this->load->view('site/listsanpham', $data);
