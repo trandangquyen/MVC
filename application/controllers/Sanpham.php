@@ -76,11 +76,14 @@ class Sanpham extends CI_Controller {
 
         $this->load->model('Products_model');
         $this->load->model('Category_model');
-        
+
         if($data['product'] = $this->Products_model->getProducts($id))
             $data['product']->category_name = $this->Category_model->getNameCategory($data['product']->category_id);
         else show_404();
         $data['title'] = $data['product']->name;
+
+        $data['product']->image = $this->Products_model->getImageProducts($id);
+
         $this->load->view('site/common/header', $data);
         $this->printCategory();
         $this->load->view('site/sanpham', $data);

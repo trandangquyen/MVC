@@ -3,6 +3,7 @@
 <pre>
     <?php
         print_r($product);
+
     ?>
 </pre>
 	</div> <!-- end row -->

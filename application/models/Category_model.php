@@ -21,11 +21,18 @@ class Category_model extends CI_Model
         $query=$this->db->get("category");
         return $query->result_array();
 	}
-    public function getNameCategory($id) {
-        $this->db->where("id",$id);
+    public function getNameCategory($ids) {
+        $data = null;
+        foreach (explode(',', $ids) as $id) {
+            $this->db->where("id",$id);
+            $query = $this->db->get("category");
+            if($result = $query->first_row()) $data[] = $result->name;
+        } 
+        return $data;
+        /*$this->db->where("id",$id);
         $query=$this->db->get("category");
         if($result=$query->first_row()) return $result->name;
-        return null;
+        return null;*/
     }
 }
 

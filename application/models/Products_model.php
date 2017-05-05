@@ -36,6 +36,30 @@ class Products_model extends CI_Model
         if($result=$query->first_row()) return $result;
         return null;
     }
+    public function getImageProducts($product_id) {
+        $this->db->select("*");
+        $this->db->where("product_id",$product_id);
+        $query=$this->db->get("image");
+        return $query->result_array();
+    }
+    public function deleteProducts($product_id) {
+        $this->db->select("*");
+        $this->db->where("id",$product_id);
+        if($this->db->delete('product')) return true;
+        return false;
+    }
+    public function insertProducts($data=array()) {
+        if($this->db->insert('product', $data)) return true;
+        return false;
+    }
+    public function updateProducts($data=array(),$product_id) {
+        foreach ($data as $key => $value) {
+            $this->db->set($key, $value);
+        }
+        $this->db->where('id', $product_id);
+        $this->db->update('product'); 
+        return false;
+    }
 }
 
 ?>
