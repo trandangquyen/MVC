@@ -27,7 +27,7 @@ class Category_model extends CI_Model
             $this->db->where("id",$id);
             $query = $this->db->get("category");
             if($result = $query->first_row()) $data[] = $result->name;
-        } 
+        }
         return $data;
         /*$this->db->where("id",$id);
         $query=$this->db->get("category");

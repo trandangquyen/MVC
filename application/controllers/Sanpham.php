@@ -35,8 +35,10 @@ class Sanpham extends CI_Controller {
         $this->load->model('Category_model');
         if($category) {
             $name = $this->Category_model->getNameCategory($category);
+            //var_dump($name);
+            $name = $name[count($name)-1];
+            //echo $name;
             if(!$name) show_404();
-
             $data['products'][$name] = $this->Products_model->listProducts($category);
             $config['base_url'] = base_url('index.php/theloai');
             if($category) $config['base_url'] .= '/'.$category;
