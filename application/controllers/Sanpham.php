@@ -22,17 +22,21 @@ class Sanpham extends CI_Controller {
           parent::__construct();
           $this->load->helper(array('url'));
           $this->load->database();
+
      }
 
     // list products per category or a category
 	public function index($category=null,$page=1) {
         $this->load->library('pagination');
+        $this->load->model('Products_model');
+        $this->load->model('Category_model');
+        
         $data['title'] = 'Danh sách sản phẩm';
         $data['active'] = 'sanpham';
         $this->load->view('site/common/header', $data);
-        $this->printCategory();
-        $this->load->model('Products_model');
-        $this->load->model('Category_model');
+        $listCategory = $this->Category_model->getAllCategory();
+        $this->load->view('site/theloai', ['category'=>$listCategory]);
+        
         if($category) {
             $name = $this->Category_model->getNameCategory($category);
             //var_dump($name);
@@ -87,21 +91,12 @@ class Sanpham extends CI_Controller {
         $data['product']->image = $this->Products_model->getImageProducts($id);
 
         $this->load->view('site/common/header', $data);
-        $this->printCategory();
+        $listCategory = $this->Category_model->getAllCategory();
+        $this->load->view('site/theloai', ['category'=>$listCategory]);
+
         $this->load->view('site/sanpham', $data);
         $this->load->view('site/common/mainright', $data);
         $this->load->view('site/common/footer', $data);
-	}
-    // print list category on left side on page product
-	public function printCategory() {
-		$this->load->model('Category_model');
-		$mainCategory = $this->Category_model->getMainCategory();
-		foreach ($mainCategory as $i => $value) {
-			$mainCategory[$i]['data'] = $this->Category_model->getSubCategory($value['id']);
-		}
-        $data['title'] = 'Danh mục thể loại';
-        $data['category'] = $mainCategory;
-        $this->load->view('site/theloai', $data);
 	}
 }
 
