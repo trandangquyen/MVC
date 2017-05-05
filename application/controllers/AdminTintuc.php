@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class AdminTintuc extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -21,18 +21,13 @@ class Home extends CI_Controller {
 	public function __construct(){
           parent::__construct();
           $this->load->helper(array('url'));
-     }
-
-	public function index($page = 'home')
+      }
+	public function index()
 	{
 
-        $data['title'] = ucfirst($page); // Capitalize the first letter
-        $data['active'] = 'trangchu';
-        $this->load->view('site/common/header', $data);
-        $this->load->view('site/theloai', $data);
-        $this->load->view('site/home', $data);
-        $this->load->view('site/common/mainright', $data);
-        $this->load->view('site/common/footer', $data);
+        $this->load->model('Tintuc_model');
+        $data['news'] = $this->Tintuc_model->getAllNews();
+         $this->load->view('site/sanpham', $data);
+        
 	}
 }
-
