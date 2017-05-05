@@ -22,10 +22,12 @@ class Home extends CI_Controller {
 	public function __construct(){
           parent::__construct();
           $this->load->helper(array('url'));
+          $this->load->database();
      }
 	public function index($page = 'site/home')
 	{
-		$this->load->model('Products_model');
+        $this->load->model('Products_model');
+        $this->load->model('Category_model');
 		if ( ! file_exists(APPPATH.'views/'.$page.'.php'))
         {
                 // Whoops, we don't have a page for that!
@@ -36,6 +38,35 @@ class Home extends CI_Controller {
 
         $this->load->view('site/common/header', $data);
         $this->load->view('site/common/mainleft', $data);
+        if($category) {
+            $name = $this->Category_model->getNameCategory($category);
+            if(!$name) show_404();
+            echo $name;
+            $data['products'][$name] = $this->Products_model->listProducts($category);
+            $config['base_url'] = base_url('index.php/theloai');
+            if($category) $config['base_url'] .= '/'.$category;
+            //$config['base_url'] .= '/page';
+            //$config['total_rows'] = $this->db->query("select id from product")->num_rows();
+            $config['total_rows'] = count((array)$data['products'][$name]);
+            //echo $config['total_rows']."<br>";
+            $config['per_page'] = 6;
+            $config['use_page_numbers'] = true;
+            $config['page_query_string'] = TRUE;
+            //$config['suffix'] = '.html';
+            $config['first_url'] = site_url('index.php/theloai/'.$category);
+            $config['first_link'] = 'Trang đầu';
+            $config['last_link'] = 'Trang cuối';
+            $this->pagination->initialize($config);
+            $page = (int)$this->input->get('per_page', TRUE);
+            if($page<1) $page = 1;
+            $start = ($page-1)*$config['per_page'];
+            $data['products'][$name] = $this->Products_model->listProducts($category,null,$start,$config['per_page']);
+        } else {
+            $data['products']['Xem nhiều nhất'] = $this->Products_model->listProducts(null,'views',0,6);
+            $data['products']['Đánh giá cao nhất'] = $this->Products_model->listProducts(null,'rate',0,6);
+            $data['products']['Lượt mua'] = $this->Products_model->listProducts(null,'buys',0,6);
+
+        }
         $this->load->view($page, $data);
         $this->load->view('site/common/mainright', $data);
         $this->load->view('site/common/footer', $data);
