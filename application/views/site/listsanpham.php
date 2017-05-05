@@ -47,8 +47,16 @@
 </div> <!-- end main_center -->
 
 <script type="text/javascript">
-$("div[id^='p-']").hover(function(){
-	var id = this.id;
-    $('.flyout-'+id,this).slideToggle();
+
+$("div[id^='p-']").on({
+    mouseenter: function () {
+    	var id = this.id;
+        $('.flyout-'+id,this).show();
+    },
+    mouseleave: function () {
+    	var id = this.id;
+        $('.flyout-'+id,this).hide();
+    }
 });
+
 </script>
