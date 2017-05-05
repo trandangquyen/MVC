@@ -21,11 +21,11 @@ class Sanpham extends CI_Controller {
 	public function __construct(){
           parent::__construct();
           $this->load->helper(array('url'));
+          $this->load->database();
      }
 
     // list products per category or a category
-	public function index($category=null,$page=0) {
-
+	public function index($category=null,$page=1) {
         $this->load->library('pagination');
         $data['title'] = 'Danh sách sản phẩm';
         $data['active'] = 'sanpham';
@@ -36,15 +36,30 @@ class Sanpham extends CI_Controller {
         if($category) {
             $name = $this->Category_model->getNameCategory($category);
             if(!$name) show_404();
+
             $data['products'][$name] = $this->Products_model->listProducts($category);
+            $config['base_url'] = base_url('index.php/theloai');
+            if($category) $config['base_url'] .= '/'.$category;
+            //$config['base_url'] .= '/page';
+            //$config['total_rows'] = $this->db->query("select id from product")->num_rows();
+            $config['total_rows'] = count((array)$data['products'][$name]);
+            //echo $config['total_rows']."<br>";
+            $config['per_page'] = 6;
+            $config['use_page_numbers'] = true;
+            $config['page_query_string'] = TRUE;
+            //$config['suffix'] = '.html';
+            $config['first_url'] = site_url('index.php/theloai/'.$category);
+            $config['first_link'] = 'Trang đầu';
+            $config['last_link'] = 'Trang cuối';
+            $this->pagination->initialize($config);
+            $page = (int)$this->input->get('per_page', TRUE);
+            if($page<1) $page = 1;
+            $start = ($page-1)*$config['per_page'];
+            $data['products'][$name] = $this->Products_model->listProducts($category,null,$start,$config['per_page']);
         } else {
-            //$mainCategory = $this->Category_model->getMainCategory();
-            //for ($i=0; $i < 3; $i++) { 
-                //$data['products'][$mainCategory[$i]['name']] =  $this->Products_model->listProducts($mainCategory[$i]['id']);
-            //}
-            $data['products']['Xem nhiều nhất'] = $this->Products_model->listProducts(null,'views');
-            $data['products']['Đánh giá cao nhất'] = $this->Products_model->listProducts(null,'rate');
-            $data['products']['Lượt mua'] = $this->Products_model->listProducts(null,'buys');
+            $data['products']['Xem nhiều nhất'] = $this->Products_model->listProducts(null,'views',0,6);
+            $data['products']['Đánh giá cao nhất'] = $this->Products_model->listProducts(null,'rate',0,6);
+            $data['products']['Lượt mua'] = $this->Products_model->listProducts(null,'buys',0,6);
 
         }
         
@@ -56,9 +71,8 @@ class Sanpham extends CI_Controller {
     // show detail a product
     // param $id: id of product
     public function viewProduct($id) {
-        $data['title'] = ucfirst('Sản phẩm');
+        $data['title'] = 'Sản phẩm';
         $data['active'] = 'sanpham';
-
 
         $this->load->model('Products_model');
         $this->load->model('Category_model');
@@ -76,7 +90,6 @@ class Sanpham extends CI_Controller {
     // print list category on left side on page product
 	public function printCategory() {
 		$this->load->model('Category_model');
-
 		$mainCategory = $this->Category_model->getMainCategory();
 		foreach ($mainCategory as $i => $value) {
 			$mainCategory[$i]['data'] = $this->Category_model->getSubCategory($value['id']);

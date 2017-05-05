@@ -6,7 +6,7 @@ class Products_model extends CI_Model
     	parent::__construct();
         $this->load->database();
     }
-	public function listProducts($category=null,$order=null,$limit=0) {
+	public function listProducts($category=null,$order=null,$offset=0,$limit=0) {
 		$this->db->select("*");
         if($category) $this->db->where("FIND_IN_SET(".$category.",category_id) !=", 0);
 
@@ -25,8 +25,9 @@ class Products_model extends CI_Model
                 break;
         }
 
-        if($limit) $this->db->limit($limit,0);
+        if($limit) $this->db->limit($limit,$offset);
         $query=$this->db->get("product");
+        //echo $this->db->last_query().'<br/>';
         return $query->result_array();
 	}
     public function getProducts($id) {
@@ -35,22 +36,6 @@ class Products_model extends CI_Model
         if($result=$query->first_row()) return $result;
         return null;
     }
-	public function customList($type=null) {
-		switch ($type) {
-            case 'xemnhieunhat':
-                break;
-            case 'muanhieunhat':
-                # code...
-                break;
-            case 'danhgiacao':
-                # code...
-                break;
-            
-            default:
-                # code...
-                break;
-        }
-	}
 }
 
 ?>

@@ -41,4 +41,6 @@
 		</div> <!-- end conten_product -->
 <?php } ?>
 	</div> <!-- end row -->
+	<div class="clearfix"></div>
+<div class="pagination" style="display: table;margin: 0 auto;"><div class="pagination-page"><?=$this->pagination->create_links();?></div></div>
 </div> <!-- end main_center -->
