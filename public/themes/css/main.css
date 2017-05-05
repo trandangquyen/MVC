@@ -40,7 +40,6 @@
 	position: absolute;
 	right: 0;
 	top: 0;
-	background: url(../images/split-line.jpg) no-repeat;
 }
 #top-menu li:hover{
 	background-color: rgb(76,102,164);
@@ -116,6 +115,10 @@ input {
 
 /*** page Gioithieu ****/
 /*** page footer****/
+.footer{
+    background: #ececec;
+    margin-top: 20px;
+}
 #mage_footer2 {
 	margin-left: 800px;
 }
@@ -166,6 +169,9 @@ ol, ul {
 .boder_menu{
     border: 1px dashed #ccc;
 }
+.boder_menu li a{
+    display: block;
+}
 /*main left*/
 
 #main_left li {
@@ -205,6 +211,7 @@ ol, ul {
     border-radius: 10px;
     height: 261px;
     padding: 6px 0px;
+    margin-bottom: 10px;
 }
 .product_item:hover{
     border: 1px solid #ff5e5e;
@@ -236,8 +243,67 @@ ol, ul {
     padding-left: 0px;
     padding-right: 0px;
 }
+.conten_product .col-xs-4{
+    padding-left:0;
+    padding-right:10px;
+}
 
 .box-center {
     margin-bottom: 10px;
 }
+/*Flexslider css hack*/
+
+.flex-direction-nav a:before {
+    font-size: 29px !important;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
 }
+.flex-caption{
+    opacity:0;
+}
+.flex-caption.bounceInUp{
+    opacity:1;
+}
+@keyframes bounceInUp {
+    from, 60%, 75%, 90%, to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    from {
+        opacity: 0;
+        transform: translate3d(0, 3000px, 0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate3d(0, -20px, 0);
+    }
+
+    75% {
+        transform: translate3d(0, 10px, 0);
+    }
+
+    90% {
+        transform: translate3d(0, -5px, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.bounceInUp {
+    animation-name: bounceInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+.flexslider ul li{
+    position: relative;
+}
+.flexslider ul .flex-caption{
+    position: absolute;
+    bottom: 15px;
+    padding: 5px 22px;
+    background: rgba(255, 255, 255, 0.65);
+}
+/*End Flexslider css hack*/

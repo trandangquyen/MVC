@@ -37,3 +37,4 @@
 
   </div><!-- end main_right -->
 </div> <!-- end col-xs-3 -->
+</div> <!-- end row -->
