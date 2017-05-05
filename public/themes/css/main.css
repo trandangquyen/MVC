@@ -126,13 +126,6 @@ input {
 a {
     color: black;
 }
-span {
-    background-color: #4C66A4;
-    display: block;
-    color: white;
-    line-height: 28px;
-    padding-left: 11px;
-}
 
 li {
     list-style: none;
@@ -171,15 +164,42 @@ ol, ul {
 }
 .boder_menu li a{
     display: block;
+    height: 38px;
+    line-height: 38px;
 }
 .boder_menu li{
     height: auto !important;
 }
+.boder_menu .sub-1>li>a{
+    display: block;
+    padding: 0 10px;
+}
+.boder_menu .sub-1>.active>a{
+    background: #ececec;
+}
 .boder_menu .sub-2{
     display: none;
 }
+.boder_menu .sub-2 li>a{
+    padding: 0 20px;
+}
 .boder_menu .sub-3{
     display: none;
+}
+.boder_menu .sub-menu{
+    position: relative;
+}
+.boder_menu .sub-menu:after{
+    position: absolute;
+    content: "+";
+    top:5px;
+    right:10px;
+}
+.boder_menu .sub-menu.active:after{
+    content: "-";
+}
+.boder_menu .sub-3 li>a{
+    padding: 0 30px;
 }
 .boder_menu .sub-3 li:last-child,.boder_menu .sub-2 li:last-child{
     border-bottom: none !important;
@@ -187,18 +207,14 @@ ol, ul {
     /*main left*/
 
 #main_left li {
-    margin-left: 20px;
-    margin-right: 18px;
     line-height: 18px;
     display: block;
     border-bottom: 1px dotted #CCCCCC;
-    padding-bottom: 8px;
-    padding-top: 8px;
 }
 
 #main_left li a:hover {
     text-decoration: none;
-    color: antiquewhite;
+    color: #cf8522;
 }
 /*main right*/
 #main_right h4{
@@ -212,6 +228,9 @@ ol, ul {
     display: block;
     font-size: 18px;
     border-bottom: 1px dotted #CCCCCC;
+}
+.boder_right_menu a{
+    font-size: 14px;
 }
 
 /*-----------css main_center----------*/

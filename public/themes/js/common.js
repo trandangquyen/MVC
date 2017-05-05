@@ -7,14 +7,14 @@
 	/* ----------------------------------------------- */
     function displayMenu() {
         $(".sub-1 li").hover(function(){
-            $(this).find(".sub-2").css("height", "auto").slideDown();
+            $(this).addClass("active").find(".sub-2").slideDown(300);
         }, function(){
-            $(this).find(".sub-2").stop().slideUp();
+            $(this).removeClass("active").find(".sub-2").stop().slideUp(50);
         });
         $(".sub-2 li").hover(function(){
-            $(this).find(".sub-3").css("height", "auto").slideDown();
+            $(this).addClass("active").find(".sub-3").slideDown(300);
         }, function(){
-            $(this).find(".sub-3").stop().slideUp();
+            $(this).removeClass("active").find(".sub-3").stop().slideUp(50);
         });
     }
 	/* ----------------------------------------------- */

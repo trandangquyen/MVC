@@ -24,7 +24,7 @@
       <img src="public/themes/images/icon.png" alt="" class="icon_tittle">
       <h3>Bài viết mới </h3>
     </div><!-- end tittle -->
-    <div class="boder_menu">
+    <div class="boder_right_menu">
       <ul>
         <li><img src="public/themes/images/li.png" alt="" class="icon_list"><a href="#">Instagram cán mốc 700  ...</a></li>
         <li><img src="public/themes/images/li.png" alt="" class="icon_list"><a href="#">Đặt mua HTC Ultra U tại ...</a></li>

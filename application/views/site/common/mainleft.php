@@ -10,27 +10,27 @@
                 <ul class="sub-1">
                     <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Điện tử, điện máy</a>
                         <ul class="sub-2">
-                            <li><a href="#">Tivi</a>
+                            <li class="sub-menu"><a href="#">Tivi</a>
                                 <ul class="sub-3">
-                                    <li><a href="">Toshiba</a></li>
-                                    <li><a href="">Sony</a></li>
-                                    <li><a href="">LG</a></li>
-                                    <li><a href="">Sharp</a></li>
+                                    <li><a href=""><span>- </span>Toshiba</a></li>
+                                    <li><a href=""><span>- </span>Sony</a></li>
+                                    <li><a href=""><span>- </span>LG</a></li>
+                                    <li><a href=""><span>- </span>Sharp</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Máy giặt</a>
+                            <li class="sub-menu"><a href="#">Máy giặt</a>
                                 <ul class="sub-3">
-                                    <li><a href="">LG</a></li>
-                                    <li><a href="">Samsung</a></li>
-                                    <li><a href="">Toshiba</a></li>
-                                    <li><a href="">Votel</a></li>
+                                    <li><a href=""><span>- </span>LG</a></li>
+                                    <li><a href=""><span>- </span>Samsung</a></li>
+                                    <li><a href=""><span>- </span>Toshiba</a></li>
+                                    <li><a href=""><span>- </span>Votel</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Máy chiếu</a>
+                            <li class="sub-menu"><a href="#">Máy chiếu</a>
                                 <ul class="sub-3">
-                                    <li><a href="">Panasonic</a></li>
-                                    <li><a href="">LG</a></li>
-                                    <li><a href="">Samsung</a></li>
+                                    <li><a href=""><span>- </span>Panasonic</a></li>
+                                    <li><a href=""><span>- </span>LG</a></li>
+                                    <li><a href=""><span>- </span>Samsung</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Loa nghe nhạc</a></li>
