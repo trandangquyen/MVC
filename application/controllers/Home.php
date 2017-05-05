@@ -24,10 +24,11 @@ class Home extends CI_Controller {
      }
 
 	public function index($page = 'home') {
-		$this->load->model('Category_model');
+		
         $data['title'] = ucfirst($page); // Capitalize the first letter
         $data['active'] = 'trangchu';
         $this->load->view('site/common/header', $data);
+        $this->load->model('Category_model');
         $listCategory = $this->Category_model->getAllCategory();
         $this->load->view('site/theloai', ['category'=>$listCategory]);
         $this->load->view('site/home', $data);
