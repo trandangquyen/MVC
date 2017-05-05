@@ -7,51 +7,50 @@
                 <h3>Danh mục sản phẩm</h3>
             </div> <!-- end tittle -->
             <div class="boder_menu">
-                
-                <ul>
-                    <span>Tivi</span>
-                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Toshiba</a>
-                        <ul class="sub-menu">
-                            <li><a href="">Toshiba pro Theatre</a></li>
-                            <li><a href="">Toshiba pro Smart</a></li>
-                            <li><a href="">Toshiba pro UltraHD</a></li>
-                            <li><a href="">Toshiba pro OLED</a></li>
+                <ul class="sub-1">
+                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Điện tử, điện máy</a>
+                        <ul class="sub-2">
+                            <li><a href="#">Tivi</a>
+                                <ul class="sub-3">
+                                    <li><a href="">Toshiba</a></li>
+                                    <li><a href="">Sony</a></li>
+                                    <li><a href="">LG</a></li>
+                                    <li><a href="">Sharp</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Máy giặt</a>
+                                <ul class="sub-3">
+                                    <li><a href="">LG</a></li>
+                                    <li><a href="">Samsung</a></li>
+                                    <li><a href="">Toshiba</a></li>
+                                    <li><a href="">Votel</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Máy chiếu</a>
+                                <ul class="sub-3">
+                                    <li><a href="">Panasonic</a></li>
+                                    <li><a href="">LG</a></li>
+                                    <li><a href="">Samsung</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Loa nghe nhạc</a></li>
+                            <li><a href="#">Điều hòa</a></li>
+                            <li><a href="#">Máy hút bụi</a></li>
                         </ul>
                     </li>
-                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Samsung</a>
-                        <ul class="sub-menu">
-                            <li><a href="">Samsung smart TV</a></li>
-                            <li><a href="">Samsung OLED</a></li>
-                            <li><a href="">Samsung UltraHD</a></li>
-                            <li><a href="">Samsung Blue 4K</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Panasonic</a>
-                        <ul class="sub-menu">
-                            <li><a href="">Panasonic smart TV</a></li>
-                            <li><a href="">Panasonic OLED</a></li>
-                            <li><a href="">Panasonic UltraHD</a></li>
-                            <li><a href="">Panasonic Blue 4K</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">LG</a></li>
-                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">JVC</a></li>
-                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">AKAI</a></li>
-                </ul>
-                <ul>
-                    <span>Điện thoại</span>
-                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">HTC</a></li>
-                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">BlackBerry</a></li>
-                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Asus</a></li>
-                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Apple</a></li>
-                </ul>
-                <ul>
-                    <span>Laptop</span>
-                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">HP</a></li>
-                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Dell</a></li>
-                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Asus</a></li>
-                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Apple</a></li>
-                    <li class="end_menu"><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Acer</a></li>
+                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Máy ảnh, máy quay</a></li>
+                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Ô tô, xe máy</a></li>
+                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Máy tính, linh kiện</a></li>
+                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Điện Thoại</a></li>
+                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Thời trang & phụ kiện</a></li>
+                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Mẹ & bé</a></li>
+                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Thể thao</a></li>
+                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Công nghiệp</a></li>
+                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Nội thất</a></li>
+                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Đồ dùng sinh hoạt</a></li>
+                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Thực phẩm, đồ uống</a></li>
+                    <li><a href="#"><img src="public/themes/images/icon-02.png" alt="" class="icon_list">Sách & quà tặng</a></li>
+
                 </ul>
             </div> <!-- end boder_menu -->
 

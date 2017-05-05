@@ -172,7 +172,19 @@ ol, ul {
 .boder_menu li a{
     display: block;
 }
-/*main left*/
+.boder_menu li{
+    height: auto !important;
+}
+.boder_menu .sub-2{
+    display: none;
+}
+.boder_menu .sub-3{
+    display: none;
+}
+.boder_menu .sub-3 li:last-child,.boder_menu .sub-2 li:last-child{
+    border-bottom: none !important;
+}
+    /*main left*/
 
 #main_left li {
     margin-left: 20px;

@@ -5,11 +5,23 @@
 	/* ----------------------------------------------- */
 	/* ------------- FrontEnd Functions -------------- */
 	/* ----------------------------------------------- */
-
+    function displayMenu() {
+        $(".sub-1 li").hover(function(){
+            $(this).find(".sub-2").css("height", "auto").slideDown();
+        }, function(){
+            $(this).find(".sub-2").stop().slideUp();
+        });
+        $(".sub-2 li").hover(function(){
+            $(this).find(".sub-3").css("height", "auto").slideDown();
+        }, function(){
+            $(this).find(".sub-3").stop().slideUp();
+        });
+    }
 	/* ----------------------------------------------- */
 	/* ----------------------------------------------- */
 	/* OnLoad Page */
     $(document).ready(function($) {
+        displayMenu();
         $('.flexslider').flexslider({
             directionNav: false,
             animation: "slide",
@@ -23,6 +35,7 @@
 
             }
         });
+
     });
 	/* OnLoad Window */
     var init = function() {
