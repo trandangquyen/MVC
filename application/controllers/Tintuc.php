@@ -22,8 +22,7 @@ class Tintuc extends CI_Controller {
           parent::__construct();
           $this->load->helper(array('url'));
      }
-	public function list_view()
-	{
+	public function list_view() {
 		$data['active'] = 'tintuc';
 		$this->load->view('site/common/header', $data);
 		//$this->load->view('site/common/mainleft', $data);
@@ -33,6 +32,9 @@ class Tintuc extends CI_Controller {
         $this->load->view('site/tintuc/list',$data);        
         $this->load->view('site/common/mainright', $data);
         $this->load->view('site/common/footer', $data);
+	}
+	public function deleteTintuc($id) {
+		echo "Delete $id";
 	}
 	public function details($id)
 	{

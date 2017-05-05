@@ -1,6 +1,7 @@
 <?php
 class Products_model extends CI_Model
 {
+    private $table = 'product';
 	public function __construct()
     {
     	parent::__construct();
@@ -26,13 +27,13 @@ class Products_model extends CI_Model
         }
 
         if($limit) $this->db->limit($limit,$offset);
-        $query=$this->db->get("product");
+        $query=$this->db->get($this->table);
         //echo $this->db->last_query().'<br/>';
         return $query->result_array();
 	}
     public function getProducts($id) {
         $this->db->where("id",$id);
-        $query=$this->db->get("product");
+        $query=$this->db->get($this->table);
         if($result=$query->first_row()) return $result;
         return null;
     }
@@ -45,11 +46,11 @@ class Products_model extends CI_Model
     public function deleteProducts($product_id) {
         $this->db->select("*");
         $this->db->where("id",$product_id);
-        if($this->db->delete('product')) return true;
+        if($this->db->delete($this->table)) return true;
         return false;
     }
     public function insertProducts($data=array()) {
-        if($this->db->insert('product', $data)) return true;
+        if($this->db->insert($this->table, $data)) return true;
         return false;
     }
     public function updateProducts($data=array(),$product_id) {
@@ -57,7 +58,7 @@ class Products_model extends CI_Model
             $this->db->set($key, $value);
         }
         $this->db->where('id', $product_id);
-        $this->db->update('product'); 
+        $this->db->update($this->table); 
         return false;
     }
 }

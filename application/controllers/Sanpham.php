@@ -3,26 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Sanpham extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-	public function __construct(){
+	public function __construct() {
           parent::__construct();
           $this->load->helper(array('url'));
           $this->load->database();
-
      }
 
     // list products per category or a category
@@ -39,14 +23,11 @@ class Sanpham extends CI_Controller {
         
         if($category) {
             $name = $this->Category_model->getNameCategory($category);
-            //var_dump($name);
             $name = $name[count($name)-1];
-            //echo $name;
             if(!$name) show_404();
             $data['products'][$name] = $this->Products_model->listProducts($category);
             $config['base_url'] = base_url('index.php/theloai');
-            if($category) $config['base_url'] .= '/'.$category;
-            //$config['base_url'] .= '/page';
+            $config['base_url'] .= '/'.$category;
             //$config['total_rows'] = $this->db->query("select id from product")->num_rows();
             $config['total_rows'] = count((array)$data['products'][$name]);
             //echo $config['total_rows']."<br>";
@@ -66,7 +47,6 @@ class Sanpham extends CI_Controller {
             $data['products']['Xem nhiều nhất'] = $this->Products_model->listProducts(null,'views',0,6);
             $data['products']['Đánh giá cao nhất'] = $this->Products_model->listProducts(null,'rate',0,6);
             $data['products']['Lượt mua'] = $this->Products_model->listProducts(null,'buys',0,6);
-
         }
         
         $this->load->view('site/listsanpham', $data);

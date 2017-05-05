@@ -14,7 +14,7 @@ class Category_model extends CI_Model
         $query=$this->db->get("category");
         return $query->result_array();
 	}
-    public function getSubCategory($parent){
+    public function getSubCategory($parent) {
         $this->db->select("*");
         $this->db->where("parent",$parent);
         $this->db->order_by("name desc");
@@ -36,10 +36,6 @@ class Category_model extends CI_Model
             if($result = $query->first_row()) $data[] = $result->name;
         }
         return $data;
-        /*$this->db->where("id",$id);
-        $query=$this->db->get("category");
-        if($result=$query->first_row()) return $result->name;
-        return null;*/
     }
 }
 
