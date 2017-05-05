@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://vankhoa.wdev.fgct.net/';
-$config['base_url'] = 'http://localhost/mvc/';
+$config['base_url'] = 'http://localhost/mvc_grop/bk/MVC/';
 
 /*
 |--------------------------------------------------------------------------
