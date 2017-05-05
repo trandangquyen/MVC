@@ -25,14 +25,25 @@ class Home extends CI_Controller {
 
 	public function index($page = 'home')
 	{
-
+		$this->load->model('Category_model');
         $data['title'] = ucfirst($page); // Capitalize the first letter
         $data['active'] = 'trangchu';
         $this->load->view('site/common/header', $data);
-        $this->load->view('site/common/mainleft', $data);
+        //$this->load->view('site/common/mainleft', $data);
+        $this->printCategory();
         $this->load->view('site/home', $data);
         $this->load->view('site/common/mainright', $data);
         $this->load->view('site/common/footer', $data);
+	}
+	public function printCategory() {
+		$this->load->model('Category_model');
+		$mainCategory = $this->Category_model->getMainCategory();
+		foreach ($mainCategory as $i => $value) {
+			$mainCategory[$i]['data'] = $this->Category_model->getSubCategory($value['id']);
+		}
+        $data['title'] = 'Danh mục thể loại';
+        $data['category'] = $mainCategory;
+        $this->load->view('site/theloai', $data);
 	}
 }
 
