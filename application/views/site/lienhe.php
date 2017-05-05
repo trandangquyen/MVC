@@ -9,7 +9,7 @@
         <h1 class="h-title center"></h1>
         <div class="row">          
           	<div class="col-xs-12 col-sm-6">
-                <form method="post" autocomplete="off">
+                <form method="post" autocomplete="off" action="/lienhe/save">
                     <h3>Gửi thông tin yêu cầu</h3>
                     <div class="row">
                         <div class="col-md-3 col-sm-4 col-xs-12">
