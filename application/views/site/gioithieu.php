@@ -1,4 +1,3 @@
-<div class="col-xs-12">
 <h3 class='head3'>Giới thiệu chung về vingroup</h3>
 <p class='content'>
 Tập đoàn Vingroup - Công ty CP (gọi tắt là "Tập đoàn Vingroup"), tiền thân là Tập đoàn Technocom, được thành lập tại Ukraina năm 1993 bởi những người Việt Nam trẻ tuổi, hoạt động ban đầu trong lĩnh vực thực phẩm và thành công rực rỡ với thương hiệu Mivina. Những năm đầu của thế kỷ 21, Technocom luôn có mặt trong bảng xếp hạng Top 100 doanh nghiệp lớn mạnh nhất Ukraina. Từ năm 2000, Technocom - Vingroup trở về Việt Nam đầu tư với ước vọng được góp phần xây dựng đất nước.  
@@ -31,4 +30,3 @@ Với mong muốn đem đến cho thị trường những sản phẩm - dịch 
 
 Với những thành tựu đã đạt được, Vingroup đang được đánh giá là một trong những Tập đoàn kinh tế tư nhân hùng mạnh, có chiến lược phát triển bền vững và năng động, có tiềm lực hội nhập quốc tế để vươn lên tầm khu vực và thế giới.
 </p>
-</div><!-- end col-xs-12 -->

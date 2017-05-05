@@ -1,4 +1,3 @@
-<div class="col-xs-6">
 <div id="main_center" >
 	<div class="row">	
 		<div class="product_list col-xs-12">
@@ -240,4 +239,3 @@
 		</div> <!-- end conten_product -->
 	</div> <!-- end row -->
 </div> <!-- end main_center -->
-</div> <!-- end col-xs-6 -->

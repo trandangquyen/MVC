@@ -14,12 +14,19 @@ class Category_model extends CI_Model
         $query=$this->db->get("category");
         return $query->result_array();
 	}
-	public function getSubCategory($parent){
-		$this->db->select("*");
+    public function getSubCategory($parent){
+        $this->db->select("*");
         $this->db->where("parent",$parent);
         $this->db->order_by("name desc");
         $query=$this->db->get("category");
         return $query->result_array();
+    }
+	public function getAllCategory() {
+		$mainCategory = $this->getMainCategory();
+        foreach ($mainCategory as $i => $value) {
+            $mainCategory[$i]['data'] = $this->getSubCategory($value['id']);
+        }
+        return $mainCategory;
 	}
     public function getNameCategory($ids) {
         $data = null;

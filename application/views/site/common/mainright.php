@@ -1,3 +1,4 @@
+</div> <!-- end col-xs-6 -->
 
 <div class="col-xs-3">
   <div id="main_right">

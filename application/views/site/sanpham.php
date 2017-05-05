@@ -8,33 +8,37 @@
 				<h3><a href="#"><?=$title?></a></h3>
 			</div> <!-- end tittle -->
 			<div class="conten_product col-xs-12">
-				<!-- <pre>
-				    <?php
-				        // print_r($product);
-				    ?>
-				</pre> -->
-				
-				<div class="col-xs-10">
-					<img src="public/themes/images/product13.jpg" alt="">
+								
+				<div class="col-xs-12 " style = "text-align: center;">
+					<img src="<?php echo $product->thumb ?>" alt="">
 				</div>
-				<div class="col-xs-2">	
+				<div class="col-xs-12 list_img_product">
 					<?php
-				        print_r($product->thumb);
+				        foreach ($product->image as $image) {
+				        	echo '<img src="'.$image['url'].'"/>';
+				        }
 				    ?>
 				</div>
 				<div class="col-xs-12 ">
-					<p style="text-align: center; font-weight: bold; font-size: 24px; color: #ea28ff;"><?php echo $title; ?></p>
 					
-					<span><?php print_r($product->description); ?></span>
-				
+					
+					<p style="text-align: center; font-weight: bold; font-size: 24px; color: #ea28ff;"><?php echo $title; ?></p>
+
+					<div class="col-xs-4 col-xs-push-4" style = "height: auto;padding: 10px;margin: 10px; text-align: center; font-weight: bold; font-size: 22px;   
+					background: -webkit-linear-gradient(top,#f59000,#fd6e1d); border-radius: 4px ">
+						<?php
+				        	echo($product->price);
+				    	?>
+
+					</div>
+
+					<div class="col-xs-12">
+						<span>
+							<?=nl2br($product->description)?>
+						</span>
+					</div>
+					
 				</div>
-
-				
-
-
-
-			
-			
 			</div> <!-- end conten_product -->
 		</div> <!-- end conten_product -->
 

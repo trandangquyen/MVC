@@ -1,4 +1,3 @@
-<div class="col-xs-12">
 <section id="section-top-contact" class="bg-cover">
     <div class="contact-us">
         <h1 class="h-title">Liên hệ chúng tôi</h1>
@@ -101,8 +100,6 @@
 <div class="space20"></div>
 <h3>Bản đồ đường đi:</h3>
 <div id="map" style="width:100%;height:500px"></div>
-
-</div><!-- end col-xs-12 -->
 
 <script>
 function myMap() {
