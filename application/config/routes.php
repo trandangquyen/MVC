@@ -54,4 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['gioithieu'] = 'gioithieu/view';
 $route['tintuc/list'] = 'tintuc/list_view';
-$route['lienhe'] = 'lienhe/view';
+$route['tintuc/(:num)'] = 'tintuc/details/$1';
+$route['tintuc/delete/(:num)'] = 'tintuc/deleteTintuc/$1';
+$route['tintuc/insert'] = 'tintuc/insertTintuc';
