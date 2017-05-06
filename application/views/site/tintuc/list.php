@@ -2,7 +2,7 @@
 foreach ($news as $item) {
 	?>
 
-	<h3 class='head3'><?=$item['title']?></h3>
+	<h3 class='head3'><a href="index.php/tintuc/details/<?=$item['id']?>"><?=$item['title']?></a></h3>
 
 	<p class='content'>
 	<?=nl2br(substr($item['content'],0,250))?>

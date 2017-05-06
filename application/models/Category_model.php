@@ -6,6 +6,11 @@ class Category_model extends CI_Model
     	parent::__construct();
         $this->load->database();
     }
+    /**
+     * get category level 1
+     *
+     * @return  array category
+    */
 	public function getMainCategory(){
         $this->db->select("*");
         $this->db->where("parent",null);
@@ -14,6 +19,12 @@ class Category_model extends CI_Model
         $query=$this->db->get("category");
         return $query->result_array();
 	}
+    /**
+     * get category level 2
+     *
+     * @param   int $paren   id of category
+     * @return  array category
+    */
     public function getSubCategory($parent) {
         $this->db->select("*");
         $this->db->where("parent",$parent);
