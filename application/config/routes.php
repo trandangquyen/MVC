@@ -9,6 +9,7 @@ $route['tintuc/list'] = 'tintuc/list_view';
 $route['lienhe'] = 'lienhe';
 $route['lienhe/save'] = 'lienhe/save';
 $route['tintuc'] = 'tintuc';
+$route['tintuc/details/(:num)'] = 'tintuc/details/$1';
 $route['sanpham'] = 'sanpham/index';
 $route['sanpham/(:num)'] = 'sanpham/viewProduct/$1';
 $route['theloai/(:num)'] = 'sanpham/index/$1';
