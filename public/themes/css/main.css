@@ -57,6 +57,7 @@
 #top-menu li a{
 	font-size: 12px;
 	text-decoration: none;
+    line-height:27px;
 }
 #top-menu a {
     padding: 5px 17px 5px 10px;
@@ -88,10 +89,6 @@
 }
 #menu ul li:hover .sub-menu{
     display: block;
-}
-#top-menu #lintrangchu a{
-    color: white;
-
 }
 
 input {

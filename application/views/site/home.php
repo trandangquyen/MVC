@@ -41,7 +41,7 @@
 				<div class="col-xs-4">
                     <div class="product_item">
                         <h3><?=$product['name']?></h3>
-                        <div class="product_img"><a href="#"><img src="<?=$product['thumb']?>" alt=""></a></div>
+                        <div class="product_img"><a href="index.php/sanpham/<?=$product['id']?>"><img src="<?=$product['thumb']?>" alt=""></a></div>
                         <p class="price"><?=$product['price']?></p>
                         <div id="9" class="raty" data-score="4" title="good">
                             <img src="public/themes/images/star-on.png" alt="1" title="good">
