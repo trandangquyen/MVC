@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class AdminTintuc extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,8 +18,16 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function __construct(){
+          parent::__construct();
+          $this->load->helper(array('url'));
+      }
 	public function index()
 	{
-		$this->load->view('welcome_message');
+
+        $this->load->model('Tintuc_model');
+        $data['news'] = $this->Tintuc_model->getAllNews();
+         $this->load->view('site/sanpham', $data);
+        
 	}
 }

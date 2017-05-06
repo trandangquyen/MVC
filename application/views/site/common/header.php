@@ -4,7 +4,7 @@
 
         <base href="<?php echo base_url(); ?>">
         <meta charset="utf-8">
-        <title>Training E-commerce Templates</title>
+        <title><?=isset($title) ? $title : 'Training E-commerce Templates'?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
@@ -25,9 +25,10 @@
                     <img src="public/images/header.png" alt="">
                 </div>
                 <ul id='top-menu'>
-                    <li class='item current' id="lintrangchu"><a href='home'>Trang chủ</a></li>
+                    <li class='item<?=(isset($active) && $active == 'trangchu') ? ' current' : '' ?>' id="lintrangchu"><a href='home'>Trang chủ</a></li>
                     <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
-                    <li  <?php echo (isset($active) && $active == 'gioithieu') ? 'class = "item current"' : 'class="item"' ?>><a href='gioithieu/view'>Giới thiệu</a></li>
+                    <li class='item<?=(isset($active) && $active == 'sanpham') ? ' current' : '' ?>' id="lintrangchu"><a href='sanpham'>Sản phẩm</a></li><li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
+                    <li class='item<?=(isset($active) && $active == 'gioithieu') ? ' current' : '' ?>' id="lintrangchu"><a href='gioithieu/view'>Giới thiệu</a></li>
                     <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
                     <li <?php echo (isset($active) && $active == 'tintuc') ? 'class = "item current"' : 'class="item"' ?>><a href='tintuc/list'>Tin tức</a>
                     </li>

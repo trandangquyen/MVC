@@ -54,17 +54,17 @@ class Home extends CI_Controller {
             $config['page_query_string'] = TRUE;
             //$config['suffix'] = '.html';
             $config['first_url'] = site_url('index.php/theloai/'.$category);
-            $config['first_link'] = 'Trang đầu';
-            $config['last_link'] = 'Trang cuối';
+            $config['first_link'] = 'Trang d?u';
+            $config['last_link'] = 'Trang cu?i';
             $this->pagination->initialize($config);
             $page = (int)$this->input->get('per_page', TRUE);
             if($page<1) $page = 1;
             $start = ($page-1)*$config['per_page'];
             $data['products'][$name] = $this->Products_model->listProducts($category,null,$start,$config['per_page']);
         } else {
-            $data['products']['Xem nhiều nhất'] = $this->Products_model->listProducts(null,'views',0,6);
-            $data['products']['Đánh giá cao nhất'] = $this->Products_model->listProducts(null,'rate',0,6);
-            $data['products']['Lượt mua'] = $this->Products_model->listProducts(null,'buys',0,6);
+            $data['products']['Xem nhi?u nh?t'] = $this->Products_model->listProducts(null,'views',0,6);
+            $data['products']['��nh gi� cao nh?t'] = $this->Products_model->listProducts(null,'rate',0,6);
+            $data['products']['Lu?t mua'] = $this->Products_model->listProducts(null,'buys',0,6);
 
         }
         $this->load->view($page, $data);

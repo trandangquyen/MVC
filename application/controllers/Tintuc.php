@@ -26,16 +26,22 @@ class Tintuc extends CI_Controller {
 	{
 		$data['active'] = 'tintuc';
 		$this->load->view('site/common/header', $data);
-		$this->load->view('site/common/mainleft', $data);
-        $this->load->view('tintuc/list',$data);        
+		//$this->load->view('site/common/mainleft', $data);
+		$this->load->model('Category_model');
+        $listCategory = $this->Category_model->getAllCategory();
+        $this->load->view('site/theloai', ['category'=>$listCategory]);
+        $this->load->view('site/tintuc/list',$data);        
         $this->load->view('site/common/mainright', $data);
         $this->load->view('site/common/footer', $data);
 	}
 	public function details($id)
 	{
 		$this->load->view('site/common/header', $data);
-		$this->load->view('site/common/mainleft', $data);
-        $this->load->view("tintuc/details_$id",$data);        
+		//$this->load->view('site/common/mainleft', $data);
+		$this->load->model('Category_model');
+        $listCategory = $this->Category_model->getAllCategory();
+        $this->load->view('site/theloai', ['category'=>$listCategory]);
+        $this->load->view("site/tintuc/details_$id",$data);        
         $this->load->view('site/common/mainright', $data);
         $this->load->view('site/common/footer', $data);
 	}
