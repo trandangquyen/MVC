@@ -35,13 +35,14 @@
 			</div> <!-- end tittle -->
 			<div class="conten_product col-xs-12">
                 <?php
-                foreach ($products as $title => $product) {
+                foreach ($newProducts as $product) {
+//                    var_dump($product);
                 ?>
 				<div class="col-xs-4">
                     <div class="product_item">
-                        <h3>TIVI LG 520</h3>
-                        <div class="product_img"><a href="#"><img src="public/themes/images/product13.jpg" alt=""></a></div>
-                        <p class="price"> 5,400,000 đ</p>
+                        <h3><?=$product['name']?></h3>
+                        <div class="product_img"><a href="#"><img src="<?=$product['thumb']?>" alt=""></a></div>
+                        <p class="price"><?=$product['price']?></p>
                         <div id="9" class="raty" data-score="4" title="good">
                             <img src="public/themes/images/star-on.png" alt="1" title="good">
                             <img src="public/themes/images/star-on.png" alt="2" title="good">
@@ -53,7 +54,7 @@
                         <div class="action">
                             <p>
                                 Lượt xem:
-                                <b>19</b>
+                                <b><?=$product['views']?></b>
                             </p>
                             <a class="button" href="#" title="Mua ngay">Mua ngay</a>
                         </div> <!-- end action -->
