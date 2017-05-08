@@ -285,3 +285,19 @@ ol, ul {
     width: 30%;
 }
 
+
+.list_img_product {
+    width: 100%;
+    height: 190px;
+    background-color: #ededed;
+    overflow: hidden;
+    margin: 10px
+}
+.list_img_product img {
+    width: 19%;
+    /* bottom: 20px; */
+    border: 2px solid #ff7d12;
+    margin: 10px 9px;
+    display: block;
+    float: left;
+}
