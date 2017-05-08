@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
         <base href="<?php echo base_url(); ?>">
         <meta charset="utf-8">
         <title><?=isset($title) ? $title : 'Training E-commerce Templates'?></title>
@@ -17,7 +16,8 @@
         <link href="public/themes/css/flexslider.css" rel="stylesheet"/>
         <link href="public/themes/css/lienhe.css" rel="stylesheet"/>
         <link href="public/themes/css/main.css" rel="stylesheet"/>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="public/themes/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="public/themes/js/main.js"></script>
     </head>
     <body>
         <div id="wrapper" class="container">

@@ -14,4 +14,4 @@ $route['sanpham'] = 'sanpham/index';
 $route['sanpham/(:num)'] = 'sanpham/viewProduct/$1';
 $route['theloai/(:num)'] = 'sanpham/index/$1';
 
-//$route['tintuc/delete/(:num)'] = 'tintuc/deleteTintuc/$1';
+$route['ajax'] = 'sanpham/loadAjax';
