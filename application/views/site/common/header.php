@@ -18,6 +18,17 @@
         <link href="public/themes/css/lienhe.css" rel="stylesheet"/>
         <link href="public/themes/css/main.css" rel="stylesheet"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+        <!-- Cho Cloud Zoom CSS vào -->
+        <link rel=”stylesheet” type=”text/css” href=”public/themes/css/cloudzoom.css” />
+ 
+        <!-- Cho Cloud Zoom script vào -->
+        <script type=”text/javascript” src=”public/themes/js/cloudzoom.js”></script>
+ 
+        <!-- Gọi hàm  -->
+        <script type=”text/javascript”>
+            CloudZoom.quickStart();
+        </script>    
     </head>
     <body>
         <div id="wrapper" class="container">

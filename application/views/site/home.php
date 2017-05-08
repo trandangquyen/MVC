@@ -1,3 +1,4 @@
+<div class="col-xs-6">
 <div id="main_center" >
 	<div class="row">	
 		<div class="product_list col-xs-12">

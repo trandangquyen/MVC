@@ -10,7 +10,7 @@
 			<div class="conten_product col-xs-12">
 								
 				<div class="col-xs-12 " style = "text-align: center;">
-					<img src="<?php echo $product->thumb ?>" alt="">
+					<img class = “cloudzoom” src="<?php echo $product->thumb ?>" data-cloudzoom = “zoomImage:‘<?php echo $product->thumb ?>‘”/>
 				</div>
 				<div class="col-xs-12 list_img_product">
 					<?php
@@ -19,9 +19,7 @@
 				        }
 				    ?>
 				</div>
-				<div class="col-xs-12 ">
-					
-					
+				<div class="col-xs-12 ">										
 					<p style="text-align: center; font-weight: bold; font-size: 24px; color: #ea28ff;"><?php echo $title; ?></p>
 
 					<div class="col-xs-4 col-xs-push-4" style = "height: auto;padding: 10px;margin: 10px; text-align: center; font-weight: bold; font-size: 22px;   
