@@ -30,7 +30,7 @@
 			</div> <!-- end tittle -->
 			<div class="conten_product col-xs-12">
                 <?php
-                foreach ($newProducts as $product) {
+                foreach ($newProducts as $product ) {
                 ?>
 				<div class="col-xs-4">
                     <div class="product_item">
@@ -52,6 +52,7 @@
                             </p>
                             <a class="button" href="#" title="Mua ngay">Mua ngay</a>
                         </div> <!-- end action -->
+                        <a href="index.php/sanpham/<?=$product['id']?>"><span class="item-descript flyout-p-<?=$product['id']?>" > <?=nl2br(substr($product['description'],0,150))?></span></a>
                     </div>
                 </div><!-- end product_item -->
                 <?php } ?>
