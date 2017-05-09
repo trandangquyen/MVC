@@ -32,7 +32,7 @@
 							</p>
 							<!-- <a class="button" href="#" title="Mua ngay">Mua ngay</a> -->
 						</div> <!-- end action -->
-						<div class="flyout-p-<?=$item['id']?>" style="display: none;position:absolute;width:300px;height:auto;background:rgba(191, 184, 184, 0.9);overflow: hidden;z-index:10000;text-align: left;"><?=nl2br(substr($item['description'],0,150))?></div>
+                        <a href="index.php/sanpham/<?=$item['id']?>"><span class="item-descript flyout-p-<?=$item['id']?>" > <?=nl2br(substr($item['description'],0,150))?></span></a>
 					</div>
 				</div><!-- end product_item -->
 				<?php } ?>
@@ -50,7 +50,7 @@
 <div class="pagination" style="display: table;margin: 0 auto;"><div class="pagination-page"><?=$this->pagination->create_links();?></div></div>
 
 
-<script type="text/javascript">
+<!--<script type="text/javascript">
 $("div[id^='p-']").on({
     mouseenter: function () {
         $('.flyout-'+this.id,this).show();
@@ -59,4 +59,4 @@ $("div[id^='p-']").on({
         $('.flyout-'+this.id,this).hide();
     }
 });
-</script>
+</script>-->
