@@ -235,6 +235,7 @@ ol, ul {
 /*-----------css main_center----------*/
 
 .product_item {
+    position: relative;
     overflow: hidden;
     text-align: center;
     border: 1px solid #DDDDDD;
@@ -251,6 +252,24 @@ ol, ul {
 }
 .product_item:hover{
     border: 1px solid #ff5e5e;
+}
+.item-descript {
+    position: absolute;
+    color: #fff;
+    top:100%;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0, 0, 0, 0.37);
+    opacity:0;
+    padding: 10px 5px;
+    text-align: left;
+
+}
+.product_item:hover .item-descript {
+    top:0;
+    opacity: 1;
+    transition: all .35s ease-out;
 }
 .product_img {
     /* width: 219px; */
@@ -401,3 +420,4 @@ ol, ul {
     display: block;
     float: left;
 }
+
