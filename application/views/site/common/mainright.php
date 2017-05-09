@@ -27,7 +27,7 @@
       <ul>
       <?php 
       foreach ($news as $new) {
-        echo '<li><img src="public/themes/images/li.png" alt="" class="icon_list"><a href="#">'.$new['title'].'</a></li>';
+        echo '<li><img src="public/themes/images/li.png" alt="" class="icon_list"><a href="index.php/tintuc/details/'.$new['id'].'">'.$new['title'].'</a></li>';
       }
       ?>
       </ul>

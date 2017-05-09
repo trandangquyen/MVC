@@ -15,5 +15,6 @@ foreach ($news as $item) {
 	<?php 
 }
 ?>
+
 </div>
 </div>
