@@ -118,8 +118,13 @@ input {
     background: #ececec;
     margin-top: 20px;
 }
-#mage_footer2 {
-	margin-left: 800px;
+#footerL {
+	float: left;
+}
+#footerR{
+	float: right;
+	padding-top: 14px;
+
 }
 /*** page Home ****/
 a {
