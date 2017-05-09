@@ -1,3 +1,5 @@
+<div class="col-xs-6">
+<div id="main_center" >
 <?php 
 foreach ($news as $item) {
 	?>
@@ -13,3 +15,5 @@ foreach ($news as $item) {
 	<?php 
 }
 ?>
+</div>
+</div>
