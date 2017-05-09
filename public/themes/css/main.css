@@ -31,6 +31,7 @@
     float: left;
     margin:0;
     padding: 0;
+    height: 34px;
 }
 #top-menu li::after{
 	content: '';
@@ -40,7 +41,6 @@
 	position: absolute;
 	right: 0;
 	top: 0;
-	background: url(../images/split-line.jpg) no-repeat;
 }
 #top-menu li:hover{
 	background-color: rgb(76,102,164);
@@ -57,6 +57,7 @@
 #top-menu li a{
 	font-size: 12px;
 	text-decoration: none;
+    line-height:27px;
 }
 #top-menu a {
     padding: 5px 17px 5px 10px;
@@ -69,6 +70,7 @@
     background-color: #ff9900;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
+    height: 34px;
 
 } 
 #top-menu li.current {
@@ -87,10 +89,6 @@
 }
 #menu ul li:hover .sub-menu{
     display: block;
-}
-#top-menu #lintrangchu a{
-    color: white;
-
 }
 
 input {
@@ -116,19 +114,16 @@ input {
 
 /*** page Gioithieu ****/
 /*** page footer****/
+.footer{
+    background: #ececec;
+    margin-top: 20px;
+}
 #mage_footer2 {
 	margin-left: 800px;
 }
 /*** page Home ****/
 a {
     color: black;
-}
-span {
-    background-color: #4C66A4;
-    display: block;
-    color: white;
-    line-height: 28px;
-    padding-left: 11px;
 }
 
 li {
@@ -166,21 +161,59 @@ ol, ul {
 .boder_menu{
     border: 1px dashed #ccc;
 }
-/*main left*/
+.boder_menu li a{
+    display: block;
+    height: 38px;
+    line-height: 38px;
+}
+.boder_menu li{
+    height: auto !important;
+}
+.boder_menu .sub-1>li>a{
+    display: block;
+    padding: 0 10px;
+}
+.boder_menu .sub-1>.active>a{
+    background: #ececec;
+}
+.boder_menu .sub-2{
+    display: none;
+}
+.boder_menu .sub-2 li>a{
+    padding: 0 20px;
+}
+.boder_menu .sub-3{
+    display: none;
+}
+.boder_menu .sub-menu{
+    position: relative;
+}
+.boder_menu .sub-menu:after{
+    position: absolute;
+    content: "+";
+    top:5px;
+    right:10px;
+}
+.boder_menu .sub-menu.active:after{
+    content: "-";
+}
+.boder_menu .sub-3 li>a{
+    padding: 0 30px;
+}
+.boder_menu .sub-3 li:last-child,.boder_menu .sub-2 li:last-child{
+    border-bottom: none !important;
+}
+    /*main left*/
 
 #main_left li {
-    margin-left: 20px;
-    margin-right: 18px;
     line-height: 18px;
     display: block;
     border-bottom: 1px dotted #CCCCCC;
-    padding-bottom: 8px;
-    padding-top: 8px;
 }
 
 #main_left li a:hover {
     text-decoration: none;
-    color: antiquewhite;
+    color: #cf8522;
 }
 /*main right*/
 #main_right h4{
@@ -195,6 +228,9 @@ ol, ul {
     font-size: 18px;
     border-bottom: 1px dotted #CCCCCC;
 }
+.boder_right_menu a{
+    font-size: 14px;
+}
 
 /*-----------css main_center----------*/
 
@@ -205,6 +241,13 @@ ol, ul {
     border-radius: 10px;
     height: 261px;
     padding: 6px 0px;
+    margin-bottom: 10px;
+}
+.product_item h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 5px;
 }
 .product_item:hover{
     border: 1px solid #ff5e5e;
@@ -215,6 +258,8 @@ ol, ul {
     display: block;
 }
 .product_img img {
+    max-height:95px;
+    max-width:150px;
     width: 85%;
 }
 .action p {
@@ -236,8 +281,123 @@ ol, ul {
     padding-left: 0px;
     padding-right: 0px;
 }
+.conten_product .col-xs-4{
+    padding-left:0;
+    padding-right:10px;
+}
 
 .box-center {
     margin-bottom: 10px;
 }
+
+.pagination-page {
+    margin-top:20px;
+    margin-bottom:20px;
+    float:left;
+    width:100%;
+}
+.pagination-page a,
+.pagination-page strong{
+    float:left;
+    min-width:30px;
+    padding:0px 5px;
+    height:30px;
+    text-align:center;
+    line-height:30px;
+    border:solid 1px #ddd;
+    border-right:none;
+    font-size:12px;
+}
+.pagination-page a:last-child,
+.pagination-page strong:last-child{
+    border-right:solid 1px #ddd;
+}
+.pagination-page strong{
+    background:#000;
+    color:#FFF;
+    border-color:#000
+}
+.pagination-page a:hover{
+    background:#f5f5f6
+}
+/*Flexslider css hack*/
+
+.flex-direction-nav a:before {
+    font-size: 29px !important;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+}
+.flex-caption{
+    opacity:0;
+}
+.flex-caption.bounceInUp{
+    opacity:1;
+}
+@keyframes bounceInUp {
+    from, 60%, 75%, 90%, to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    from {
+        opacity: 0;
+        transform: translate3d(0, 3000px, 0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate3d(0, -20px, 0);
+    }
+
+    75% {
+        transform: translate3d(0, 10px, 0);
+    }
+
+    90% {
+        transform: translate3d(0, -5px, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.bounceInUp {
+    animation-name: bounceInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+.flexslider ul li{
+    position: relative;
+}
+.flexslider ul .flex-caption{
+    position: absolute;
+    bottom: 15px;
+    padding: 5px 22px;
+    background: rgba(255, 255, 255, 0.65);
+}
+/*End Flexslider css hack*/
+/*product*/
+.list_img_product {
+    height: 159px;
+    overflow: hidden;
+}
+.list_img_product {
+    width: 30%;
+}
+
+
+.list_img_product {
+    width: 100%;
+    height: 190px;
+    background-color: #ededed;
+    overflow: hidden;
+    margin: 10px
+}
+.list_img_product img {
+    width: 19%;
+    /* bottom: 20px; */
+    border: 2px solid #ff7d12;
+    margin: 10px 9px;
+    display: block;
+    float: left;
 }
