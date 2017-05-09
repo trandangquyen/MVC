@@ -33,6 +33,14 @@ class News_model extends CI_Model
         if($result=$query->first_row()) return $result;
         return null;
     }
+    public function getRelatedNews($id) {
+        $this->db->where("id <>",$id);
+        $this->db->order_by('rand()');
+        $this->db->limit(2); 
+        $query=$this->db->get($this->table);
+        if($result=$query->result_array()) return $result;
+        return null;
+    }
     public function deleteNews($news_id) {
         $this->db->select("*");
         $this->db->where("id",$news_id);
