@@ -30,3 +30,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 error.log
 /application/config/config.php
 /application/config/database.php
+/application/config/config.php
+/application/config/database.php
