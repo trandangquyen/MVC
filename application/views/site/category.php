@@ -27,4 +27,3 @@
         </div><!-- end main_left -->
     </div> <!-- end col-xs-3 -->
 
-<div class="col-xs-6">

@@ -1,3 +1,4 @@
+<div class="col-xs-9">
 <div id="main_center" >
 <?php 
 	foreach ($products as $title => $product) {
@@ -39,9 +40,11 @@
 			</div> <!-- end conten_product -->
 		</div> <!-- end conten_product -->
 		</div> <!-- end row -->
+
 <?php } ?>
 	
 </div> <!-- end main_center -->
+</div>
 <p id="loading" style="display: none;text-align: center;">
     <img src="public/images/loading.svg" alt="Loading…" />
 </p>
