@@ -113,6 +113,10 @@ input {
 
 
 /*** page Gioithieu ****/
+#main-content {
+    min-height: 801px;
+}
+
 /*** page footer****/
 .footer{
     background: #ececec;
