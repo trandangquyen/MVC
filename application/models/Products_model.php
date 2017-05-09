@@ -1,4 +1,5 @@
 <?php
+include_once(__DIR__ .'/../libraries/function.php');
 class Products_model extends CI_Model
 {
 	public function __construct()
@@ -27,8 +28,10 @@ class Products_model extends CI_Model
 
         if($limit) $this->db->limit($limit,$offset);
         $query=$this->db->get("product");
-        //echo $this->db->last_query().'<br/>';
-        return $query->result_array();
+        $result = $query->result_array();
+
+        if($result && !empty($result)) $result = formatPriceArr($result,'price');
+        return $result;
 	}
     public function getProducts($id) {
         $this->db->where("id",$id);

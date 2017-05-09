@@ -24,22 +24,29 @@ class Home extends CI_Controller {
           $this->load->helper(array('url'));
           $this->load->database();
      }
-	public function index($page = 'site/home',$category=null)
-	{
+	public function index()
+	{ 
         $this->load->library('pagination');
         $this->load->model('Products_model');
         $this->load->model('Category_model');
+        
 
         $data['title'] = 'Danh sách sản phẩm';
-        $data['active'] = 'sanpham';
+        $data['active'] = 'home';
         $newProducts = $this->Products_model->listProducts(null,'null',0,10);
-//        var_dump($newProducts);
+		//var_dump($newProducts);
         $data['newProducts'] = $newProducts;
 
         $this->load->view('site/common/header', $data);
-        $this->load->view('site/common/mainleft', $data);
-        $this->load->view($page, $data);
-        $this->load->view('site/common/mainright', $data);
+
+        //$this->load->view('site/common/mainleft', $data);
+        $listCategory = $this->Category_model->getAllCategory();
+        $this->load->view('site/category', ['category'=>$listCategory]);
+
+        $this->load->view('site/home', $data);
+        $this->load->model('News_model');
+        $listNews = $this->News_model->listNews(null,null,0,6);
+        $this->load->view('site/common/mainright', ['news'=>$listNews]);
         $this->load->view('site/common/footer', $data);
 	}
 }

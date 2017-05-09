@@ -1,3 +1,4 @@
+<div class="col-xs-6">
 <div id="main_center" >
 	<div class="row">	
 		<div class="product_list col-xs-12">
@@ -8,22 +9,16 @@
 <!--Begin slider products-->
             <div class="flexslider">
                 <ul class="slides">
-                    <li>
-                        <img src="public/themes/images/product-slider3.jpg" />
-                        <p class="flex-caption bounceInUp">Sony Vegas Pro is a video editing suite aimed at professionals needing to produce high quality HD videos. This Professional version includes some features...</p>
-                    </li>
-                    <li>
-                        <img src="public/themes/images/product-slider2.jpg" />
-                        <p class="flex-caption">Sony Vegas Pro is a video editing suite aimed at professionals needing to produce high quality HD videos. This Professional version includes some features...</p>
-                    </li>
-                    <li>
-                        <img src="public/themes/images/product-slider1.jpg" />
-                        <p class="flex-caption">Sony Vegas Pro is a video editing suite aimed at professionals needing to produce high quality HD videos. This Professional version includes some features...</p>
-                    </li>
-                    <li>
-                        <img src="public/themes/images/product-slider2.jpg" />
-                        <p class="flex-caption">Sony Vegas Pro is a video editing suite aimed at professionals needing to produce high quality HD videos. This Professional version includes some features...</p>
-                    </li>
+                <?php
+                $i=0;
+                foreach ($newProducts as $product) {
+                    if($i==5) break;
+                    echo '<li>
+                        <a href="index.php/sanpham/'.$product['id'].'"><img src="public/themes/images/product-slider3.jpg" /></a>
+                        <p class="flex-caption bounceInUp">'.nl2br($product['description']).'</p>
+                    </li>';
+                    $i++;
+                    } ?>
                 </ul>
             </div>
 <!--End slider products-->
@@ -35,8 +30,7 @@
 			</div> <!-- end tittle -->
 			<div class="conten_product col-xs-12">
                 <?php
-                foreach ($newProducts as $product) {
-//                    var_dump($product);
+                foreach ($newProducts as $product ) {
                 ?>
 				<div class="col-xs-4">
                     <div class="product_item">
@@ -58,6 +52,7 @@
                             </p>
                             <a class="button" href="#" title="Mua ngay">Mua ngay</a>
                         </div> <!-- end action -->
+                        <a href="index.php/sanpham/<?=$product['id']?>"><span class="item-descript flyout-p-<?=$product['id']?>" > <?=nl2br(substr($product['description'],0,150))?></span></a>
                     </div>
                 </div><!-- end product_item -->
                 <?php } ?>
@@ -65,3 +60,4 @@
 		</div> <!-- end conten_product -->
 	</div> <!-- end row -->
 </div> <!-- end main_center -->
+</div>

@@ -1,10 +1,9 @@
+<div class="col-xs-9">
 <div id="main_center" >
-	<div class="row">	
 <?php 
 	foreach ($products as $title => $product) {
-		
 	?>
-
+	<div class="row">
 		<div class="product_list col-xs-12">
 			<div class="tittle-box box-center">
 				<img src="public/themes/images/icon.png" alt="" class="icon_tittle">
@@ -34,20 +33,27 @@
 							</p>
 							<!-- <a class="button" href="#" title="Mua ngay">Mua ngay</a> -->
 						</div> <!-- end action -->
-						<div class="flyout-p-<?=$item['id']?>" style="display: none;position:absolute;width:300px;height:auto;background:rgba(191, 184, 184, 0.9);overflow: hidden;z-index:10000;text-align: left;"><?=nl2br(substr($item['description'],0,150))?></div>
+                        <a href="index.php/sanpham/<?=$item['id']?>"><span class="item-descript flyout-p-<?=$item['id']?>" > <?=nl2br(substr($item['description'],0,150))?></span></a>
 					</div>
 				</div><!-- end product_item -->
 				<?php } ?>
 			</div> <!-- end conten_product -->
 		</div> <!-- end conten_product -->
+		</div> <!-- end row -->
+
 <?php } ?>
-	</div> <!-- end row -->
-	<div class="clearfix"></div>
-<div class="pagination" style="display: table;margin: 0 auto;"><div class="pagination-page"><?=$this->pagination->create_links();?></div></div>
+	
 </div> <!-- end main_center -->
+</div>
+<p id="loading" style="display: none;text-align: center;">
+    <img src="public/images/loading.svg" alt="Loading…" />
+</p>
 
-<script type="text/javascript">
+<div class="clearfix"></div>
+<div class="pagination" style="display: table;margin: 0 auto;"><div class="pagination-page"><?=$this->pagination->create_links();?></div></div>
 
+
+<!--<script type="text/javascript">
 $("div[id^='p-']").on({
     mouseenter: function () {
         $('.flyout-'+this.id,this).show();
@@ -56,5 +62,4 @@ $("div[id^='p-']").on({
         $('.flyout-'+this.id,this).hide();
     }
 });
-
-</script>
+</script>-->
