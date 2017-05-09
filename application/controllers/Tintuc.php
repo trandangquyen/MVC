@@ -38,11 +38,17 @@ class Tintuc extends CI_Controller {
 	*/
 	public function details($id) {
 		$data['news'] = $this->News_model->getNews($id);
-        if($data['news']) $data['title'] = $data['news']->title;
+        if($data['news']) {
+        	$data['title'] = $data['news']->title;
+        	$data['news']->related = $this->News_model->getRelatedNews($id);
+        	//var_dump($data['news']->related);exit;
+        }
 
 		$this->load->view('site/common/header', $data);
         $listCategory = $this->Category_model->getAllCategory();
         $this->load->view('site/category', ['category'=>$listCategory]);
+
+
 
         $this->load->view("site/tintuc/details",$data);        
         //$this->load->model('News_model');
