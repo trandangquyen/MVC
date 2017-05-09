@@ -10,7 +10,12 @@
         Website :<br/>
         Fanpage :
     </div>
-</div>
+    <div id="footerR">
+        <a href="https://vi-vn.facebook.com/"> <img src="public/images/facebook.png" alt=""></a>
+        <a href="https://twitter.com/"><img src="public/images/quadat.png" alt=""></a>
+        <a href="https://www.google.com.vn/?gfe_rd=cr&ei=XUYRWcizLoLj8we4haSICw"><img src="public/images/goog.png" alt=""></a>
+    </div>
+
 </div><!-- End Wrapper -->
 <!-- scripts -->
 <script src="public/themes/js/jquery-1.7.2.min.js"></script>
