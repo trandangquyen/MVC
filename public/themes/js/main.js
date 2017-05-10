@@ -1,26 +1,35 @@
 $(document).ready(function() {
 	var win = $(window);
 	var loadmore = false;
-	var query = null;
-	var match = window.location.pathname.match(/theloai\/(\d+)/);
-	if(match) {
-		loadmore = true;
-		query = 'category='+match[1];
-	}
+
 	win.scroll(function() {
-		// End of the document reached?
 		if ($(document).height() - win.height() == win.scrollTop()) {
-			
-			var num_post = $('div[id^="p-"]').length;
-			if(query) query += '&start='+num_post;
+			var query = null;
+			var uri = 'ajaxProduct?';
+			var matchsp = window.location.pathname.match(/theloai\/(\d+)/);
+			var matchtt = window.location.pathname.match(/tintuc\/?$/);
+			if(matchsp) {
+				loadmore = true;
+				query = 'category='+match[1];
+				console.log('load sp');
+			} else if(matchtt) {
+				uri = 'ajaxNews?';
+				loadmore = true;
+				query = 'type=news';
+				console.log('load tt');
+			}
+			if(matchsp) {
+				var num_post = $('div[id^="p-"]').length;
+			} else var num_post = $('#main_center .post').length;
+			console.log('num post: '+num_post);
+			if(query.length > 0) query += '&start='+num_post;
 			else query = 'start='+num_post;
 
-			console.log(num_post);
 			if(loadmore===true) {
 				loadmore = false;
 				$('#loading').show();
 				$.ajax({
-					url: 'ajax?'+query,
+					url: uri+query,
 					dataType: 'html',
 					success: function(html) {
 						if(html && html.length > 10) {
@@ -31,7 +40,7 @@ $(document).ready(function() {
 						} else {
 							console.log('No more data');
 							loadmore = false;
-							$('#loading').html('Đã hết sản phẩm');
+							$('#loading').html('Đã hết dữ liệu');
 						}
 					}
 				});

@@ -1,5 +1,3 @@
-<div class="col-xs-6">
-	<div id="main_center" class="conten_product">
 		<?php 
 		foreach ($news as $item) {
 		?>
@@ -14,8 +12,3 @@
 		<?php 
 		}
 		?>
-	</div>
-</div>
-<p id="loading" style="display: none;text-align: center;">
-    <img src="public/images/loading.svg" alt="Loading…" />
-</p>
