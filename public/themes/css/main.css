@@ -429,4 +429,8 @@ ol, ul {
     display: block;
     float: left;
 }
+.commnent{
+    clear: both;
+    padding-top: 15px;
+}
 

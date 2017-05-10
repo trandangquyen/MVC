@@ -39,6 +39,19 @@
 				</div>
 			</div> <!-- end conten_product -->
 		</div> <!-- end conten_product -->
+        <!--User Comments -->
+        <div class="commnent">
+            <h3>Ý kiến đánh giá sản phẩm:</h3>
+            <p>Hãy cho chúng tôi biết nhận xét của bạn về sản phẩm này:</p>
+            <form>
+                <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                </div>
+                <input type="submit" class="btn btn-info" value="Gửi bình luận">
+            </form>
+        </div>
+        <!--End User Comments -->
 
 	</div> <!-- end row -->
 </div> <!-- end main_center -->
