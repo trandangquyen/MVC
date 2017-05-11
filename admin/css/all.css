@@ -213,8 +213,8 @@ ul.nav li.last {background:none;}
 /* bar with select */
 .select-bar {
 	clear:both;
-	border-top:2px solid #f70;
-	border-bottom:2px solid #f70;
+	border-top:1px solid #f70;
+	border-bottom:1px solid #f70;
 	padding:5px 0 3px 0;
 	margin:0 0 17px 0;
 	}
@@ -332,3 +332,35 @@ div.table .select select {
 	padding:30px 0 15px 0;
 	}
 .buttons input {margin:0 0 6px 0;}
+.task-bottom{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	float: right;
+}
+.task-bottom span{
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	margin-right:5px;
+	height:22px;
+	line-height:22px;
+	padding:5px 8px;
+}
+.task-bottom span a{
+	color: #fff;
+}
+.task-bottom span:nth-child(1){
+	background: #101010;
+}
+.task-bottom span:nth-child(2){
+	background: #ff7700;
+}
+.sl-page{
+	clear: both;
+}
+.nav li.active{
+	background-color: #150f0f;
+}
+.nav li.active a{
+	color: #fff !important;
+}

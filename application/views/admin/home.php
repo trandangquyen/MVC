@@ -9,33 +9,32 @@
 </head>
 <body>
 <div id="main">
-    <div id="header"> <a href="#" class="logo"><img src="admin/img/logo.png" width="101" height="29" alt="" /></a>
+    <div id="header"> <a href="#" class="logo"><img src="admin/img/logo.png" width="200" height="50" alt="" /></a>
         <ul id="top-navigation">
-            <li class="active"><span><span>Homepage</span></span></li>
-            <li><span><span><a href="#">Users</a></span></span></li>
-            <li><span><span><a href="#">Orders</a></span></span></li>
-            <li><span><span><a href="#">Settings</a></span></span></li>
-            <li><span><span><a href="#">Statistics</a></span></span></li>
-            <li><span><span><a href="#">Design</a></span></span></li>
-            <li><span><span><a href="#">Contents</a></span></span></li>
+            <li class="active"><span><span>Trang chủ</span></span></li>
+            <li><span><span><a href="#">Sản phẩm</a></span></span></li>
+            <li><span><span><a href="#">Tin tức</a></span></span></li>
+            <li><span><span><a href="#">Giới thiệu</a></span></span></li>
+            <li><span><span><a href="#">Liên hệ</a></span></span></li>
+            <li><span><span><a href="#">Cài đặt</a></span></span></li>
+            <li><span><span><a href="#">Người dùng</a></span></span></li>
         </ul>
     </div>
     <div id="middle">
         <div id="left-column">
             <h3>Danh mục</h3>
             <ul class="nav">
-                <li><a href="#">Sản phẩm</a></li>
+                <li class="active"><a href="#">Sản phẩm</a></li>
                 <li><a href="#">Tin tức</a></li>
                 <li><a href="#">Giới thiệu</a></li>
                 <li><a href="#">Liên hệ</a></li>
-                <li><a href="#">Nội dung khác</a></li>
                 <li class="last"><a href="#">Nội dung khác</a></li>
             </ul>
             <a href="#" class="link">Link here</a> <a href="#" class="link">Link here</a> </div>
         <div id="center-column">
-            <div class="top-bar"> <a href="#" class="button">ADD NEW </a>
-                <h1>Contents</h1>
-                <div class="breadcrumbs"><a href="#">Homepage</a> / <a href="#">Contents</a></div>
+            <div class="top-bar"> <a href="#" class="button">Thêm mới</a>
+                <h1>Nội dung đang xem</h1>
+                <div class="breadcrumbs"><a href="#">Homepage</a> / <a href="#">Sản phẩm</a></div>
             </div>
             <br />
             <div class="select-bar">
@@ -43,125 +42,70 @@
                     <input type="text" name="textfield" />
                 </label>
                 <label>
-                    <input type="submit" name="Submit" value="Search" />
+                    <input type="submit" name="Submit" value="Tìm kiếm" />
                 </label>
             </div>
             <div class="table"> <img src="admin/img/bg-th-left.gif" width="8" height="7" alt="" class="left" /> <img src="admin/img/bg-th-right.gif" width="7" height="7" alt="" class="right" />
                 <table class="listing" cellpadding="0" cellspacing="0">
                     <tr>
-                        <th class="first" width="177">Header Here</th>
-                        <th>Header</th>
-                        <th>Head</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Head</th>
-                        <th>Header</th>
-                        <th class="last">Head</th>
+                        <th class="first" width="177">Danh sách sản phẩm</th>
+                        <th>Danh mục cha</th>
+                        <th>Xóa</th>
+                        <th>Sửa</th>
+                        <th>Trạng thái</th>
+                        <th>Chọn tất cả<input type="checkbox" name="select-all" value="select-all"></th>
                     </tr>
                     <tr>
-                        <td class="first style1">- Lorem Ipsum </td>
-                        <td><img src="admin/img/add-icon.gif" width="16" height="16" alt="" /></td>
-                        <td><img src="admin/img/hr.gif" width="16" height="16" alt="" /></td>
-                        <td><img src="admin/img/save-icon.gif" width="16" height="16" alt="" /></td>
-                        <td><img src="admin/img/edit-icon.gif" width="16" height="16" alt="" /></td>
-                        <td><img src="admin/img/login-icon.gif" width="16" height="16" alt="" /></td>
-                        <td><img src="admin/img/save-icon.gif" width="16" height="16" alt="save" /></td>
-                        <td class="last"><img src="admin/img/add-icon.gif" width="16" height="16" alt="add" /></td>
-                    </tr>
-                    <tr class="bg">
-                        <td class="first style2">- Lorem Ipsum </td>
-                        <td><img src="admin/img/add-icon.gif" width="16" height="16" alt="add" /></td>
-                        <td><img src="admin/img/hr.gif" width="16" height="16" alt="" /></td>
-                        <td><img src="admin/img/save-icon.gif" width="16" height="16" alt="save" /></td>
-                        <td><img src="admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></td>
-                        <td><img src="admin/img/login-icon.gif" width="16" height="16" alt="login" /></td>
-                        <td><img src="admin/img/save-icon.gif" width="16" height="16" alt="save" /></td>
-                        <td class="last"><img src="admin/img/add-icon.gif" width="16" height="16" alt="add" /></td>
+                        <td class="first style3">HTC U Ultra </td>
+                        <td>HTC</td>
+                        <td><a href="#"><img src="admin/img/hr.gif" width="16" height="16" alt="" /></a></td>
+                        <td><a href="#"><img src="admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></a></td>
+                        <td><img src="admin/img/pr-disable-icon.gif" width="16" height="16" alt="login" /></td>
+                        <td class="last"><input type="checkbox" name="sp1" value="id-sp1"</td>
                     </tr>
                     <tr>
-                        <td class="first style3">- Lorem Ipsum </td>
-                        <td><img src="admin/img/add-icon.gif" width="16" height="16" alt="add" /></td>
-                        <td><img src="admin/img/hr.gif" width="16" height="16" alt="" /></td>
-                        <td><img src="admin/img/save-icon.gif" width="16" height="16" alt="save" /></td>
-                        <td><img src="admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></td>
-                        <td><img src="admin/img/login-icon.gif" width="16" height="16" alt="login" /></td>
-                        <td><img src="admin/img/save-icon.gif" width="16" height="16" alt="save" /></td>
-                        <td class="last"><img src="admin/img/add-icon.gif" width="16" height="16" alt="add" /></td>
-                    </tr>
-                    <tr class="bg">
-                        <td class="first style1">- Lorem Ipsum </td>
-                        <td><img src="admin/img/add-icon.gif" width="16" height="16" alt="add" /></td>
-                        <td><img src="admin/img/hr.gif" width="16" height="16" alt="" /></td>
-                        <td><img src="admin/img/save-icon.gif" width="16" height="16" alt="save" /></td>
-                        <td><img src="admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></td>
-                        <td><img src="admin/img/login-icon.gif" width="16" height="16" alt="login" /></td>
-                        <td><img src="admin/img/save-icon.gif" width="16" height="16" alt="save" /></td>
-                        <td class="last"><img src="admin/img/add-icon.gif" width="16" height="16" alt="add" /></td>
+                        <td class="first style3">HTC Desire 628</td>
+                        <td>HTC</td>
+                        <td><a href="#"><img src="admin/img/hr.gif" width="16" height="16" alt="" /></a></td>
+                        <td><a href="#"><img src="admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></a></td>
+                        <td><img src="admin/img/pr-disable-icon.gif" width="16" height="16" alt="login" /></td>
+                        <td class="last"><input type="checkbox" name="sp2" value="id-sp2"/td>
                     </tr>
                     <tr>
-                        <td class="first style2">- Lorem Ipsum </td>
-                        <td><img src="admin/img/add-icon.gif" width="16" height="16" alt="add" /></td>
-                        <td><img src="admin/img/hr.gif" width="16" height="16" alt="" /></td>
-                        <td><img src="admin/img/save-icon.gif" width="16" height="16" alt="save" /></td>
-                        <td><img src="admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></td>
-                        <td><img src="admin/img/login-icon.gif" width="16" height="16" alt="login" /></td>
-                        <td><img src="admin/img/save-icon.gif" width="16" height="16" alt="save" /></td>
-                        <td class="last"><img src="admin/img/add-icon.gif" width="16" height="16" alt="add" /></td>
-                    </tr>
-                    <tr class="bg">
-                        <td class="first style3">- Lorem Ipsum </td>
-                        <td><img src="admin/img/add-icon.gif" width="16" height="16" alt="add" /></td>
-                        <td><img src="admin/img/hr.gif" width="16" height="16" alt="" /></td>
-                        <td><img src="admin/img/save-icon.gif" width="16" height="16" alt="save" /></td>
-                        <td><img src="admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></td>
-                        <td><img src="admin/img/login-icon.gif" width="16" height="16" alt="login" /></td>
-                        <td><img src="admin/img/save-icon.gif" width="16" height="16" alt="save" /></td>
-                        <td class="last"><img src="admin/img/add-icon.gif" width="16" height="16" alt="add" /></td>
+                        <td class="first style3">6 GS63VR 6RF-07</td>
+                        <td>MSI</td>
+                        <td><a href="#"><img src="admin/img/hr.gif" width="16" height="16" alt="" /></a></td>
+                        <td><a href="#"><img src="admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></a></td>
+                        <td><img src="admin/img/pr-active-icon.gif" width="16" height="16" alt="login" /></td>
+                        <td class="last"><input type="checkbox" name="sp3" value="id-sp3"</td>
                     </tr>
                     <tr>
-                        <td class="first style4">- Lorem Ipsum </td>
-                        <td><img src="admin/img/add-icon.gif" width="16" height="16" alt="add" /></td>
-                        <td><img src="admin/img/hr.gif" width="16" height="16" alt="" /></td>
-                        <td><img src="admin/img/save-icon.gif" width="16" height="16" alt="save" /></td>
-                        <td><img src="admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></td>
-                        <td><img src="admin/img/login-icon.gif" width="16" height="16" alt="login" /></td>
-                        <td><img src="admin/img/save-icon.gif" width="16" height="16" alt="save" /></td>
-                        <td class="last"><img src="admin/img/add-icon.gif" width="16" height="16" alt="add" /></td>
+                        <td class="first style3">5 GS63VR 6RF-076VN</td>
+                        <td>MSI</td>
+                        <td><a href="#"><img src="admin/img/hr.gif" width="16" height="16" alt="" /></a></td>
+                        <td><a href="#"><img src="admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></a></td>
+                        <td><img src="admin/img/pr-active-icon.gif" width="16" height="16" alt="login" /></td>
+                        <td class="last"><input type="checkbox" name="sp4" value="id-sp4"</td>
+                    </tr>
+                    <tr>
+                        <td class="first style3">4 GS63VR 6RF-076VN</td>
+                        <td>MSI</td>
+                        <td><a href="#"><img src="admin/img/hr.gif" width="16" height="16" alt="" /></a></td>
+                        <td><a href="#"><img src="admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></a></td>
+                        <td><img src="admin/img/pr-active-icon.gif" width="16" height="16" alt="login" /></td>
+                        <td class="last"><input type="checkbox" name="sp5" value="id-sp5"</td>
                     </tr>
                 </table>
-                <div class="select"> <strong>Other Pages: </strong>
+                <div class="task-bottom"><span><a class="add-product" href="themsp.php" >Thêm sản phẩm</a></span><span><a href="#">Xóa</a></span></div>
+                <div class="select sl-page"> <strong>Other Pages: </strong>
                     <select>
                         <option>1</option>
                     </select>
                 </div>
             </div>
-            <div class="table"> <img src="admin/img/bg-th-left.gif" width="8" height="7" alt="" class="left" /> <img src="admin/img/bg-th-right.gif" width="7" height="7" alt="" class="right" />
-                <table class="listing form" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <th class="full" colspan="2">Header Here</th>
-                    </tr>
-                    <tr>
-                        <td class="first" width="172"><strong>Lorem Ipsum</strong></td>
-                        <td class="last"><input type="text" class="text" /></td>
-                    </tr>
-                    <tr class="bg">
-                        <td class="first"><strong>Lorem Ipsum</strong></td>
-                        <td class="last"><input type="text" class="text" /></td>
-                    </tr>
-                    <tr>
-                        <td class="first"><strong>Lorem Ipsum</strong></td>
-                        <td class="last"><input type="text" class="text" /></td>
-                    </tr>
-                    <tr class="bg">
-                        <td class="first"><strong>Lorem Ipsum</strong></td>
-                        <td class="last"><input type="text" class="text" /></td>
-                    </tr>
-                </table>
-                <p>&nbsp;</p>
-            </div>
         </div>
-        <div id="right-column"> <strong class="h">INFO</strong>
-            <div class="box">Detect and eliminate viruses and Trojan horses, even new and unknown ones. Detect and eliminate viruses and Trojan horses, even new and </div>
+        <div id="right-column"> <strong class="h">Thông tin</strong>
+            <div class="box">Chọn danh mục ở bên trái và thao tác với các tùy chọn. Thêm sửa xóa sản phẩm</div>
         </div>
     </div>
     <div id="footer"></div>
