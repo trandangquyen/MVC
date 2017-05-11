@@ -8,6 +8,9 @@ class Comment_model extends CI_Model
         $this->load->database();
         $this->table = 'comment';
     }
+    public function index() {
+        
+    }
 	public function getComment($product_id){
         $this->db->select("*");
         $this->db->where("product_id",$product_id);

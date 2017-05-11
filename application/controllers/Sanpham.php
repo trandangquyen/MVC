@@ -42,7 +42,6 @@ class Sanpham extends CI_Controller {
             if($page<1) $page = 1;
             $start = ($page-1)*$config['per_page'];
             $data['products']['New'] = $this->Products_model->listProducts(null,null,0,6);
-            //$data['products']['Sản phẩm mới nhất'] = $this->Products_model->listProducts(null,null,0,9);
         }
         
         $this->load->view('site/listsanpham', $data);
@@ -86,13 +85,14 @@ class Sanpham extends CI_Controller {
         $this->load->view('site/common/footer', $data);
 	}
     public function saveComment() {
-        //var_dump($_REQUEST);exit;
+        //echo '<pre>';var_dump($_REQUEST); echo '/<pre>';exit;
         $this->load->model('Comment_model');
-        if(!empty($_REQUEST['comment']['name']) && !empty($_REQUEST['comment']['name']) && !empty($_REQUEST['comment']['product_id'])) {
+        if(!empty($_REQUEST['comment']['product_id'])) {
             $data = array(
                 'name' => $_REQUEST['comment']['name'],
                 'content' => $_REQUEST['comment']['content'],
                 'product_id' => $_REQUEST['comment']['product_id'],
+                'rate' => (int) $_REQUEST['comment']['rate'],
             );
             $this->Comment_model->insertComment($data);
         }

@@ -69,6 +69,7 @@
                 for (var i = 0; i < index; i++) {
                     var star = $(".rate-star i:eq(" + i + ")").css("background", imgStaron);
                 }
+                $('input[name=comment\\[rate\\]]').val(countStar);
             }
         );
     }
@@ -85,26 +86,6 @@
             $(this).removeClass("active").find(".sub-3").stop().slideUp(50);
         });
     }
-    // this is the id of the form
-    $("#user-comment").submit(function(e) {
-
-        var url = "path/to/your/script.php";
-        var data = $("#user-comment").serialize()+ '&income=' +$("#count-star").html();
-        $.ajax({
-            type: "GET",
-            url: url,
-            data: data,
-            success: function(data)
-            {
-                alert(data); // show response from the php script.
-            }
-        });
-
-        e.preventDefault();
-    });
-
-    /* ----------------------------------------------- */
-    /* ----------------------------------------------- */
     /* OnLoad Page */
     $(document).ready(function ($) {
         rateStar();

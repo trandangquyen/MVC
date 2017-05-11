@@ -21,3 +21,6 @@ $route['ajaxNews'] = 'tintuc/loadAjax';
 
 
 $route['admin/category'] = 'admin/category/index';
+$route['admin/comment'] = 'admin/comment';
+$route['admin/product'] = 'admin/product';
+$route['admin/news'] = 'admin/news';
