@@ -6,27 +6,30 @@ class Category extends CI_Controller {
 		$this->load->model('Category_model');
 	}
     function index() {
-    	var_dump($this->Category_model->getAllCategory());
+    	//var_dump($this->Category_model->getAllCategory());
+        $this->load->view();
+
     }
     function addCategory() {
     	if(!empty($_POST['name']) && !empty($_POST['name'])) {
     		$data = array(
-    			'name' => '',
-    			'description' => '',
-    			'parent' => '',
+    			'name' => $_POST['name'],
+    			'description' => $_POST['description'],
+    			'parent' => (int)$_POST['parent'],
     		);
 
     		$this->Category_model->addCategory($data);
+
     	}
-    	
-    	var_dump($this->Category_model->getAllCategory());
+    	//var_dump($this->Category_model->getAllCategory());
+        //redirect('admin/category/list');
     }
     function updateCategory($id) {
     	$id = '';
     	$data = array(
-			'name' => '',
-			'description' => '',
-			'parent' => '',
+			'name' => $_POST['name'],
+			'description' => $_POST['description'],
+			'parent' => (int)$_POST['parent'],
     	);
     	$this->Category_model->updateCategory($data,$id);
 

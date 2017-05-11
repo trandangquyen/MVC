@@ -56,6 +56,7 @@ class Tintuc extends CI_Controller {
         $this->load->view('site/common/mainright', ['news'=>$listNews]);
         $this->load->view('site/common/footer', $data);
 	}
+	// load more News when user scroll down page
 	public function loadAjax() {
 		//var_dump($_REQUEST);exit;
         $start = !empty($_REQUEST['start']) ? $_REQUEST['start'] : 0;
