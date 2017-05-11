@@ -9,7 +9,7 @@ class Sanpham extends CI_Controller {
         $this->load->database();
         $this->load->model('Products_model');
         $this->load->model('Category_model');
-     }
+    }
 
     // list products per category or a category
 	public function index($category=null,$page=1) {
@@ -41,7 +41,7 @@ class Sanpham extends CI_Controller {
             $page = (int)$this->input->get('per_page', TRUE);
             if($page<1) $page = 1;
             $start = ($page-1)*$config['per_page'];
-            $data['products']['New'] = $this->Products_model->listProducts(null,null,0,6);
+            $data['products']['New'] = $this->Products_model->listProducts(null,null,$start,6);
         }
         
         $this->load->view('site/listsanpham', $data);
