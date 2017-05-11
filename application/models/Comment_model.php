@@ -11,7 +11,7 @@ class Comment_model extends CI_Model
     public function index() {
         
     }
-	public function getComment($product_id){
+	public function getComment($product_id) {
         $this->db->select("*");
         $this->db->where("product_id",$product_id);
         $this->db->order_by("id desc");
@@ -24,7 +24,17 @@ class Comment_model extends CI_Model
         return false;
 	}
     public function insertComment($data=array()) {
-        if($this->db->insert($this->table, $data)) return true;
+        if($this->db->insert($this->table, $data)) {
+            $this->load->model('Products_model');
+
+            $sql = "SELECT avg(rate) as avgrate from ".$this->table." where product_id = '".$data['product_id']."'";
+            $query = $this->db->query($sql);
+            if($avgRate = $query->first_row()) {
+                $avgRate = $avgRate->avgrate;
+                $this->Products_model->updateProducts(['rate'=>$avgRate],$data['product_id']);
+            }
+            return true;
+        }
         return false;
     }
 }

@@ -87,6 +87,7 @@ class Sanpham extends CI_Controller {
     public function saveComment() {
         //echo '<pre>';var_dump($_REQUEST); echo '/<pre>';exit;
         $this->load->model('Comment_model');
+        $this->load->model('Products_model');
         if(!empty($_REQUEST['comment']['product_id'])) {
             $data = array(
                 'name' => $_REQUEST['comment']['name'],
@@ -95,6 +96,12 @@ class Sanpham extends CI_Controller {
                 'rate' => (int) $_REQUEST['comment']['rate'],
             );
             $this->Comment_model->insertComment($data);
+
+
+            // calculate average rating
+            //$total = array_sum($ratings);
+            //$avg = $total/count($ratings);
+
         }
         redirect($this->uri->uri_string());
     }
