@@ -5,7 +5,7 @@ class Sanpham extends CI_Controller {
 
 	public function __construct() {
         parent::__construct();
-        $this->load->helper(array('url'));
+        $this->load->helper(array('url','form'));
         $this->load->database();
         $this->load->model('Products_model');
         $this->load->model('Category_model');
@@ -57,13 +57,15 @@ class Sanpham extends CI_Controller {
         $this->load->view('site/listsanphamajax', $data);
     }
     // show detail a product
-    // param $id: id of product
+    // param $id: id of product 
     public function viewProduct($id) {
+        if(isset($_REQUEST['comment'])) return $this->saveComment();
         $data['title'] = 'Sản phẩm';
         $data['active'] = 'sanpham';
 
         $this->load->model('Products_model');
         $this->load->model('Category_model');
+        $this->load->model('Comment_model');
 
         if($data['product'] = $this->Products_model->getProducts($id))
             $data['product']->category_name = $this->Category_model->getNameCategory($data['product']->category_id);
@@ -71,9 +73,10 @@ class Sanpham extends CI_Controller {
         $data['title'] = $data['product']->name;
 
         $data['product']->image = $this->Products_model->getImageProducts($id);
-
-        $this->load->view('site/common/header', $data);
         $listCategory = $this->Category_model->getAllCategory();
+        $data['product']->comments = $this->Comment_model->getComment($id);
+        $this->load->view('site/common/header', $data);
+
         $this->load->view('site/category', ['category'=>$listCategory]);
 
         $this->load->view('site/sanpham', $data);
@@ -82,5 +85,18 @@ class Sanpham extends CI_Controller {
         //$this->load->view('site/common/mainright', ['news'=>$listNews]);
         $this->load->view('site/common/footer', $data);
 	}
+    public function saveComment() {
+        //var_dump($_REQUEST);exit;
+        $this->load->model('Comment_model');
+        if(!empty($_REQUEST['comment']['name']) && !empty($_REQUEST['comment']['name']) && !empty($_REQUEST['comment']['product_id'])) {
+            $data = array(
+                'name' => $_REQUEST['comment']['name'],
+                'content' => $_REQUEST['comment']['content'],
+                'product_id' => $_REQUEST['comment']['product_id'],
+            );
+            $this->Comment_model->insertComment($data);
+        }
+        redirect($this->uri->uri_string());
+    }
 }
 

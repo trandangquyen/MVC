@@ -40,16 +40,31 @@
 			</div> <!-- end conten_product -->
 		</div> <!-- end conten_product -->
         <!--User Comments -->
-        <div class="commnent">
+        <div class="commnents">
             <h3>Ý kiến đánh giá sản phẩm:</h3>
             <p>Hãy cho chúng tôi biết nhận xét của bạn về sản phẩm này:</p>
-            <form>
+            <form action="<?=base_url(uri_string());?>" method="POST">
+            	<input type="hidden" name="comment[product_id]" value="<?=$product->id ?>">
                 <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input class="form-control" type="text" name="comment[name]" style="width: 200px;">
                     <label for="comment">Comment:</label>
-                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                    <textarea class="form-control" rows="5" id="comment" name="comment[content]"></textarea>
                 </div>
                 <input type="submit" class="btn btn-info" value="Gửi bình luận">
             </form>
+        </div>
+        <div class="list-comments" style="margin-top:10px;">
+        	<?php 
+        	if(!empty($product->comments)) {
+        		foreach ($product->comments as $comment) {
+        			echo '<div class="comment" id="'.$comment['id'].'">
+							<p><strong>'.$comment['name'].'</strong>: '.$comment['content'].'</p>
+
+        			</div>';
+        		}
+        	}
+        	?>
         </div>
         <!--End User Comments -->
 
