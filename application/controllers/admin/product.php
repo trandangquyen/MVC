@@ -5,38 +5,46 @@ class Product extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Products_model');
 	}
-    function index() {
-    	var_dump($this->Product_model->getAllProduct());
+    function index($data=null;) {
+    	//var_dump($this->Product_model->getAllProduct());
+        $this->load->view('admin/product', $data);
     }
     function addProduct() {
-    	if(!empty($_POST['name']) && !empty($_POST['name'])) {
+        if(!empty($_POST['name'])) $data['error'] = 'Hãy điền tên sản phẩm';
+    	elseif(!empty($_POST['thumb'])) $data['error'] = 'Hãy điền ảnh sản phẩm';
+        else {
     		$data = array(
-                'name' => '',
-                'price' => '',
-                'category_id' => '',
-                'description' => '',
-                'thumb' => '',
+                'name' => $_POST['name'],
+                'price' => $_POST['price'],
+                'category_id' => $_POST['category'],
+                'description' => $_POST['description'],
+                'thumb' => $_POST['thumb'],
             );
-
     		$this->Product_model->addProduct($data);
+            $data['success'] = 'Thêm sản phẩm thành công';
     	}
-    	
-    	var_dump($this->Product_model->getAllProduct());
+    	return $this->index($data);
+    	//var_dump($this->Product_model->getAllProduct());
     }
     function updateProduct($id) {
-    	$id = '';
-    	$data = array(
-			'name' => '',
-			'price' => '',
-            'category_id' => '',
-            'description' => '',
-			'thumb' => '',
-    	);
-    	$this->Product_model->updateProduct($data,$id);
-
+    	if(!empty($_POST['name'])) $data['error'] = 'Hãy điền tên sản phẩm';
+        elseif(!empty($_POST['thumb'])) $data['error'] = 'Hãy điền ảnh sản phẩm';
+        else {
+        	$data = array(
+                'name' => $_POST['name'],
+                'price' => $_POST['price'],
+                'category_id' => $_POST['category'],
+                'description' => $_POST['description'],
+                'thumb' => $_POST['thumb'],
+            );
+        	$this->Product_model->updateProduct($data,$id);
+            $data['success'] = 'Update sản phẩm thành công';
+        }
+        return $this->index($data);
     }
     function deteleProduct($id) {
-    	$this->Product_model->deteleProduct($id);
+    	if($this->Product_model->deteleProduct($id)) $data['success'] = 'Xóa sản phẩm thành công';
+        else $data['error'] = 'Xóa sản phẩm thất bại';
     }
 }
 

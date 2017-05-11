@@ -49,6 +49,7 @@ class Sanpham extends CI_Controller {
         $listNews = $this->News_model->listNews(null,0,6);
         $this->load->view('site/common/footer', $data);
     }
+    // load more product when user scroll down
     public function loadAjax() {
         $start = !empty($_REQUEST['start']) ? $_REQUEST['start'] : 0;
         $category_id = !empty($_REQUEST['category']) ? $_REQUEST['category'] : 1;
@@ -92,6 +93,7 @@ class Sanpham extends CI_Controller {
         }
 
 	}
+    // save comment and rate of product
     public function saveComment() {
         //echo '<pre>';var_dump($_REQUEST); echo '/<pre>';exit;
         $this->load->model('Comment_model');
@@ -104,12 +106,6 @@ class Sanpham extends CI_Controller {
                 'rate' => (int) $_REQUEST['comment']['rate'],
             );
             $this->Comment_model->insertComment($data);
-
-
-            // calculate average rating
-            //$total = array_sum($ratings);
-            //$avg = $total/count($ratings);
-
         }
         redirect($this->uri->uri_string());
     }
