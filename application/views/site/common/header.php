@@ -24,7 +24,7 @@
             <!-- Begin Header -->
             <div class="header container">
 				<div id="Icon_search">
-                    <img src="public/images/header.png" alt="">
+                    <a href="<?php echo base_url(); ?>"><img src="public/images/header.png" alt="Home"></a>
                 </div>
                 <ul id='top-menu'>
                     <li class='item<?=(isset($active) && $active == 'home') ? ' current' : '' ?>' id="lintrangchu"><a href='home'>Trang chủ</a></li>
