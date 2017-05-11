@@ -1,6 +1,7 @@
 <?php
 class Category_model extends CI_Model
 {
+    private $table = 'category';
 	public function __construct()
     {
     	parent::__construct();
@@ -11,14 +12,14 @@ class Category_model extends CI_Model
         $this->db->where("parent",null);
         $this->db->order_by("name desc");
         //$this->db->limit(1,0);
-        $query=$this->db->get("category");
+        $query=$this->db->get($this->table);
         return $query->result_array();
 	}
     public function getSubCategory($parent){
         $this->db->select("*");
         $this->db->where("parent",$parent);
         $this->db->order_by("name desc");
-        $query=$this->db->get("category");
+        $query=$this->db->get($this->table);
         return $query->result_array();
     }
 	public function getAllCategory() {
@@ -32,7 +33,7 @@ class Category_model extends CI_Model
         $data = null;
         foreach (explode(',', $ids) as $id) {
             $this->db->where("id",$id);
-            $query = $this->db->get("category");
+            $query = $this->db->get($this->table);
             if($result = $query->first_row()) $data[] = $result->name;
         }
         return $data;
@@ -40,6 +41,20 @@ class Category_model extends CI_Model
         $query=$this->db->get("category");
         if($result=$query->first_row()) return $result->name;
         return null;*/
+    }
+    public function addCategory($data=array()) {
+        if($this->db->insert($this->table, $data)) return true;
+        return false;
+    }
+    public function deleteCategory($id) {
+        $this->db->where("id",$id);
+        if($this->db->delete($this->table)) return true;
+        return false;
+    }
+    public function updateCategory($data=array(),$id) {
+        $this->db->set($data);
+        $this->db->where('id', $id);
+        $this->db->update($this->table); 
     }
 }
 

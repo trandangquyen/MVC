@@ -53,9 +53,7 @@ class News_model extends CI_Model
         return false;
     }
     public function updateNews($data=array(),$news_id) {
-        foreach ($data as $key => $value) {
-            $this->db->set($key, $value);
-        }
+        $this->db->set($data);
         $this->db->where('id', $news_id);
         $this->db->update($this->table); 
         return false;

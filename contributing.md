@@ -18,7 +18,7 @@ to pass these guidelines it will be declined and you will need to re-submit
 when you’ve made the changes. This might sound a bit tough, but it is required
 for us to maintain quality of the code-base.
 
-### PHP Style
+### PHP Style 
 
 All code must meet the [Style Guide](https://codeigniter.com/user_guide/general/styleguide.html), which is
 essentially the [Allman indent style](https://en.wikipedia.org/wiki/Indent_style#Allman_style), underscores and readable operators. This makes certain that all code is the same format as the existing code and means it will be as readable as possible.

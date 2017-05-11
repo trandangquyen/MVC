@@ -433,10 +433,66 @@ ol, ul {
     clear: both;
     padding-top: 15px;
 }
+.rate-title input{
+    width:50%;
+}
+.all-comments h3{
+    background: #f1f1f1;
+    font-size: 18px;
+    padding:8px 5px 5px;
 
 .comment {
     box-shadow: 10px 10px 5px #888888;
     padding: 5px;
     background-color: #fffefa;
     margin-bottom: 5px;
+}
+    font-weight: 700;
+}
+.user-com{
+    border-bottom: 1px solid #ececec;
+    padding-top:6px;
+}
+.user-com .star{
+    display: block;
+    float: left;
+    width: 16px;
+    height: 16px;
+    background: url("../images/star-on.png") no-repeat scroll;
+}
+.user-com .title{
+    font-size: 14px;
+    font-weight: 500;
+    float: left;
+    padding-left: 5px;
+    color: #000;
+}
+.user-com .by-user{
+    clear: both;
+    padding-top: 2px;
+    padding-bottom:10px;
+}
+.user-com .by-user{
+    font-size: 13px;
+    font-weight: bold;
+}
+.user-com .by-user span{
+    font-weight: normal;
+    padding-right:5px;
+}
+.commnent .star-off{
+    display: block;
+    float: left;
+    width: 16px;
+    height: 16px;
+    background: url("../images/star-off.png") no-repeat scroll;
+}
+.rate-title{
+    clear: both;
+    padding-top:10px;
+}
+.pick-star{
+    float: left;
+    padding-right: 10px;
+    text-decoration: underline;
 }

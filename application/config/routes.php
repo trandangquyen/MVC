@@ -16,4 +16,8 @@ $route['theloai/(:num)'] = 'sanpham/index/$1';
 
 $route['ajaxProduct'] = 'sanpham/loadAjax';
 $route['ajaxNews'] = 'tintuc/loadAjax';
-//$route['ajax'] = 'Ajax';
+
+
+
+
+$route['admin/category'] = 'admin/category/index';
