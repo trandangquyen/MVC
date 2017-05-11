@@ -83,6 +83,11 @@ class Sanpham extends CI_Controller {
         //$listNews = $this->News_model->listNews(null,null,0,6);
         //$this->load->view('site/common/mainright', ['news'=>$listNews]);
         $this->load->view('site/common/footer', $data);
+
+        $this->db->where('id', $id);
+        $this->db->set('views', 'views+1', FALSE);
+        $this->db->update('product');
+
 	}
     public function saveComment() {
         //echo '<pre>';var_dump($_REQUEST); echo '/<pre>';exit;
