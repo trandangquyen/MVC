@@ -47,7 +47,7 @@ class Sanpham extends CI_Controller {
         
         $this->load->view('site/listsanpham', $data);
         $this->load->model('News_model');
-        $listNews = $this->News_model->listNews(null,null,0,6);
+        $listNews = $this->News_model->listNews(null,0,6);
         $this->load->view('site/common/footer', $data);
     }
     public function loadAjax() {

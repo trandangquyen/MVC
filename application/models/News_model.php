@@ -25,6 +25,7 @@ class News_model extends CI_Model
 
         if($limit) $this->db->limit($limit,$offset);
         $query=$this->db->get($this->table);
+        //echo $this->db->last_query()."\n";
         return $query->result_array();
 	}
     public function getNews($id) {
