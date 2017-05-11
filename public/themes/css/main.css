@@ -440,6 +440,13 @@ ol, ul {
     background: #f1f1f1;
     font-size: 18px;
     padding:8px 5px 5px;
+
+.comment {
+    box-shadow: 10px 10px 5px #888888;
+    padding: 5px;
+    background-color: #fffefa;
+    margin-bottom: 5px;
+}
     font-weight: 700;
 }
 .user-com{

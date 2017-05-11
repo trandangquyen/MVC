@@ -43,47 +43,39 @@
         <div class="commnent">
             <h3>Ý kiến đánh giá sản phẩm:</h3>
             <p>Hãy cho chúng tôi biết nhận xét của bạn về sản phẩm này:</p>
-            <form id="user-comment">
+            <form>
+
+            <form action="<?=base_url(uri_string());?>" method="POST">
+            	<input type="hidden" name="comment[product_id]" value="<?=$product->id ?>">
+            	<input type="hidden" name="comment[rate]" value="0">
                 <div class="rate-star"><span class="pick-star">Chọn sao:</span><i class="star-off"></i><i class="star-off"></i><i class="star-off"></i><i class="star-off"></i><i class="star-off"></i><span>(<em id="count-star">0</em> sao)</span></div>
                 <div class="form-group rate-title">
+                    <label for="usr">Tên:</label>
+                    <input type="text" class="form-control" id="usr" name="comment[name]">
                     <label for="usr">Tiêu đề đánh giá (Tùy chọn):</label>
-                    <input type="text" class="form-control" id="usr" name="title-rate">
+                    <input type="text" class="form-control" id="usr" name="comment[title]">
                 </div>
                 <div class="form-group">
                     <label for="comment">Comment:</label>
-                    <textarea class="form-control" rows="5" id="comment" name="cont-comment"></textarea>
+                    <textarea class="form-control" rows="5" id="comment" name="comment[content]"></textarea>
                 </div>
                 <input type="submit" class="btn btn-info" value="Gửi bình luận">
             </form>
             <div class="all-comments">
-                <h3>Các nhận xét về sản phẩm:</h3>
-                <div class="user-com">
-                    <div class="com-title"><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><div class="title">Giá tốt</div></div>
-                    <div class="by-user"><span>Khách hàng:</span>Thuong ChuBin </div>
-                    <p>Máy chuẩn, đẹp, giá cả hợp lý trong thời điểm mua hàng, giao nhanh. Nói chung rất ưng ý</p>
-                </div>
-                <div class="user-com">
-                    <div class="com-title"><i class="star"></i><i class="star"></i><div class="title">Hàng tốt,nguyên seal chưa active</div></div>
-                    <div class="by-user"><span>Khách hàng:</span>Đỗ Tuấn Anh</div>
-                    <p>Giá rất tốt so với hàng chính hãng. Không biết chế độ hậu mãi tốt không!!!</p>
-                </div>
-                <div class="user-com">
-                    <div class="com-title"><i class="star"></i><i class="star"></i><div class="title">Hàng tốt,nguyên seal chưa active</div></div>
-                    <div class="by-user"><span>Khách hàng:</span>Lê Hoàng</div>
-                    <p>Một sản phẩm thuộc top đầu công nghệ,phù hợp với tầng lớp học sinh sinh viên, những người dùng văn phòng. Em đang tích lúa để mang em nó về FGC trong thời gian sớm nhất</p>
-                </div>
-                <div class="user-com">
-                    <div class="com-title"><i class="star"></i><i class="star"></i><div class="title">Rất hài lòng</div></div>
-                    <div class="by-user"><span>Khách hàng:</span>Monalcal Petter</div>
-                    <div class="com-title"><i class="star"></i><i class="star"></i><i class="star"></i><div class="title">Giá tốt</div></div>
-                    <p>Mua lúc giá 21tr364k! Đúng hàng mới 100% nguyên seal,tuyệt đẹp,hài lòng!</p>
-                </div>
-                <div class="user-com">
-                    <div class="com-title"><i class="star"></i><div class="title">Giá ổn đúng hàng FPT</div></div>
-                    <div class="by-user"><span>Khách hàng:</span>Béo Mèo</div>
-                    <div class="com-title"><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><div class="title">Giá tốt</div></div>
-                    <p>Đã nhận hàng rất tốt màu đẹp</p>
-                </div>
+            <?php
+            if(!empty($product->comments)) {
+                echo '<h3>Các nhận xét về sản phẩm:</h3>';
+                foreach ($product->comments as $comment) {
+                    $star = '';
+                    for($i=1;$i<=($comment['rate']);$i++) $star .= '<i class="star"></i>';
+                    echo '<div class="user-com">
+                        <div class="com-title">'.$star .'<div class="title">'.$comment['title'].'</div></div>
+                        <div class="by-user"><span>Khách hàng:</span>'.$comment['name'].'</div>
+                        <p>'.$comment['content'].'</p>
+                    </div>';
+                }
+                }
+            ?>
             </div>
         </div>
         <!--End User Comments -->

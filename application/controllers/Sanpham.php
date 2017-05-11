@@ -5,11 +5,11 @@ class Sanpham extends CI_Controller {
 
 	public function __construct() {
         parent::__construct();
-        $this->load->helper(array('url'));
+        $this->load->helper(array('url','form'));
         $this->load->database();
         $this->load->model('Products_model');
         $this->load->model('Category_model');
-     }
+    }
 
     // list products per category or a category
 	public function index($category=null,$page=1) {
@@ -41,8 +41,7 @@ class Sanpham extends CI_Controller {
             $page = (int)$this->input->get('per_page', TRUE);
             if($page<1) $page = 1;
             $start = ($page-1)*$config['per_page'];
-            $data['products']['New'] = $this->Products_model->listProducts(null,null,0,6);
-            //$data['products']['Sản phẩm mới nhất'] = $this->Products_model->listProducts(null,null,0,9);
+            $data['products']['New'] = $this->Products_model->listProducts(null,null,$start,6);
         }
         
         $this->load->view('site/listsanpham', $data);
@@ -57,13 +56,15 @@ class Sanpham extends CI_Controller {
         $this->load->view('site/listsanphamajax', $data);
     }
     // show detail a product
-    // param $id: id of product
+    // param $id: id of product 
     public function viewProduct($id) {
+        if(isset($_REQUEST['comment'])) return $this->saveComment();
         $data['title'] = 'Sản phẩm';
         $data['active'] = 'sanpham';
 
         $this->load->model('Products_model');
         $this->load->model('Category_model');
+        $this->load->model('Comment_model');
 
         if($data['product'] = $this->Products_model->getProducts($id))
             $data['product']->category_name = $this->Category_model->getNameCategory($data['product']->category_id);
@@ -71,9 +72,10 @@ class Sanpham extends CI_Controller {
         $data['title'] = $data['product']->name;
 
         $data['product']->image = $this->Products_model->getImageProducts($id);
-
-        $this->load->view('site/common/header', $data);
         $listCategory = $this->Category_model->getAllCategory();
+        $data['product']->comments = $this->Comment_model->getComment($id);
+        $this->load->view('site/common/header', $data);
+
         $this->load->view('site/category', ['category'=>$listCategory]);
 
         $this->load->view('site/sanpham', $data);
@@ -81,6 +83,35 @@ class Sanpham extends CI_Controller {
         //$listNews = $this->News_model->listNews(null,null,0,6);
         //$this->load->view('site/common/mainright', ['news'=>$listNews]);
         $this->load->view('site/common/footer', $data);
+
+        if(!isset($_COOKIE['view_product_'.$id])) {
+            $this->db->where('id', $id);
+            $this->db->set('views', 'views+1', FALSE);
+            $this->db->update('product');
+            setcookie('view_product_'.$id,true,time()+15);
+        }
+
 	}
+    public function saveComment() {
+        //echo '<pre>';var_dump($_REQUEST); echo '/<pre>';exit;
+        $this->load->model('Comment_model');
+        $this->load->model('Products_model');
+        if(!empty($_REQUEST['comment']['product_id'])) {
+            $data = array(
+                'name' => $_REQUEST['comment']['name'],
+                'content' => $_REQUEST['comment']['content'],
+                'product_id' => $_REQUEST['comment']['product_id'],
+                'rate' => (int) $_REQUEST['comment']['rate'],
+            );
+            $this->Comment_model->insertComment($data);
+
+
+            // calculate average rating
+            //$total = array_sum($ratings);
+            //$avg = $total/count($ratings);
+
+        }
+        redirect($this->uri->uri_string());
+    }
 }
 

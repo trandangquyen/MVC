@@ -19,11 +19,11 @@
 						<div class="product_img"><a href="index.php/sanpham/<?=$item['id']?>"><img src="public/themes/images/product13.jpg" alt=""></a></div>
 						<p class="price"> <?=$item['price']?> đ</p>
 						<div id="9" class="raty" data-score="4" title="good">
-							<img src="public/themes/images/star-on.png" alt="1" title="good">
-							<img src="public/themes/images/star-on.png" alt="2" title="good">
-							<img src="public/themes/images/star-on.png" alt="3" title="good">
-							<img src="public/themes/images/star-on.png" alt="4" title="good">
-							<img src="public/themes/images/star-off.png" alt="5" title="good">
+							<?php 
+							$star = '';
+                    		for($i=1;$i<=($item['rate']);$i++) $star .= '<img src="public/themes/images/star-on.png" alt="1" title="good">';
+                    		echo $star;
+							?>
 							<input name="score" value="4" readonly="readonly" type="hidden">
 						</div>
 						<div class="action">

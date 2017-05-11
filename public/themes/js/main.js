@@ -22,7 +22,7 @@ $(document).ready(function() {
 				var num_post = $('div[id^="p-"]').length;
 			} else var num_post = $('#main_center .post').length;
 			console.log('num post: '+num_post);
-			if(query.length > 0) query += '&start='+num_post;
+			if(query && query.length > 0) query += '&start='+num_post;
 			else query = 'start='+num_post;
 
 			if(loadmore===true) {

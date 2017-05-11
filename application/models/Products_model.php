@@ -56,9 +56,7 @@ class Products_model extends CI_Model
         return false;
     }
     public function updateProducts($data=array(),$product_id) {
-        foreach ($data as $key => $value) {
-            $this->db->set($key, $value);
-        }
+        $this->db->set($data);
         $this->db->where('id', $product_id);
         $this->db->update('product'); 
         return false;
