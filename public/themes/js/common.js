@@ -86,6 +86,16 @@
             $(this).removeClass("active").find(".sub-3").stop().slideUp(50);
         });
     }
+    function checkAllProduct(){
+        $('#select_all').change(function() {
+            var checkboxes = $(this).closest('form').find(':checkbox');
+            if($(this).is(':checked')) {
+                checkboxes.prop('checked', true);
+            } else {
+                checkboxes.prop('checked', false);
+            }
+        });
+    }
     /* OnLoad Page */
     $(document).ready(function ($) {
         rateStar();

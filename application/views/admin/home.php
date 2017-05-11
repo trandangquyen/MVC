@@ -53,7 +53,7 @@
                         <th>Xóa</th>
                         <th>Sửa</th>
                         <th>Trạng thái</th>
-                        <th>Chọn tất cả<input type="checkbox" name="select-all" value="select-all"></th>
+                        <th>Chọn tất cả<input id="select-all" type="checkbox" name="select-all" value="select-all"></th>
                     </tr>
                     <tr>
                         <td class="first style3">HTC U Ultra </td>
@@ -110,5 +110,7 @@
     </div>
     <div id="footer"></div>
 </div>
+<script type="text/javascript" src="public/themes/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="public/themes/js/admin.js"></script>
 </body>
 </html>
