@@ -84,9 +84,12 @@ class Sanpham extends CI_Controller {
         //$this->load->view('site/common/mainright', ['news'=>$listNews]);
         $this->load->view('site/common/footer', $data);
 
-        $this->db->where('id', $id);
-        $this->db->set('views', 'views+1', FALSE);
-        $this->db->update('product');
+        if(!isset($_COOKIE['view_product_'.$id])) {
+            $this->db->where('id', $id);
+            $this->db->set('views', 'views+1', FALSE);
+            $this->db->update('product');
+            setcookie('view_product_'.$id,true,time()+15);
+        }
 
 	}
     public function saveComment() {
