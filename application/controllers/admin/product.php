@@ -91,6 +91,8 @@ class Product extends CI_Controller {
         	
         }
         $data['active'] = 'sanpham';
+        $data['categorys'] = $this->Category_model->getAllCategory();
+        //var_dump($data['categorys']);exit;
 
         $this->load->view('admin/common/admin-header.php', $data);
         $this->load->view('admin/addproduct.php', $data);
@@ -123,13 +125,19 @@ class Product extends CI_Controller {
         $this->load->view('admin/common/admin-footer.php', $data);
     }
     function deteleProduct($id=null) {
-        //var_dump($_POST['delete']);exit;
+        //
         $data = null;
         if($id) {
         	if($this->Products_model->deleteProduct($id)) $data['success'] = 'Xóa sản phẩm thành công';
             else $data['error'] = 'Xóa sản phẩm thất bại';
         } else if(!empty($_POST['delete'])) {
-            if($this->Products_model->deleteProducts($_POST['delete']))
+            
+            foreach ($_POST['delete'] as $key => $value) {
+                $ids[] = (int) $value;
+            }
+            //var_dump(array(4,5));var_dump($ids);exit;
+
+            if($this->Products_model->deleteProducts($ids))
                 $data['success'] = 'Xóa các sản phẩm thành công';
             else $data['error'] = 'Xóa các sản phẩm thất bại';
         }

@@ -2,6 +2,7 @@
 include_once(__DIR__ .'/../libraries/function.php');
 class Products_model extends CI_Model
 {
+    private $table = 'product';
 	public function __construct()
     {
     	parent::__construct();

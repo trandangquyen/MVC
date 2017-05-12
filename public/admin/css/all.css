@@ -574,3 +574,6 @@ label {
 	width: 32%;
 	float: left;
 }
+.multiselect-container .parent label{
+	font-weight: bold;
+}
