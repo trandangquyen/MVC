@@ -19,6 +19,7 @@ $route['ajaxNews'] = 'tintuc/loadAjax';
 
 
 $route['admin'] = 'admin/product';
+$route['admin/product'] = 'admin/product';
 $route['admin/product/delete/(:num)'] = 'admin/product/deteleProduct/$1';
 $route['admin/product/update/(:num)'] = 'admin/product/updateProduct/$1';
 

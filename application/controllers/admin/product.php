@@ -7,11 +7,39 @@ class Product extends CI_Controller {
         $this->load->helper('url');
 	}
     function index($data=null) {
-    	//var_dump($this->Product_model->getAllProduct());
-        $data['products'] = $this->Products_model->listProducts();
-        //var_dump($data['products']);exit;
+        $this->load->library('pagination');
+        //$data['products'] = $this->Products_model->listProducts();
 
-        $this->load->view('admin/product', $data);
+        $data['products'] = $this->Products_model->listProducts();
+        $config['base_url'] = base_url('/admin/product');
+        $config['total_rows'] = count((array)$data['products']);
+        $config['per_page'] = 6;
+        $config['use_page_numbers'] = true;
+        $config['page_query_string'] = TRUE;
+        $config['first_url'] = site_url('/admin/product');
+        $config['first_link'] = 'Trang đầu';
+        $config['last_link'] = 'Trang cuối';
+        $this->pagination->initialize($config);
+        $page = (int)$this->input->get('per_page', TRUE);
+        if($page<1) $page = 1;
+        $start = ($page-1)*$config['per_page'];
+        $data['products'] = $this->Products_model->listProducts(null,null,$start,6);
+
+
+
+
+
+
+
+
+        //$this->load->view('admin/product', $data);
+
+        $data['active'] = 'sanpham';
+
+        $this->load->view('admin/common/admin-header.php', $data);
+        $this->load->view('admin/sanpham.php', $data);
+        $this->load->view('admin/common/admin-footer.php', $data);
+
     }
     function addProduct() {
         if(!empty($_POST)) {

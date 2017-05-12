@@ -3,8 +3,39 @@
 <head>
     <title>CMS Admin</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <base href="<?php echo base_url(); ?>">
     <style media="all" type="text/css">
         @import "public/admin/css/all.css";
+        .pagination-page {
+            margin-top:20px;
+            margin-bottom:20px;
+            float:left;
+            width:100%;
+        }
+        .pagination-page a,
+        .pagination-page strong{
+            float:left;
+            min-width:30px;
+            padding:0px 5px;
+            height:30px;
+            text-align:center;
+            line-height:30px;
+            border:solid 1px #ddd;
+            border-right:none;
+            font-size:12px;
+        }
+        .pagination-page a:last-child,
+        .pagination-page strong:last-child{
+            border-right:solid 1px #ddd;
+        }
+        .pagination-page strong{
+            background:#000;
+            color:#FFF;
+            border-color:#000
+        }
+        .pagination-page a:hover{
+            background:#f5f5f6
+        }
     </style>
 </head>
 <body>
