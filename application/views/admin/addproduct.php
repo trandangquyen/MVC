@@ -20,7 +20,7 @@
                             </textarea> 
                         </div>
                         <div class="form-group product-picture">
-                            <label for="InputFile">Ảnh sản phẩm:</label>
+                            <label for="InputFile">Ảnh sản phẩm:</label> 
                             <input type="file" name="product[image][]" id="picture1" class="show">
                             <input type="file" name="product[image][]" id="picture2">
                             <input type="file" name="product[image][]" id="picture3">

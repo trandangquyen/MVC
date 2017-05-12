@@ -64,7 +64,7 @@ class Product extends CI_Controller {
                         $filesize = $_FILES['product']['size']['image'][$i];
                         $pathfile = './upload/'.$filename;
                         if($filename && $filesize) {
-                            if(move_uploaded_file($tmp_name, $pathfile)) {
+                            if(move_uploaded_file($tmp_name, $pathfile)) { 
                                 $images[] = array(
                                     'title' => $filename,
                                     'url' => $pathfile,

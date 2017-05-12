@@ -38,7 +38,7 @@
                         <div class="product_img"><a href="index.php/sanpham/<?=$product['id']?>"><img src="<?=$product['thumb']?>" alt=""></a></div>
                         <p class="price"><?=$product['price']?></p>
                         <div id="9" class="raty" data-score="4" title="good">
-                            <?php 
+                            <?php
                             $star = '';
                             for($i=1;$i<=($product['rate']);$i++) $star .= '<img src="public/themes/images/star-on.png" alt="1" title="good">';
                             echo $star;

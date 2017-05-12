@@ -39,7 +39,7 @@ class Products_model extends CI_Model
         if($result=$query->first_row()) return $result;
         return null;
     }
-    public function addImageProducts($data,$product_id) {
+    public function addImageProducts($data,$product_id) { 
         if($this->db->insert_batch('image', $data)) return true;
         return false;
     }

@@ -26,7 +26,7 @@
                             <th>Chọn tất cả<input id="select-all" type="checkbox" name="select-all" value="select-all"></th>
                         </tr>
                         <?php 
-                    foreach ($products as $product) {
+                    foreach ($products as $product) { 
                         echo '<tr>
                             <td class="first style3">'.$product['name'].'</td>
                             <td>HTC</td>
