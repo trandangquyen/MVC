@@ -37,24 +37,27 @@ class Product extends CI_Controller {
 
     }
     function addProduct() {
-        if(!empty($_POST)) {
-            if(!empty($_POST['name'])) $data['error'] = 'Hãy điền tên sản phẩm';
-        	elseif(!empty($_POST['thumb'])) $data['error'] = 'Hãy điền ảnh sản phẩm';
+        if(!empty($_POST['product'])) {
+            var_dump($_POST['product']);exit;
+            if(!empty($_POST['product']['name'])) $data['error'] = 'Hãy điền tên sản phẩm';
             else {
         		$data = array(
-                    'name' => $_POST['name'],
-                    'price' => $_POST['price'],
+                    'name' => $_POST['product']['name'],
+                    'price' => $_POST['product']['price'],
                     'category_id' => $_POST['category'],
-                    'description' => $_POST['description'],
-                    'thumb' => $_POST['thumb'],
+                    'description' => $_POST['product']['description'],
+                    'display' => isset($_POST['product']['display']) ? 1 : 0,
                 );
         		$this->Products_model->addProduct($data);
                 $data['success'] = 'Thêm sản phẩm thành công';
         	}
         	return $this->index($data);
         }
-        return $this->load->view('',$data);
-    	//var_dump($this->Product_model->getAllProduct());
+        $data['active'] = 'sanpham';
+
+        $this->load->view('admin/common/admin-header.php', $data);
+        $this->load->view('admin/addproduct.php', $data);
+        $this->load->view('admin/common/admin-footer.php', $data);
     }
     function updateProduct($id) {
         if(!empty($_POST)) {
