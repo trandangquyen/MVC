@@ -28,7 +28,7 @@ class Tintuc extends CI_Controller {
 	}
 
 	public function deleteTintuc($id) {
-		//echo "Delete $id";
+		$this->News_model->deleteTintuc($id);
 	}
 
 	/**
