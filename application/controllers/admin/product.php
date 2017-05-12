@@ -17,7 +17,7 @@ class Product extends CI_Controller {
         $config['total_rows'] = count((array)$data['products']);
         $config['per_page'] = 6;
         $config['use_page_numbers'] = true;
-        $config['page_query_string'] = TRUE;
+        $config['page_query_string'] = TRUE; 
         $config['first_url'] = site_url('/admin/product');
         $config['first_link'] = 'Trang đầu';
         $config['last_link'] = 'Trang cuối';

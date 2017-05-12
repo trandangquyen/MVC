@@ -1,7 +1,7 @@
 
-                <div class="product-info"> 
+                <div class="product-info">
                     <form method="post" action="">
-                        <div class="form-group">
+                        <div class="form-group"> 
                             <label for="product[name]">Tên sản phẩm</label>
                             <input type="text" class="form-control" id="product-name" name="product[name]" placeholder="Tên sản phẩm">
                         </div>
