@@ -4,14 +4,14 @@
                 <div class="breadcrumbs"><a href="#">Homepage</a> / <a href="#">Sản phẩm</a></div>
             </div>
             <br />
-            <div class="select-bar">
+            <!-- <div class="select-bar">
                 <label>
                     <input type="text" name="textfield" />
                 </label>
                 <label>
                     <input type="submit" name="Submit" value="Tìm kiếm" />
                 </label>
-            </div>
+            </div> -->
             <div class="table"> <img src="public/admin/img/bg-th-left.gif" width="8" height="7" alt="" class="left" /> <img src="public/admin/img/bg-th-right.gif" width="7" height="7" alt="" class="right" />
             <form method="POST">
                 <div class="cont-products">
