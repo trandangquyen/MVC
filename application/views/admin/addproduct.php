@@ -15,11 +15,11 @@
                         </div>
                         <div class="form-group product-picture">
                             <label for="InputFile">Ảnh sản phẩm:</label>
-                            <input type="image" id="picture1">
-                            <input type="image" id="picture2">
-                            <input type="image" id="picture3">
-                            <input type="image" id="picture4">
-                            <input type="image" id="picture5">
+                            <input type="file" id="picture1">
+                            <input type="file" id="picture2">
+                            <input type="file" id="picture3">
+                            <input type="file" id="picture4">
+                            <input type="file" id="picture5">
                             <p class="help-block">Chú ý:Điền đầy đủ thông tin trước khi thêm mới sản phẩm!</p>
                         </div>
                         <div class="checkbox">
