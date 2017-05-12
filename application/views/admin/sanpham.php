@@ -44,7 +44,7 @@
 
                 <div class="pagination" style="display: table;margin: 0 auto;"><div class="pagination-page"><?=$this->pagination->create_links();?></div></div>
 
-                <div class="task-bottom"><span><a class="add-product" href="themsp.php" >Thêm sản phẩm</a></span><span><input type="submit" class="" value="Xóa"></span></div>
+                <div class="task-bottom"><span><a class="add-product" href="themsp.php" >Thêm sản phẩm</a></span><span><input type="submit" class="" value="Xóaa"></span></div>
                 </form>
                 <div class="select sl-page"> <strong>Other Pages: </strong>
                     <select>
