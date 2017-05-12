@@ -1,5 +1,5 @@
 
-                <div class="product-info">
+                <div class="product-info"> 
                     <form method="post" action="">
                         <div class="form-group">
                             <label for="product[name]">Tên sản phẩm</label>

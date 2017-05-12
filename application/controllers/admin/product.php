@@ -36,18 +36,30 @@ class Product extends CI_Controller {
         $this->load->view('admin/common/admin-footer.php', $data);
 
     }
-    function addProduct() {
+    function addProduct() { 
         if(!empty($_POST['product'])) {
-            var_dump($_POST['product']);exit;
+            //var_dump($_POST['product']);exit;
             if(!empty($_POST['product']['name'])) $data['error'] = 'Hãy điền tên sản phẩm';
             else { 
         		$data = array(
                     'name' => $_POST['product']['name'],
                     'price' => $_POST['product']['price'],
-                    'category_id' => $_POST['category'],
+                    'category_id' => implode(',',$_POST['product']['category']),
                     'description' => $_POST['product']['description'],
                     'display' => isset($_POST['product']['display']) ? 1 : 0,
                 );
+                if($_POST['product']['image']) {
+                    $config['upload_path']          = './uploads/';
+                    $config['allowed_types']        = 'gif|jpg|png';
+                    $config['max_size']             = 100;
+                    $config['max_width']            = 1024;
+                    $config['max_height']           = 768;
+
+                    $this->upload->do_upload('userfile')
+
+                    $this->load->library('upload', $config);
+
+                }
         		$this->Products_model->addProduct($data);
                 $data['success'] = 'Thêm sản phẩm thành công';
         	}
