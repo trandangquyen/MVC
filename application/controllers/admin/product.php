@@ -57,8 +57,8 @@ class Product extends CI_Controller {
     }
     function updateProduct($id) {
         if(!empty($_POST)) {
-        	if(!empty($_POST['name'])) $data['error'] = 'Hãy điền tên sản phẩm';
-            elseif(!empty($_POST['thumb'])) $data['error'] = 'Hãy điền ảnh sản phẩm';
+        	if(empty($_POST['name'])) $data['error'] = 'Hãy điền tên sản phẩm';
+            elseif(empty($_POST['thumb'])) $data['error'] = 'Hãy điền ảnh sản phẩm';
             else {
             	$data = array(
                     'name' => $_POST['name'],
