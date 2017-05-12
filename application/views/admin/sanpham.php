@@ -28,8 +28,8 @@
                         echo '<tr>
                             <td class="first style3">'.$product['name'].'</td>
                             <td>HTC</td>
-                            <td><a href="#"><img src="public/admin/img/hr.gif" width="16" height="16" alt="Delete" /></a></td>
-                            <td><a href="#"><img src="public/admin/img/edit-icon.gif" width="16" height="16" alt="Edit" /></a></td>
+                            <td><a href="admin/product/delete/'.$product['id'].'"><img src="public/admin/img/hr.gif" width="16" height="16" alt="Delete" /></a></td>
+                            <td><a href="admin/product/edit/'.$product['id'].'"><img src="public/admin/img/edit-icon.gif" width="16" height="16" alt="Edit" /></a></td>
                             <td>'.$product['views'].'</td>
                             <td class="last"><input type="checkbox" name="sp1" value="'.$product['id'].'"</td>
                         </tr>';
@@ -38,7 +38,7 @@
                     
                     </table>
                 </div>
-                
+
                 <div class="pagination" style="display: table;margin: 0 auto;"><div class="pagination-page"><?=$this->pagination->create_links();?></div></div>
 
                 <div class="task-bottom"><span><a class="add-product" href="themsp.php" >Thêm sản phẩm</a></span><span><a href="#">Xóa</a></span></div>

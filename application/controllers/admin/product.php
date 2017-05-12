@@ -3,7 +3,8 @@
 class Product extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('Products_model');
+        $this->load->model('Products_model');
+		$this->load->model('Category_model');
         $this->load->helper('url');
 	}
     function index($data=null) {
@@ -24,13 +25,6 @@ class Product extends CI_Controller {
         if($page<1) $page = 1;
         $start = ($page-1)*$config['per_page'];
         $data['products'] = $this->Products_model->listProducts(null,null,$start,6);
-
-
-
-
-
-
-
 
         //$this->load->view('admin/product', $data);
 
@@ -53,7 +47,7 @@ class Product extends CI_Controller {
                     'description' => $_POST['description'],
                     'thumb' => $_POST['thumb'],
                 );
-        		$this->Product_model->addProduct($data);
+        		$this->Products_model->addProduct($data);
                 $data['success'] = 'Thêm sản phẩm thành công';
         	}
         	return $this->index($data);
@@ -73,7 +67,7 @@ class Product extends CI_Controller {
                     'description' => $_POST['description'],
                     'thumb' => $_POST['thumb'],
                 );
-            	$this->Product_model->updateProduct($data,$id);
+            	$this->Products_model->updateProduct($data,$id);
                 $data['success'] = 'Update sản phẩm thành công';
             }
         }
@@ -81,10 +75,14 @@ class Product extends CI_Controller {
         $data['product']->image = $this->Products_model->getImageProducts($id);
         $data['product']->category_name = $this->Category_model->getNameCategory($data['product']->category_id);
         
-        return $this->load->view('',$data);
+        $data['active'] = 'sanpham';
+
+        $this->load->view('admin/common/admin-header.php', $data);
+        $this->load->view('admin/addproduct.php', $data);
+        $this->load->view('admin/common/admin-footer.php', $data);
     }
     function deteleProduct($id) {
-    	if($this->Product_model->deteleProduct($id)) $data['success'] = 'Xóa sản phẩm thành công';
+    	if($this->Products_model->deleteProducts($id)) $data['success'] = 'Xóa sản phẩm thành công';
         else $data['error'] = 'Xóa sản phẩm thất bại';
         return $this->index($data);
     }

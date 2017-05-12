@@ -46,7 +46,6 @@ class Products_model extends CI_Model
         return $query->result_array();
     }
     public function deleteProducts($product_id) {
-        $this->db->select("*");
         $this->db->where("id",$product_id);
         if($this->db->delete('product')) return true;
         return false;
