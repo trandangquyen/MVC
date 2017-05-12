@@ -16,10 +16,17 @@
             }
         });
     }
+    function showInputImageUpload(){
+        console.log("hello");
+        $('.product-picture input').change(function() {
+            $(this).next().addClass("show");
+
+        });
+    }
     /* OnLoad Page */
     $(document).ready(function ($) {
         checkAllProduct();
-
+        showInputImageUpload();
     });
     /* OnLoad Window */
     var init = function () {

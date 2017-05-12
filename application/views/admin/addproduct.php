@@ -1,6 +1,6 @@
 
                 <div class="product-info">
-                    <form>
+                    <form method="post" action="sanpham.php">
                         <div class="form-group">
                             <label for="product-name">Tên sản phẩm</label>
                             <input type="text" class="form-control" id="product-name" name="product-name" placeholder="Tên sản phẩm">
@@ -11,15 +11,17 @@
                         </div>
                         <div class="form-group">
                             <label for="product-descript">Mô tả</label>
-                            <textarea class="form-control" rows="7" id="product-descript" name="product-descript"></textarea>
+                            <textarea name="editor1" id="editor1" rows="10" cols="80">
+                             Nhập miêu tả về sản phẩm.
+                            </textarea>
                         </div>
                         <div class="form-group product-picture">
                             <label for="InputFile">Ảnh sản phẩm:</label>
-                            <input type="file" id="picture1">
-                            <input type="file" id="picture2">
-                            <input type="file" id="picture3">
-                            <input type="file" id="picture4">
-                            <input type="file" id="picture5">
+                            <input type="file" name=anh[] id="picture1" class="show">
+                            <input type="file" name=anh[] id="picture2">
+                            <input type="file" name=anh[] id="picture3">
+                            <input type="file" name=anh[] id="picture4">
+                            <input type="file" name=anh[] id="picture5">
                             <p class="help-block">Chú ý:Điền đầy đủ thông tin trước khi thêm mới sản phẩm!</p>
                         </div>
                         <div class="checkbox">
