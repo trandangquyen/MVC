@@ -39,6 +39,10 @@ class Products_model extends CI_Model
         if($result=$query->first_row()) return $result;
         return null;
     }
+    public function addImageProducts($data,$product_id) {
+        if($this->db->insert_batch('image', $data)) return true;
+        return false;
+    }
     public function getImageProducts($product_id) {
         $this->db->select("*");
         $this->db->where("product_id",$product_id);
@@ -50,8 +54,8 @@ class Products_model extends CI_Model
         if($this->db->delete('product')) return true;
         return false;
     }
-    public function insertProducts($data=array()) {
-        if($this->db->insert('product', $data)) return true;
+    public function addProducts($data=array()) {
+        if($this->db->insert('product', $data)) return $this->db->insert_id();
         return false;
     }
     public function updateProducts($data=array(),$product_id) {

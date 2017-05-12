@@ -1,13 +1,13 @@
 
                 <div class="product-info">
-                    <form method="post" action="">
+                    <form method="post" action="" enctype="multipart/form-data">
                         <div class="form-group"> 
                             <label for="product[name]">Tên sản phẩm</label>
                             <input type="text" class="form-control" id="product-name" name="product[name]" placeholder="Tên sản phẩm">
                         </div>
                         <div class="form-group">
-                            <label for="product[price]">Giá sản phẩm</label>
-                            <input type="number" class="form-control" id="product-price" name="product[price]" placeholder="Giá sản phẩm">
+                            <label for="product[price]">Thể loại</label>
+                            <input type="number" class="form-control" id="product-categorys" name="product[categorys][]" placeholder="id thể loại">
                         </div>
                         <div class="form-group">
                             <label for="product[price]">Giá sản phẩm</label>

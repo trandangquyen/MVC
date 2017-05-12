@@ -39,31 +39,56 @@ class Product extends CI_Controller {
     function addProduct() { 
         if(!empty($_POST['product'])) {
             //var_dump($_POST['product']);exit;
-            if(!empty($_POST['product']['name'])) $data['error'] = 'Hãy điền tên sản phẩm';
+            if(empty($_POST['product']['name'])) $data['error'] = 'Hãy điền tên sản phẩm';
             else { 
-        		$data = array(
+        		$insert = array(
                     'name' => $_POST['product']['name'],
                     'price' => $_POST['product']['price'],
-                    'category_id' => implode(',',$_POST['product']['category']),
+                    'category_id' => @implode(',',$_POST['product']['category']),
                     'description' => $_POST['product']['description'],
                     'display' => isset($_POST['product']['display']) ? 1 : 0,
                 );
-                if($_POST['product']['image']) {
-                    $config['upload_path']          = './uploads/';
+                if(!empty($_FILES['product'])) {
+                
+                    /*$config['upload_path']          = './uploads/';
                     $config['allowed_types']        = 'gif|jpg|png';
-                    $config['max_size']             = 100;
-                    $config['max_width']            = 1024;
-                    $config['max_height']           = 768;
-
-                    $this->upload->do_upload('userfile');
-
+                    $config['max_size']             = 1000;
+                    $this->upload->do_upload($field_name);
                     $this->load->library('upload', $config);
+                    */
 
+                    $images = null;
+                    for($i=0;$i<count($_FILES['product']['name']['image']);$i++) {
+                        $filename = $_FILES['product']['name']['image'][$i];
+                        $tmp_name = $_FILES['product']['tmp_name']['image'][$i];
+                        $filesize = $_FILES['product']['size']['image'][$i];
+                        $pathfile = './upload/'.$filename;
+                        if($filename && $filesize) {
+                            if(move_uploaded_file($tmp_name, $pathfile)) {
+                                $images[] = array(
+                                    'title' => $filename,
+                                    'url' => $pathfile,
+                                    //'product_id' => $id,
+                                );
+                            }
+                        }
+                    }
+                    if(!empty($images)) $insert['thumb'] = $images[0]['url'];
                 }
-        		$this->Products_model->addProduct($data);
-                $data['success'] = 'Thêm sản phẩm thành công';
+
+        		if($id=$this->Products_model->addProducts($insert)) {
+                    if(!empty($images)) {
+                        for($i=0;$i<count($images);$i++) {
+                            $images[$i]['product_id'] = $id;
+                        }
+
+                        $this->Products_model->addImageProducts($images,$id);
+                    }
+                    $data['success'] = 'Thêm sản phẩm thành công';
+                    return $this->index($data);
+                } else $data['error'] = 'Thêm sản phẩm thất bại';
         	}
-        	return $this->index($data);
+        	
         }
         $data['active'] = 'sanpham';
 
