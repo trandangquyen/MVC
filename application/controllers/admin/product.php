@@ -82,7 +82,7 @@ class Product extends CI_Controller {
                             $images[$i]['product_id'] = $id;
                         }
 
-                        $this->Products_model->addImageProducts($images,$id);
+                        $this->Products_model->addImageProducts($images);
                     }
                     $data['success'] = 'Thêm sản phẩm thành công';
                     return $this->index($data);
