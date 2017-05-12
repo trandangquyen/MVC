@@ -17,7 +17,7 @@
                             <label for="product-descript">Mô tả</label>
                             <textarea name="product[description]" id="editor1" rows="10" cols="80">
                              Nhập miêu tả về sản phẩm.
-                            </textarea>
+                            </textarea> 
                         </div>
                         <div class="form-group product-picture">
                             <label for="InputFile">Ảnh sản phẩm:</label>

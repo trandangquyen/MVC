@@ -40,7 +40,7 @@ class Product extends CI_Controller {
         if(!empty($_POST['product'])) {
             var_dump($_POST['product']);exit;
             if(!empty($_POST['product']['name'])) $data['error'] = 'Hãy điền tên sản phẩm';
-            else {
+            else { 
         		$data = array(
                     'name' => $_POST['product']['name'],
                     'price' => $_POST['product']['price'],
