@@ -44,10 +44,11 @@ class Product extends CI_Controller {
         		$insert = array(
                     'name' => $_POST['product']['name'],
                     'price' => $_POST['product']['price'],
-                    'category_id' => @implode(',',$_POST['product']['category']),
+                    'category_id' => @implode(',',$_POST['product']['categorys']),
                     'description' => $_POST['product']['description'],
                     'display' => isset($_POST['product']['display']) ? 1 : 0,
                 );
+                //var_dump($insert);exit;
                 if(!empty($_FILES['product'])) {
                 
                     /*$config['upload_path']          = './uploads/';
