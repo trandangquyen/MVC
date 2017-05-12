@@ -17,7 +17,6 @@
         });
     }
     function showInputImageUpload(){
-        console.log("hello");
         $('.product-picture input').change(function() {
             $(this).next().addClass("show");
 

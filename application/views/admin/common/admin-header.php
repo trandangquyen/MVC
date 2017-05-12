@@ -38,6 +38,12 @@
             background:#f5f5f6
         }
     </style>
+<!--    <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="public/bootstrap/css/bootstrap-multiselect.css">
+    <script type="text/javascript" src="public/themes/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="public/bootstrap/js/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="public/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 <div id="main">
