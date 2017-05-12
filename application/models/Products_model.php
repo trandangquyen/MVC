@@ -49,8 +49,13 @@ class Products_model extends CI_Model
         $query=$this->db->get("image");
         return $query->result_array();
     }
-    public function deleteProducts($product_id) {
+    public function deleteProduct($product_id) {
         $this->db->where("id",$product_id);
+        if($this->db->delete('product')) return true;
+        return false;
+    }
+    public function deleteProducts($array_id) {
+        $this->db->where_in("id",$array_id);
         if($this->db->delete('product')) return true;
         return false;
     }
