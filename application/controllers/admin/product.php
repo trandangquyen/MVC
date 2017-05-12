@@ -55,7 +55,7 @@ class Product extends CI_Controller {
                     $config['max_width']            = 1024;
                     $config['max_height']           = 768;
 
-                    $this->upload->do_upload('userfile')
+                    $this->upload->do_upload('userfile');
 
                     $this->load->library('upload', $config);
 

@@ -42,8 +42,7 @@
 <div id="main">
     <div id="header"> <a href="#" class="logo"><img src="public/admin/img/logo.png" width="200" height="50" alt="" /></a>
         <ul id="top-navigation">
-            <li <?= (isset($active) && $active == "home")? "class='active' " : '' ?>><span><span><a href="admin-home">Trang chủ</a></span></span></li>
-            <li <?= (isset($active) && $active == "sanpham")? "class='active' " : '' ?>><span><span><a href="admin-sanpham">Sản phẩm</a></span></span></li>
+            <li <?= (isset($active) && $active == "sanpham")? "class='active' " : '' ?>><span><span><a href="admin">Sản phẩm</a></span></span></li>
             <li <?= (isset($active) && $active == "tintuc")? "class='active' " : '' ?>><span><span><a href="admin-tintuc">Tin tức</a></span></span></li>
             <li <?= (isset($active) && $active == "gioithieu")? "class='active' " : '' ?>><span><span><a href="admin-gioithieu">Giới thiệu</a></span></span></li>
             <li <?= (isset($active) && $active == "lienhe")? "class='active' " : '' ?>><span><span><a href="admin-lienhe">Liên hệ</a></span></span></li>
