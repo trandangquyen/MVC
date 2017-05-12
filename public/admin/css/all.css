@@ -443,3 +443,9 @@ div.table .select select {
 .help-block{
 	color: #ff0000;
 }
+.product-picture input{
+	display: none;
+}
+.product-picture input.show{
+	display: block;
+}
