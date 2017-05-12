@@ -18,17 +18,11 @@ $route['ajaxProduct'] = 'sanpham/loadAjax';
 $route['ajaxNews'] = 'tintuc/loadAjax';
 
 
+$route['admin'] = 'admin/product';
+$route['admin/product/delete/(:num)'] = 'admin/product/deteleProduct/$1';
+$route['admin/product/update/(:num)'] = 'admin/product/updateProduct/$1';
 
-
-$route['admin/category'] = 'admin/category/index';
+$route['admin/category'] = 'admin/category';
 $route['admin/comment'] = 'admin/comment';
-$route['admin/product'] = 'admin/product';
+
 $route['admin/news'] = 'admin/news';
-$route['admin-sanpham'] = 'adminsanpham';
-$route['admin-tintuc'] = 'admintintuc';
-$route['admin-gioithieu'] = 'admingioithieu';
-$route['admin-lienhe'] = 'adminlienhe';
-$route['admin-caidat'] = 'admincaidat';
-$route['admin-user'] = 'adminuser';
-$route['admin-category'] = 'admincategory';
-$route['admin-home'] = 'adminhome';
