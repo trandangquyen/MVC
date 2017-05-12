@@ -21,12 +21,17 @@ $route['ajaxNews'] = 'tintuc/loadAjax';
 $route['admin'] = 'admin/product';
 $route['admin/product'] = 'admin/product';
 $route['admin/product/add'] = 'admin/product/addProduct';
-
-
 $route['admin/product/delete/(:num)'] = 'admin/product/deteleProduct/$1';
 $route['admin/product/edit/(:num)'] = 'admin/product/updateProduct/$1';
 
 $route['admin/category'] = 'admin/category';
-$route['admin/comment'] = 'admin/comment';
+$route['admin/category/add'] = 'admin/category/addCategory';
+$route['admin/category/delete/(:num)'] = 'admin/category/deteleCategory/$1';
+$route['admin/category/edit/(:num)'] = 'admin/category/updateCategory/$1';
 
 $route['admin/news'] = 'admin/news';
+$route['admin/news/add'] = 'admin/news/addNews';
+$route['admin/news/delete/(:num)'] = 'admin/news/deteleNews/$1';
+$route['admin/news/edit/(:num)'] = 'admin/news/updateNews/$1';
+
+
