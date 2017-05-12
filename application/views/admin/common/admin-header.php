@@ -4,6 +4,7 @@
     <title>CMS Admin</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <base href="<?php echo base_url(); ?>">
+    <link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style media="all" type="text/css">
         @import "public/admin/css/all.css";
         .pagination-page {

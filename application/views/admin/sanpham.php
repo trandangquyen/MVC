@@ -12,6 +12,20 @@
                     <input type="submit" name="Submit" value="Tìm kiếm" />
                 </label>
             </div> -->
+            <div class="clearfix"></div>
+            <?php 
+            if(isset($error))
+            echo '<div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              '.$error.'
+            </div>';
+        elseif(isset($success))
+            echo '<div class="alert alert-info" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              '.$success.'
+            </div>';
+            ?>
             <div class="table"> <img src="public/admin/img/bg-th-left.gif" width="8" height="7" alt="" class="left" /> <img src="public/admin/img/bg-th-right.gif" width="7" height="7" alt="" class="right" />
             <form method="POST">
                 <div class="cont-products">
