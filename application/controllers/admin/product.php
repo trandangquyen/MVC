@@ -126,13 +126,11 @@ class Product extends CI_Controller {
         $this->load->view('admin/common/admin-footer.php', $data);
     }
     function deteleProduct($id=null) {
-        //
         $data = null;
         if($id) {
         	if($this->Products_model->deleteProduct($id)) $data['success'] = 'Xóa sản phẩm thành công';
             else $data['error'] = 'Xóa sản phẩm thất bại';
         } else if(!empty($_POST['delete'])) {
-            
             foreach ($_POST['delete'] as $key => $value) {
                 $ids[] = (int) $value;
             }
