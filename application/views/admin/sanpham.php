@@ -14,13 +14,14 @@
             </div>
             <div class="table"> <img src="public/admin/img/bg-th-left.gif" width="8" height="7" alt="" class="left" /> <img src="public/admin/img/bg-th-right.gif" width="7" height="7" alt="" class="right" />
                 <div class="cont-products">
+                <form method="POST">
                     <table class="listing" cellpadding="0" cellspacing="0">
                         <tr>
                             <th class="first" width="177">Danh sách sản phẩm</th>
                             <th>Danh mục cha</th>
                             <th>Xóa</th>
                             <th>Sửa</th>
-                            <th>Trạng thái</th>
+                            <th>Lượt xem</th>
                             <th>Chọn tất cả<input id="select-all" type="checkbox" name="select-all" value="select-all"></th>
                         </tr>
                         <?php 
@@ -31,17 +32,18 @@
                             <td><a href="admin/product/delete/'.$product['id'].'"><img src="public/admin/img/hr.gif" width="16" height="16" alt="Delete" /></a></td>
                             <td><a href="admin/product/edit/'.$product['id'].'"><img src="public/admin/img/edit-icon.gif" width="16" height="16" alt="Edit" /></a></td>
                             <td>'.$product['views'].'</td>
-                            <td class="last"><input type="checkbox" name="sp1" value="'.$product['id'].'"</td>
+                            <td class="last"><input type="checkbox" name="delete[]" value="'.$product['id'].'"</td>
                         </tr>';
                     }
                     ?>
                     
                     </table>
+                    </form>
                 </div>
 
                 <div class="pagination" style="display: table;margin: 0 auto;"><div class="pagination-page"><?=$this->pagination->create_links();?></div></div>
 
-                <div class="task-bottom"><span><a class="add-product" href="themsp.php" >Thêm sản phẩm</a></span><span><a href="#">Xóa</a></span></div>
+                <div class="task-bottom"><span><a class="add-product" href="themsp.php" >Thêm sản phẩm</a></span><span><input type="submit" class="" value="Xóa"></span></div>
                 <div class="select sl-page"> <strong>Other Pages: </strong>
                     <select>
                         <option>1</option>
