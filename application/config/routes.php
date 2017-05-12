@@ -22,6 +22,7 @@ $route['admin'] = 'admin/product';
 $route['admin/product'] = 'admin/product';
 $route['admin/product/add'] = 'admin/product/addProduct';
 
+
 $route['admin/product/delete/(:num)'] = 'admin/product/deteleProduct/$1';
 $route['admin/product/edit/(:num)'] = 'admin/product/updateProduct/$1';
 
