@@ -161,12 +161,19 @@ ul.nav li {
 	padding:4px 4px 6px 5px;
 	background:url(../img/bg-dotted.gif) repeat-x bottom;
 	}
+ul.nav li:hover{
+	background-color: #3e3e3e;
+}
 ul.nav a {
+	height:20px;
+	line-height:20px;
+	display: block;
 	padding:0 0 0 12px;
 	background:url(../img/arrow.gif) no-repeat 0 4px;
 	}
-ul.nav a:hover {
+ul.nav li:hover a {
 	font-weight:bold;
+	color: #fff !important;
 	}
 ul.nav li.last {background:none;}
 

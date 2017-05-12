@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AdminHome extends CI_Controller {
+class AdminLienhe extends CI_Controller {
 
     /**
      * Index Page for this controller.
@@ -24,9 +24,9 @@ class AdminHome extends CI_Controller {
     }
     public function index()
     {
-        $data['active'] = 'home';
+        $data['active'] = 'lienhe';
         $this->load->view('admin/common/admin-header.php', $data);
-        $this->load->view('admin/home.php', $data);
+        $this->load->view('admin/lienhe.php', $data);
         $this->load->view('admin/common/admin-footer.php', $data);
 
     }
