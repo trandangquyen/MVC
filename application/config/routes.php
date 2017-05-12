@@ -32,3 +32,4 @@ $route['admin-caidat'] = 'admincaidat';
 $route['admin-user'] = 'adminuser';
 $route['admin-category'] = 'admincategory';
 $route['admin-home'] = 'adminhome';
+$route['admin-addproduct'] = 'adminaddproduct';

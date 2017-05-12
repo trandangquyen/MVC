@@ -65,7 +65,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="task-bottom"><span><a class="add-product" href="themsp.php" >Thêm sản phẩm</a></span><span><a href="#">Xóa</a></span></div>
+                <div class="task-bottom"><span><a class="add-product" href="admin-addproduct" >Thêm sản phẩm</a></span><span><a href="#">Xóa</a></span></div>
                 <div class="select sl-page"> <strong>Other Pages: </strong>
                     <select>
                         <option>1</option>
