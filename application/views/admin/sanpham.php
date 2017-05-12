@@ -1,5 +1,5 @@
 
-            <div class="top-bar"> <a href="#" class="button">Thêm mới</a>
+            <div class="top-bar"> <a href="admin/product/add" class="button">Thêm mới</a>
                 <h1>Quản trị sản phẩm</h1>
                 <div class="breadcrumbs"><a href="#">Homepage</a> / <a href="#">Sản phẩm</a></div>
             </div>
