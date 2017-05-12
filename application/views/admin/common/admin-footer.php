@@ -5,13 +5,8 @@
 </div>
 <div id="footer"></div>
 </div>
-<script type="text/javascript" src="public/themes/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="public/ckeditor/ckeditor.js"></script>
-<script>
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    CKEDITOR.replace( 'editor1' );
-</script>
+
 <script type="text/javascript" src="public/themes/js/admin.js"></script>
+
 </body>
 </html>
