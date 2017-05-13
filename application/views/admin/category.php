@@ -1,7 +1,7 @@
 
-            <div class="top-bar"> <a href="admin/product/add" class="button">Thêm mới</a>
-                <h1>Quản trị sản phẩm</h1>
-                <div class="breadcrumbs"><a href="#">Homepage</a> / <a href="#">Sản phẩm</a></div>
+            <div class="top-bar"> <a href="admin/category/add" class="button">Thêm mới</a>
+                <h1>Quản trị thể loại</h1>
+                <div class="breadcrumbs"><a href="#">Homepage</a> / <a href="#">Thể loại</a></div>
             </div>
             <br />
             <!-- <div class="select-bar">
@@ -32,23 +32,30 @@
                 
                     <table class="listing" cellpadding="0" cellspacing="0">
                         <tr>
-                            <th class="first" width="177">Danh sách sản phẩm</th> 
+                            <th class="first" width="177">Danh sách thể loại</th> 
                             <th>Danh mục cha</th>
                             <th>Xóa</th>
                             <th>Sửa</th>
-                            <th>Lượt xem</th>
                             <th>Chọn tất cả<input id="select-all" type="checkbox" name="select-all" value="select-all"></th>
                         </tr>
                         <?php 
-                    foreach ($products as $product) { 
+                    foreach ($categorys as $category) { 
                         echo '<tr>
-                            <td class="first style3">'.$product['name'].'</td>
+                            <td class="first style3">'.$category['name'].'</td>
                             <td>HTC</td>
-                            <td><a href="admin/product/delete/'.$product['id'].'"><img src="public/admin/img/hr.gif" width="16" height="16" alt="Delete" /></a></td>
-                            <td><a href="admin/product/edit/'.$product['id'].'"><img src="public/admin/img/edit-icon.gif" width="16" height="16" alt="Edit" /></a></td>
-                            <td>'.$product['views'].'</td>
-                            <td class="last"><input type="checkbox" name="delete[]" value="'.$product['id'].'"</td>
+                            <td><a href="admin/category/delete/'.$category['id'].'"><img src="public/admin/img/hr.gif" width="16" height="16" alt="Delete" /></a></td>
+                            <td><a href="admin/category/edit/'.$category['id'].'"><img src="public/admin/img/edit-icon.gif" width="16" height="16" alt="Edit" /></a></td>
+                            <td class="last"><input type="checkbox" name="delete[]" value="'.$category['id'].'"</td>
                         </tr>';
+                        if(!empty($category['data'])) foreach ($category['data'] as $subCategory) {
+                            echo '<tr>
+                                <td class="first style3">'.$subCategory['name'].'</td>
+                                <td>HTC</td>
+                                <td><a href="admin/category/delete/'.$subCategory['id'].'"><img src="public/admin/img/hr.gif" width="16" height="16" alt="Delete" /></a></td>
+                                <td><a href="admin/category/edit/'.$subCategory['id'].'"><img src="public/admin/img/edit-icon.gif" width="16" height="16" alt="Edit" /></a></td>
+                                <td class="last"><input type="checkbox" name="delete[]" value="'.$subCategory['id'].'"</td>
+                            </tr>';
+                        }
                     }
                     ?>
                     

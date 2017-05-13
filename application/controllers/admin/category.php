@@ -6,8 +6,28 @@ class Category extends CI_Controller {
 		$this->load->model('Category_model');
 	}
     function index($data=null) {
-    	//var_dump($this->Category_model->getAllCategory());
-        $this->load->view();
+        $this->load->library('pagination');
+
+        $data['categorys'] = $this->Category_model->getAllCategory();
+
+        $config['base_url'] = base_url('/admin/category');
+        $config['total_rows'] = count((array)$data['categorys']);
+        $config['per_page'] = 6;
+        $config['use_page_numbers'] = true;
+        $config['page_query_string'] = TRUE; 
+        $config['first_url'] = site_url('/admin/category');
+        $config['first_link'] = 'Trang đầu';
+        $config['last_link'] = 'Trang cuối';
+        $this->pagination->initialize($config);
+        $page = (int)$this->input->get('per_page', TRUE);
+        if($page<1) $page = 1;
+        $start = ($page-1)*$config['per_page'];
+
+        $data['active'] = 'theloai';
+    	$data['categorys'] = $this->Category_model->getAllCategory();
+        $this->load->view('admin/common/admin-header.php', $data);
+        $this->load->view('admin/category',$data);
+        $this->load->view('admin/common/admin-footer.php', $data);
     }
     function addCategory() {
     	if(!empty($_POST['name'])) $data['error'] = 'Hãy điền tên thể loại';
