@@ -22,7 +22,8 @@ class Sanpham extends CI_Controller {
         
         if($category) {
             $name = $this->Category_model->getNameCategory($category);
-            $name = $name[count($name)-1];
+            //var_dump($name);exit;
+            $name = end($name);
             if(!$name) show_404();
             $data['products'][$name] = $this->Products_model->listProducts($category,null,0,3);
         } else {
