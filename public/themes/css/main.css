@@ -307,7 +307,7 @@ ol, ul {
 }
 .conten_product,  .product_list{
     padding-left: 0px;
-    padding-right: 0px;
+    padding-right: -1px;
 }
 .conten_product .col-xs-4{
     padding-left:0;
@@ -495,4 +495,23 @@ ol, ul {
     float: left;
     padding-right: 10px;
     text-decoration: underline;
+}
+/*set a border on the images to prevent shifting*/
+ #gallery_01 img{border:2px solid white;}
+ 
+ /*Change the colour*/
+ .active img{border:2px solid #333 !important;}
+
+ .list_img_products {
+    border: 1px solid #25e0d5;
+}
+.list_img_products a {
+    margin: 7%;
+}
+.list_img_products img {
+    margin-top: 5px;
+}
+.list_img_products a{
+    padding-left: 10%
+    padding: 10px;
 }
