@@ -9,27 +9,12 @@
         <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
         <!-- bootstrap -->
         <link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        
         <!-- Css for @media screen -->
-        <link href="public/themes/css/bootstrappage.css" rel="stylesheet"/>		
+        <link href="public/themes/css/bootstrappage.css" rel="stylesheet"/>
         <!-- global styles -->
         <link href="public/themes/css/flexslider.css" rel="stylesheet"/>
         <link href="public/themes/css/lienhe.css" rel="stylesheet"/>
         <link href="public/themes/css/main.css" rel="stylesheet"/>
-        <script type="text/javascript" src="public/themes/js/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript" src="public/themes/js/main.js"></script>
-        <script src="public/themes/js/jquery-1.7.2.min.js"></script>
-<script src="public/bootstrap/js/bootstrap.min.js"></script>
-<script src="public/themes/js/superfish.js"></script>
-<script src="public/themes/js/jquery.scrolltotop.js"></script>
-<script src="public/themes/js/jquery.elevateZoom-3.0.8.min.js"></script>
-
-<script src="public/themes/js/jquery.flexslider-min.js"></script>
-<!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<script src="js/respond.min.js"></script>
-<![endif]-->
-<script src="public/themes/js/common.js"></script>
     </head>
     <body>
         <div id="wrapper">
