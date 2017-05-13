@@ -55,7 +55,7 @@
             <li <?= (isset($active) && $active == "lienhe")? "class='active' " : '' ?>><span><span><a href="admin-lienhe">Liên hệ</a></span></span></li>
             <li <?= (isset($active) && $active == "caidat")? "class='active' " : '' ?>><span><span><a href="admin-caidat">Cài đặt</a></span></span></li>
             <li <?= (isset($active) && $active == "user")? "class='active' " : '' ?>><span><span><a href="admin-user">Người dùng</a></span></span></li> -->
-        </ul>
+        </ul> 
     </div>
     <div id="middle">
         <div id="left-column">
