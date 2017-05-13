@@ -6,6 +6,7 @@ class Product extends CI_Controller {
         $this->load->model('Products_model');
 		$this->load->model('Category_model');
         $this->load->helper('url');
+        $this->load->database();
 	}
     function index($data=null) {
         if(!empty($_POST['delete'])) return $this->deteleProduct();
@@ -38,7 +39,6 @@ class Product extends CI_Controller {
     }
     function addProduct() { 
         if(!empty($_POST['product'])) {
-            //var_dump($_POST['product']);exit;
             if(empty($_POST['product']['name'])) $data['error'] = 'Hãy điền tên sản phẩm';
             else { 
         		$insert = array(
@@ -50,14 +50,12 @@ class Product extends CI_Controller {
                 );
                 //var_dump($insert);exit;
                 if(!empty($_FILES['product'])) {
-                
                     /*$config['upload_path']          = './uploads/';
                     $config['allowed_types']        = 'gif|jpg|png';
                     $config['max_size']             = 1000;
                     $this->upload->do_upload($field_name);
                     $this->load->library('upload', $config);
                     */
-
                     $images = null;
                     for($i=0;$i<count($_FILES['product']['name']['image']);$i++) {
                         $filename = $_FILES['product']['name']['image'][$i];
@@ -76,20 +74,17 @@ class Product extends CI_Controller {
                     }
                     if(!empty($images)) $insert['thumb'] = $images[0]['url'];
                 }
-
-        		if($id=$this->Products_model->addProducts($insert)) {
+        		if($id=$this->Products_model->addProduct($insert)) {
                     if(!empty($images)) {
                         for($i=0;$i<count($images);$i++) {
                             $images[$i]['product_id'] = $id;
                         }
-
                         $this->Products_model->addImageProducts($images);
                     }
                     $data['success'] = 'Thêm sản phẩm thành công';
                     return $this->index($data);
                 } else $data['error'] = 'Thêm sản phẩm thất bại';
         	}
-        	
         }
         $data['active'] = 'sanpham';
         $data['categorys'] = $this->Category_model->getAllCategory();
@@ -100,46 +95,50 @@ class Product extends CI_Controller {
         $this->load->view('admin/common/admin-footer.php', $data);
     }
     function updateProduct($id) {
-        if(!empty($_POST)) {
-        	if(empty($_POST['name'])) $data['error'] = 'Hãy điền tên sản phẩm';
-            elseif(empty($_POST['thumb'])) $data['error'] = 'Hãy điền ảnh sản phẩm';
-            else {
-            	$data = array(
-                    'name' => $_POST['name'],
-                    'price' => $_POST['price'],
-                    'category_id' => $_POST['category'],
-                    'description' => $_POST['description'],
-                    'thumb' => $_POST['thumb'],
+        if(!empty($_POST['product'])) {
+            if(empty($_POST['product']['name'])) $data['error'] = 'Hãy điền tên sản phẩm';
+            else { 
+                $update = array(
+                    'name' => $_POST['product']['name'],
+                    'price' => $_POST['product']['price'],
+                    'category_id' => @implode(',',$_POST['product']['categorys']),
+                    'description' => $_POST['product']['description'],
+                    'display' => isset($_POST['product']['display']) ? 1 : 0,
                 );
-            	$this->Products_model->updateProduct($data,$id);
-                $data['success'] = 'Update sản phẩm thành công';
+                if($this->Products_model->updateProduct($update,$id)) $data['success'] = 'Cập nhập sản phẩm thành công';
+                else $data['error'] = 'Cập nhập sản phẩm thất bại: '.$this->db->last_query();;
+
             }
         }
         $data['product'] = $this->Products_model->getProducts($id);
         $data['product']->image = $this->Products_model->getImageProducts($id);
         $data['product']->category_name = $this->Category_model->getNameCategory($data['product']->category_id);
+        $data['active'] = 'sanpham';
+        $data['categorys'] = $this->Category_model->getAllCategory();
         
         $data['active'] = 'sanpham';
 
         $this->load->view('admin/common/admin-header.php', $data);
-        $this->load->view('admin/addproduct.php', $data);
+        $this->load->view('admin/editproduct.php', $data);
         $this->load->view('admin/common/admin-footer.php', $data);
     }
     function deteleProduct($id=null) {
+
         $data = null;
         if($id) {
         	if($this->Products_model->deleteProduct($id)) $data['success'] = 'Xóa sản phẩm thành công';
             else $data['error'] = 'Xóa sản phẩm thất bại';
         } else if(!empty($_POST['delete'])) {
             foreach ($_POST['delete'] as $key => $value) {
-                $ids[] = (int) $value;
-            }
-            //var_dump(array(4,5));var_dump($ids);exit;
 
+                $ids[] = (int) $value;
+
+            }
             if($this->Products_model->deleteProducts($ids))
                 $data['success'] = 'Xóa các sản phẩm thành công';
             else $data['error'] = 'Xóa các sản phẩm thất bại';
         }
+        unset($_POST['delete']);
         return $this->index($data);
     }
 }

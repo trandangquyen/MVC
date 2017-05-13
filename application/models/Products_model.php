@@ -58,16 +58,17 @@ class Products_model extends CI_Model
     public function deleteProducts($array_id) {
         $this->db->where_in("id",$array_id);
         if($this->db->delete('product')) return true;
+     
         return false;
     }
-    public function addProducts($data=array()) {
+    public function addProduct($data=array()) {
         if($this->db->insert('product', $data)) return $this->db->insert_id();
         return false;
     }
-    public function updateProducts($data=array(),$product_id) {
+    public function updateProduct($data=array(),$product_id) {
         $this->db->set($data);
         $this->db->where('id', $product_id);
-        $this->db->update('product'); 
+        if($this->db->update('product')) return true;
         return false;
     }
 }
