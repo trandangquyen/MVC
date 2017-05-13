@@ -62,7 +62,7 @@
             <h3>Danh mục</h3>
             <ul class="nav">
                 <li <?= (isset($active) && $active == "sanpham")? "class='active' " : '' ?>><a href="admin/product">Sản phẩm</a></li>
-                <li <?= (isset($active) && $active == "category")? "class='active' " : '' ?>><a href="admin/category">Danh mục</a></li>
+                <li <?= (isset($active) && $active == "category")? "class='active' " : '' ?>><a href="admin/category">Thể loại</a></li>
                 <li <?= (isset($active) && $active == "tintuc")? "class='active' " : '' ?>><a href="admin/news">Tin tức</a></li>
             </ul>
         </div>
