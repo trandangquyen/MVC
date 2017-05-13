@@ -15,7 +15,7 @@
                     if($i==5) break;
                     echo '<li>
                         <a href="index.php/sanpham/'.$product['id'].'"><img src="public/themes/images/product-slider3.jpg" /></a>
-                        <p class="flex-caption bounceInUp">'.nl2br($product['description']).'</p>
+                        <p class="flex-caption bounceInUp">'.nl2br(strip_tags($product['description'])).'</p>
                     </li>';
                     $i++;
                     } ?>
