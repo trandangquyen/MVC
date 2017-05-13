@@ -28,10 +28,16 @@ $route['admin/category'] = 'admin/category';
 $route['admin/category/add'] = 'admin/category/addCategory';
 $route['admin/category/delete/(:num)'] = 'admin/category/deteleCategory/$1';
 $route['admin/category/edit/(:num)'] = 'admin/category/updateCategory/$1';
-
 $route['admin/news'] = 'admin/news';
 $route['admin/news/add'] = 'admin/news/addNews';
 $route['admin/news/delete/(:num)'] = 'admin/news/deteleNews/$1';
 $route['admin/news/edit/(:num)'] = 'admin/news/updateNews/$1';
-
+$route['admin-sanpham'] = 'adminsanpham';
+$route['admin-tintuc'] = 'admintintuc';
+$route['admin-gioithieu'] = 'admingioithieu';
+$route['admin-lienhe'] = 'adminlienhe';
+$route['admin-caidat'] = 'admincaidat';
+$route['admin-user'] = 'adminuser';
+$route['admin-category'] = 'admincategory';
+$route['admin-home'] = 'adminhome';
 
