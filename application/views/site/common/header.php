@@ -9,15 +9,12 @@
         <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
         <!-- bootstrap -->
         <link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        
         <!-- Css for @media screen -->
-        <link href="public/themes/css/bootstrappage.css" rel="stylesheet"/>		
+        <link href="public/themes/css/bootstrappage.css" rel="stylesheet"/>
         <!-- global styles -->
         <link href="public/themes/css/flexslider.css" rel="stylesheet"/>
         <link href="public/themes/css/lienhe.css" rel="stylesheet"/>
         <link href="public/themes/css/main.css" rel="stylesheet"/>
-        <script type="text/javascript" src="public/themes/js/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript" src="public/themes/js/main.js"></script>
     </head>
     <body>
         <div id="wrapper">

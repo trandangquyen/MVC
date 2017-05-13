@@ -12,21 +12,17 @@
 
                     <div id="gallery_01" class="col-xs-2">
                     <div class="list_img_products"   ">
-                        <a class="elevatezoom-gallery active " href="#" data-update="" data-image="public/images/small/image1.jpg" data-zoom-image="public/images/large/image1.jpg">
-                            <img src="public/images/thumb/image1.jpg" width="80%">
-                        </a>
-                        <a class="elevatezoom-gallery active " style="text-align: center; " href="#" data-update="" data-image="public/images/small/image2.jpg" data-zoom-image="public/images/large/image2.jpg">
-                            <img src="public/images/thumb/image2.jpg" width="80%">
-                        </a>
-                        <a class="elevatezoom-gallery active " href="#" data-update="" data-image="public/images/small/image3.jpg" data-zoom-image="public/images/large/image3.jpg">
-                            <img src="public/images/thumb/image3.jpg" width="80%">
-                        </a>
-                        <a class="elevatezoom-gallery active " href="#" data-update="" data-image="public/images/small/image4.jpg" data-zoom-image="public/images/large/image4.jpg">
-                            <img src="public/images/thumb/image4.jpg" width="80%">
-                        </a>
+                        <?php
+                        foreach ($product->image as $image) {
+                            echo '<a class="elevatezoom-gallery active " href="#" data-update="" data-image="'. $image["url"].'" data-zoom-image="'.$image["url_large"].'">
+                            <img src="'.$image['url_thumb'] .'" width="80%">
+                        </a>';
+                        }
+                        ?>
+
                     </div>
                     </div>
-                    <img id="zoom_03f" class="col-xs-10 pull-right" style="text-align: center; border:1px solid #e8e8e6;" src="public/images/small/image1.jpg" data-zoom-image="public/images/large/image1.jpg" >
+                    <img id="zoom_03f" class="col-xs-10 pull-right" style="text-align: center; border:1px solid #e8e8e6;" src="<?php echo $product->thumb ?>" data-zoom-image="<?php echo $product->thumblarge ?>" >
 
 
 

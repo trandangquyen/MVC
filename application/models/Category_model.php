@@ -22,6 +22,13 @@ class Category_model extends CI_Model
         $query=$this->db->get($this->table);
         return $query->result_array();
     }
+    public function getCategory($id){
+        $this->db->select("*");
+        $this->db->where("id",$id);
+        $query=$this->db->get($this->table);
+        if($result=$query->first_row()) return $result;
+        return null;
+    }
 	public function getAllCategory() {
 		$mainCategory = $this->getMainCategory();
         foreach ($mainCategory as $i => $value) {
@@ -34,7 +41,7 @@ class Category_model extends CI_Model
         foreach (explode(',', $ids) as $id) {
             $this->db->where("id",$id);
             $query = $this->db->get($this->table);
-            if($result = $query->first_row()) $data[] = $result->name;
+            if($result = $query->first_row()) $data[$id] = $result->name;
         }
         return $data;
         /*$this->db->where("id",$id);
@@ -54,7 +61,8 @@ class Category_model extends CI_Model
     public function updateCategory($data=array(),$id) {
         $this->db->set($data);
         $this->db->where('id', $id);
-        $this->db->update($this->table); 
+        if($this->db->update($this->table)) return true;
+        return false;
     }
 }
 
