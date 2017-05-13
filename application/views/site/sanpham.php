@@ -3,42 +3,70 @@
 	<div class="row">	
 
 		<div class="product_list col-xs-12">
-			<div class="tittle-box box-center">
-				<img src="public/themes/images/icon.png" alt="" class="icon_tittle">
-				<h3><a href="#"><?=$title?></a></h3>
-			</div> <!-- end tittle -->
-			<div class="conten_product col-xs-12">
-								
-				<div class="col-xs-12 " style = "text-align: center;">
-					<img class = “cloudzoom” src="<?php echo $product->thumb ?>" data-cloudzoom = “zoomImage:‘<?php echo $product->thumb ?>‘”/>
-				</div>
-				<div class="col-xs-12 list_img_product">
-					<?php
-				        foreach ($product->image as $image) {
-				        	echo '<img src="'.$image['url'].'"/>';
-				        }
-				    ?>
-				</div>
-				<div class="col-xs-12 ">										
-					<p style="text-align: center; font-weight: bold; font-size: 24px; color: #ea28ff;"><?php echo $title; ?></p>
+                <div class="tittle-box box-center">
+                    <img src="public/themes/images/icon.png" alt="" class="icon_tittle">
+                    <h3><a href="#"><?=$title?></a></h3>
+                </div> <!-- end tittle -->
+                <div class="conten_product col-xs-12" style="width=" 500pxfloat:left;="" "="">
+                    
 
-					<div class="col-xs-4 col-xs-push-4" style = "height: auto;padding: 10px;margin: 10px; text-align: center; font-weight: bold; font-size: 22px;   
-					background: -webkit-linear-gradient(top,#f59000,#fd6e1d); border-radius: 4px ">
-						<?php
-				        	echo($product->price);
-				    	?>
+                    <div id="gallery_01" class="col-xs-2">
+                    <div class="list_img_products"   ">
+                        <a class="elevatezoom-gallery active " href="#" data-update="" data-image="public/images/small/image1.jpg" data-zoom-image="public/images/large/image1.jpg">
+                            <img src="public/images/thumb/image1.jpg" width="80%">
+                        </a>
+                        <a class="elevatezoom-gallery active " style="text-align: center; " href="#" data-update="" data-image="public/images/small/image2.jpg" data-zoom-image="public/images/large/image2.jpg">
+                            <img src="public/images/thumb/image2.jpg" width="80%">
+                        </a>
+                        <a class="elevatezoom-gallery active " href="#" data-update="" data-image="public/images/small/image3.jpg" data-zoom-image="public/images/large/image3.jpg">
+                            <img src="public/images/thumb/image3.jpg" width="80%">
+                        </a>
+                        <a class="elevatezoom-gallery active " href="#" data-update="" data-image="public/images/small/image4.jpg" data-zoom-image="public/images/large/image4.jpg">
+                            <img src="public/images/thumb/image4.jpg" width="80%">
+                        </a>
+                    </div>
+                    </div>
+                    <img id="zoom_03f" class="col-xs-10 pull-right" style="text-align: center; border:1px solid #e8e8e6;" src="public/images/small/image1.jpg" data-zoom-image="public/images/large/image1.jpg" >
 
-					</div>
 
-					<div class="col-xs-12">
-						<span>
-							<?=nl2br($product->description)?>
-						</span>
-					</div>
-					
-				</div>
-			</div> <!-- end conten_product -->
-		</div> <!-- end conten_product -->
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#zoom_03f").elevateZoom({
+                                zoomType                : "inner",
+                                //cursor: "crosshair"
+                                constrainType:"height", 
+                                constrainSize:450,
+                                //zoomType: "lens", 
+                                containLensZoom: true, 
+                                gallery:'gallery_01', 
+                                cursor: 'pointer', 
+                                easing : true,
+                                galleryActiveClass: "active"
+                            }); 
+                        });
+                    </script>
+
+                        <div class="col-xs-12 ">                                        
+                            <p style="text-align: center; font-weight: bold; font-size: 24px;padding-top: 11px;
+    margin-bottom: -3px; color: #ea28ff;"><?php echo $title; ?></p>
+
+                            <div class="col-xs-4 col-xs-push-4" style = "height: auto;padding: 2px;margin: 2px; text-align: center; font-weight: bold; font-size: 29px; color: red; ">
+                            <?php
+                            echo($product->price);
+                            ?>
+
+                        </div>
+
+                        <div class="col-xs-12 ">
+                            <span>
+                                <?=nl2br($product->description)?>
+                            </span>
+                        </div>
+
+                    </div>
+                </div> <!-- end conten_product -->
+            </div> <!-- end conten_product -->
         <!--User Comments -->
         <div class="commnent">
             <h3>Ý kiến đánh giá sản phẩm:</h3>
