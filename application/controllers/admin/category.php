@@ -6,6 +6,7 @@ class Category extends CI_Controller {
 		$this->load->model('Category_model');
 	}
     function index($data=null) {
+        if(!empty($_POST['delete'])) return $this->deteleCategory();
         $this->load->library('pagination');
 
         $data['categorys'] = $this->Category_model->getAllCategory();
@@ -23,7 +24,7 @@ class Category extends CI_Controller {
         if($page<1) $page = 1;
         $start = ($page-1)*$config['per_page'];
 
-        $data['active'] = 'theloai';
+        $data['active'] = 'category';
     	$data['categorys'] = $this->Category_model->getAllCategory();
         $this->load->view('admin/common/admin-header.php', $data);
         $this->load->view('admin/category',$data);
@@ -54,16 +55,20 @@ class Category extends CI_Controller {
     	$this->Category_model->updateCategory($data,$id);
         return $this->index($data);
     }
-    function deteleCategory() {
-        if(!isset($_POST['categorys'])) $data['error'] = 'Không thể xác định thể loại';
-        elseif(is_array($_POST['categorys'])) {
-            foreach ($_POST['categorys'] as $id) {
-                $this->Category_model->deteleCategory($id);
+    function deteleCategory($id=null) {
+        $data = null;
+        if($id) {
+            if($this->Category_model->deleteCategory($id)) $data['success'] = 'Xóa thể loại thành công';
+            else $data['error'] = 'Xóa thể loại thất bại';
+        } else if(!empty($_POST['delete'])) {
+            foreach ($_POST['delete'] as $key => $value) {
+                $ids[] = (int) $value;
             }
-            $data['success'] = 'Xóa các thể loại thành công';
-        } else if($this->Category_model->deteleCategory($_POST['categorys'])) $data['success'] = 'Xóa thể loại thành công';
-        else $data['error'] = 'Xóa thể loại thất bại';
-
+            if($this->Category_model->deleteCategory($ids))
+                $data['success'] = 'Xóa các thể loại thành công';
+            else $data['error'] = 'Xóa các thể loại thất bại';
+        }
+        unset($_POST['delete']);
         return $this->index($data);
     }
 }
