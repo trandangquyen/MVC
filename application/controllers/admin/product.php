@@ -33,7 +33,7 @@ class Product extends CI_Controller {
         $data['active'] = 'sanpham';
 
         $this->load->view('admin/common/admin-header.php', $data);
-        $this->load->view('admin/sanpham.php', $data);
+        $this->load->view('admin/product.php', $data);
         $this->load->view('admin/common/admin-footer.php', $data);
 
     }
