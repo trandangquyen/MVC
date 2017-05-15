@@ -42,9 +42,9 @@ class News_model extends CI_Model
         if($result=$query->result_array()) return $result;
         return null;
     }
-    public function deleteNews($news_id) {
-        $this->db->select("*");
-        $this->db->where("id",$news_id);
+    public function deleteNews($id) {
+        if(is_array($id)) $this->db->where_in("id",$id);
+        else $this->db->where("id",$id);
         if($this->db->delete($this->table)) return true;
         return false;
     }

@@ -36,7 +36,7 @@ class Category extends CI_Controller {
             else { 
                 $insert = array(
                     'name' => $_POST['category']['name'],
-                    'parent' => @implode(',',$_POST['category']['perent']),
+                    'parent' => (int)$_POST['category']['perent'],
                     'description' => $_POST['category']['description'],
                 );
                 if($id=$this->Category_model->addCategory($insert)) {
