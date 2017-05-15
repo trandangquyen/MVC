@@ -5,7 +5,7 @@ class Product extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Products_model');
 	}
-    function index($data=null;) {
+    function index($data=null) {
     	//var_dump($this->Product_model->getAllProduct());
         $this->load->view('admin/product', $data);
     }

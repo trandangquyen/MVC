@@ -275,6 +275,15 @@ ol, ul {
     text-align: left;
 
 }
+.btn-add-to-cart {
+    background: -webkit-linear-gradient(top,#f59000,#fd6e1d);
+    border-radius: 4px;
+    font-weight: bold;
+}
+.btn-add-to-cart :hover{
+    background: -webkit-linear-gradient(top,#f59033,#fd6e3d);
+    
+}
 .product_item:hover .item-descript {
     top:0;
     opacity: 1;
