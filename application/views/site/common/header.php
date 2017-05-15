@@ -54,11 +54,15 @@
             </div>
             <!-- End Header -->
             <script type="text/javascript">
-                $('input[type=text]').on('keydown', function(e) {
+                $('input[name=keyword]').on('keydown', function(e) {
                     if (e.which == 13) {
                         submitSearch();
                     }
                 });
+                var searchQuery = window.location.href.match(/search\/(.+)/);
+                if(searchQuery) {
+                    $('input[name=keyword]').val(searchQuery[1]);
+                }
                 function submitSearch() {
                     var keyword = $('input[name=keyword]').val();
                     if(keyword.length < 3) return alert('Min 3 char');
