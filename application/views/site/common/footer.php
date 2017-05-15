@@ -17,19 +17,6 @@
     </div>
 
 </div><!-- End Wrapper -->
-<!-- scripts -->
-<script src="public/themes/js/jquery-1.7.2.min.js"></script>
-<script src="public/bootstrap/js/bootstrap.min.js"></script>
-<script src="public/themes/js/superfish.js"></script>
-<script src="public/themes/js/jquery.scrolltotop.js"></script>
-<script src="public/themes/js/jquery.flexslider-min.js"></script>
-<!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<script src="js/respond.min.js"></script>
-<![endif]-->
-<script src="public/themes/js/jquery.elevateZoom-3.0.8.min.js"></script>
-<script type="text/javascript" src="public/themes/js/main.js"></script>
-<script src="public/themes/js/common.js"></script>
 
 </body>
 </html>

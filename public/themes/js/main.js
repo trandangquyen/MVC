@@ -1,3 +1,8 @@
+
+function format_curency(a) {
+  	return a.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")+' đ';
+}
+
 $(document).ready(function() {
 	var win = $(window);
 	var loadmore = false;

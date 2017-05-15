@@ -39,15 +39,20 @@
                                 cursor: 'pointer', 
                                 easing : true,
                                 galleryActiveClass: "active"
-                            }); 
+                            });
+
+                            var price = $('.product-price').text().trim();
+                            $('.product-price').text(format_curency(price));
+
                         });
+                        ;
                     </script>
 
                         <div class="col-xs-12 ">                                        
                             <p style="text-align: center; font-weight: bold; font-size: 24px;padding-top: 11px;
     margin-bottom: -3px; color: #ea28ff;"><?php echo $title; ?></p>
 
-                            <div class="col-xs-4 col-xs-push-4" style = "height: auto;padding: 2px;margin: 2px; text-align: center; font-weight: bold; font-size: 29px; color: red; ">
+                            <div class="product-price col-xs-4 col-xs-push-4" style = "height: auto;padding: 2px;margin: 2px; text-align: center; font-weight: bold; font-size: 29px; color: red; ">
                             <?php
                             echo($product->price);
                             ?>
