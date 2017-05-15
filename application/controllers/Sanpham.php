@@ -12,9 +12,47 @@ class Sanpham extends CI_Controller {
     }
 
     // list products per category or a category
-	public function index($category=null,$page=1) {
+    public function index($category=null,$page=1) {
         $this->load->library('pagination');
         $data['title'] = 'Danh sách sản phẩm';
+        $data['active'] = 'sanpham';
+        $this->load->view('site/common/header', $data);
+        $listCategory = $this->Category_model->getAllCategory();
+        $this->load->view('site/category', ['category'=>$listCategory]);
+        
+        if($category) {
+            $name = $this->Category_model->getNameCategory($category);
+            $name = end($name);
+            if(!$name) show_404();
+            $data['products'][$name] = $this->Products_model->listProducts($category,null,0,3);
+        } else {
+            //$data['products']['Đánh giá cao nhất'] = $this->Products_model->listProducts(null,'rate',0,6);
+            //$data['products']['Lượt mua'] = $this->Products_model->listProducts(null,'buys',0,6);
+            $data['products']['New'] = $this->Products_model->listProducts(null,null);
+            $config['base_url'] = base_url('index.php/sanpham');
+            $config['total_rows'] = count((array)$data['products']['New']);
+            $config['per_page'] = 6;
+            $config['use_page_numbers'] = true;
+            $config['page_query_string'] = TRUE;
+            $config['first_url'] = site_url('index.php/sanpham');
+            $config['first_link'] = 'Trang đầu';
+            $config['last_link'] = 'Trang cuối';
+            $this->pagination->initialize($config);
+            $page = (int)$this->input->get('per_page', TRUE);
+            if($page<1) $page = 1;
+            $start = ($page-1)*$config['per_page'];
+            $data['products']['New'] = $this->Products_model->listProducts(null,null,$start,6);
+        }
+        
+        $this->load->view('site/listsanpham', $data);
+        $this->load->model('News_model');
+        $listNews = $this->News_model->listNews(null,0,6);
+        $this->load->view('site/common/footer', $data);
+    }
+    // list products per category or a category
+	public function search($keyword) {
+        $this->load->library('pagination');
+        $data['title'] = 'Tìm kiếm '.$keyword;
         $data['active'] = 'sanpham';
         $this->load->view('site/common/header', $data);
         $listCategory = $this->Category_model->getAllCategory();
