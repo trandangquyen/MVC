@@ -48,17 +48,17 @@
                         ;
                     </script>
 
-                        <div class="col-xs-12 ">                                        
-                            <p style="text-align: center; font-weight: bold; font-size: 24px;padding-top: 11px;
+                    <div class="col-xs-12 ">                                        
+                        <p style="text-align: center; font-weight: bold; font-size: 24px;padding-top: 11px;
     margin-bottom: -3px; color: #ea28ff;"><?php echo $title; ?></p>
-
-                            <div class="product-price col-xs-4 col-xs-push-4" style = "height: auto;padding: 2px;margin: 2px; text-align: center; font-weight: bold; font-size: 29px; color: red; ">
-                            <?php
+                        <div class="product-price col-xs-4 col-xs-push-4" style = "height: auto;padding: 2px;margin: 2px; text-align: center; font-weight: bold; font-size: 29px; color: red; ">
+                        <?php
                             echo($product->price);
-                            ?>
-
+                        ?>
                         </div>
-
+                        <div class="clearfix"></div>
+                        <div style="text-align: center;"><button type="button" class="btn btn-primary btn-buy">Mua ngay</button> <button type="button" class="btn btn-success btn-addtocart">Thêm vào giỏ hàng</button></div>
+                        <br /><br />
                         <div class="col-xs-12 ">
                             <span>
                                 <?=nl2br($product->description)?>

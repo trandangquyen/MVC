@@ -48,10 +48,23 @@
                     <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
                     <li <?php echo (isset($active) && $active == 'lienhe') ? 'class = "item current"' : 'class="item"' ?>><a href='lienhe'>Liên hệ</a></li>
                     <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
-
+                    <div id="search" style="float: right;"><input type="text" name="keyword" style="background-color: #f3f2f0;"><button type="button" style="height: 34px;padding: 0 5px;" onclick="submitSearch()">Search</button></div>
                 </ul>
+
             </div>
             <!-- End Header -->
+            <script type="text/javascript">
+                $('input[type=text]').on('keydown', function(e) {
+                    if (e.which == 13) {
+                        submitSearch();
+                    }
+                });
+                function submitSearch() {
+                    var keyword = $('input[name=keyword]').val();
+                    if(keyword.length < 3) return alert('Min 3 char');
+                    window.location.replace('search/'+keyword);
+                }
+            </script>
             <!-- Begin main content -->
             <div id="main-content">
                 <div class="container">
