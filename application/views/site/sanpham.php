@@ -37,6 +37,8 @@
                                 galleryActiveClass: "active"
                             }); 
                         });
+                        
+
                     </script>
 
                     <div class="col-xs-12 ">                                        
@@ -55,7 +57,10 @@
                                 <?=nl2br($product->description)?>
                             </span>
                         </div>
-
+                        <script type="text/javascript">
+                            var price = $('.product-price').text().trim();
+                            $('.product-price').text(format_curency(price));
+                        </script>
                     </div>
                 </div> <!-- end conten_product -->
             </div> <!-- end conten_product -->
