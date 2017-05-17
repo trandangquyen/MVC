@@ -64,7 +64,7 @@
                             $('.btn-buy').click(function() {
                                 $.post('cart', {
                                     type: 'addtocart',
-                                    product_id: $('.btn-addtocart').data('product-id'),
+                                    products: $('.btn-addtocart').data('product-id'),
                                 }, function(data) {
                                     if(data.status) {
                                         location.href = 'cart/';

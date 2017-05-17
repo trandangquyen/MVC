@@ -37,12 +37,13 @@ class Cart extends CI_Controller {
      */
     public function addtoCart($update=false) {
         $product_id = $this->input->post('products');
+        if(!$product_id) exit();
         $quantity = (int)$this->input->post('quantity');
         if($quantity<1) $quantity = 1;
         if(is_array($product_id)) {
             if($update) $this->cart = null;
             foreach ($product_id as $id => $quantity) {
-                $this->cart[$id] = $quantity;
+                if($id) $this->cart[$id] = $quantity;
             }
             $this->saveCart($this->cart);
             $response['debug']['thiscart'] = $this->cart;
