@@ -38,7 +38,7 @@
                         </div>
                     </td>
                     <td>
-                        <input type="number" name="quantity-'.$item['id'].'" id="quantity-'.$item['id'].'" value="'.$item['quantity'].'" onchange="updateQuantity('.$item['id'].',this.value)" style="width:70px">
+                        <input type="number" name="quantity-'.$item['id'].'" id="quantity-'.$item['id'].'" value="'.$item['quantity'].'" style="width:70px">
                     </td>
                     <td class="product_cart"><span id="price-product-'.$item['id'].'" value="'.$item['price'].'">'.$item['price'].'</span></td>
 
@@ -74,6 +74,10 @@
 <script type="text/javascript">
     var products = {};
     $(window).load(function () {
+        updateCart();
+    });
+    $(":input[name^=quantity-]").bind('keyup mouseup', function () {
+        $('.btn-update-cart').show();
         updateCart();
     });
     function updateQuantity(id,quantity) {
