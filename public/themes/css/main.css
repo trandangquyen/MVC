@@ -94,8 +94,6 @@
 input {
     height: 33px;
     clear: both;
-    background-color: #f99704;
-    margin-left: -6px;
     border-radius: 3px;
 
 }
@@ -541,4 +539,10 @@ ol, ul {
 .list_img_products a{
     padding-left: 10%
     padding: 10px;
+}
+
+div#cart {
+    cursor: pointer;
+    float: right;
+    margin-top: 50px;
 }

@@ -7,6 +7,7 @@ class Tintuc extends CI_Controller {
 		$this->load->helper(array('url'));
 		$this->load->model('News_model');
 		$this->load->model('Category_model');
+		$this->load->library('session');
 	}
 
 	// load list news 

@@ -1,6 +1,6 @@
 <?php
 function formatPrice($priceFloat) {
-    $symbol = 'đ';
+    $symbol = '';
 	$symbol_thousand = '.';
 	$decimal_place = 0;
 	$price = number_format($priceFloat, $decimal_place, '', $symbol_thousand);
@@ -17,5 +17,9 @@ function formatPriceArr($array, $col,$replace=false) {
 		}
 	});
 	return $array;
+}
+function getCart() {
+	$CI = & get_instance();
+	return $CI->session->userdata('cart');
 }
 ?>

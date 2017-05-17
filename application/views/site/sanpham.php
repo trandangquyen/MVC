@@ -23,7 +23,7 @@
                     </div>
                     </div>
                     <div class="col-xs-10 col-xs-push-1 smallimage">
-                        <img id="zoom_03f"  width="65%" style="text-align: center; border:1px solid #e8e8e6;" src="<?php echo $product->image[0]['url'] ?>" data-zoom-image="<?php echo $product->image[0]['url'] ?>" >
+                        <img id="zoom_03f"  width="65%" style="text-align: center; border:1px solid #e8e8e6;" src="<?php echo @$product->image[0]['url'] ?>" data-zoom-image="<?php echo @$product->image[0]['url'] ?>" >
                     </div>
 
 
@@ -50,7 +50,7 @@
                         ?>
                         </div>
                         <div class="clearfix"></div>
-                        <div style="text-align: center;"><button type="button" class="btn btn-primary btn-buy">Mua ngay</button> <button type="button" class="btn btn-success btn-addtocart">Thêm vào giỏ hàng</button></div>
+                        <div style="text-align: center;"><button type="button" class="btn btn-primary btn-buy">Mua ngay</button> <button type="button" class="btn btn-success btn-addtocart" data-product-id="<?=$product->id ?>">Thêm vào giỏ hàng</button></div>
                         <br /><br />
                         <div class="col-xs-12 ">
                             <span>
@@ -60,6 +60,32 @@
                         <script type="text/javascript">
                             var price = $('.product-price').text().trim();
                             $('.product-price').text(format_curency(price));
+
+                            $('.btn-buy').click(function() {
+                                $.post('cart', {
+                                    type: 'addtocart',
+                                    product_id: $('.btn-addtocart').data('product-id'),
+                                }, function(data) {
+                                    if(data.status) {
+                                        location.href = 'cart/';
+                                    }
+                                });
+                            });
+                            $('.btn-addtocart').click(function() {
+                                var param = {
+                                    type: 'addtocart',
+                                    products: $('.btn-addtocart').data('product-id'),
+                                };
+                                $.post('cart', param, function(data) {
+                                    if(data.status) {
+                                        $('.btn-addtocart').text('Đã thêm vào giỏ hàng').prop('disabled', true);
+                                        var number = parseInt($('span#count_shopping_cart_store').text())+1;
+                                        if(data.number) number = data.number;
+                                        $('span#count_shopping_cart_store').text(number);
+                                    }
+                                });
+                            });
+
                         </script>
                     </div>
                 </div> <!-- end conten_product -->

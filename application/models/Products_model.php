@@ -1,5 +1,4 @@
 <?php
-include_once(__DIR__ .'/../libraries/function.php');
 class Products_model extends CI_Model
 {
     private $table = 'product';
@@ -7,6 +6,7 @@ class Products_model extends CI_Model
     {
     	parent::__construct();
         $this->load->database();
+        $this->load->helper('functions');
     }
     public function listProducts($category=null,$order=null,$offset=0,$limit=0) {
         $this->db->select("*");
@@ -45,10 +45,19 @@ class Products_model extends CI_Model
         $result = $query->result_array();
         return $result;
 	}
-    public function getProducts($id) {
+    public function getProduct($id,$array=false) {
         $this->db->where("id",$id);
         $query=$this->db->get("product");
-        if($result=$query->first_row()) return $result;
+        if($array) $result=$query->first_row()->row();
+        else $result=$query->first_row();
+        if($result) return $result;
+        return null;
+    }
+    public function getProducts($ids) {
+        $this->db->where_in("id",$ids);
+        $query=$this->db->get("product");
+        $result=$query->result_array();
+        if($result) return $result;
         return null;
     }
     public function addImageProducts($data) { 

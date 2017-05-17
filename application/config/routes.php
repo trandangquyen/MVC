@@ -39,5 +39,7 @@ $route['admin/news/edit/(:num)'] = 'admin/news/updateNews/$1';
 
 
 $route['search/(:any)'] = 'sanpham/search/$1';
+$route['cart']['GET'] = 'cart/viewCart';
+$route['cart']['POST'] = 'cart/actionCart';
 
 

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php 
+if(isset($debug)) echo "<!-- ".json_encode($debug)." -->\n";
+?><!DOCTYPE html>
 <html lang="en">
     <head>
         <base href="<?php echo base_url(); ?>">
@@ -36,6 +38,7 @@
             <div class="header container">
 				<div id="Icon_search">
                     <a href="<?php echo base_url(); ?>"><img src="public/images/header.png" alt="Home"></a>
+                    <div id="cart" style="cursor:pointer;" onclick="window.location='cart'"><span class="icon_cart"><img src="public/images/icon_cart.png" alt="cart"></span><span id="count_shopping_cart_store"><?=count($this->session->userdata('cart')) ?></span> sản phẩm <a href="cart" rel="nofollow"><img src="public/images/btn_giohang.png" alt="thanh toán"></a></div>
                 </div>
                 <ul id='top-menu'>
                     <li class='item<?=(isset($active) && $active == 'home') ? ' current' : '' ?>' id="lintrangchu"><a href='home'>Trang chủ</a></li>

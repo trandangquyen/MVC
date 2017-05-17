@@ -6,6 +6,7 @@ class Sanpham extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->helper(array('url','form'));
+        $this->load->library('session');
         $this->load->database();
         $this->load->model('Products_model');
         $this->load->model('Category_model');
@@ -95,7 +96,7 @@ class Sanpham extends CI_Controller {
         $this->load->model('Category_model');
         $this->load->model('Comment_model');
 
-        if($data['product'] = $this->Products_model->getProducts($id))
+        if($data['product'] = $this->Products_model->getProduct($id))
             $data['product']->category_name = $this->Category_model->getNameCategory($data['product']->category_id);
         else show_404();
         $data['title'] = $data['product']->name;
