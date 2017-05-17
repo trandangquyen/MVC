@@ -38,7 +38,11 @@ class Cart extends CI_Controller {
      */
     public function addtoCart($update=false) {
         $product_id = $this->input->post('products');
-        if(!$product_id) exit();
+        if(!$product_id) {
+            $this->deleteProduct();
+            $this->session->unset_userdata('cart');
+            exit('Delete entry cart');
+        }
         $quantity = (int)$this->input->post('quantity');
         if($quantity<1) $quantity = 1;
         if(is_array($product_id)) {
@@ -70,7 +74,8 @@ class Cart extends CI_Controller {
      */
     public function deleteProduct() {
         $id = $this->input->post('product_id');
-        unset($this->cart[$id]);
+        if($id) unset($this->cart[$id]);
+        else $this->cart = null;
         $this->saveCart();
         $response = array('status' => 1);
         return $this->outputJson($response);
@@ -117,8 +122,11 @@ class Cart extends CI_Controller {
      * @return null
      */
     public function getCart() {
-        //$this->cart = json_decode(get_cookie('cart'),true);
-        $this->cart = $this->session->userdata("cart");
+        $user = ['id'=>1];
+        if($user) {
+            $this->cart = $this->Cart_model->getCart($user['id']);
+        } else $this->cart = $this->session->userdata("cart");
+        
         return $this->cart;
     }
     /**

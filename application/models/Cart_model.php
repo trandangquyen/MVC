@@ -8,7 +8,23 @@ class Cart_model extends CI_Model
         $this->load->database();
     }
     /**
-     * UPDATE: unnecessary
+     * [getCart description]
+     * @param  int $user_id
+     * @return array(['product_id'=>'quantity', ...])
+     */
+    public function getCart($user_id) {
+        $this->db->where("user_id",$user_id);
+        $query = $this->db->get($this->table);
+        if($query->num_rows()>0) {
+            $result = $query->result_array();
+            foreach ($result as $item) {
+                $dbCart[$item['product_id']] = $item['quantity'];
+            }
+            return $dbCart;
+        }
+        return null;
+    }
+    /**
      * 
      * [deleteCart description]
      * @param  [type]  $user_id    [description]
@@ -26,10 +42,11 @@ class Cart_model extends CI_Model
     /**
      * [updateCart      insert/update cart to database]
      * @param  int      $user_id
-     * @param  array    $cart       array(['product_id'=>'quantity'])
+     * @param  array    $cart       array(['product_id'=>'quantity', ...])
      * @return void
      */
-    public function updateCart($user_id,$cart) {
+    public function updateCart($user_id,$cart=null) {
+        if(empty($cart)) return $this->deleteCart($user_id);
         $debug = null;
         // First, check product in cart exist in table cart or not, if exist, update them, else insert
         $this->db->select("*");
