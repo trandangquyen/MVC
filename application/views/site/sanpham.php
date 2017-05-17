@@ -50,7 +50,7 @@
                         ?>
                         </div>
                         <div class="clearfix"></div>
-                        <div style="text-align: center;"><button type="button" class="btn btn-primary btn-buy">Mua ngay</button> <button type="button" class="btn btn-success btn-addtocart" data-product-id="<?=$product->id ?>">Thêm vào giỏ hàng</button></div>
+                        <div style="text-align: center;"><button type="button" class="btn btn-primary btn-buy">Mua ngay</button> <button type="button" class="btn btn-success btn-addtocart" data-product-id="<?=$product->id ?>">Thêm vào giỏ hàng</button> <button type="button" class="btn btn-info btn-compare" data-product-id="<?=$product->id ?>">Thêm vào danh sách so sánh</button></div>
                         <br /><br />
                         <div class="col-xs-12 ">
                             <span>
@@ -60,6 +60,10 @@
                         <script type="text/javascript">
                             var price = $('.product-price').text().trim();
                             $('.product-price').text(format_curency(price));
+
+                            $('.btn-compare').click(function() {
+                                $('.btn-compare').text('So sánh ngay');
+                            });
 
                             $('.btn-buy').click(function() {
                                 $.post('cart', {

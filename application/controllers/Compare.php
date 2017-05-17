@@ -1,14 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Cart extends CI_Controller {
+class Compare extends CI_Controller {
     private $cart;
 	public function __construct() {
         parent::__construct();
         //$this->load->helper(array('cookie'));
         $this->load->library('session');
         $this->load->model('Products_model');
-        $this->load->model('Cart_model');
         $this->cart = $this->getCart();
     }
     /**
@@ -91,7 +90,7 @@ class Cart extends CI_Controller {
                 $products[$i]['quantity'] = $quantity;
                 $newCart[$id] = $quantity;
             }
-            //$this->saveCart($newCart); // save new data cookie cart
+            $this->saveCart($newCart); // save new data cookie cart
             $data['items'] = $products;
         }
         $data['debug'] = $this->getCart();
@@ -107,10 +106,6 @@ class Cart extends CI_Controller {
     public function saveCart($cart=null) {
         $cart = $cart ? $cart : $this->cart;
         $this->session->set_userdata("cart", $cart);
-        $user = ['id'=>1];
-        if($user) {
-            $this->Cart_model->updateCart($user['id'],$cart);
-        }
     }
     /**
      * get cart from session

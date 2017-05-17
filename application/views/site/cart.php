@@ -31,7 +31,7 @@
                     <td class="product_cart">
                         <img src="'.$item['thumb'].'" style="vertical-align: middle; margin-right: 10px; float:left; width:100px;">
                         <div style="margin-left:120px;">
-                            <a href="snapham/'.$item['id'].'" style="text-decoration:none; padding-top:10px; display:block;"><b>'.$item['name'].'</b></a>
+                            <a href="sanpham/'.$item['id'].'" style="text-decoration:none; padding-top:10px; display:block;"><b>'.$item['name'].'</b></a>
                             <p class="red">Mã sản phẩm: '.$item['id'].'</p>
                             <p></p>
                             </p>
