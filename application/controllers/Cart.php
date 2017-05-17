@@ -1,30 +1,32 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+/**
+ * Author: khoazero123@gmail.com
+ */
 class Cart extends CI_Controller {
     private $cart;
 	public function __construct() {
         parent::__construct();
-        //$this->load->helper(array('cookie'));
-        $this->load->library('session');
+        //$this->load->helper(array('cookie')); 
+        $this->load->library('session'); // unnecessary because it set autoload
         $this->load->model('Products_model');
         $this->load->model('Cart_model');
         $this->cart = $this->getCart();
     }
     /**
-     * @return redirect to methob by action
+     * @return redirect to method by action
      */
     public function actionCart() {
         $type = $this->input->post('type');
         switch ($type) {
             case 'addtocart':
-                return $this->addtoCart();
+                return $this->addtoCart(); // add a product to cart
                 break;
             case 'deleteProduct':
                 return $this->deleteProduct();
                 break;
             case 'updateCart':
-                return $this->addtoCart(true);
+                return $this->addtoCart(true); // update entry cart
                 break;
             
             default:
@@ -106,8 +108,8 @@ class Cart extends CI_Controller {
     }
     /**
      * @param  array
-     * save cart to session
-     * @return null
+     * save cart to session, and db if user logged
+     * @return void
      */
     public function saveCart($cart=null) {
         $cart = $cart ? $cart : $this->cart;
@@ -118,15 +120,15 @@ class Cart extends CI_Controller {
         }
     }
     /**
-     * get cart from session
-     * @return null
+     * get cart from db if user logged, else get from session
+     * @return array(['product_id'=>'quantity', ...])
      */
     public function getCart() {
         $user = ['id'=>1];
         if($user) {
             $this->cart = $this->Cart_model->getCart($user['id']);
         } else $this->cart = $this->session->userdata("cart");
-        
+
         return $this->cart;
     }
     /**

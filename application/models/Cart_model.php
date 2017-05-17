@@ -1,4 +1,7 @@
 <?php
+/**
+ * Author: khoazero123@gmail.com
+ */
 class Cart_model extends CI_Model
 {
     private $table = 'cart';
