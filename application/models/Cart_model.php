@@ -31,6 +31,7 @@ class Cart_model extends CI_Model
      */
     public function updateCart($user_id,$cart) {
         $debug = null;
+        // First, check product in cart exist in table cart or not, if exist, update them, else insert
         $this->db->select("*");
         $this->db->where("user_id",$user_id);
         $query=$this->db->get($this->table);
@@ -39,9 +40,14 @@ class Cart_model extends CI_Model
             foreach ($result as $item) {
                 $dbCart[$item['product_id']] = $item['quantity'];
             }
-            $data['insert'] = array_diff_key($cart, $dbCart);       // return array('product_id'=>'quantity')
-            $data['delete'] = array_diff_key($dbCart, $cart);       // return array('product_id'=>'quantity')
-            $data['update'] = array_intersect_key($cart, $dbCart);  // return array('product_id'=>'quantity')
+            // return array('product_id'=>'quantity') => Filter products that have not been in table cart, then insert them.
+            $data['insert'] = array_diff_key($cart, $dbCart);
+
+            // return array('product_id'=>'quantity') => Filter products in table cart don't have in $cart, then delete them in table.
+            $data['delete'] = array_diff_key($dbCart, $cart);
+
+            // return array('product_id'=>'quantity') => Filter products that have both table cart and $cart, then update them.
+            $data['update'] = array_intersect_key($cart, $dbCart);
 
             if(!empty($data['delete'])) {
                 $debug['delete'] = $data['update'];
