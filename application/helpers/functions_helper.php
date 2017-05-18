@@ -1,4 +1,4 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 function formatPrice($priceFloat) {
     $symbol = '';
 	$symbol_thousand = '.';
@@ -18,8 +18,25 @@ function formatPriceArr($array, $col,$replace=false) {
 	});
 	return $array;
 }
-function getCart() {
+function getCart($user_id=false) {
 	$CI = & get_instance();
-	return $CI->session->userdata('cart');
+	$CI->load->model('Cart_model');
+	if($user_id) {
+        $cart = $CI->Cart_model->getCart($user_id);
+        if($cart) $CI->session->set_userdata("cart", $cart);
+    } else $cart = $CI->session->userdata("cart");
+    return $cart;
+}
+function getUser($user_id=false) {
+	$CI = & get_instance();
+	$CI->load->model('User_model');
+	if($user_id) {
+        $user = $CI->User_model->getUser($user_id);
+        if($user) {
+        	return $user;
+        	//$CI->session->set_userdata("user", $user);
+        }
+    } else $user = $CI->session->userdata("user");
+    return $user;
 }
 ?>

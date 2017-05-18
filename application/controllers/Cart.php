@@ -52,7 +52,7 @@ class Cart extends CI_Controller {
             foreach ($product_id as $id => $quantity) {
                 if($id) $this->cart[$id] = $quantity;
             }
-            $this->saveCart($this->cart);
+            $this->saveCart(false,$this->cart);
             $response['debug']['thiscart'] = $this->cart;
         } else if(isset($this->cart[$product_id])) {
             //$response = array('message' => 'Sản phẩm đã có trong giỏ hàng');
@@ -61,7 +61,7 @@ class Cart extends CI_Controller {
             $this->cart[$product_id] = $quantity;
         }
 
-        $this->saveCart();
+        $this->saveCart(false); // $user_id
 
         $response['status'] = 1;
         $response['number'] = count($this->getCart());
@@ -78,7 +78,7 @@ class Cart extends CI_Controller {
         $id = $this->input->post('product_id');
         if($id) unset($this->cart[$id]);
         else $this->cart = null;
-        $this->saveCart();
+        $this->saveCart(false); // $user_id
         $response = array('status' => 1);
         return $this->outputJson($response);
     }
@@ -91,14 +91,11 @@ class Cart extends CI_Controller {
         if(!empty($this->cart)) {
             $ids = array_keys($this->cart);
             $products = $this->Products_model->getProducts($ids);
-            $newCart = array(); // set new cookie for cart to filter product not exists
             for($i=0;$i<count($products);$i++) {
                 $id = $products[$i]['id'];
                 $quantity = $this->cart[$id];
                 $products[$i]['quantity'] = $quantity;
-                $newCart[$id] = $quantity;
             }
-            //$this->saveCart($newCart); // save new data cookie cart
             $data['items'] = $products;
         }
         $data['debug'] = $this->getCart();
@@ -111,22 +108,21 @@ class Cart extends CI_Controller {
      * save cart to session, and db if user logged
      * @return void
      */
-    public function saveCart($cart=null) {
+    public function saveCart($user_id=false,$cart=null) {
         $cart = $cart ? $cart : $this->cart;
         $this->session->set_userdata("cart", $cart);
-        $user = ['id'=>1];
-        if($user) {
-            $this->Cart_model->updateCart($user['id'],$cart);
+        if($user_id) {
+            $this->Cart_model->updateCart($user_id,$cart);
         }
     }
     /**
      * get cart from db if user logged, else get from session
      * @return array(['product_id'=>'quantity', ...])
      */
-    public function getCart() {
-        $user = ['id'=>1];
-        if($user) {
-            $this->cart = $this->Cart_model->getCart($user['id']);
+    public function getCart($user_id=false) {
+        if($user_id) {
+            $this->cart = $this->Cart_model->getCart($user_id);
+            if($this->cart) $this->session->set_userdata("cart", $this->cart);
         } else $this->cart = $this->session->userdata("cart");
 
         return $this->cart;
