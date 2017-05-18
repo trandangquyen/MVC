@@ -20,8 +20,8 @@ function formatPriceArr($array, $col,$replace=false) {
 }
 function getCart($user_id=false) {
 	$CI = & get_instance();
-	$CI->load->model('Cart_model');
 	if($user_id) {
+		$CI->load->model('Cart_model');
         $cart = $CI->Cart_model->getCart($user_id);
         if($cart) $CI->session->set_userdata("cart", $cart);
     } else $cart = $CI->session->userdata("cart");
@@ -29,8 +29,8 @@ function getCart($user_id=false) {
 }
 function getUser($user_id=false) {
 	$CI = & get_instance();
-	$CI->load->model('User_model');
 	if($user_id) {
+		$CI->load->model('User_model');
         $user = $CI->User_model->getUser($user_id);
         if($user) {
         	return $user;

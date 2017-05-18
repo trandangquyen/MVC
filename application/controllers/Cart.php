@@ -28,6 +28,9 @@ class Cart extends CI_Controller {
             case 'updateCart':
                 return $this->addtoCart(true); // update entry cart
                 break;
+            case 'applyCoupon':
+                return $this->applyCoupon(); // update entry cart
+                break;
             
             default:
                 return $this->outputJson(['message'=>'Unknown action']);
@@ -127,12 +130,18 @@ class Cart extends CI_Controller {
 
         return $this->cart;
     }
+    public function applyCoupon($code=null) {
+        if(!$code) $code = $this->input->post('code');
+        $response = array('status' => 1);
+        $response = array('message' => 'Coupon code not valid');
+        return $this->outputJson($response);
+    }
     /**
      * @param  array
      * @return json
      */
     public function outputJson($response=null) {
-        $response['status'] = $response['status'] || 0;
+        $response['status'] = isset($response['status']) ? $response['status'] : 0;
         $this->output
                 ->set_status_header(200)
                 ->set_content_type('application/json', 'utf-8')

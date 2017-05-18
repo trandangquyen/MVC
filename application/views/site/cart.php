@@ -59,7 +59,13 @@
             
         </tbody>
     </table>
-    <div class="clear space2"></div>
+    <div class="clear space2"></div><br />
+    <div align="left" style="width: 50%;float: left;">
+        <input type="text" class="form-control" id="coupon-code" placeholder="Enter your coupon here" style="width: 190px;float: left;">
+        <button type="button" class="btn btn-default btn-apply-coupon">Apply</button> 
+        <span id="coupon-info" style="display: none;">Enter coupon code</span>
+
+    </div>
     <div align="right">
         <button type="button" class="btn btn-primary btn-update-cart" onclick="saveCart();" style="display: none;">Cập nhập</button> <button type="button" class="btn btn-primary btn-shopping" onclick="location.href = 'sanpham';">Mua tiếp</button> <button type="button" class="btn btn-success btn-payment" onclick="payment();">Thanh toán</button>
     </div>
@@ -75,6 +81,22 @@
     var products = {};
     $(window).load(function () {
         updateCart();
+    });
+    $('.btn-apply-coupon').click(function() {
+        $('#coupon-info').toggle();
+        var code = $('#coupon-code').val();
+        if(code.length < 1) {
+            $('#coupon-code').addClass("has-error");
+            $('#coupon-info').show().text('Enter coupon code').addClass("text-danger");
+        } else {
+            $.post('cart', {type:'applyCoupon',code:code}, function(data) {
+                if(data.status) {
+                    $('#coupon-info').show().text('Coupon code apply success').addClass("text-success");
+                } else {
+                    $('#coupon-info').show().text(data.message).addClass("text-danger");
+                }
+            });
+        }
     });
     $(":input[name^=quantity-]").bind('keyup mouseup', function () {
         $('.btn-update-cart').show();
@@ -114,6 +136,7 @@
     function payment() {
         console.log(products);
         if(jQuery.isEmptyObject(products)) return alert('Giỏ hàng trống');
+        else alert('Chức năng thanh toán đâng được phát triển');
         //$.post('cart', param, function(data) {});
     }
 </script>
