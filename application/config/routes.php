@@ -43,3 +43,7 @@ $route['cart']['GET'] = 'cart/viewCart';
 $route['cart']['POST'] = 'cart/actionCart';
 
 
+$route['compare']['GET'] = 'Compare/viewCompare';
+$route['compare']['POST'] = 'Compare/actionCompare';
+
+

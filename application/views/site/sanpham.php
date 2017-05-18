@@ -62,7 +62,18 @@
                             $('.product-price').text(format_curency(price));
 
                             $('.btn-compare').click(function() {
-                                $('.btn-compare').text('So sánh ngay');
+                                
+                                var param = {
+                                    type: 'addtocompare',
+                                    products: $('.btn-addtocart').data('product-id'),
+                                };
+                                $.post('compare', param, function(data) {
+                                    if(data.status) {
+                                        var number = data.number;
+                                        $('.btn-compare').text('So sánh ngay ('+number+' sp)');
+                                        $('.btn-compare').attr("onclick","window.location='compare'");
+                                    }
+                                });
                             });
 
                             $('.btn-buy').click(function() {

@@ -2,28 +2,27 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Compare extends CI_Controller {
-    private $cart;
+    private $compare;
 	public function __construct() {
         parent::__construct();
-        //$this->load->helper(array('cookie'));
         $this->load->library('session');
         $this->load->model('Products_model');
-        $this->cart = $this->getCart();
+        $this->compare = $this->getCompare();
     }
     /**
-     * @return redirect to methob by action
+     * @return redirect to method by action
      */
-    public function actionCart() {
+    public function actionCompare() {
         $type = $this->input->post('type');
         switch ($type) {
-            case 'addtocart':
-                return $this->addtoCart();
+            case 'addtocompare':
+                return $this->addtoCompare();
                 break;
             case 'deleteProduct':
                 return $this->deleteProduct();
                 break;
-            case 'updateCart':
-                return $this->addtoCart(true);
+            case 'updateCompare':
+                return $this->addtoCompare(true);
                 break;
             
             default:
@@ -32,89 +31,88 @@ class Compare extends CI_Controller {
         }
     }
     /**
-     * @param  boolean $update: True will be reset cart
+     * addtoCompare: add products to list compare products
+     * @param  boolean $update: True will be reset compare
      * @return json
      */
-    public function addtoCart($update=false) {
+    public function addtoCompare($update=false) {
         $product_id = $this->input->post('products');
         if(!$product_id) exit();
-        $quantity = (int)$this->input->post('quantity');
-        if($quantity<1) $quantity = 1;
         if(is_array($product_id)) {
-            if($update) $this->cart = null;
-            foreach ($product_id as $id => $quantity) {
-                if($id) $this->cart[$id] = $quantity;
+            if($update) $this->compare = null;
+            foreach ($product_id as $id) {
+                if(!in_array($id,$this->compare)) $this->compare[] = $id;
             }
-            $this->saveCart($this->cart);
-            $response['debug']['thiscart'] = $this->cart;
-        } else if(isset($this->cart[$product_id])) {
-            //$response = array('message' => 'Sản phẩm đã có trong giỏ hàng');
-            $this->cart[$product_id] = $this->cart[$product_id] + 1;
-        } else {
-            $this->cart[$product_id] = $quantity;
+            $this->saveCompare($this->compare);
+            $response['debug']['thiscompare'] = $this->compare;
+        } else if(!in_array($product_id,$this->compare)) {
+            $this->compare[] = $product_id;
         }
 
-        $this->saveCart();
+        $this->saveCompare(); // save list products to session compare
 
         $response['status'] = 1;
-        $response['number'] = count($this->getCart());
-        $response['debug']['data'] = $this->getCart();
-        $response['debug']['post'] = $this->input->post();
+        $response['number'] = count($this->getCompare());
         return $this->outputJson($response);
-        
     }
     /**
-     * delete product from Cart
+     * delete product from compare session
      * @return json
      */
     public function deleteProduct() {
         $id = $this->input->post('product_id');
-        unset($this->cart[$id]);
-        $this->saveCart();
+        unset($this->compare[$id]);
+        if(($key = array_search($id, $this->compare)) !== false) {
+            unset($this->compare[$key]);
+        }
+        $this->saveCompare();
         $response = array('status' => 1);
         return $this->outputJson($response);
     }
     /**
-     * print view Cart
-     * @return html
+     * print view Compare
+     * @return print html
      */
-    public function viewCart() {
-        $data['title'] = 'Giỏ hàng';
-        if(!empty($this->cart)) {
-            $ids = array_keys($this->cart);
+    public function viewCompare() {
+        $data['title'] = 'So sánh';
+        if(!empty($this->compare)) {
+            $ids = $this->compare;
             $products = $this->Products_model->getProducts($ids);
-            $newCart = array(); // set new cookie for cart to filter product not exists
-            for($i=0;$i<count($products);$i++) {
-                $id = $products[$i]['id'];
-                $quantity = $this->cart[$id];
-                $products[$i]['quantity'] = $quantity;
-                $newCart[$id] = $quantity;
+            $compare = array();
+            foreach ($products as $product) {
+                $id = $product['id'];
+                $compare['name'][$id] = $product['name'];
+                $compare['image'][$id] = $product['thumb'];
+                $compare['price'][$id] = $product['price'];
+                $compare['buys'][$id] = $product['buys'];
+                $compare['description'][$id] = $product['description'];
+                $compare['rate'][$id] = $product['rate'];
             }
-            $this->saveCart($newCart); // save new data cookie cart
-            $data['items'] = $products;
+            //var_dump($compare);exit;
+            $data['compare'] = $compare;
         }
-        $data['debug'] = $this->getCart();
+        $data['debug'] = $this->getCompare();
         $this->load->view('site/common/header', $data);
-        $this->load->view('site/cart', $data);
+        $this->load->view('site/compare', $data);
         $this->load->view('site/common/footer', $data);
     }
     /**
      * @param  array
-     * save cart to session
+     * save compare to session
      * @return null
      */
-    public function saveCart($cart=null) {
-        $cart = $cart ? $cart : $this->cart;
-        $this->session->set_userdata("cart", $cart);
+    public function saveCompare($compare=null) {
+        $compare = $compare ? $compare : $this->compare;
+        $this->session->set_userdata("compare", $compare);
     }
     /**
-     * get cart from session
+     * get compare from session
      * @return null
      */
-    public function getCart() {
-        //$this->cart = json_decode(get_cookie('cart'),true);
-        $this->cart = $this->session->userdata("cart");
-        return $this->cart;
+    public function getCompare() {
+        //$this->compare = json_decode(get_cookie('compare'),true);
+        $this->compare = $this->session->userdata("compare");
+        return (array)$this->compare;
     }
     /**
      * @param  array
