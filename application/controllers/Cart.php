@@ -98,6 +98,7 @@ class Cart extends CI_Controller {
                 $id = $products[$i]['id'];
                 $quantity = $this->cart[$id];
                 $products[$i]['quantity'] = $quantity;
+                $products[$i]['total-price'] = $products[$i]['price'] * $quantity;
             }
             $data['items'] = $products;
         }

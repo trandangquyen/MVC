@@ -40,9 +40,9 @@
                     <td>
                         <input type="number" name="quantity-'.$item['id'].'" id="quantity-'.$item['id'].'" value="'.$item['quantity'].'" style="width:70px">
                     </td>
-                    <td class="product_cart"><span id="price-product-'.$item['id'].'" value="'.$item['price'].'">'.$item['price'].'</span></td>
+                    <td class="product_cart"><span class="format-curency" data-price="'.$item['price'].'" id="price-product-'.$item['id'].'">'.$item['price'].'</span></td>
 
-                    <td class="product_cart"><b><span id="price-product-total-'.$item['id'].'">'.$item['price'].'</span></b></td>
+                    <td class="product_cart"><b><span class="format-curency" data-price="'.$item['total-price'].'" id="price-product-total-'.$item['id'].'">'.$item['total-price'].'</span></b></td>
                     <td><a href="javascript:deleteItem('.$item['id'].')"><img src="public/images/icon_del.png"></a></td>
                 </tr>';
             }
@@ -52,7 +52,7 @@
                 </td>
                 <td colspan="4" style="text-align:center; line-height:22px; color:#555">
                     <b>Tổng tiền:</b>
-                    <b style="color:red; font-size:18px;"><span class="sub1" id="total_value" value="" style="color: red; font-weight: bold;">0 đ</span></b><br>
+                    <b style="color:red; font-size:18px;"><span class="format-curency" data-price="" id="total_value" value="" style="color: red; font-weight: bold;">0 đ</span></b><br>
                     <b>Chưa bao gồm phí vận chuyển</b>
                 </td>
             </tr>
@@ -67,7 +67,7 @@
 
     </div>
     <div align="right">
-        <button type="button" class="btn btn-primary btn-update-cart" onclick="saveCart();" style="display: none;">Cập nhập</button> <button type="button" class="btn btn-primary btn-shopping" onclick="location.href = 'sanpham';">Mua tiếp</button> <button type="button" class="btn btn-success btn-payment" onclick="payment();">Thanh toán</button>
+        <button type="button" class="btn btn-info btn-update-cart" onclick="saveCart();" style="display: none;">Cập nhập</button> <button type="button" class="btn btn-primary btn-shopping" onclick="location.href = 'sanpham';">Mua tiếp</button> <button type="button" class="btn btn-success btn-payment" onclick="payment();">Thanh toán</button>
     </div>
     <?php 
             } else {
@@ -81,6 +81,7 @@
     var products = {};
     $(window).load(function () {
         updateCart();
+        price_format();
     });
     $('.btn-apply-coupon').click(function() {
         $('#coupon-info').toggle();
@@ -99,38 +100,47 @@
         }
     });
     $(":input[name^=quantity-]").bind('keyup mouseup', function () {
-        $('.btn-update-cart').show();
+        $('.btn-update-cart').text('Cập nhập giỏ hàng').show();
         updateCart();
     });
-    function updateQuantity(id,quantity) {
-        $('.btn-update-cart').show();
+    /*function updateQuantity(id,quantity) {
+        $('.btn-update-cart').text('Cập nhập giỏ hàng').show();
         updateCart();
-    }
+    }*/
     function deleteItem(id) {
         $('tr#product-'+id).remove();
-        $('.btn-update-cart').show();
+        $('.btn-update-cart').text('Cập nhập giỏ hàng').show();
         updateCart();
-        //$.post('cart', {type:'deleteProduct',product_id:id}, function(data) {});
     }
     function updateCart() {
         products = {};
         var total_orders_price = 0;
         $('tr[id^="product-"]').each(function(i, obj) {
-            //var product_id = obj.id.match(/(\d+)+/)[1];
-            var product_id = $(this).data('product-id');
-            var price = $('#price-product-'+product_id).attr('value').replace( /\D+/g, '');
+            var product_id = $(obj).data('product-id');
+            var price = $('#price-product-'+product_id).data('price');
             var quantity = $('#quantity-'+product_id).val();
             var price_total = price*quantity;
-            $('#price-product-total-'+product_id).text(format_curency(price_total));
+            var price_total_format = format_curency(price_total);
+            $('#price-product-total-'+product_id).text(price_total_format).attr('data-price',price_total);
             total_orders_price += price_total;
             products[product_id] = quantity;
         });
         $('#total_value').text(format_curency(total_orders_price));
-        $('#total_value').attr('value',total_orders_price);
+        $('#total_value').attr('value',total_orders_price).attr('data-price',total_orders_price);
         $('span#count_shopping_cart_store').text($('tr[id^="product-"]').length);
     }
+    function price_format() {
+        $('.format-curency').each(function(i, obj) {
+            var price = $(obj).data('price');
+            var new_price = format_curency(price);
+            if(price>0) $(obj).text(new_price);
+            console.log(price+ ' : '+new_price);
+        });
+    }
     function saveCart() {
-        $.post('cart', {type:'updateCart',products:products}, function(data) {});
+        $.post('cart', {type:'updateCart',products:products}, function(data) {
+            if(data.status) $('.btn-update-cart').text('Đã cập nhập giỏ hàng');
+        });
     }
 
     function payment() {
