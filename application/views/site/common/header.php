@@ -64,7 +64,7 @@ if(isset($debug)) echo "<!-- ".json_encode($debug)." -->\n";
                 });
                 var searchQuery = window.location.href.match(/search\/(.+)/);
                 if(searchQuery) {
-                    $('input[name=keyword]').val(searchQuery[1]);
+                    $('input[name=keyword]').val(decodeURIComponent(searchQuery[1]));
                 }
                 function submitSearch() {
                     var keyword = $('input[name=keyword]').val();

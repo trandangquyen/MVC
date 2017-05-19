@@ -52,6 +52,7 @@ class Sanpham extends CI_Controller {
     }
     // list products per category or a category
 	public function search($keyword) {
+        $keyword = urldecode($keyword);
         $this->load->library('pagination');
         $data['title'] = 'Tìm kiếm '.$keyword;
         $data['active'] = 'sanpham';

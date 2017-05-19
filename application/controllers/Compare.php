@@ -32,7 +32,7 @@ class Compare extends CI_Controller {
     }
     /**
      * addtoCompare: add products to list compare products
-     * @param  boolean $update: True will be reset compare
+     * @param  $update(boolean) - True will be reset compare
      * @return json
      */
     public function addtoCompare($update=false) {
@@ -71,7 +71,6 @@ class Compare extends CI_Controller {
     }
     /**
      * print view Compare
-     * @return print html
      */
     public function viewCompare() {
         $data['title'] = 'So sánh';
@@ -97,9 +96,9 @@ class Compare extends CI_Controller {
         $this->load->view('site/common/footer', $data);
     }
     /**
-     * @param  array
      * save compare to session
-     * @return null
+     * @param  $compare(array) - products for compare
+     * @return void
      */
     public function saveCompare($compare=null) {
         $compare = $compare ? $compare : $this->compare;
@@ -107,7 +106,7 @@ class Compare extends CI_Controller {
     }
     /**
      * get compare from session
-     * @return null
+     * @return array products
      */
     public function getCompare() {
         //$this->compare = json_decode(get_cookie('compare'),true);
@@ -115,7 +114,7 @@ class Compare extends CI_Controller {
         return (array)$this->compare;
     }
     /**
-     * @param  array
+     * @param  $response(array) - notice success or not to browser
      * @return json
      */
     public function outputJson($response=null) {

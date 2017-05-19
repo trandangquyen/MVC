@@ -131,6 +131,11 @@ class Cart extends CI_Controller {
 
         return $this->cart;
     }
+    /**
+     * [applyCoupon description]
+     * @param  string $code [description]
+     * @return boolean      1 if code valid
+     */
     public function applyCoupon($code=null) {
         if(!$code) $code = $this->input->post('code');
         $response = array('status' => 1);

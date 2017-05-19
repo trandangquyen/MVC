@@ -29,7 +29,6 @@ class Cart_model extends CI_Model
     }
     /**
      * 
-     * [deleteCart description]
      * @param  [type]  $user_id    [description]
      * @param  mixed $product_id    if set -> delete only product in cart, else delete entry cart
      * @return boolean              true if delete success
@@ -95,7 +94,6 @@ class Cart_model extends CI_Model
             }
             $this->db->insert_batch($this->table,$insert);
         }
-        //var_dump($debug);
         return true;
     }
 }

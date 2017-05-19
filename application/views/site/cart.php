@@ -27,7 +27,7 @@
             foreach ($items as $item) {
                 $i++;
                 echo '<tr id="product-'.$item['id'].'" data-product-id="'.$item['id'].'">
-                    <td>'.$i.'</td>
+                    <td style="text-align:center;">'.$i.'</td>
                     <td class="product_cart">
                         <img src="'.$item['thumb'].'" style="vertical-align: middle; margin-right: 10px; float:left; width:100px;">
                         <div style="margin-left:120px;">
