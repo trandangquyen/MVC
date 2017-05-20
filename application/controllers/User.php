@@ -60,33 +60,40 @@ class User extends CI_Controller
     */
     public function login()
     {
+        $data = null;
+
         //kiem tra xem thanh vien da dang nhap hay chua
         if($this->_user_is_login())
         {
             //chuyen trang
             redirect();
         }
-        //tao cac tap luat
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('password', 'Mật khẩu', 'required');
-        $this->form_validation->set_rules('login', 'Đăng nhập', 'callback_check_login');
+        if($this->input->post('dologin')) {
+            //tao cac tap luat
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            $this->form_validation->set_rules('password', 'Mật khẩu', 'required');
+            $this->form_validation->set_rules('login', 'Đăng nhập', 'callback_check_login');
 
-        if($this->form_validation->run())
-        {
-            $email    = $this->input->post('email');
-            $password = $this->input->post('password');
-            $password = md5($password);
-            $where = array('email' => $email, 'password' => $password);
-            $user = $this->user_model->get_info_rule($where);
-            $this->session->set_userdata('login', $user);
-            $this->session->set_flashdata('flash_message', 'Đăng nhập thành công');
-
-            redirect();//chuyen toi trang chu
+            if($this->form_validation->run())
+            {
+                $email    = $this->input->post('email');
+                $password = $this->input->post('password');
+                $password = md5($password);
+                $where = array('email' => $email, 'password' => $password);
+                $user = $this->user_model->get_info_rule($where);
+                $this->session->set_userdata('login', $user);
+                $this->session->set_flashdata('flash_message', 'Đăng nhập thành công');
+                $data['message'] = 'Đăng nhập thành công';
+                $data['redirect'] = base_url();
+                //redirect();//chuyen toi trang chu
+            } else {
+                $data['error'] = 'Đăng nhập ko thành công';
+            }
         }
-
+        //var_dump($this->data);exit;
         //gui du lieu sang view
         $this->data['temp'] = 'site/user/login';
-        $this->load->view('site/login', $this->data);
+        $this->load->view('site/login', $data);
     }
 
     /*

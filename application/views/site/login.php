@@ -8,6 +8,8 @@
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
     <link rel="stylesheet" href="public/admin/css/style.css">
+    <link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         .error{
             color: #ed2553;
@@ -39,7 +41,22 @@
     <div class="card"></div>
     <div class="card">
         <h1 class="title">Đăng nhập</h1>
+        <?php
+        if(isset($error))
+            echo '<div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              '.$error.'
+            </div>';
+        elseif(isset($message))
+            echo '<div class="alert alert-info" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              '.$message.'
+            </div>';
+        if(isset($redirect)) echo '<script>setTimeout(function(){window.location.replace("'.$redirect.'");}, 2000);</script>';
+        ?>
         <form method="post" action="user/login" name="login">
+            <input type="hidden" name="dologin" value="true"/>
             <div class="input-container">
                 <input name="email" type="text" id="email"/>
                 <label for="email">Email đăng nhập</label>

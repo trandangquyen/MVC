@@ -39,4 +39,15 @@ function getUser($user_id=false) {
     } else $user = $CI->session->userdata("user");
     return $user;
 }
+function isAdmin($user_id=false) {
+	$CI = & get_instance();
+	if($user_id) {
+		$CI->load->model('User_model');
+        $user = $CI->User_model->getUser($user_id);
+        if($user['admin']==1) {
+        	return true;
+        }
+    }
+    return false;
+}
 ?>

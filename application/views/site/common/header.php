@@ -42,8 +42,7 @@ if(isset($debug)) echo "<!-- ".json_encode($debug)." -->\n";
                 </div>
                 <?php
                     $user = $this->session->userdata('login');
-                    if ($user && $user->id == 1)
-                    {
+                    if ($user && $user->admin == 1) {
                         echo "<div class='login'><a href='admin'><img src='public/themes/images/user-login.png' alt=''>Xin chào: $user->name</a><a href='logout'> Đăng xuất</a></div>";
                     }
                     elseif($user){
