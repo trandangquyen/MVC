@@ -14,52 +14,94 @@
                     <div class="list_img_products"   ">
                         <?php
                         foreach ($product->image as $image) {
-                            echo '<a class="elevatezoom-gallery active " href="#" data-update="" data-image="'. $image["url"].'" data-zoom-image="'.$image["url_large"].'">
-                            <img src="'.$image['url_thumb'] .'" width="80%">
+                            echo '<a class="elevatezoom-gallery active " href="#" data-update="" data-image="'. $image["url"].'" data-zoom-image="'.$image["url"].'">
+                            <img src="'.$image['url'] .'" width="80%">
                         </a>';
                         }
                         ?>
 
                     </div>
                     </div>
-                    <img id="zoom_03f" class="col-xs-10 pull-right" style="text-align: center; border:1px solid #e8e8e6;" src="<?php echo $product->thumb ?>" data-zoom-image="<?php echo $product->thumblarge ?>" >
+                    <div class="col-xs-10 col-xs-push-1 smallimage">
+                        <img id="zoom_03f"  width="65%" style="text-align: center; border:1px solid #e8e8e6;" src="<?php echo @$product->image[0]['url'] ?>" data-zoom-image="<?php echo @$product->image[0]['url'] ?>" >
+                    </div>
 
 
 
                     <script type="text/javascript">
                         jQuery(document).ready(function ($) {
                             $("#zoom_03f").elevateZoom({
-                                zoomType                : "inner",
-                                //cursor: "crosshair"
-                                constrainType:"height", 
-                                constrainSize:450,
-                                //zoomType: "lens", 
-                                containLensZoom: true, 
                                 gallery:'gallery_01', 
                                 cursor: 'pointer', 
                                 easing : true,
                                 galleryActiveClass: "active"
                             }); 
                         });
+                        
+
                     </script>
 
-                        <div class="col-xs-12 ">                                        
-                            <p style="text-align: center; font-weight: bold; font-size: 24px;padding-top: 11px;
+                    <div class="col-xs-12 ">                                        
+                        <p style="text-align: center; font-weight: bold; font-size: 24px;padding-top: 11px;
     margin-bottom: -3px; color: #ea28ff;"><?php echo $title; ?></p>
-
-                            <div class="col-xs-4 col-xs-push-4" style = "height: auto;padding: 2px;margin: 2px; text-align: center; font-weight: bold; font-size: 29px; color: red; ">
-                            <?php
+                        <div class="product-price col-xs-4 col-xs-push-4" style = "height: auto;padding: 2px;margin: 2px; text-align: center; font-weight: bold; font-size: 29px; color: red; ">
+                        <?php
                             echo($product->price);
-                            ?>
-
+                        ?>
                         </div>
-
+                        <div class="clearfix"></div>
+                        <div style="text-align: center;"><button type="button" class="btn btn-primary btn-buy">Mua ngay</button> <button type="button" class="btn btn-success btn-addtocart" data-product-id="<?=$product->id ?>">Thêm vào giỏ hàng</button> <button type="button" class="btn btn-info btn-compare" data-product-id="<?=$product->id ?>">Thêm vào danh sách so sánh</button></div>
+                        <br /><br />
                         <div class="col-xs-12 ">
                             <span>
                                 <?=nl2br($product->description)?>
                             </span>
                         </div>
+                        <script type="text/javascript">
+                            var price = $('.product-price').text().trim();
+                            $('.product-price').text(format_curency(price));
 
+                            $('.btn-compare').click(function() {
+                                
+                                var param = {
+                                    type: 'addtocompare',
+                                    products: $('.btn-addtocart').data('product-id'),
+                                };
+                                $.post('compare', param, function(data) {
+                                    if(data.status) {
+                                        var number = data.number;
+                                        $('.btn-compare').text('So sánh ngay ('+number+' sp)');
+                                        $('.btn-compare').attr("onclick","window.location='compare'");
+                                    }
+                                });
+                            });
+
+                            $('.btn-buy').click(function() {
+                                $.post('cart', {
+                                    type: 'addtocart',
+                                    products: $('.btn-addtocart').data('product-id'),
+                                }, function(data) {
+                                    if(data.status) {
+                                        location.href = 'cart/';
+                                    }
+                                });
+                            });
+                            $('.btn-addtocart').click(function() {
+                                var param = {
+                                    type: 'addtocart',
+                                    products: $('.btn-addtocart').data('product-id'),
+                                };
+                                $.post('cart', param, function(data) {
+                                    if(data.status) {
+                                        $('.btn-addtocart').text('Đã thêm vào giỏ hàng').prop('disabled', true);
+                                        var number = parseInt($('span#count_shopping_cart_store').text())+1;
+                                        if(data.number) number = data.number;
+                                        $('span#count_shopping_cart_store').text(number);
+                                    }
+                                });
+                            });
+
+                        </script>
                     </div>
                 </div> <!-- end conten_product -->
             </div> <!-- end conten_product -->

@@ -19,26 +19,29 @@ $route['ajaxNews'] = 'tintuc/loadAjax';
 
 
 $route['admin'] = 'admin/product';
-$route['admin/product'] = 'admin/product';
+$route['admin/product']['GET'] = 'admin/product';
+$route['admin/product']['POST'] = 'admin/product/deteleProduct'; // do not 
 $route['admin/product/add'] = 'admin/product/addProduct';
 $route['admin/product/delete/(:num)'] = 'admin/product/deteleProduct/$1';
 $route['admin/product/edit/(:num)'] = 'admin/product/updateProduct/$1';
 
-$route['admin/category'] = 'admin/category';
+$route['admin/category']['GET'] = 'admin/category';
+$route['admin/category']['POST'] = 'admin/category/deteleCategory';
 $route['admin/category/add'] = 'admin/category/addCategory';
 $route['admin/category/delete/(:num)'] = 'admin/category/deteleCategory/$1';
 $route['admin/category/edit/(:num)'] = 'admin/category/updateCategory/$1';
-$route['admin/news'] = 'admin/news';
+
+$route['admin/news']['GET'] = 'admin/news/index';
+$route['admin/news']['POST'] = 'admin/news/deteleNews';
 $route['admin/news/add'] = 'admin/news/addNews';
 $route['admin/news/delete/(:num)'] = 'admin/news/deteleNews/$1';
 $route['admin/news/edit/(:num)'] = 'admin/news/updateNews/$1';
-$route['admin-sanpham'] = 'adminsanpham';
-$route['admin-tintuc'] = 'admintintuc';
-$route['admin-gioithieu'] = 'admingioithieu';
-$route['admin-lienhe'] = 'adminlienhe';
-$route['admin-caidat'] = 'admincaidat';
-$route['admin-user'] = 'adminuser';
-$route['admin-category'] = 'admincategory';
-$route['admin-home'] = 'adminhome';
-$route['user'] = 'user/login';
-$route['logout'] = 'user/logout';
+
+
+$route['search/(:any)'] = 'sanpham/search/$1';
+$route['cart']['GET'] = 'cart/viewCart';
+$route['cart']['POST'] = 'cart/actionCart';
+
+
+$route['compare']['GET'] = 'Compare/viewCompare';
+$route['compare']['POST'] = 'Compare/actionCompare';

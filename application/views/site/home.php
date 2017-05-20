@@ -14,7 +14,7 @@
                 foreach ($newProducts as $product) {
                     if($i==5) break;
                     echo '<li>
-                        <a href="index.php/sanpham/'.$product['id'].'"><img src="public/themes/images/product-slider3.jpg" /></a>
+                        <a href="index.php/sanpham/'.$product['id'].'"><img src="'.$product['thumb'].'" /></a>
                         <p class="flex-caption bounceInUp">'.nl2br(strip_tags($product['description'])).'</p>
                     </li>';
                     $i++;

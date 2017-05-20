@@ -110,7 +110,7 @@ class Product extends CI_Controller {
 
             }
         }
-        $data['product'] = $this->Products_model->getProducts($id);
+        $data['product'] = $this->Products_model->getProduct($id);
         $data['product']->image = $this->Products_model->getImageProducts($id);
         $data['product']->category_name = $this->Category_model->getNameCategory($data['product']->category_id);
         $data['active'] = 'sanpham';

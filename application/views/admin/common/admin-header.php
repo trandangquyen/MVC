@@ -55,14 +55,14 @@
             <li <?= (isset($active) && $active == "lienhe")? "class='active' " : '' ?>><span><span><a href="admin-lienhe">Liên hệ</a></span></span></li>
             <li <?= (isset($active) && $active == "caidat")? "class='active' " : '' ?>><span><span><a href="admin-caidat">Cài đặt</a></span></span></li>
             <li <?= (isset($active) && $active == "user")? "class='active' " : '' ?>><span><span><a href="admin-user">Người dùng</a></span></span></li> -->
-        </ul>
+        </ul> 
     </div>
     <div id="middle">
         <div id="left-column">
             <h3>Danh mục</h3>
             <ul class="nav">
                 <li <?= (isset($active) && $active == "sanpham")? "class='active' " : '' ?>><a href="admin/product">Sản phẩm</a></li>
-                <li <?= (isset($active) && $active == "category")? "class='active' " : '' ?>><a href="admin/category">Danh mục</a></li>
+                <li <?= (isset($active) && $active == "category")? "class='active' " : '' ?>><a href="admin/category">Thể loại</a></li>
                 <li <?= (isset($active) && $active == "tintuc")? "class='active' " : '' ?>><a href="admin/news">Tin tức</a></li>
             </ul>
         </div>

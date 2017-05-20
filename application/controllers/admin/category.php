@@ -31,29 +31,48 @@ class Category extends CI_Controller {
         $this->load->view('admin/common/admin-footer.php', $data);
     }
     function addCategory() {
-    	if(!empty($_POST['name'])) $data['error'] = 'Hãy điền tên thể loại';
-        else {
-    		$data = array(
-    			'name' => $_POST['name'],
-    			'description' => $_POST['description'],
-    			'parent' => (int)$_POST['parent'],
-    		);
+        if(!empty($_POST['category'])) {
+            if(empty($_POST['category']['name'])) $data['error'] = 'Hãy điền tên thể loại';
+            else { 
+                $insert = array(
+                    'name' => $_POST['category']['name'],
+                    'parent' => (int)$_POST['category']['perent'],
+                    'description' => $_POST['category']['description'],
+                );
+                if($id=$this->Category_model->addCategory($insert)) {
+                    $data['success'] = 'Thêm thể loại thành công';
+                    return $this->index($data);
+                } else $data['error'] = 'Thêm thể loại thất bại';
+            }
+        }
+        $data['active'] = 'category';
+        $data['categorys'] = $this->Category_model->getAllCategory();
+        //var_dump($data['categorys']);exit;
 
-    		$this->Category_model->addCategory($data);
-            $data['success'] = 'Thêm thể loại thành công';
-    	}
-    	//var_dump($this->Category_model->getAllCategory());
-        return $this->index($data);
+        $this->load->view('admin/common/admin-header.php', $data);
+        $this->load->view('admin/addcategory.php', $data);
+        $this->load->view('admin/common/admin-footer.php', $data);
     }
     function updateCategory($id) {
-    	$id = '';
-    	$data = array(
-			'name' => $_POST['name'],
-			'description' => $_POST['description'],
-			'parent' => (int)$_POST['parent'],
-    	);
-    	$this->Category_model->updateCategory($data,$id);
-        return $this->index($data);
+    	if(!empty($_POST['category'])) {
+            if(empty($_POST['category']['name'])) $data['error'] = 'Hãy điền tên thể loại';
+            else { 
+                $update = array(
+                    'name' => $_POST['category']['name'],
+                    'parent' => (int)$_POST['category']['perent'],
+                    'description' => $_POST['category']['description'],
+                );
+                if($this->Category_model->updateCategory($update,$id)) {
+                    $data['success'] = 'Cập nhập thể loại thành công';
+                } else $data['error'] = 'Cập nhập thể loại thất bại';
+            }
+        }
+    	$data['category'] = $this->Category_model->getCategory($id);
+        $data['categorys'] = $this->Category_model->getAllCategory();
+        //var_dump($data['category']);exit;
+        $this->load->view('admin/common/admin-header.php', $data);
+        $this->load->view('admin/editcategory.php', $data);
+        $this->load->view('admin/common/admin-footer.php', $data);
     }
     function deteleCategory($id=null) {
         $data = null;
