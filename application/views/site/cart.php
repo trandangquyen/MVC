@@ -1,4 +1,3 @@
-<form method="post" enctype="multipart/form-data" action="cart" onsubmit="return check_field()">
 
     <div id="guide_cart">
         <i class="bg icon_large_cart"></i>
@@ -68,6 +67,28 @@
     </div>
     <div align="right">
         <button type="button" class="btn btn-info btn-update-cart" onclick="saveCart();" style="display: none;">Cập nhập</button> <button type="button" class="btn btn-primary btn-shopping" onclick="location.href = 'sanpham';">Mua tiếp</button> <button type="button" class="btn btn-success btn-payment" onclick="payment();">Thanh toán</button>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+  <input type="hidden" name="cmd" value="_cart">
+  <input type="hidden" name="business" value="seller@designerfotos.com">
+  <input type="hidden" name="item_name" value="hat">
+  <input type="hidden" name="item_number" value="123">
+  <input type="hidden" name="amount" value="15.00">
+  <input type="hidden" name="first_name" value="John">
+  <input type="hidden" name="last_name" value="Doe">
+  <input type="hidden" name="address1" value="9 Elm Street">
+  <input type="hidden" name="address2" value="Apt 5">
+  <input type="hidden" name="city" value="Berwyn">
+  <input type="hidden" name="state" value="PA">
+  <input type="hidden" name="zip" value="19312">
+  <input type="hidden" name="night_phone_a" value="610">
+  <input type="hidden" name="night_phone_b" value="555">
+  <input type="hidden" name="night_phone_c" value="1234">
+  <input type="hidden" name="email" value="jdoe@zyzzyu.com">
+  <input type="image" name="submit"
+    src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+    alt="PayPal - The safer, easier way to pay online">
+</form>
+
     </div>
     <?php 
             } else {
@@ -76,7 +97,7 @@
             }
             ?>
     <div class="clear space2"></div>
-</form>
+
 <script type="text/javascript">
     var products = {};
     $(window).load(function () {
@@ -126,6 +147,7 @@
             products[product_id] = quantity;
         });
         $('#total_value').text(format_curency(total_orders_price));
+        //$('input[name=amount]').val(total_orders_price);
         $('#total_value').attr('value',total_orders_price).attr('data-price',total_orders_price);
         $('span#count_shopping_cart_store').text($('tr[id^="product-"]').length);
     }

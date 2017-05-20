@@ -50,7 +50,22 @@
                         ?>
                         </div>
                         <div class="clearfix"></div>
-                        <div style="text-align: center;"><button type="button" class="btn btn-primary btn-buy">Mua ngay</button> <button type="button" class="btn btn-success btn-addtocart" data-product-id="<?=$product->id ?>">Thêm vào giỏ hàng</button> <button type="button" class="btn btn-info btn-compare" data-product-id="<?=$product->id ?>">Thêm vào danh sách so sánh</button></div>
+                        <div style="text-align: center;">
+                            <button type="button" class="btn btn-primary btn-buy">Mua ngay</button> 
+                            <?php 
+                            //var_dump($this->session->userdata("cart"));exit;
+                            //var_dump($this->session->userdata("compare"));exit;
+                            if(is_array($this->session->userdata("cart")) && array_key_exists($product->id,$this->session->userdata("cart")))
+                                echo '<button type="button" class="btn btn-success disable" data-product-id="'.$product->id.'" onclick="window.location=\'cart\'">Đã có trong giỏ hàng</button> ';
+                            else echo '<button type="button" class="btn btn-success btn-addtocart" data-product-id="'.$product->id.'">Thêm vào giỏ hàng</button> ';
+
+                            if(is_array($this->session->userdata("compare")) && in_array($product->id,$this->session->userdata("compare")))
+                                echo '<button type="button" class="btn btn-info btn-compare" data-product-id="'.$product->id.'" onclick="window.location=\'compare\'">Đã có trong danh sách so sánh</button> ';
+                            else echo '<button type="button" class="btn btn-info btn-compare" data-product-id="'.$product->id.'">Thêm vào danh sách so sánh</button> ';
+
+                            ?>
+                            
+                        </div>
                         <br /><br />
                         <div class="col-xs-12 ">
                             <span>
@@ -65,7 +80,7 @@
                                 
                                 var param = {
                                     type: 'addtocompare',
-                                    products: $('.btn-addtocart').data('product-id'),
+                                    products: $('.btn-compare').data('product-id'),
                                 };
                                 $.post('compare', param, function(data) {
                                     if(data.status) {

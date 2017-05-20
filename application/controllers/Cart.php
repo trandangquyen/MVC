@@ -95,7 +95,7 @@ class Cart extends CI_Controller {
      */
     public function viewCart() {
         $data['title'] = 'Giỏ hàng';
-        if(!empty($this->cart)) {
+        if(!empty($this->cart) && is_array($this->cart)) {
             $ids = array_keys($this->cart);
             $products = $this->Products_model->getProducts($ids);
             for($i=0;$i<count($products);$i++) {
