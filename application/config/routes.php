@@ -45,3 +45,13 @@ $route['cart']['POST'] = 'cart/actionCart';
 
 $route['compare']['GET'] = 'Compare/viewCompare';
 $route['compare']['POST'] = 'Compare/actionCompare';
+$route['admin-sanpham'] = 'adminsanpham';
+$route['admin-tintuc'] = 'admintintuc';
+$route['admin-gioithieu'] = 'admingioithieu';
+$route['admin-lienhe'] = 'adminlienhe';
+$route['admin-caidat'] = 'admincaidat';
+$route['admin-user'] = 'adminuser';
+$route['admin-category'] = 'admincategory';
+$route['admin-home'] = 'adminhome';
+$route['user'] = 'user/login';
+$route['logout'] = 'user/logout';
