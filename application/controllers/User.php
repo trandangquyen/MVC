@@ -105,6 +105,7 @@ class User extends CI_Controller
         {
             //xoa session login
             $this->session->unset_userdata('login');
+            $this->session->unset_userdata('cart');
         }
         $this->session->set_flashdata('flash_message', 'Đăng xuất thành công');
         redirect();
