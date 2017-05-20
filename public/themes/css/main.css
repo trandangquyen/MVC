@@ -9,10 +9,23 @@
 }
 /***phan header****/
 .header{
-
+    position: relative;
 }
-
-
+.login{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+.login a:hover{
+    color: #ff7700;
+}
+.login img{
+    position: absolute;
+    left: -30px;
+    top: -1px;
+    width: 20px;
+    height:20px;
+}
 /*** top menu **/
 #top-menu {
     list-style: none;

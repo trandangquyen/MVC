@@ -22,15 +22,15 @@ class Home extends CI_Controller {
 	public function __construct(){
           parent::__construct();
           $this->load->helper(array('url'));
-          $this->load->database();
+//          $this->load->database();
+//          $this->load->library('session');
      }
 	public function index()
 	{ 
         $this->load->library('pagination');
         $this->load->model('Products_model');
         $this->load->model('Category_model');
-        
-
+        $data['user'] = $this->session->userdata('login');
         $data['title'] = 'Danh sách sản phẩm';
         $data['active'] = 'home';
         $newProducts = $this->Products_model->listProducts(null,'null',0,10);

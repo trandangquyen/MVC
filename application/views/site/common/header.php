@@ -23,6 +23,20 @@
 				<div id="Icon_search">
                     <a href="<?php echo base_url(); ?>"><img src="public/images/header.png" alt="Home"></a>
                 </div>
+                <?php
+                    $user = $this->session->userdata('login');
+                    if ($user && $user->id == 1)
+                    {
+                        echo "<div class='login'><a href='admin'><img src='public/themes/images/user-login.png' alt=''>Xin chào: $user->name</a><a href='logout'> Đăng xuất</a></div>";
+                    }
+                    elseif($user){
+                        echo "<div class='login'><a href='giohang'><img src='public/themes/images/user-login.png' alt=''>Xin chào: $user->name</a><a href='logout'> Đăng xuất</a></div>";
+                    }
+                    else{
+                        echo "<div class='login'><a href='user'><img src='public/themes/images/user-login.png' alt=''>Đăng ký/Đăng nhập</a></div>";
+                    }
+                ?>
+
                 <ul id='top-menu'>
                     <li class='item<?=(isset($active) && $active == 'home') ? ' current' : '' ?>' id="lintrangchu"><a href='home'>Trang chủ</a></li>
                     <li class='item_separator'><img  class = "anhmenu" src="public/images/anhmenu.png" alt="đường viền cách giữa menu" /> </li>
