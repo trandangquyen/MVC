@@ -41,6 +41,12 @@ class Cart extends CI_Controller {
                 break;
         }
     }
+    public function order() {
+        $data['title'] = 'Thông tin giỏ hàng';
+        $this->load->view('site/common/header',$data);
+        $this->load->view('site/order',$data);
+        $this->load->view('site/common/footer');
+    }
     /**
      * @param  boolean $update: True will be reset cart
      * @return json

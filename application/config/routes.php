@@ -40,6 +40,7 @@ $route['admin/news/edit/(:num)'] = 'admin/news/updateNews/$1';
 
 $route['search/(:any)'] = 'sanpham/search/$1';
 $route['cart']['GET'] = 'cart/viewCart';
+$route['cart/order']['GET'] = 'cart/order';
 $route['cart']['POST'] = 'cart/actionCart';
 
 
@@ -55,3 +56,6 @@ $route['admin-category'] = 'admincategory';
 $route['admin-home'] = 'adminhome';
 $route['user'] = 'user/login';
 $route['logout'] = 'user/logout';
+
+
+$route['billing/viewinvoice'] = 'invoice';

@@ -104,12 +104,6 @@
     display: block;
 }
 
-input {
-    height: 33px;
-    clear: both;
-    border-radius: 3px;
-
-}
 #text {
     width: 310px;
     margin-left: 114px;
@@ -557,3 +551,10 @@ div#cart {
     float: right;
     margin-top: 50px;
 }
+
+.tbl_cart3{line-height:17px;}
+.tbl_cart3 td{padding:5px 10px;border-bottom:1px solid #ccc;}
+#tbl_list_cart td{border:solid 1px #ccc;}
+.c3_col_1 input[type="text"]{}
+.c3_col_1 textarea{}
+.tbl_cart3 table td{border:solid 1px #CCC;}

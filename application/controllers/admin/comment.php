@@ -1,6 +1,6 @@
 <?php 
 
-class Comment extends CI_Controller {
+class Comment extends Auth_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('Comments_model');

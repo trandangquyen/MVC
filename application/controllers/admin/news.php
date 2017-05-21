@@ -1,6 +1,6 @@
 <?php 
 
-class News extends CI_Controller {
+class News extends Auth_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('News_model');
