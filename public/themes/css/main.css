@@ -148,18 +148,18 @@ ol, ul {
     margin-bottom: 0px;
 }
 .tittle-box {
-    font-size: 22px;
+    /* font-size: 22px; */
     padding-left: 5px;
-    border-bottom: 4px solid #FF9900;
-    margin-top: 15px;
-    margin-bottom: 2px;
+    border-bottom: 8px solid #FF9900;
+    margin-top: 0px;
+    margin-bottom: 5px;
     border-radius: 5px;
     background-color: #D6D6D6;
 }
 .icon_tittle {
     display: inline-block;
     float: left;
-    padding-top: 13px;
+    padding-top: 23px;
     padding-right: 10px;
 }
 .icon_list{
@@ -167,9 +167,10 @@ ol, ul {
 }
 .tittle-box h3 {
     padding-left: 15px;
-    font-size: 15px;
-    line-height: 21px;
-    padding-top: 8px;
+    font-size: 21px;
+    line-height: 11px;
+    padding-top: 24px;
+    min-height: 45px;
     font-weight: bold;
 }
 .boder_menu{
@@ -177,54 +178,33 @@ ol, ul {
 }
 .boder_menu li a{
     display: block;
-    height: 38px;
-    line-height: 38px;
+    min-height: 38px;
 }
 .boder_menu li{
     height: auto !important;
 }
-.boder_menu .sub-1>li>a{
-    display: block;
-    padding: 0 10px;
+/*menu doc*/
+.sub-3 li {
+    font-size: 18px;
+    padding-top: 9px;
+    margin-left: -9px;
+    text-align: left;
+    background-color: #fff;
 }
-.boder_menu .sub-1>.active>a{
-    background: #ececec;
-}
-.boder_menu .sub-2{
-    display: none;
-}
-.boder_menu .sub-2 li>a{
-    padding: 0 20px;
-}
-.boder_menu .sub-3{
-    display: none;
-}
-.boder_menu .sub-menu{
-    position: relative;
-}
-.boder_menu .sub-menu:after{
-    position: absolute;
-    content: "+";
-    top:5px;
-    right:10px;
-}
-.boder_menu .sub-menu.active:after{
-    content: "-";
-}
-.boder_menu .sub-3 li>a{
-    padding: 0 30px;
-}
-.boder_menu .sub-3 li:last-child,.boder_menu .sub-2 li:last-child{
-    border-bottom: none !important;
+li.cha {
+    font-size: 33px;
+    padding-top: 13px;
+    text-align: center;
+    background-color: #d6d6d6;
 }
     /*main left*/
 
 #main_left li {
-    line-height: 18px;
+    line-height: 30px;
     display: block;
     border-bottom: 1px dotted #CCCCCC;
+    padding-left: 10px;
 }
-
 #main_left li a:hover {
     text-decoration: none;
     color: #cf8522;

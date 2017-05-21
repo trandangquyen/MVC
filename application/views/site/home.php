@@ -1,10 +1,8 @@
-<div class="col-xs-6">
+<div class="col-xs-9">
 <div id="main_center" >
 	<div class="row">	
 		<div class="product_list col-xs-12">
-			<div class="tittle-box box-center">
-				<img src="public/themes/images/icon.png" alt="" class="icon_tittle">
-				<h3><a href="#">Sản phẩm mới</a></h3>
+			<div class=" box-center">
 			</div> <!-- end tittle -->
 <!--Begin slider products-->
             <div class="flexslider">

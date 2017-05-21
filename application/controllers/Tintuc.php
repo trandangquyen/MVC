@@ -17,7 +17,9 @@ class Tintuc extends CI_Controller {
 		$this->load->view('site/common/header', $data);
 		//$this->load->view('site/common/mainleft', $data);
         $listCategory = $this->Category_model->getAllCategory();
-        $this->load->view('site/category', ['category'=>$listCategory]);
+        $this->load->model('News_model');
+        $listNews = $this->News_model->listNews(null,0,6);
+        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews]);
 
         $data['news'] = $this->News_model->listNews(null,0,6);
 
@@ -46,9 +48,11 @@ class Tintuc extends CI_Controller {
         }
 
 		$this->load->view('site/common/header', $data);
+        
         $listCategory = $this->Category_model->getAllCategory();
-        $this->load->view('site/category', ['category'=>$listCategory]);
-
+        $this->load->model('News_model');
+        $listNews = $this->News_model->listNews(null,0,6);
+        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews]);
 
 
         $this->load->view("site/tintuc/details",$data);        
