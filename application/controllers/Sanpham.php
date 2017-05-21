@@ -6,7 +6,7 @@ class Sanpham extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->helper(array('url','form'));
-        $this->load->library('session');
+        //$this->load->library('session');
         $this->load->database();
         $this->load->model('Products_model');
         $this->load->model('Category_model');

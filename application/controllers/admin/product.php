@@ -1,6 +1,6 @@
 <?php 
 
-class Product extends CI_Controller {
+class Product extends Auth_Controller {
 	function __construct() {
 		parent::__construct();
         $this->load->model('Products_model');
