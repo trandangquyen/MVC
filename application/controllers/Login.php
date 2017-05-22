@@ -103,8 +103,8 @@ class Login extends CI_Controller
     public function facebook(){
         //require FCPATH.'vendor/autoload.php';
         $fb = new \Facebook\Facebook([
-          'app_id' => '582442021872439',
-          'app_secret' => '883570c57cad900d3ff41907e895629a',
+          'app_id' => $this->config->item('fb_appid'),
+          'app_secret' => $this->config->item('fb_secret'),
           'default_graph_version' => 'v2.9',
           'default_access_token' => 'APP-ID|APP-SECRET'
           //'default_access_token' => '{access-token}', // optional
