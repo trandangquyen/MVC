@@ -12,10 +12,10 @@ class User_model extends CI_Model
     var $select = '';
 
     private $table;
-	public function __construct()
+   public function __construct()
     {
 
-    	parent::__construct();
+        parent::__construct();
         $this->load->database();
         $this->table = 'user';
         $this->load->helper('email');
