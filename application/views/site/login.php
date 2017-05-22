@@ -77,7 +77,7 @@
             <div class="button-container">
                 <button name="login" type="submit"><span>Đăng nhập</span></button>
             </div>
-            <div class="footer"><a href="login/facebook">Facebook</a> | <a href="login/google">Google</a> | <a href="#">Quên mật khẩu?</a></div>
+            <div class="footer"><a href="login/facebook">Facebook</a> | <a href="login/google">Google</a> | <a href="user/forgot">Quên mật khẩu?</a></div>
         </form>
     </div>
     <div class="card alt">
