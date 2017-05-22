@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Cart extends CI_Controller {
     private $cart;
+    private $user;
     private $user_id;
 	public function __construct() {
         parent::__construct();
@@ -12,9 +13,11 @@ class Cart extends CI_Controller {
         //$this->load->library('session'); // unnecessary because it set autoload
         $this->load->model('Products_model');
         $this->load->model('Cart_model');
+        $this->load->model('User_model');
+        $this->load->model('Order_model');
         $this->cart = $this->getCart();
-        $user = getUser();
-        $this->user_id = $user ? $user['id'] : false;
+        $this->user = getUser();
+        $this->user_id = $this->user ? $this->user['id'] : false;
         //var_dump($user);var_dump($this->user_id);exit;
     }
     /**
@@ -41,11 +44,71 @@ class Cart extends CI_Controller {
                 break;
         }
     }
-    public function order() {
+    public function confirmCart() {
         $data['title'] = 'Thông tin giỏ hàng';
+        if(!empty($this->cart) && is_array($this->cart)) {
+            //var_dump($this->cart);exit;
+            $ids = array_keys($this->cart);
+            $products = $this->Products_model->getProducts($ids);
+            $order_total = 0;
+            for($i=0;$i<count($products);$i++) {
+                $id = $products[$i]['id'];
+                $quantity = $this->cart[$id];
+                $products[$i]['quantity'] = $quantity;
+                $products[$i]['total-price'] = $products[$i]['price'] * $quantity;
+                $order_total += $products[$i]['total-price'];
+            }
+            $data['items'] = $products;
+            $data['order_total'] = $order_total;
+        }
+        $data['user'] = $this->user;
         $this->load->view('site/common/header',$data);
         $this->load->view('site/order',$data);
         $this->load->view('site/common/footer');
+    }
+    public function viewOrder($id) {
+        $data['order'] = $this->Order_model->getOrder($id);
+        if(!empty($data['order'])) for ($i=0;$i<count($data['order']['details']);$i++) {
+            $data['order']['products'][$i] = $this->Products_model->getProductArray($data['order']['details'][$i]['product_id']);
+            $data['order']['products'][$i]['quantity'] = $data['order']['details'][$i]['quantity'];
+        }
+        //var_dump($data['order']);exit;
+        $data['user'] = $this->User_model->getUser($data['order']['user']);
+        $this->load->view('site/invoice',$data);
+    }
+
+    public function putOrder() {
+        $data['title'] = 'Đặt hàng';
+        if(empty($this->input->post('user_info'))) $data['error'] = 'Hãy điền đầy đủ thông tin';
+        else if(empty($this->cart) || !is_array($this->cart)) $data['error'] = 'Giỏ hàng đã hết hạn';
+        else {
+            $ids = array_keys($this->cart);
+            $products = $this->Products_model->getProducts($ids);
+            $order_total = 0;
+            for($i=0;$i<count($products);$i++) {
+                $id = $products[$i]['id'];
+                $quantity = $this->cart[$id];
+                $products[$i]['quantity'] = $quantity;
+                $products[$i]['total-price'] = $products[$i]['price'] * $quantity;
+                $order_total += $products[$i]['total-price'];
+            }
+            
+            $insert = array(
+                            'user'=>$this->user_id,
+                            'price'=>$order_total,
+                            'products'=> $this->cart);
+            
+            if($order_id=$this->Order_model->createOrder($insert)) {
+                $data['message'] = 'Đặt hóa đơn thành công: #'.$order_id;
+                $data['order']['id'] = $order_id;
+                $this->session->unset_userdata('cart');
+                redirect('order/'.$order_id);
+            } else exit('Đặt hóa đơn thất bại');
+        }
+        //$data['user'] = $this->user;
+        //$this->load->view('site/common/header',$data);
+        //$this->load->view('site/invoice',$data);
+        //$this->load->view('site/common/footer');
     }
     /**
      * @param  boolean $update: True will be reset cart

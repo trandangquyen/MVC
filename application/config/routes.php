@@ -45,8 +45,10 @@ $route['admin/user/edit/(:num)'] = 'admin/user/updateUser/$1';
 
 $route['search/(:any)'] = 'sanpham/search/$1';
 $route['cart']['GET'] = 'cart/viewCart';
-$route['cart/order']['GET'] = 'cart/order';
 $route['cart']['POST'] = 'cart/actionCart';
+$route['cart/order']['GET'] = 'cart/confirmCart';
+$route['cart/order']['POST'] = 'cart/putOrder';
+$route['order/(:num)'] = 'cart/viewOrder/$1';
 
 $route['admin/support']['GET'] = 'admin/support/index';
 $route['admin/support']['POST'] = 'admin/support/updateSupport';

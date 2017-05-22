@@ -146,7 +146,10 @@
     function payment() {
         console.log(products);
         if(jQuery.isEmptyObject(products)) return alert('Giỏ hàng trống');
-        else alert('Chức năng thanh toán đâng được phát triển');
+        else {
+            //alert('Chức năng thanh toán đâng được phát triển');
+            location.href = 'cart/order';
+        }
         //$.post('cart', param, function(data) {});
     }
 </script>
