@@ -78,26 +78,24 @@
 	        </div>
             <div class="col-xs-12 col-sm-6">
 	            <div class="ctu-item">
-	                <h3>Thông tin liên hệ</h3>
-	                <div>
-	                    P618, Chung cư Tân Phúc<br>
-	                    Đống Đa<br>
-	                    Hà nội
+	                <h3 style="color: red">Thông tin liên hệ</h3>
+	                <div >
+	                    <?php echo $support->address ?>
 	                </div>
 	               <br>
 	               <table>
 	                      
 	                      <tbody><tr>
-	                        <td>Hotline:</td>
-	                        <td>0999.999.999</td>
+	                        <td>Hotline     :</td>
+	                        <td><?php echo $support->hotline ?></td>
 	                    </tr>
 	                    <tr>
-	                        <td>Điện thoại:</td>
-	                        <td>0383.888.888</td>
+	                        <td>Điện thoại  :</td>
+	                        <td><?php echo $support->phone ?></td>
 	                    </tr>
 	                    <tr>
-	                        <td>Email:</td>
-	                        <td><a href="mailto:hotro@fgc.com" class="blue">hotro@fgc.com</a></td>
+	                        <td>Email       :</td>
+	                        <td><a href="mailto:hotro@fgc.com" class="blue"><?php echo $support->address ?></a></td>
 	                    </tr>
 	                </tbody></table>
 				</div>

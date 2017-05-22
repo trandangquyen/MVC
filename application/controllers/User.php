@@ -208,7 +208,7 @@ class User extends CI_Controller
             $this->session->unset_userdata('login');
             $this->session->unset_userdata('cart');
 // xoa session face book
- 			$this->facebook->destroySession();
+            $this->facebook->destroySession();
         }
         $this->session->set_flashdata('flash_message', 'Đăng xuất thành công');
         redirect();

@@ -16,7 +16,7 @@
 				<div class="col-xs-4" style="padding-left: 2px; padding-right: 10px;">
 					<div class="product_item" id="p-<?=$item['id']?>">
 						<h3 title="<?=$item['name']?>"><?=substr($item['name'],0,15)?></h3>
-						<div class="product_img"><a href="index.php/sanpham/<?=$item['id']?>"><img src="public/themes/images/product13.jpg" alt=""></a></div>
+						<div class="product_img"><a href="index.php/sanpham/<?=$item['id']?>"><img src="<?=$item['thumb']?>" alt=""></a></div>
 						<p class="price"> <?=$item['price']?> đ</p>
 						<div id="9" class="raty" data-score="4" title="good">
 							<?php 

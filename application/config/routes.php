@@ -36,7 +36,6 @@ $route['admin/news']['POST'] = 'admin/news/deteleNews';
 $route['admin/news/add'] = 'admin/news/addNews';
 $route['admin/news/delete/(:num)'] = 'admin/news/deteleNews/$1';
 $route['admin/news/edit/(:num)'] = 'admin/news/updateNews/$1';
-
 $route['admin/user']['GET'] = 'admin/user/index';
 $route['admin/user']['POST'] = 'admin/user/deteleUser';
 $route['admin/user/add'] = 'admin/user/addUser';
@@ -48,6 +47,9 @@ $route['search/(:any)'] = 'sanpham/search/$1';
 $route['cart']['GET'] = 'cart/viewCart';
 $route['cart/order']['GET'] = 'cart/order';
 $route['cart']['POST'] = 'cart/actionCart';
+
+$route['admin/support']['GET'] = 'admin/support/index';
+$route['admin/support']['POST'] = 'admin/support/updateSupport';
 
 
 $route['compare']['GET'] = 'Compare/viewCompare';

@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/fgc/MVC/';
+$config['base_url'] = 'http://localhost/MVC/';
 
 $config['fb_appid'] = '582442021872439';
 $config['fb_secret'] = '883570c57cad900d3ff41907e895629a';
@@ -33,6 +33,7 @@ $config['gg_secret'] = 'it4cXsRlZkcvSIxXviBgUdHq';
 $config['gg_redirect_uri'] = $config['base_url'].'login/google';
 $config['gg_api_key'] = 'AIzaSyBIM6WaSmQiObb4u5-sFrndvKGGR47IhN4';
 
+/*
 /*
 |--------------------------------------------------------------------------
 | Index File

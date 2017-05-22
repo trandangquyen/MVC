@@ -1,4 +1,4 @@
-<div class="col-xs-6">
+<div class="col-xs-9">
 	<div id="main_center" class="conten_product">
 		<?php 
 		foreach ($news as $item) {

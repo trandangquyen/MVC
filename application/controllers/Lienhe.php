@@ -7,11 +7,13 @@ class Lienhe extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('url'));
         $this->load->model('Contact_model');
+        $this->load->model('Support_model');
     }
 	public function index() {
 		$data['active'] = 'lienhe';
+		$support = $this->Support_model->getSupport();
 		$this->load->view('site/common/header', $data);
-        $this->load->view('site/lienhe',$data);
+		$this->load->view('site/lienhe',[$data, 'support'=>$support]);
         $this->load->view('site/common/footer', $data);
 	}
 	public function save() {
