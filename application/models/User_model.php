@@ -19,6 +19,26 @@ class User_model extends CI_Model
         $this->load->database();
         $this->table = 'user';
     }
+    public function listUser() {
+        $this->db->select("*");
+        $query=$this->db->get($this->table);
+        $result = $query->result_array();
+        return $result;
+
+    }
+    public function getUser($id) {
+        $this->db->where("id",$id);
+        $query=$this->db->get($this->table);
+        $result=$query->row_array();
+        return $result;
+
+    }
+    public function updateUser($data=array(),$user_id) {
+        $this->db->set($data);
+        $this->db->where('id', $user_id);
+        if($this->db->update($this->table)) return true;
+        return false; 
+    }
     public function check_login($email, $password)
     {
         //them dieu kien kiem tra email va password

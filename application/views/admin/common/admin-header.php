@@ -64,6 +64,7 @@
                 <li <?= (isset($active) && $active == "sanpham")? "class='active' " : '' ?>><a href="admin/product">Sản phẩm</a></li>
                 <li <?= (isset($active) && $active == "category")? "class='active' " : '' ?>><a href="admin/category">Thể loại</a></li>
                 <li <?= (isset($active) && $active == "tintuc")? "class='active' " : '' ?>><a href="admin/news">Tin tức</a></li>
+                <li <?= (isset($active) && $active == "user")? "class='active' " : '' ?>><a href="admin/user">Người dùng</a></li>
                 <li <?= (isset($active) && $active == "hotro")? "class='active' " : '' ?>><a href="admin/support">Hỗ trợ</a></li>
             </ul>
         </div>
