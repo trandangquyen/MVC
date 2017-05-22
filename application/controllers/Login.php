@@ -28,97 +28,140 @@ class Login extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('user_model');
         $this->load->library('session');
-
+        require FCPATH.'vendor/autoload.php';
     }
 
-//    public function index()
-//    {
-//        $this->load->view('site/login');
-//    }
-    /*
-    * Kiem tra dang nhap
-    */
-    public function check_login()
-    {
-        //lay du lieu tu form
-        $username    = $this->input->post('username');
-        $password = $this->input->post('password');
-        $password = md5($password);
-        $where = array('name' => $username, 'password' => $password);
-        if(!$this->user_model->check_exists($where))
-        {
-            $this->form_validation->set_message(__FUNCTION__, 'Đăng nhập không thành công');
-            return FALSE;
-        }
-        return true;
-    }
+    public function google(){
+        //require FCPATH.'vendor/autoload.php';
 
-    /*
-    * Phuong thuc dang nhap
-    */
-    public function login()
-    {
-        //kiem tra xem thanh vien da dang nhap hay chua
-        if($this->_user_is_login())
-        {
-            //chuyen trang
-            redirect();
-        }
+        //session_start();
 
-        //load thu vien validation
-        $this->load->library('form_validation');
-        $this->load->helper('form');
+        $client_id = $this->config->item('gg_clientid');
+        $client_secret = $this->config->item('gg_secret');
+        $redirect_uri = $this->config->item('redirect_uri');
+        $simple_api_key = $this->config->item('api_key');
 
-        //tao cac tap luat
-        $this->form_validation->set_rules('username', 'Tên đăng nhập', 'required');
-        $this->form_validation->set_rules('password', 'Mật khẩu', 'required');
-        $this->form_validation->set_rules('login', 'Đăng nhập', 'callback_check_login');
+        // Create Client Request to access Google API
+        $client = new Google_Client();
+        $client->setHttpClient(new \GuzzleHttp\Client(['verify' => false]));
+        $client->setApplicationName("PHP Google OAuth Login Example");
+        $client->setClientId($client_id);
+        $client->setClientSecret($client_secret);
+        $client->setRedirectUri($redirect_uri);
+        $client->setDeveloperKey($simple_api_key);
+        $client->addScope("https://www.googleapis.com/auth/userinfo.email");
 
-        if($this->form_validation->run())
-        {
-            $username    = $this->input->post('username');
-            $password = $this->input->post('password');
-            $password = md5($password);
-            $where = array('name' => $username, 'password' => $password);
-            $user = $this->user_model->get_info_rule($where);
+        // Send Client Request
+        $objOAuthService = new Google_Service_Oauth2($client);
+
+        // Add Access Token to Session
+        if (!isset($_GET['code'])) {
+            $authUrl = $client->createAuthUrl();
+            /*$client->authenticate($_GET['code']);
+            $_SESSION['access_token'] = $client->getAccessToken();
+            header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));*/
+            //exit($authUrl);
+            redirect($authUrl);
+        } else {
+            $client->authenticate($_GET['code']);
+            $_SESSION['access_token'] = $client->getAccessToken();
+            $client->setAccessToken($_SESSION['access_token']);
+            $user = $objOAuthService->userinfo->get();
+            //var_dump($userData);exit;
+            $insert['name'] = $user['familyName'].' '.$user['givenName'];
+            $insert['email'] = $user['email'];
+            $user = $this->user_model->getUser($insert['email']);
+            //var_dump($user);exit;
+            if(empty($user)) {
+                $this->user_model->create($insert);
+                $user = $this->user_model->getUser($insert['email']);
+            }
+            //exit($this->db->last_query());
+            
             $this->session->set_userdata('login', $user);
-            $this->session->set_flashdata('flash_message', 'Đăng nhập thành công');
-//            echo $this->session->flashdata('flash_message');
-            redirect();//chuyen toi trang chu
+            //var_dump($user);exit;
+            
+            redirect('');
+        }
+        /*exit();
+        // Set Access Token to make Request
+        if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+            $client->setAccessToken($_SESSION['access_token']);
         }
 
-        //gui du lieu sang view
-        $this->data['temp'] = 'site/user/login';
-        $this->load->view('site/login', $this->data);
+        // Get User Data from Google and store them in $data
+        if ($client->getAccessToken()) {
+            $userData = $objOAuthService->userinfo->get();
+            $data['userData'] = $userData;
+            $_SESSION['access_token'] = $client->getAccessToken();
+        } else {
+            $authUrl = $client->createAuthUrl();
+            $data['authUrl'] = $authUrl;
+        }
+        echo $data['authUrl'];*/
+    }
+    public function facebook(){
+        //require FCPATH.'vendor/autoload.php';
+        $fb = new \Facebook\Facebook([
+          'app_id' => '582442021872439',
+          'app_secret' => '883570c57cad900d3ff41907e895629a',
+          'default_graph_version' => 'v2.9',
+          'default_access_token' => 'APP-ID|APP-SECRET'
+          //'default_access_token' => '{access-token}', // optional
+        ]);
+        if(!$this->input->get('code')) {
+            $helper = $fb->getRedirectLoginHelper();
+
+            $permissions = ['email']; // Optional permissions
+            $loginUrl = $helper->getLoginUrl(base_url().'/login/facebook', $permissions);
+
+            //echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
+            redirect($loginUrl);
+        } else {
+            $helper = $fb->getRedirectLoginHelper();
+
+            try {
+              $accessToken = $helper->getAccessToken();
+            } catch(Facebook\Exceptions\FacebookResponseException $e) {
+              // When Graph returns an error
+              echo 'Graph returned an error: ' . $e->getMessage();
+              exit;
+            } catch(Facebook\Exceptions\FacebookSDKException $e) {
+              // When validation fails or other local issues
+              echo 'Facebook SDK returned an error: ' . $e->getMessage();
+              exit;
+            }
+            //echo $accessToken;
+            try {
+              // Returns a `Facebook\FacebookResponse` object
+              $response = $fb->get('/me?fields=id,name,email', $accessToken);
+            } catch(Facebook\Exceptions\FacebookResponseException $e) {
+              echo 'Graph returned an error: ' . $e->getMessage();
+              exit;
+            } catch(Facebook\Exceptions\FacebookSDKException $e) {
+              echo 'Facebook SDK returned an error: ' . $e->getMessage();
+              exit;
+            }
+
+            $user = $response->getGraphUser();
+            $insert['name'] = $user['name'];
+            $insert['email'] = $user['email'];
+            $user = $this->user_model->getUser($insert['email']);
+            //var_dump($user);exit;
+            if(empty($user)) {
+                $this->user_model->create($insert);
+                $user = $this->user_model->getUser($insert['email']);
+            }
+            //exit($this->db->last_query());
+            
+            $this->session->set_userdata('login', $user);
+            //var_dump($user);exit;
+            
+            redirect('');
+
+        }
     }
 
-    /*
-    * Phuong thuc dang xuat
-    */
-    public function logout()
-    {
-        if($this->_user_is_login())
-        {
-            //neu thanh vien da dang nhap thi xoa session login
-            $this->session->unset_userdata('login');
-        }
-        $this->session->set_flashdata('flash_message', 'Đăng xuất thành công');
-        redirect();
-    }
-
-    /*
-     * Kiểm tra đã đăng nhập hay chưa
-    */
-    private function _user_is_login()
-    {
-        $user_data = $this->session->userdata('login');
-        //neu chua login
-        if(!$user_data)
-        {
-            return false;
-        }
-        return true;
-    }
 }
 
 

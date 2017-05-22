@@ -67,3 +67,5 @@ $route['user/resetpass'] = 'user/getPassword';
 
 
 $route['billing/viewinvoice'] = 'invoice';
+$route['login/facebook'] = 'login/facebook';
+$route['login/google'] = 'login/google';
