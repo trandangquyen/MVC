@@ -8,6 +8,7 @@ class Tintuc extends CI_Controller {
 		$this->load->model('News_model');
 		$this->load->model('Category_model');
 		$this->load->library('session');
+		$this->load->model('Support_model');
 	}
 
 	// load list news 
@@ -17,9 +18,10 @@ class Tintuc extends CI_Controller {
 		$this->load->view('site/common/header', $data);
 		//$this->load->view('site/common/mainleft', $data);
         $listCategory = $this->Category_model->getAllCategory();
+        $support = $this->Support_model->getSupport();
         $this->load->model('News_model');
         $listNews = $this->News_model->listNews(null,0,6);
-        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews]);
+        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews, 'support'=>$support]);
 
         $data['news'] = $this->News_model->listNews(null,0,6);
 
@@ -49,10 +51,12 @@ class Tintuc extends CI_Controller {
 
 		$this->load->view('site/common/header', $data);
         
+        //$this->load->view('site/common/mainleft', $data);
         $listCategory = $this->Category_model->getAllCategory();
+        $support = $this->Support_model->getSupport();
         $this->load->model('News_model');
         $listNews = $this->News_model->listNews(null,0,6);
-        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews]);
+        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews, 'support'=>$support]);
 
 
         $this->load->view("site/tintuc/details",$data);        
