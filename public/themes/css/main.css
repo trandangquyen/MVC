@@ -227,10 +227,16 @@ li.cha {
 }
 
 /*-----------css main_center----------*/
+.post {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 22px;
+    margin-top: 38px;
+}
 h3.head3 {
     text-align: center;
     font-weight: bold;
     color: green;
+    padding-top: 10px;
 }
 .col-xs-12.gthieu {
     background-color: bisque;
@@ -462,7 +468,7 @@ h3.head3 {
     background: #f1f1f1;
     font-size: 18px;
     padding:8px 5px 5px;
-
+}
 .comment {
     box-shadow: 10px 10px 5px #888888;
     padding: 5px;

@@ -86,15 +86,15 @@
 	               <table>
 	                      
 	                      <tbody><tr>
-	                        <td>Hotline:</td>
+	                        <td>Hotline     :</td>
 	                        <td><?php echo $support->hotline ?></td>
 	                    </tr>
 	                    <tr>
-	                        <td>Điện thoại:</td>
+	                        <td>Điện thoại  :</td>
 	                        <td><?php echo $support->phone ?></td>
 	                    </tr>
 	                    <tr>
-	                        <td>Email:</td>
+	                        <td>Email       :</td>
 	                        <td><a href="mailto:hotro@fgc.com" class="blue"><?php echo $support->address ?></a></td>
 	                    </tr>
 	                </tbody></table>
