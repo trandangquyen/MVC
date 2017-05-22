@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/MVC/';
+$config['base_url'] = 'http://localhost:8080/training/';
 
 $config['fb_appid'] = '582442021872439';
 $config['fb_secret'] = '883570c57cad900d3ff41907e895629a';
