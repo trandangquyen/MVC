@@ -11,7 +11,7 @@
     <link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        .container{
+    .container{
             margin-bottom: 0;
         }
         .error{
@@ -19,7 +19,7 @@
             font-size: 13px;
             margin-bottom: -15px;
             position: absolute;
-            bottom: -17px;
+            bottom: -10px;
         }
         .r_error{
             color: #ed2553;
@@ -28,7 +28,6 @@
             position: absolute;
             top: 12px;
         }
-
     </style>
 
 </head>
@@ -116,7 +115,6 @@
         </form>
     </div>
 </div>
-
 <!-- Portfolio--><a id="portfolio" href="#" onclick="goBack()" title="View my portfolio!"><i class="fa fa-link"></i></a>
 <!-- CodePen--><a id="codepen" href="#" onclick="goBack()" title="Follow me!"><i class="fa fa-codepen"></i></a>
 <script>
@@ -125,7 +123,6 @@
     }
 </script>
 <script src='public/themes/js/jquery-1.7.2.min.js'></script>
-
 <script src="public/admin/js/index.js"></script>
 
 </body>
