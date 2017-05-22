@@ -28,7 +28,7 @@ class Home extends CI_Controller {
         $data['user'] = $this->session->userdata('login');
         $data['title'] = 'Danh sách sản phẩm';
         $data['active'] = 'home';
-        $newProducts = $this->Products_model->listProducts(null,'null',0,10);
+        $newProducts = $this->Products_model->listProducts(null,'null',0,9);
 
 
 		//var_dump($newProducts);
