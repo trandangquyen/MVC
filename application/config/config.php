@@ -34,6 +34,7 @@ $config['gg_redirect_uri'] = $config['base_url'].'login/google';
 $config['gg_api_key'] = 'AIzaSyBIM6WaSmQiObb4u5-sFrndvKGGR47IhN4';
 
 /*
+/*
 |--------------------------------------------------------------------------
 | Index File
 |--------------------------------------------------------------------------
