@@ -1,6 +1,6 @@
 <?php 
 
-class Category extends CI_Controller {
+class Category extends Auth_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('Category_model');
