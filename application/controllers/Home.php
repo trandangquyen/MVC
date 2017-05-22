@@ -22,12 +22,13 @@ class Home extends CI_Controller {
         $this->load->model('Products_model');
         $this->load->model('Category_model');
         $this->load->model('Comment_model');
+        $this->load->model('Support_model');
 
 
         $data['user'] = $this->session->userdata('login');
         $data['title'] = 'Danh sách sản phẩm';
         $data['active'] = 'home';
-        $newProducts = $this->Products_model->listProducts(null,'null',0,10);
+        $newProducts = $this->Products_model->listProducts(null,'null',0,9);
 
 
 		//var_dump($newProducts);
@@ -52,10 +53,10 @@ class Home extends CI_Controller {
 
         //$this->load->view('site/common/mainleft', $data);
         $listCategory = $this->Category_model->getAllCategory();
-
+        $support = $this->Support_model->getSupport();
         $this->load->model('News_model');
         $listNews = $this->News_model->listNews(null,0,6);
-        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews, 'comments'=>$data['comments']]);
+        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews, 'comments'=>$data['comments'], 'support'=>$support]);
 
 
         $this->load->view('site/home', $data);

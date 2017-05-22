@@ -10,6 +10,7 @@ class Sanpham extends CI_Controller {
         $this->load->database();
         $this->load->model('Products_model');
         $this->load->model('Category_model');
+        $this->load->model('Support_model');
     }
 
     // list products per category or a category
@@ -18,10 +19,14 @@ class Sanpham extends CI_Controller {
         $data['title'] = 'Danh sách sản phẩm';
         $data['active'] = 'sanpham';
         $this->load->view('site/common/header', $data);
+
+
+        //$this->load->view('site/common/mainleft', $data);
         $listCategory = $this->Category_model->getAllCategory();
+        $support = $this->Support_model->getSupport();
         $this->load->model('News_model');
-        $listNews = $this->News_model->listNews(null,0,6);
-        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews]);
+        $listNews = $this->News_model->listNews(null,0,9);
+        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews, 'support'=>$support]);
 
         if($category) {
             $name = $this->Category_model->getNameCategory($category);
@@ -34,7 +39,7 @@ class Sanpham extends CI_Controller {
             $data['products']['New'] = $this->Products_model->listProducts(null,null);
             $config['base_url'] = base_url('index.php/sanpham');
             $config['total_rows'] = count((array)$data['products']['New']);
-            $config['per_page'] = 6;
+            $config['per_page'] = 9;
             $config['use_page_numbers'] = true;
             $config['page_query_string'] = TRUE;
             $config['first_url'] = site_url('index.php/sanpham');
@@ -44,7 +49,7 @@ class Sanpham extends CI_Controller {
             $page = (int)$this->input->get('per_page', TRUE);
             if($page<1) $page = 1;
             $start = ($page-1)*$config['per_page'];
-            $data['products']['New'] = $this->Products_model->listProducts(null,null,$start,6);
+            $data['products']['New'] = $this->Products_model->listProducts(null,null,$start,9);
         }
         
         $this->load->view('site/listsanpham', $data);
@@ -66,7 +71,7 @@ class Sanpham extends CI_Controller {
         $data['products']['Search'] = $this->Products_model->search($keyword);
         $config['base_url'] = base_url('search/'.$keyword);
         $config['total_rows'] = count((array)$data['products']['Search']);
-        $config['per_page'] = 6;
+        $config['per_page'] = 9;
         $config['use_page_numbers'] = true;
         $config['page_query_string'] = TRUE;
         $config['first_url'] = site_url('search/'.$keyword);
@@ -76,7 +81,7 @@ class Sanpham extends CI_Controller {
         $page = (int)$this->input->get('per_page', TRUE);
         if($page<1) $page = 1;
         $start = ($page-1)*$config['per_page'];
-        $data['products']['Search'] = $this->Products_model->search($keyword,$start,6);
+        $data['products']['Search'] = $this->Products_model->search($keyword,$start,9);
         
         $this->load->view('site/listsanpham', $data);        
         $this->load->view('site/common/footer', $data);
@@ -110,10 +115,14 @@ class Sanpham extends CI_Controller {
 
         
         
+        
+        //$this->load->view('site/common/mainleft', $data);
+        $support = $this->Support_model->getSupport();
         $this->load->model('News_model');
-        $listNews = $this->News_model->listNews(null,0,6);
+        $listNews = $this->News_model->listNews(null,0,9);
         $this->load->view('site/common/header', $data);
-        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews]);
+        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews, 'support'=>$support]);
+
 
         $this->load->view('site/sanpham', $data);
         //$this->load->model('News_model');

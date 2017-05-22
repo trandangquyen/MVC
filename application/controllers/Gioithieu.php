@@ -24,9 +24,11 @@ class Gioithieu extends CI_Controller {
     }
     public function view()
     {
+        $this->load->model('Support_model');
         $data['active'] = 'gioithieu';
+        $support = $this->Support_model->getSupport();
         $this->load->view('site/common/header', $data);
-        $this->load->view('site/gioithieu',$data);
+        $this->load->view('site/gioithieu',[$data, 'support'=>$support]);
         $this->load->view('site/common/footer', $data);
     }
 }
