@@ -9,7 +9,7 @@ class Cart extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         //$this->load->helper(array('cookie')); 
-        $this->load->library('session'); // unnecessary because it set autoload
+        //$this->load->library('session'); // unnecessary because it set autoload
         $this->load->model('Products_model');
         $this->load->model('Cart_model');
         $this->cart = $this->getCart();

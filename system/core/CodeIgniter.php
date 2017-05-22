@@ -522,6 +522,7 @@ if ( ! is_php('5.4'))
  *  Is there a "post_controller_constructor" hook?
  * ------------------------------------------------------
  */
+
 	$EXT->call_hook('post_controller_constructor');
 
 /*
