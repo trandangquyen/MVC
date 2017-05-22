@@ -3,18 +3,18 @@
         <div id="main_left">
             <div class="tittle-box">
                 <img src="public/themes/images/icon.png" alt="" class="icon_tittle">
-                <h3>Hỗ trợ trực tuyến </h3>
+                <h3 >Hỗ trợ trực tuyến </h3>
             </div><!-- end tittle -->
             <div class="boder_menu">
-                <h4>FGC TECHLUTION</h4>
-                <p style="margin-left: 27px;">
-                    <img src="public/themes/images/phone.png" alt="" class="icon_list">01669872627
+                <h4 style="color: red; padding-left: 10px; font-weight: bold;"><?php echo $support->namecompany ?></h4>
+                <p style="margin-left: 27px; font-weight: bold;">
+                    <img src="public/themes/images/phone.png" alt="" class="icon_list"><?php echo $support->phone ?>
                 </p >
-                <p style="margin-left: 27px;">
-                    <img src="public/themes/images/email.png" alt="" class="icon_list">Email:fgcsupport@gmail.com
+                <p style="margin-left: 27px;font-weight: bold;">
+                    <img src="public/themes/images/email.png" alt="" class="icon_list">Email:<?php echo $support->email ?>
                 </p>
-                <p style="margin-left: 27px;">
-                    <img src="public/themes/images/skype.png" alt="" class="icon_list">Skype:khanhhuyna
+                <p style="margin-left: 27px;font-weight: bold;">
+                    <img src="public/themes/images/skype.png" alt="" class="icon_list">Skype:<?php echo $support->skype ?>
                 </p>
             </div><!-- end boder_menu -->
 
