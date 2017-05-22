@@ -38,7 +38,7 @@ class Login extends CI_Controller
 
         $client_id = $this->config->item('gg_clientid');
         $client_secret = $this->config->item('gg_secret');
-        $redirect_uri = $this->config->item('redirect_uri');
+        $redirect_uri = $this->config->item('gg_redirect_uri');
         $simple_api_key = $this->config->item('api_key');
 
         // Create Client Request to access Google API
