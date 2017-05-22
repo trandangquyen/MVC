@@ -176,7 +176,7 @@ class User extends CI_Controller
                 $data['message'] = 'Đăng nhập thành công';
                 $data['redirect'] = base_url();
                 //redirect();//chuyen toi trang chure
-                if($user->admin==1) redirect('admin');
+                if($user['admin']==1) redirect('admin');
             } else {
                 $data['error'] = 'Đăng nhập ko thành công';
             }

@@ -81,7 +81,7 @@ class User_model extends CI_Model
         //tao dieu kien cho cau truy van
         $this->db->where($where);
         $result = $this->db->get('user');
-        return $result->row();
+        return $result->row_array();
     }
 
     function create($data = array())
@@ -214,7 +214,7 @@ class User_model extends CI_Model
         $query = $this->db->get($this->table);
         if ($query->num_rows())
         {
-            return $query->row();
+            return $query->row_array();
         }
 
         return FALSE;
