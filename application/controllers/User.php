@@ -34,7 +34,7 @@ class User extends CI_Controller
         $this->load->library('facebook');
 
     }
-    public function getPassword() {
+    public function saveNewPassword() {
         $data = null;
         $data['email']    = $this->input->get('email');
         $data['token']    = $this->input->get('token');
@@ -59,37 +59,47 @@ class User extends CI_Controller
         $this->load->view('site/setpass',$data);
     }
     public function forgotPassword() {
-        $email    = $this->input->post('email');
-        if (!$email) $data['error'] = 'Hãy điền địa chỉ email mà bạn đã đăng ký';
-        if (!valid_email($email)) $data['error'] = 'Email không hợp lệ';
-        else {
-            $user = $this->user_model->getUserByEmail($email);
-            if(!$user) $data['error'] = 'Email không tồn tại';
+        $data=null;
+        if($this->input->method() == 'post') {
+            $email    = $this->input->post('email');
+            if (!$email) $data['error'] = 'Hãy điền địa chỉ email mà bạn đã đăng ký';
+            if (!valid_email($email)) $data['error'] = 'Email không hợp lệ';
             else {
-                $token = md5('MVC'.$email);
-                $update['token_reset_pass'] = $token;
-                $linkreset = base_url().'user/resetpass?email='.$email.'&token='.$update['token_reset_pass'];
-                $user = $this->user_model->updateUser($update,$email);
-                $config = Array(
-                    'protocol' => 'smtp',
-                    'smtp_host' => 'ssl://smtp.gmail.com',
-                    'smtp_port' => 465,
-                    'smtp_user' => 'cdtd35a@gmail.com',
-                    'smtp_pass' => 'tracdia35a',
-                    'mailtype'  => 'html', 
-                    'charset'   => 'iso-8859-1'
-                );
-                $this->load->library('email',$config);
-                $this->email->set_newline("\r\n");
-                $this->email->from($config['smtp_user'], 'Support');
-                $this->email->to($email);
+                $user = $this->user_model->getUserByEmail($email);
+                if(!$user) $data['error'] = 'Email không tồn tại';
+                else {
+                    $token = md5('MVC'.$email);
+                    $update['token_reset_pass'] = $token;
+                    $linkreset = base_url().'user/resetpass?email='.$email.'&token='.$update['token_reset_pass'];
+                    $user = $this->user_model->updateUser($update,$email);
 
-                $this->email->subject('Reset password for '.$email);
-                $this->email->message('Access this url to reset your password: '.$linkreset);
+                    $this->load->library('email');
+                    $config['protocol']='smtp';
+                    $config['smtp_host']='ssl://smtp.gmail.com';
+                    $config['smtp_port']='465';
+                    $config['smtp_timeout']='30';
+                    $config['smtp_user']='cdtd35a@gmail.com';
+                    $config['smtp_pass']='tracdia35a';
+                    $config['charset']='utf-8';
+                    $config['newline']="\r\n";
+                    $config['wordwrap'] = TRUE;
+                    $config['mailtype'] = 'html';
+                    $this->email->initialize($config);
+                    $this->email->from('cdtd35a@gmail.com', 'Support');
+                    $this->email->to('khoazero123@gmail.com');
+                    $this->email->subject('Reset password for '.base_url());
+                    $this->email->message('Click <a href="'.$linkreset.'">here</a> to reset your password ('.$linkreset.')');
+                    //$this->email->send();
+                    //echo $this->email->print_debugger();
 
-                $this->email->send();
-
-                $data['message'] = 'Đã gửi link reset qua email: '.$email.' ('.$linkreset.')';
+                    if ( ! $this->email->send()) {
+                        // Generate error
+                        echo $this->email->print_debugger();
+                        $data['error'] = 'Không thể gửi email reset password';
+                    }else{
+                        $data['message'] = 'Đã gửi link reset qua email: '.$email.'';
+                    }
+                }
             }
         }
         $this->load->view('site/forgotpass',$data);
