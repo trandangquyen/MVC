@@ -39,6 +39,12 @@ class User_model extends CI_Model
         if($this->db->update($this->table)) return true;
         return false; 
     }
+    public function deleteUser($id) {
+        if(is_array($id)) $this->db->where_in("id",$id);
+        else $this->db->where("id",$id);
+        if($this->db->delete($this->table)) return true;
+        return false;
+    }
     public function check_login($email, $password)
     {
         //them dieu kien kiem tra email va password

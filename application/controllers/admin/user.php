@@ -41,20 +41,20 @@ class User extends CI_Controller {
     function deteleUser($id=null) {
         $data = null;
         if($id) {
-        	if($this->Products_model->deleteProduct($id)) $data['success'] = 'Xóa sản phẩm thành công';
-            else $data['error'] = 'Xóa sản phẩm thất bại';
+        	if($this->User_model->deleteUser($id)) $data['success'] = 'Xóa người dùng thành công';
+            else $data['error'] = 'Xóa người dùng thất bại';
         } else if(!empty($_POST['delete'])) {
             foreach ($_POST['delete'] as $key => $value) {
 
                 $ids[] = (int) $value;
 
             }
-            if($this->Products_model->deleteProducts($ids))
-                $data['success'] = 'Xóa các sản phẩm thành công';
-            else $data['error'] = 'Xóa các sản phẩm thất bại';
+            if($this->User_model->deleteUser($ids))
+                $data['success'] = 'Xóa các người dùng thành công';
+            else $data['error'] = 'Xóa các người dùng thất bại';
         }
-        unset($_POST['delete']);
-        return $this->index($data);
+        //return $this->index($data);
+        redirect('admin/user');
     }
 }
 
