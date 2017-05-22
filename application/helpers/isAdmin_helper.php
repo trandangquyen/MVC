@@ -5,7 +5,7 @@
 	$user = $CI->session->userdata("login");
 	$controller = $CI->uri->uri_string();
 	if(preg_match('/^admin/i',$controller)) {
-		if($user && $user->admin!=1) {
+		if(($user && $user->admin!=1) || (!isset($user)) ) {
 			redirect('user');
 			return true;
 		}
