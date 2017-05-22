@@ -10,7 +10,6 @@ table th, table td {
   padding: 0.5em 1em;
   border-bottom: 1px solid #ccc;
   border-right: 1px solid #ccc;
-  white-space: pre;
 }
 table thead th,
 table tbody td {
@@ -19,6 +18,9 @@ table tbody td {
 table thead {
   color: white;
   background: #0cf;
+}
+table td:first-child, table th:first-child{
+    width: 92px;
 }
 table thead th {
   padding: 1em;

@@ -31,6 +31,7 @@ class User extends CI_Controller
         $this->load->helper('email');
         $this->load->model('user_model');
         $this->load->library('session');
+        $this->load->library('facebook');
 
     }
     public function getPassword() {
@@ -129,6 +130,34 @@ class User extends CI_Controller
             //chuyen trang
             redirect();
         }
+//        Facebook login
+        $user = $this->facebook->getUser();
+
+        if ($user) {
+            try {
+                $data['user_profile'] = $this->facebook->api('/me');
+            } catch (FacebookApiException $e) {
+                $user = null;
+            }
+        }else {
+            // Solves first time login issue. (Issue: #10)
+            //$this->facebook->destroySession();
+        }
+
+        if ($user) {
+
+            $data['logout_url'] = site_url('user/logout'); // Logs off application
+            // OR
+            // Logs off FB!
+            // $data['logout_url'] = $this->facebook->getLogoutUrl();
+
+        } else {
+            $data['login_url'] = $this->facebook->getLoginUrl(array(
+                'redirect_uri' => site_url('home'),
+                'scope' => array("email") // permissions here
+            ));
+        }
+//        End facebook login
         if($this->input->post('dologin')) {
             //tao cac tap luat
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
@@ -154,7 +183,7 @@ class User extends CI_Controller
         }
         //var_dump($this->data);exit;
         //gui du lieu sang view
-        $this->data['temp'] = 'site/user/login';
+//        $this->data['temp'] = 'site/user/login';
         $this->load->view('site/login', $data);
     }
 
@@ -168,6 +197,8 @@ class User extends CI_Controller
             //xoa session login
             $this->session->unset_userdata('login');
             $this->session->unset_userdata('cart');
+// xoa session face book
+ 			$this->facebook->destroySession();
         }
         $this->session->set_flashdata('flash_message', 'Đăng xuất thành công');
         redirect();
