@@ -85,7 +85,8 @@ class User extends CI_Controller
                 $this->session->set_flashdata('flash_message', 'Đăng nhập thành công');
                 $data['message'] = 'Đăng nhập thành công';
                 $data['redirect'] = base_url();
-                //redirect();//chuyen toi trang chu
+                //redirect();//chuyen toi trang chure
+                if($user->admin==1) redirect('admin');
             } else {
                 $data['error'] = 'Đăng nhập ko thành công';
             }

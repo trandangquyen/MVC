@@ -52,35 +52,28 @@
                     ?>
                 </ul>
             </div><!-- end boder_menu -->
+            <?php if(isset($comments)) { ?>
             <div class="tittle-box">
                 <img src="public/themes/images/icon.png" alt="" class="icon_tittle">
                 <h3>Các đánh giá mới nhất</h3>
             </div><!-- end tittle -->
             <div class="boder_menu" style="height: 422px;overflow: scroll;">
                 <ul class="sub-1">
-                    <?php 
-                    foreach ($news as $new) {
-                        echo '<li ><a href="index.php/tintuc/details/'.$new['id'].'"><img src="public/themes/images/li.png" alt="" class="icon_list">'.$new['title'].'</a></li>';
-                    }
-                    ?>
-
-                    <!-- <?php
-                    if(!empty($product->comments)) {
-                        foreach ($product->comments as $comment) {
-                            echo '<li ><a href="index.php/tintuc/details/'.$new['id'].'">';
-                            $star = '';
-                            for($i=($comment['rate']);$i>=1;$i--) $star .= '<i class="star"></i>';
-                            echo '<div class="user-com">
-                                <div class="com-title">'.$star .'<div class="title">'.$comment['title'].'</div></div>
-                                <div class="by-user"><span>Khách hàng:</span>'.$comment['name'].'</div>
-                                <p>'.$comment['content'].'</p>
-                            </div></a></li>';
+                     <?php                     
+                        foreach ($comments as $comment) {
+                             $star = '';
+                             for($i=($comment['rate']);$i>=1;$i--) $star .= '<i class="star"></i>';
+                             echo '<div class="user-com"><a href="index.php/sanpham/'.$comment['product_id'].'">
+                                <img src="'.$comment['product_image'].'" width="100%"/>
+                                 <div class="com-title">'.$star .'<div class="title">'.$comment['title'].'</div></div>
+                                 <div class="by-user"><span><b>Khách hàng:</b></span>'.$comment['name'].'</div>
+                                 <p>'.$comment['content'].'</p>
+                             </a></div>';
                         }
-                        }
-                    ?> -->
+                     ?> 
                 </ul>
             </div><!-- end boder_menu -->
-
+            <?php } ?>
         </div><!-- end main_left -->
     </div> <!-- end col-xs-3 -->
 
