@@ -18,6 +18,7 @@ class User_model extends CI_Model
     	parent::__construct();
         $this->load->database();
         $this->table = 'user';
+        $this->load->helper('email');
     }
     public function listUser() {
         $this->db->select("*");
@@ -27,7 +28,17 @@ class User_model extends CI_Model
 
     }
     public function getUser($id) {
-        $this->db->where("id",$id);
+        if(valid_email($id))
+            $this->db->where('email', $id);
+        else
+            $this->db->where('id', $id);
+        $query=$this->db->get($this->table);
+        $result=$query->row_array();
+        return $result;
+
+    }
+    public function getUserByEmail($email) {
+        $this->db->where("email",$email);
         $query=$this->db->get($this->table);
         $result=$query->row_array();
         return $result;
@@ -35,7 +46,10 @@ class User_model extends CI_Model
     }
     public function updateUser($data=array(),$user_id) {
         $this->db->set($data);
-        $this->db->where('id', $user_id);
+        if(valid_email($user_id))
+            $this->db->where('email', $user_id);
+        else
+            $this->db->where('id', $user_id);
         if($this->db->update($this->table)) return true;
         return false; 
     }

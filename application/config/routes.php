@@ -62,6 +62,8 @@ $route['admin-category'] = 'admincategory';
 $route['admin-home'] = 'adminhome';
 $route['user'] = 'user/login';
 $route['logout'] = 'user/logout';
+$route['user/forgot'] = 'user/forgotPassword';
+$route['user/resetpass'] = 'user/getPassword';
 
 
 $route['billing/viewinvoice'] = 'invoice';
