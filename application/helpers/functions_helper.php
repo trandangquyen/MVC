@@ -33,11 +33,13 @@ function getUser($user_id=false) {
 		$CI->load->model('User_model');
         $user = $CI->User_model->getUser($user_id);
         if($user) {
-        	return $user;
+        	//return $user;
         	//$CI->session->set_userdata("user", $user);
         }
-    } else $user = $CI->session->userdata("user");
-    return $user;
+    } else {
+    	$user = $CI->session->userdata("login");
+    }
+    return (array)$user;
 }
 function isAdmin($user_id=false) {
 	$CI = & get_instance();

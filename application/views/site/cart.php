@@ -1,4 +1,3 @@
-<form method="post" enctype="multipart/form-data" action="cart" onsubmit="return check_field()">
 
     <div id="guide_cart">
         <i class="bg icon_large_cart"></i>
@@ -76,7 +75,7 @@
             }
             ?>
     <div class="clear space2"></div>
-</form>
+
 <script type="text/javascript">
     var products = {};
     $(window).load(function () {
@@ -126,6 +125,7 @@
             products[product_id] = quantity;
         });
         $('#total_value').text(format_curency(total_orders_price));
+        //$('input[name=amount]').val(total_orders_price);
         $('#total_value').attr('value',total_orders_price).attr('data-price',total_orders_price);
         $('span#count_shopping_cart_store').text($('tr[id^="product-"]').length);
     }

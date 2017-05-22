@@ -1,74 +1,67 @@
 
-            <div class="top-bar"> <a href="#" class="button">Thêm mới</a>
-                <h1>Nội dung đang xem</h1>
-                <div class="breadcrumbs"><a href="#">Homepage</a> / <a href="#">Sản phẩm</a></div>
+            <div class="top-bar"> <a href="admin/category/add" class="button">Thêm mới</a>
+                <h1>Quản trị người dùng</h1>
+                <div class="breadcrumbs"><a href="#">Homepage</a> / <a href="#">Người dùng</a></div>
             </div>
             <br />
-            <div class="select-bar">
+            <!-- <div class="select-bar">
                 <label>
                     <input type="text" name="textfield" />
                 </label>
                 <label>
                     <input type="submit" name="Submit" value="Tìm kiếm" />
                 </label>
-            </div>
+            </div> -->
+            <div class="clearfix"></div>
+            <?php 
+            if(isset($error))
+            echo '<div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              '.$error.'
+            </div>';
+        elseif(isset($success))
+            echo '<div class="alert alert-info" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              '.$success.'
+            </div>';
+            ?>
             <div class="table"> <img src="public/admin/img/bg-th-left.gif" width="8" height="7" alt="" class="left" /> <img src="public/admin/img/bg-th-right.gif" width="7" height="7" alt="" class="right" />
+            <form method="POST">
                 <div class="cont-products">
+                
                     <table class="listing" cellpadding="0" cellspacing="0">
                         <tr>
-                            <th class="first" width="177">Danh sách sản phẩm</th>
-                            <th>Danh mục cha</th>
+                            <th>STT</th> 
+                            <th>Tên hiện thị</th>
+                            <th>Email</th>
+                            <th>Quản trị viên</th>
                             <th>Xóa</th>
                             <th>Sửa</th>
-                            <th>Trạng thái</th>
                             <th>Chọn tất cả<input id="select-all" type="checkbox" name="select-all" value="select-all"></th>
                         </tr>
-                        <tr>
-                            <td class="first style3">HTC U Ultra </td>
-                            <td>HTC</td>
-                            <td><a href="#"><img src="public/admin/img/hr.gif" width="16" height="16" alt="" /></a></td>
-                            <td><a href="#"><img src="public/admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></a></td>
-                            <td><img src="public/admin/img/pr-disable-icon.gif" width="16" height="16" alt="login" /></td>
-                            <td class="last"><input type="checkbox" name="sp1" value="id-sp1"</td>
-                        </tr>
-                        <tr>
-                            <td class="first style3">HTC Desire 628</td>
-                            <td>HTC</td>
-                            <td><a href="#"><img src="public/admin/img/hr.gif" width="16" height="16" alt="" /></a></td>
-                            <td><a href="#"><img src="public/admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></a></td>
-                            <td><img src="public/admin/img/pr-disable-icon.gif" width="16" height="16" alt="login" /></td>
-                            <td class="last"><input type="checkbox" name="sp2" value="id-sp2"/td>
-                        </tr>
-                        <tr>
-                            <td class="first style3">6 GS63VR 6RF-07</td>
-                            <td>MSI</td>
-                            <td><a href="#"><img src="public/admin/img/hr.gif" width="16" height="16" alt="" /></a></td>
-                            <td><a href="#"><img src="public/admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></a></td>
-                            <td><img src="public/admin/img/pr-active-icon.gif" width="16" height="16" alt="login" /></td>
-                            <td class="last"><input type="checkbox" name="sp3" value="id-sp3"</td>
-                        </tr>
-                        <tr>
-                            <td class="first style3">5 GS63VR 6RF-076VN</td>
-                            <td>MSI</td>
-                            <td><a href="#"><img src="public/admin/img/hr.gif" width="16" height="16" alt="" /></a></td>
-                            <td><a href="#"><img src="public/admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></a></td>
-                            <td><img src="public/admin/img/pr-active-icon.gif" width="16" height="16" alt="login" /></td>
-                            <td class="last"><input type="checkbox" name="sp4" value="id-sp4"</td>
-                        </tr>
-                        <tr>
-                            <td class="first style3">4 GS63VR 6RF-076VN</td>
-                            <td>MSI</td>
-                            <td><a href="#"><img src="public/admin/img/hr.gif" width="16" height="16" alt="" /></a></td>
-                            <td><a href="#"><img src="public/admin/img/edit-icon.gif" width="16" height="16" alt="edit" /></a></td>
-                            <td><img src="public/admin/img/pr-active-icon.gif" width="16" height="16" alt="login" /></td>
-                            <td class="last"><input type="checkbox" name="sp5" value="id-sp5"</td>
-                        </tr>
+                        <?php 
+                        $i=1;
+                    foreach ($users as $user) { 
+                        echo '<tr>
+                            <td>'.$i.'</td>
+                            <td>'.$user['name'].'</td>
+                            <td>'.$user['email'].'</td>
+                            <td>'.($user['admin'] == 1 ? 'Quản trị viên' : 'Không').'</td>
+                            <td><a href="admin/user/delete/'.$user['id'].'"><img src="public/admin/img/hr.gif" width="16" height="16" alt="Delete" /></a></td>
+                            <td><a href="admin/user/edit/'.$user['id'].'"><img src="public/admin/img/edit-icon.gif" width="16" height="16" alt="Edit" /></a></td>
+                            <td class="last"><input type="checkbox" name="delete[]" value="'.$user['id'].'"</td>
+                        </tr>';
+                        $i++;
+                    }
+                    ?>
+                    
                     </table>
+                    
                 </div>
-                <div class="task-bottom"><span><a class="add-product" href="themsp.php" >Thêm sản phẩm</a></span><span><a href="#">Xóa</a></span></div>
-                <div class="select sl-page"> <strong>Other Pages: </strong>
-                    <select>
-                        <option>1</option>
-                    </select>
-                </div>
+
+                <div class="pagination" style="display: table;margin: 0 auto;"><div class="pagination-page"></div></div>
+
+                <div class="task-bottom"><span><input type="submit" class="" value="Xóa"></span></div>
+                </form>
             </div>

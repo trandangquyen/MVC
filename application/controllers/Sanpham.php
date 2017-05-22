@@ -6,7 +6,7 @@ class Sanpham extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->helper(array('url','form'));
-        $this->load->library('session');
+        //$this->load->library('session');
         $this->load->database();
         $this->load->model('Products_model');
         $this->load->model('Category_model');
@@ -19,8 +19,10 @@ class Sanpham extends CI_Controller {
         $data['active'] = 'sanpham';
         $this->load->view('site/common/header', $data);
         $listCategory = $this->Category_model->getAllCategory();
-        $this->load->view('site/category', ['category'=>$listCategory]);
-        
+        $this->load->model('News_model');
+        $listNews = $this->News_model->listNews(null,0,6);
+        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews]);
+
         if($category) {
             $name = $this->Category_model->getNameCategory($category);
             $name = end($name);
@@ -101,13 +103,17 @@ class Sanpham extends CI_Controller {
             $data['product']->category_name = $this->Category_model->getNameCategory($data['product']->category_id);
         else show_404();
         $data['title'] = $data['product']->name;
-
+        $listCategory = $this->Category_model->getAllCategory();  
         $data['product']->image = $this->Products_model->getImageProducts($id);
-        $listCategory = $this->Category_model->getAllCategory();
         $data['product']->comments = $this->Comment_model->getComment($id);
-        $this->load->view('site/common/header', $data);
+        
 
-        $this->load->view('site/category', ['category'=>$listCategory]);
+        
+        
+        $this->load->model('News_model');
+        $listNews = $this->News_model->listNews(null,0,6);
+        $this->load->view('site/common/header', $data);
+        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews]);
 
         $this->load->view('site/sanpham', $data);
         //$this->load->model('News_model');

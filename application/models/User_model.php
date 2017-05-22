@@ -18,6 +18,46 @@ class User_model extends CI_Model
     	parent::__construct();
         $this->load->database();
         $this->table = 'user';
+        $this->load->helper('email');
+    }
+    public function listUser() {
+        $this->db->select("*");
+        $query=$this->db->get($this->table);
+        $result = $query->result_array();
+        return $result;
+
+    }
+    public function getUser($id) {
+        if(valid_email($id))
+            $this->db->where('email', $id);
+        else
+            $this->db->where('id', $id);
+        $query=$this->db->get($this->table);
+        $result=$query->row_array();
+        return $result;
+
+    }
+    public function getUserByEmail($email) {
+        $this->db->where("email",$email);
+        $query=$this->db->get($this->table);
+        $result=$query->row_array();
+        return $result;
+
+    }
+    public function updateUser($data=array(),$user_id) {
+        $this->db->set($data);
+        if(valid_email($user_id))
+            $this->db->where('email', $user_id);
+        else
+            $this->db->where('id', $user_id);
+        if($this->db->update($this->table)) return true;
+        return false; 
+    }
+    public function deleteUser($id) {
+        if(is_array($id)) $this->db->where_in("id",$id);
+        else $this->db->where("id",$id);
+        if($this->db->delete($this->table)) return true;
+        return false;
     }
     public function check_login($email, $password)
     {
