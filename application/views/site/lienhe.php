@@ -7,9 +7,20 @@
     <div class="wrapper">
         <div class="space20"></div>
         <h1 class="h-title center"></h1>
+        <?php
+        if(isset($error))
+            echo '<div class="alert alert-danger" role="alert">
+              <span class="sr-only">Error:</span>
+              '.$error.'
+            </div>';
+        elseif(isset($success))
+            echo '<div class="alert alert-info" role="alert">
+              '.$success.'
+            </div>';
+            ?>
         <div class="row">          
           	<div class="col-xs-12 col-sm-6">
-                <form method="post" autocomplete="off">
+                <form method="post" autocomplete="off" action="lienhe/save">
                     <h3>Gửi thông tin yêu cầu</h3>
                     <div class="row">
                         <div class="col-md-3 col-sm-4 col-xs-12">
@@ -56,39 +67,35 @@
                           <div class="space5"></div>
                           
                             <div class="form_status_notify"></div>
-                    <div id="form_status_success" style=""><input type="button" class="btn btn-red" onclick="Form.submitForm.call(this, '', validate_rule , sendSuccess )" value="Gửi cho chúng tôi"></div>
+                    <div id="form_status_success" style=""><input type="submit" class="btn btn-red" onclick="" value="Gửi cho chúng tôi"></div>
                         </div>
                     </div>
 
                     <input type="hidden" name="_xstore_module" value="page">
                     <input type="hidden" name="_xstore_view" value="contact_us">
 
-                    
-
                 </form>
 	        </div>
             <div class="col-xs-12 col-sm-6">
 	            <div class="ctu-item">
-	                <h3>Thông tin liên hệ</h3>
-	                <div>
-	                    P618, Chung cư Tân Phúc<br>
-	                    Đống Đa<br>
-	                    Hà nội
+	                <h3 style="color: red">Thông tin liên hệ</h3>
+	                <div >
+	                    <?php echo $support->address ?>
 	                </div>
 	               <br>
 	               <table>
 	                      
 	                      <tbody><tr>
 	                        <td>Hotline:</td>
-	                        <td>0999.999.999</td>
+	                        <td><?php echo $support->hotline ?></td>
 	                    </tr>
 	                    <tr>
 	                        <td>Điện thoại:</td>
-	                        <td>0383.888.888</td>
+	                        <td><?php echo $support->phone ?></td>
 	                    </tr>
 	                    <tr>
 	                        <td>Email:</td>
-	                        <td><a href="mailto:hotro@fgc.com" class="blue">hotro@fgc.com</a></td>
+	                        <td><a href="mailto:hotro@fgc.com" class="blue"><?php echo $support->address ?></a></td>
 	                    </tr>
 	                </tbody></table>
 				</div>
@@ -97,6 +104,11 @@
         <div class="space40"></div>
     </div>
 </section>
+
+<script type="text/javascript">
+    
+</script>
+
 <div class="space20"></div>
 <h3>Bản đồ đường đi:</h3>
 <div id="map" style="width:100%;height:500px"></div>

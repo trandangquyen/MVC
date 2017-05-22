@@ -1,63 +1,64 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/*
-| -------------------------------------------------------------------------
-| URI ROUTING
-| -------------------------------------------------------------------------
-| This file lets you re-map URI requests to specific controller functions.
-|
-| Typically there is a one-to-one relationship between a URL string
-| and its corresponding controller class/method. The segments in a
-| URL normally follow this pattern:
-|
-|	example.com/class/method/id/
-|
-| In some instances, however, you may want to remap this relationship
-| so that a different class/function is called than the one
-| corresponding to the URL.
-|
-| Please see the user guide for complete details:
-|
-|	https://codeigniter.com/user_guide/general/routing.html
-|
-| -------------------------------------------------------------------------
-| RESERVED ROUTES
-| -------------------------------------------------------------------------
-|
-| There are three reserved routes:
-|
-|	$route['default_controller'] = 'welcome';
-|
-| This route indicates which controller class should be loaded if the
-| URI contains no data. In the above example, the "welcome" class
-| would be loaded.
-|
-|	$route['404_override'] = 'errors/page_missing';
-|
-| This route will tell the Router which controller/method to use if those
-| provided in the URL cannot be matched to a valid route.
-|
-|	$route['translate_uri_dashes'] = FALSE;
-|
-| This is not exactly a route, but allows you to automatically route
-| controller and method names that contain dashes. '-' isn't a valid
-| class or method name character, so it requires translation.
-| When you set this option to TRUE, it will replace ALL dashes in the
-| controller and method URI segments.
-|
-| Examples:	my-controller/index	-> my_controller/index
-|		my-controller/my-method	-> my_controller/my_method
-*/
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['gioithieu'] = 'gioithieu/view';
 $route['tintuc/list'] = 'tintuc/list_view';
-$route['lienhe'] = 'lienhe/view';
+$route['lienhe'] = 'lienhe';
+$route['lienhe/save'] = 'lienhe/save';
 $route['tintuc'] = 'tintuc';
+$route['tintuc/details/(:num)'] = 'tintuc/details/$1';
 $route['sanpham'] = 'sanpham/index';
 $route['sanpham/(:num)'] = 'sanpham/viewProduct/$1';
 $route['theloai/(:num)'] = 'sanpham/index/$1';
 
-$route['admin/sanpham'] = 'sanpham/AdminListProduct';
+$route['ajaxProduct'] = 'sanpham/loadAjax';
+$route['ajaxNews'] = 'tintuc/loadAjax';
+
+
+$route['admin'] = 'admin/product';
+$route['admin/product']['GET'] = 'admin/product';
+$route['admin/product']['POST'] = 'admin/product/deteleProduct'; // do not 
+$route['admin/product/add'] = 'admin/product/addProduct';
+$route['admin/product/delete/(:num)'] = 'admin/product/deteleProduct/$1';
+$route['admin/product/edit/(:num)'] = 'admin/product/updateProduct/$1';
+
+$route['admin/category']['GET'] = 'admin/category';
+$route['admin/category']['POST'] = 'admin/category/deteleCategory';
+$route['admin/category/add'] = 'admin/category/addCategory';
+$route['admin/category/delete/(:num)'] = 'admin/category/deteleCategory/$1';
+$route['admin/category/edit/(:num)'] = 'admin/category/updateCategory/$1';
+
+$route['admin/news']['GET'] = 'admin/news/index';
+$route['admin/news']['POST'] = 'admin/news/deteleNews';
+$route['admin/news/add'] = 'admin/news/addNews';
+$route['admin/news/delete/(:num)'] = 'admin/news/deteleNews/$1';
+$route['admin/news/edit/(:num)'] = 'admin/news/updateNews/$1';
+
+
+$route['search/(:any)'] = 'sanpham/search/$1';
+$route['cart']['GET'] = 'cart/viewCart';
+$route['cart/order']['GET'] = 'cart/order';
+$route['cart']['POST'] = 'cart/actionCart';
+
+$route['admin/support']['GET'] = 'admin/support/index';
+$route['admin/support']['POST'] = 'admin/support/updateSupport';
+
+
+$route['compare']['GET'] = 'Compare/viewCompare';
+$route['compare']['POST'] = 'Compare/actionCompare';
+$route['admin-sanpham'] = 'adminsanpham';
+$route['admin-tintuc'] = 'admintintuc';
+$route['admin-gioithieu'] = 'admingioithieu';
+$route['admin-lienhe'] = 'adminlienhe';
+$route['admin-caidat'] = 'admincaidat';
+$route['admin-user'] = 'adminuser';
+$route['admin-category'] = 'admincategory';
+$route['admin-home'] = 'adminhome';
+$route['user'] = 'user/login';
+$route['logout'] = 'user/logout';
+
+
+$route['billing/viewinvoice'] = 'invoice';

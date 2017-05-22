@@ -75,11 +75,6 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	//'hostname' => 'vankhoa.wdev.fgct.net',
-	//'username' => 'vankhoa',
-	//'password' => 'khoa.1994',
-	//'database' => 'vankhoa_vankhoa_wdev_fgct_net',
-
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '123456',

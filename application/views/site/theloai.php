@@ -3,7 +3,7 @@
 
     <div class="tittle-box">
       <img src="public/themes/images/icon.png" alt="" class="icon_tittle">
-      <h3><?=$title?></h3>
+      <h3>Danh sách thể loại</h3>
     </div> <!-- end tittle -->
     <div class="boder_menu">
     <?php 
@@ -22,3 +22,4 @@
 
   </div><!-- end main_left -->
 </div> <!-- end col-xs-3 -->
+<div class="col-xs-6">

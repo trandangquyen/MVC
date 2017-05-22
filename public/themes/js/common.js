@@ -1,63 +1,124 @@
-(function() {
-	var $menu = $('#menu ul');
-	$('.navbar.main-menu').after('<div class="_toggleMenu"><a class="toggleMenu" href="#">- MENU -</a><ul class="nav"></ul></div>');
-	$('._toggleMenu .nav').html($menu.html());
-})();
+(function ($) {
+    /**
+     * START - ONLOAD - JS
+     */
+    /* ----------------------------------------------- */
+    /* ------------- FrontEnd Functions -------------- */
+    /* ----------------------------------------------- */
+    function rateStar() {
+        var clicked = false;
+        var countStar = 0;
+        var imgStaroff = "url('public/themes/images/star-off.png') no-repeat scroll";
+        var imgStaron = "url('public/themes/images/star-on.png') no-repeat scroll";
 
-var ww = document.body.clientWidth;
+        $(".rate-star i").mouseenter(
+            function () {
+                // console.log("mouse in");
+                $(this).on('mouseleave');
+                if (countStar != 0) {
+                    for (var i = 0; i < 5; i++) {
+                        $(".rate-star i:eq(" + i + ")").css("background", imgStaroff);
+                    }
+                    var index = $(this).index();
+                    for (var i = 0; i < index; i++) {
+                        $(".rate-star i:eq(" + i + ")").css("background", imgStaron);
+                        $("#count-star").html(index);
+                    }
+                }
+                else {
+                    // $(this).on('mouseleave');
+                    var index = $(this).index();
+                    for (var i = 0; i < index; i++) {
+                        $(".rate-star i:eq(" + i + ")").css("background", imgStaron);
+                        $("#count-star").html(index);
+                    }
+                }
 
-$(document).ready(function() {		
-	$("._toggleMenu .nav li a").each(function() {
-		if ($(this).next().length > 0) {			
-			$(this).addClass("parent");
-		};
-	})
-	
-	$("._toggleMenu .toggleMenu").click(function(e) {
-		e.preventDefault();
-		$(this).toggleClass("active");
-		$("._toggleMenu .nav").toggle();
-	});
-	adjustMenu();
-})
+            }
+        );
+        $(".rate-star i").mouseleave(
+            function () {
+                // console.log("muose outed");
+                if (countStar != 0) {
+                    $("#count-star").html(countStar);
+                    for (var i = 0; i < 5; i++) {
+                        console.log("reseted");
+                        $(".rate-star i:eq(" + i + ")").css("background", imgStaroff);
+                    }
+                    for (var i = 0; i < countStar; i++) {
+                        $(".rate-star i:eq(" + i + ")").css("background", imgStaron);
+                    }
+                }
+                else {
+                    var index = $(this).index();
+                    $("#count-star").html(0);
+                    for (var i = 0; i < index; i++) {
+                        $(".rate-star i:eq(" + i + ")").css("background", imgStaroff);
+                    }
+                }
 
-$(window).bind('resize orientationchange', function() {
-	ww = document.body.clientWidth;
-	adjustMenu();
-});
 
-var adjustMenu = function() {
-	if (ww < 767) {
-		$("._toggleMenu").css("display", "block");
-		if (!$(".toggleMenu").hasClass("active")) {
-			$("._toggleMenu .nav").hide();
-		} else {
-			$("._toggleMenu .nav").show();
-		}
-		$("._toggleMenu .nav li").unbind('mouseenter mouseleave');
-		$("._toggleMenu .nav li a.parent").unbind('click').bind('click', function(e) {
-			// must be attached to anchor element to prevent bubbling
-			e.preventDefault();
-			$(this).parent("li").toggleClass("hover");
-		});
-	} 
-	else if (ww >= 767) {
-		$("._toggleMenu").css("display", "none");
-		$("._toggleMenu .nav").show();
-		$("._toggleMenu .nav li").removeClass("hover");
-		$("._toggleMenu .nav li a").unbind('click');
-		$("._toggleMenu .nav li").unbind('mouseenter mouseleave').bind('mouseenter mouseleave', function() {
-		 	// must be attached to li so that mouseleave is not triggered when hover over submenu
-		 	$(this).toggleClass('hover');
-		});
-	}
-}
+            }
+        );
+        $(".rate-star i").click(
+            function () {
+                clicked = true;
+                var index = $(this).index();
+                countStar = index;
+                $(this).data('clicked', true);
+                for (var i = 0; i < index; i++) {
+                    var star = $(".rate-star i:eq(" + i + ")").css("background", imgStaron);
+                }
+                $('input[name=comment\\[rate\\]]').val(countStar);
+            }
+        );
+    }
 
-//Menu
-$('#menu > ul').superfish({ 
-	delay:       100,                           
-	animation:   {opacity:'show', height:'show'}, 
-	speed:       'fast',
-	arrowClass: false,
-	autoArrows:  true
-});
+    function displayMenu() {
+        $(".sub-1 li").hover(function () {
+            $(this).addClass("active").find(".sub-2").slideDown(300);
+        }, function () {
+            $(this).removeClass("active").find(".sub-2").stop().slideUp(50);
+        });
+        $(".sub-2 li").hover(function () {
+            $(this).addClass("active").find(".sub-3").slideDown(300);
+        }, function () {
+            $(this).removeClass("active").find(".sub-3").stop().slideUp(50);
+        });
+    }
+    function checkAllProduct(){
+        $('#select_all').change(function() {
+            var checkboxes = $(this).closest('form').find(':checkbox');
+            if($(this).is(':checked')) {
+                checkboxes.prop('checked', true);
+            } else {
+                checkboxes.prop('checked', false);
+            }
+        });
+    }
+    /* OnLoad Page */
+    $(document).ready(function ($) {
+        rateStar();
+        displayMenu();
+        $('.flexslider').flexslider({
+            directionNav: false,
+            animation: "slide",
+            slideshow: true,
+            pauseOnAction: false,
+            pauseOnHover: false,
+            slideshowSpeed: 3000,
+            after: function () {
+                $(".flex-active-slide").siblings().find(".flex-caption").removeClass("bounceInUp");
+                $(".flex-active-slide .flex-caption").addClass("bounceInUp");
+
+            }
+        });
+
+    });
+    /* OnLoad Window */
+    var init = function () {
+
+    };
+    window.onload = init;
+
+})(jQuery);
