@@ -92,11 +92,21 @@ class Cart extends CI_Controller {
                 $products[$i]['total-price'] = $products[$i]['price'] * $quantity;
                 $order_total += $products[$i]['total-price'];
             }
-            
+            $user_info = $this->input->post('user_info');
+            //var_dump($user_info);exit;
             $insert = array(
-                            'user'=>$this->user_id,
-                            'price'=>$order_total,
-                            'products'=> $this->cart);
+                            'order' => [
+                                'user' =>$this->user_id,
+                                'price' =>$order_total,
+                                'ship_name' => isset($user_info['ship_to_name']) ? $user_info['ship_to_name'] : null,
+                                'ship_phone' => isset($user_info['ship_to_phone']) ? $user_info['ship_to_phone'] : null,
+                                'ship_address' => isset($user_info['ship_to_address']) ? $user_info['ship_to_address'] : null,
+                                'ship_note' => isset($user_info['ship_note']) ? $user_info['ship_to_address'] : null,
+                                'payment' => (null !== $this->input->post('payment')) ? $this->input->post('payment') : null,
+                                'transport' => (null !== $this->input->post('transport')) ? $this->input->post('transport') : null,
+                            ],
+                            'order_details' => $this->cart,
+                        );
             
             if($order_id=$this->Order_model->createOrder($insert)) {
                 $data['message'] = 'Đặt hóa đơn thành công: #'.$order_id;

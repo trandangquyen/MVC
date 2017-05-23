@@ -43,10 +43,10 @@ class Order_model extends CI_Model
      */
     public function createOrder($data=array()) {
         //echo '<pre>';var_dump($data);echo '</pre>';
-        if($this->db->insert($this->table, ['user'=>$data['user'],'price'=>$data['price']])) {
+        if($this->db->insert($this->table, $data['order'])) {
             $order_id = $this->db->insert_id();
             $i=0;
-            foreach ($data['products'] as $id => $quantity) {
+            foreach ($data['order_details'] as $id => $quantity) {
             //for ($i=0;$i<count($data['products']);$i++) {
                 $insert[$i]['order_id'] = $order_id;
                 $insert[$i]['product_id'] = $id;
