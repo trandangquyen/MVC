@@ -9,6 +9,11 @@ class Home extends CI_Controller {
           $this->load->helper(array('url'));
 //          $this->load->database();
 //          $this->load->library('session');
+          $this->load->model('News_model');
+          $this->load->model('Products_model');
+        $this->load->model('Category_model');
+        $this->load->model('Comment_model');
+        $this->load->model('Support_model');
      }
 	public function index()
 	{ 
@@ -19,10 +24,7 @@ class Home extends CI_Controller {
         
 
         $this->load->library('pagination');
-        $this->load->model('Products_model');
-        $this->load->model('Category_model');
-        $this->load->model('Comment_model');
-        $this->load->model('Support_model');
+        
 
 
         $data['user'] = $this->session->userdata('login');
@@ -54,7 +56,7 @@ class Home extends CI_Controller {
         //$this->load->view('site/common/mainleft', $data);
         $listCategory = $this->Category_model->getAllCategory();
         $support = $this->Support_model->getSupport();
-        $this->load->model('News_model');
+        
         $listNews = $this->News_model->listNews(null,0,6);
         $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews, 'comments'=>$data['comments'], 'support'=>$support]);
 

@@ -11,6 +11,7 @@ class Sanpham extends CI_Controller {
         $this->load->model('Products_model');
         $this->load->model('Category_model');
         $this->load->model('Support_model');
+        $this->load->model('News_model');
     }
 
     // list products per category or a category
@@ -31,7 +32,7 @@ class Sanpham extends CI_Controller {
         if($category) {
             $name = $this->Category_model->getNameCategory($category);
             $name = end($name);
-            if(!$name) show_404();
+            if(!$name) show_404(); 
             $data['products'][$name] = $this->Products_model->listProducts($category,null,0,3);
         } else {
             //$data['products']['Đánh giá cao nhất'] = $this->Products_model->listProducts(null,'rate',0,6);
@@ -66,7 +67,10 @@ class Sanpham extends CI_Controller {
         
         $this->load->view('site/common/header', $data);
         $listCategory = $this->Category_model->getAllCategory();
-        $this->load->view('site/category', ['category'=>$listCategory]);
+        $support = $this->Support_model->getSupport();
+        //$this->load->view('site/category', ['category'=>$listCategory]);
+        $listNews = $this->News_model->listNews(null,0,6);
+        $this->load->view('site/category', ['category'=>$listCategory, 'news'=>$listNews, 'comments'=>null, 'support'=>$support]);
 
         $data['products']['Search'] = $this->Products_model->search($keyword);
         $config['base_url'] = base_url('search/'.$keyword);
