@@ -53,6 +53,13 @@ class Products_model extends CI_Model
         if($result) return $result;
         return null;
     }
+    public function getProductArray($id) {
+        $this->db->where("id",$id);
+        $query=$this->db->get("product");
+        $result=$query->row_array();
+        if($result) return $result;
+        return null;
+    }
     public function getProducts($ids) {
         $this->db->where_in("id",$ids);
         $query=$this->db->get("product");

@@ -46,7 +46,7 @@ if(isset($debug)) echo "<!-- ".json_encode($debug)." -->\n";
                         echo "<div class='login'><a href='admin'><img src='public/themes/images/user-login.png' alt=''>Xin chào: ".$user['name']."</a><a href='logout'> Đăng xuất</a></div>";
                     }
                     elseif($user){
-                        echo "<div class='login'><a href='giohang'><img src='public/themes/images/user-login.png' alt=''>Xin chào: ".$user['name']."</a><a href='logout'> Đăng xuất</a></div>";
+                        echo "<div class='login'><a href='user/info'><img src='public/themes/images/user-login.png' alt=''>Xin chào: ".$user['name']."</a><a href='logout'> Đăng xuất</a></div>";
                     }
                     else{
                         echo "<div class='login'><a href='user'><img src='public/themes/images/user-login.png' alt=''>Đăng ký/Đăng nhập</a></div>";

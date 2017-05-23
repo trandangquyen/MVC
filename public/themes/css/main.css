@@ -569,3 +569,21 @@ div#cart {
 .c3_col_1 input[type="text"]{}
 .c3_col_1 textarea{}
 .tbl_cart3 table td{border:solid 1px #CCC;}
+
+#account-left {
+    width: 220px;
+    vertical-align: top;
+    padding-right: 30px;
+}
+#tb-account {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tb-account input[type="text"], input[type="password"] {
+    width: 300px;
+    height: 25px;
+    border: solid 1px #ddd;
+    padding-left: 5px;
+    margin-right: 10px;
+}

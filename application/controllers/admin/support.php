@@ -1,6 +1,6 @@
 <?php 
 
-class Support extends Auth_Controller {
+class Support extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('Support_model');

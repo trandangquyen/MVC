@@ -3,25 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller
 {
-
-    /**
-     * Index Page for this controller.
-     *
-     * Maps to the following URL
-     *        http://example.com/index.php/welcome
-     *    - or -
-     *        http://example.com/index.php/welcome/index
-     *    - or -
-     * Since this controller is set as the default controller in
-     * config/routes.php, it's displayed at http://example.com/
-     *
-     * So any other public methods not prefixed with an underscore will
-     * map to /index.php/welcome/<method_name>
-     * @see https://codeigniter.com/user_guide/general/urls.html
-     */
-
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->load->helper(array('url'));
         $this->load->database();
@@ -30,10 +12,12 @@ class Login extends CI_Controller
         $this->load->library('session');
         require FCPATH.'vendor/autoload.php';
     }
-
-    public function google(){
+    /**
+     * proccess login with google account
+     * @return redirect home
+     */
+    public function google() {
         //require FCPATH.'vendor/autoload.php';
-
         //session_start();
 
         $client_id = $this->config->item('gg_clientid');
@@ -100,6 +84,10 @@ class Login extends CI_Controller
         }
         echo $data['authUrl'];*/
     }
+    /**
+     * proccess login with facebook account
+     * @return redirect home
+     */
     public function facebook(){
         //require FCPATH.'vendor/autoload.php';
         $fb = new \Facebook\Facebook([
@@ -158,8 +146,6 @@ class Login extends CI_Controller
             //var_dump($user);exit;
             
             redirect('');
-
         }
     }
-
 }

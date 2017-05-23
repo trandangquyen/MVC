@@ -10,6 +10,7 @@ class Lienhe extends CI_Controller {
         $this->load->model('Support_model');
     }
 	public function index() {
+		$data['title'] = 'Liên hệ';
 		$data['active'] = 'lienhe';
 		$support = $this->Support_model->getSupport();
 		$this->load->view('site/common/header', $data);
@@ -31,7 +32,7 @@ class Lienhe extends CI_Controller {
 			if($this->Contact_model->insertContact($insert)) $data['success'] = 'Cám ơn bạn đã liên hệ.';
 
 		}
-		//echo '<pre>';print_r($data);echo '</pre>';
+		$data['title'] = 'Liên hệ';
 		$data['active'] = 'lienhe';
 		$this->load->view('site/common/header', $data);
         $this->load->view('site/lienhe',$data);

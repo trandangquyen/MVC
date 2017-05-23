@@ -3,23 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
-
-    /**
-     * Index Page for this controller.
-     *
-     * Maps to the following URL
-     *        http://example.com/index.php/welcome
-     *    - or -
-     *        http://example.com/index.php/welcome/index
-     *    - or -
-     * Since this controller is set as the default controller in
-     * config/routes.php, it's displayed at http://example.com/
-     *
-     * So any other public methods not prefixed with an underscore will
-     * map to /index.php/welcome/<method_name>
-     * @see https://codeigniter.com/user_guide/general/urls.html
-     */
-
     public function __construct()
     {
         parent::__construct();
@@ -31,15 +14,24 @@ class User extends CI_Controller
         $this->load->helper('email');
         $this->load->model('user_model');
         $this->load->library('session');
-        $this->load->library('facebook');
+        //$this->load->library('facebook');
+        $this->load->library('email');
 
     }
+    /**
+     * print form and save new password
+     * @return [type] [description]
+     */
     public function saveNewPassword() {
         $data = null;
         $data['email']    = $this->input->get('email');
         $data['token']    = $this->input->get('token');
-        if(empty($data['email'])) $data['error'] = 'Truy vấn không hợp lệ (unknown email)';
-        else if(empty($data['token'])) $data['error'] = 'Truy vấn không hợp lệ (unknown token)';
+        $user = $this->user_model->getUser($data['email']);
+        //var_dump($user);exit;
+        if(empty($data['email'])) $data['error'] = 'Truy vấn không hợp lệ (email unknown)';
+        else if(empty($data['token'])) $data['error'] = 'Truy vấn không hợp lệ (token unknown)';
+        else if(!$user) $data['error'] = 'Email không tồn tại';
+        else if($user['token_reset_pass'] != $data['token']) $data['error'] = 'Link reset không hợp lệ';
         else if($this->input->method() == 'post') {
             if(empty($this->input->post('password'))) $data['error'] = 'Hãy nhập mật khẩu mới';
             else {
@@ -49,15 +41,19 @@ class User extends CI_Controller
 
                 if($token==md5('MVC'.$email)) {
                     $update['password'] = md5($password);
+                    $update['token_reset_pass'] = null;
                     $user = $this->user_model->updateUser($update,$email);
                     $data['message'] = 'Đã thiết lập lại mật khẩu';
                 } else {
-                    $data['error'] = 'Truy vấn không hợp lệ';
+                    $data['error'] = 'Truy vấn không hợp lệ (token invalid)';
                 }
             }
         }
         $this->load->view('site/setpass',$data);
     }
+    /**
+     * print form enter email to reset password
+     */
     public function forgotPassword() {
         $data=null;
         if($this->input->method() == 'post') {
@@ -72,43 +68,72 @@ class User extends CI_Controller
                     $update['token_reset_pass'] = $token;
                     $linkreset = base_url().'user/resetpass?email='.$email.'&token='.$update['token_reset_pass'];
                     $user = $this->user_model->updateUser($update,$email);
+                    if($this->config->item('mail')) {
+                        
+                        /*$config['protocol'] = 'smtp';
+                        $config['smtp_host'] ='ssl://smtp.gmail.com';
+                        $config['smtp_port'] ='465';
+                        $config['smtp_timeout'] ='30';
+                        $config['smtp_user'] ='cdtd35a@gmail.com';
+                        $config['smtp_pass'] ='tracdia35a';
+                        $config['charset'] ='utf-8';
+                        $config['newline'] ="\r\n";
+                        $config['wordwrap'] = TRUE;
+                        $config['mailtype'] = 'html';*/
+                        $this->email->initialize($this->config->item('mail'));
+                        $this->email->from('cdtd35a@gmail.com', 'Support');
+                        $this->email->to('khoazero123@gmail.com');
+                        $this->email->subject('Reset password for '.base_url());
+                        $this->email->message('Click <a href="'.$linkreset.'">here</a> to reset your password ('.$linkreset.')');
+                        //$this->email->send();
+                        //echo $this->email->print_debugger();
 
-                    $this->load->library('email');
-                    $config['protocol']='smtp';
-                    $config['smtp_host']='ssl://smtp.gmail.com';
-                    $config['smtp_port']='465';
-                    $config['smtp_timeout']='30';
-                    $config['smtp_user']='cdtd35a@gmail.com';
-                    $config['smtp_pass']='tracdia35a';
-                    $config['charset']='utf-8';
-                    $config['newline']="\r\n";
-                    $config['wordwrap'] = TRUE;
-                    $config['mailtype'] = 'html';
-                    $this->email->initialize($config);
-                    $this->email->from('cdtd35a@gmail.com', 'Support');
-                    $this->email->to('khoazero123@gmail.com');
-                    $this->email->subject('Reset password for '.base_url());
-                    $this->email->message('Click <a href="'.$linkreset.'">here</a> to reset your password ('.$linkreset.')');
-                    //$this->email->send();
-                    //echo $this->email->print_debugger();
-
-                    if ( ! $this->email->send()) {
-                        // Generate error
-                        echo $this->email->print_debugger();
-                        $data['error'] = 'Không thể gửi email reset password';
-                    }else{
-                        $data['message'] = 'Đã gửi link reset qua email: '.$email.'';
-                    }
+                        if (!$this->email->send()) {
+                            echo $this->email->print_debugger();
+                            $data['error'] = 'Không thể gửi email reset password';
+                        } else {
+                            $data['message'] = 'Đã gửi link reset qua email: '.$email.'';
+                        }
+                    } else $data['error'] = 'Cần thiết lập cấu hình send mail in config.php';
                 }
             }
         }
         $this->load->view('site/forgotpass',$data);
     }
+    /**
+     * print html info user
+     * @return [type] [description]
+     */
+    public function info() {
+        $data = null;
+        $data['title'] = 'Thông tin người dùng';
+        $data['active'] = '';
+        $data['user'] = getUser();
+        if($this->input->method() == 'post') {
+            $update = $this->input->post('user_info');
+            //var_dump($update);exit;
+            if(!empty($update) && $this->user_model->updateUser($update,$data['user']['id'])) $data['message'] = 'Cập nhập thông tin thành công';
+            else $data['message'] = 'Cập nhập thông tin thất bại';
+            $data['user'] = $this->user_model->getUser($data['user']['id']);
+            $this->session->set_userdata('login', $data['user']);
+        }
+        $this->load->view('site/common/header', $data);
+        $this->load->view('site/user',$data);
+        $this->load->view('site/common/footer', $data);
+    }
 
-//    public function index()
-//    {
-//        $this->load->view('site/login');
-//    }
+    public function listorder() {
+        $this->load->model('Order_model');
+        $data = null;
+        $data['title'] = 'Thông tin người dùng';
+        $data['active'] = '';
+        $data['user'] = getUser();
+        $data['orders'] = $this->Order_model->getOrderUser($data['user']['id']);
+        //var_dump($data['orders']);exit;
+        $this->load->view('site/common/header', $data);
+        $this->load->view('site/listorder',$data);
+        $this->load->view('site/common/footer', $data);
+    }
     /*
     * Kiem tra dang nhap
     */
@@ -140,7 +165,7 @@ class User extends CI_Controller
             //chuyen trang
             redirect();
         }
-//        Facebook login
+/*//        Facebook login
         $user = $this->facebook->getUser();
 
         if ($user) {
@@ -149,7 +174,7 @@ class User extends CI_Controller
             } catch (FacebookApiException $e) {
                 $user = null;
             }
-        }else {
+        } else {
             // Solves first time login issue. (Issue: #10)
             //$this->facebook->destroySession();
         }
@@ -167,7 +192,7 @@ class User extends CI_Controller
                 'scope' => array("email") // permissions here
             ));
         }
-//        End facebook login
+//        End facebook login*/
         if($this->input->post('dologin')) {
             //tao cac tap luat
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
@@ -207,8 +232,8 @@ class User extends CI_Controller
             //xoa session login
             $this->session->unset_userdata('login');
             $this->session->unset_userdata('cart');
-// xoa session face book
-            $this->facebook->destroySession();
+            // xoa session face book
+            //$this->facebook->destroySession();
         }
         $this->session->set_flashdata('flash_message', 'Đăng xuất thành công');
         redirect();
