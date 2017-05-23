@@ -54,6 +54,7 @@ class User extends CI_Controller
 
                 if($token==md5('MVC'.$email)) {
                     $update['password'] = md5($password);
+                    $update['token_reset_pass'] = null;
                     $user = $this->user_model->updateUser($update,$email);
                     $data['message'] = 'Đã thiết lập lại mật khẩu';
                 } else {
