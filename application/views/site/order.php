@@ -8,7 +8,7 @@
                 <input type="email" class="form-control" name="user_info[email]" placeholder="Địa chỉ Email" value="<?=isset($user['email']) ? $user['email'] : '' ?>" aria-describedby="basic-addon1">
                 <input type="text" class="form-control" name="user_info[phone]" placeholder="Số điện thoại" value="<?=isset($user['phone']) ? $user['phone'] : '' ?>" aria-describedby="basic-addon1" required>
                 <div> Địa chỉ <span class="txt2">(số nhà, đường, tỉnh) *</span>
-                    <textarea class="form-control" rows="5" name="user_info[address]" value="<?=isset($user['address']) ? $user['address'] : '' ?>" id="buyer_address" style="width: 100%"></textarea>
+                    <textarea class="form-control" rows="5" name="user_info[address]" id="buyer_address" style="width: 100%"><?=isset($user['address']) ? $user['address'] : '' ?></textarea>
                 </div>
             </div>
         </div>

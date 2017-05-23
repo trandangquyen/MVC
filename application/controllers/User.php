@@ -109,11 +109,19 @@ class User extends CI_Controller
         $data['title'] = 'Thông tin người dùng';
         $data['active'] = '';
         $data['user'] = getUser();
-        //var_dump($data['user']);
+        if($this->input->method() == 'post') {
+            $update = $this->input->post('user_info');
+            //var_dump($update);exit;
+            if(!empty($update) && $this->user_model->updateUser($update,$data['user']['id'])) $data['message'] = 'Cập nhập thông tin thành công';
+            else $data['message'] = 'Cập nhập thông tin thất bại';
+            $data['user'] = $this->user_model->getUser($data['user']['id']);
+            $this->session->set_userdata('login', $data['user']);
+        }
         $this->load->view('site/common/header', $data);
         $this->load->view('site/user',$data);
         $this->load->view('site/common/footer', $data);
     }
+
     public function listorder() {
         $this->load->model('Order_model');
         $data = null;

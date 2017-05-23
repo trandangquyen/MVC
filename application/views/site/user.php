@@ -44,25 +44,25 @@
 <table cellpadding="5" border="1" bordercolor="#CCCCCC" style="border-collapse:collapse; width:100%">
     <tbody><tr>
         <td>Họ tên</td>
-        <td><input type="text" name="fullname" id="fullname" size="40" value="<?=$user['name']?>"></td>
+        <td><input type="text" name="user_info[name]" id="fullname" size="40" value="<?=$user['name']?>"></td>
     </tr>
     <tr>
         <td>Giới tính</td>
         <td>
-                    <input type="radio" name="sex" value="m">Nam &nbsp;<input type="radio" name="sex" value="f" checked="">Nữ 
+                    <input type="radio" name="user_info[sex]" value="1"<?=($user['sex']==1 ? ' checked=""' : '')?>>Nam &nbsp;<input type="radio" name="user_info[sex]" value="0"<?=($user['sex']!=1 ? ' checked=""' : '')?>>Nữ 
             </td>
     </tr>
     <tr>
         <td>Địa chỉ email</td>
-        <td><input type="text" name="email" id="email" size="40" value="<?=$user['email']?>"></td>
+        <td><input type="text" name="user_info[email]" id="email" size="40" value="<?=$user['email']?>" disabled></td>
     </tr>       
     <tr>
         <td>Địa chỉ</td>
-        <td><input type="text" name="address" id="address" value="<?=$user['address']?>" size="50"></td>
+        <td><input type="text" name="user_info[address]" id="address" value="<?=$user['address']?>" size="50"></td>
     </tr>        
     <tr>
         <td>Điện thoại di động</td>
-        <td><input type="text" name="mobile" id="mobile" size="40" value="<?=$user['phone']?>"></td>
+        <td><input type="text" name="user_info[phone]" id="phone" size="40" value="<?=$user['phone']?>"></td>
     </tr>   
 </tbody></table>
 <input type="hidden" name="update" value="yes">
