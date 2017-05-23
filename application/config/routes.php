@@ -65,6 +65,7 @@ $route['admin-user'] = 'adminuser';
 $route['admin-category'] = 'admincategory';
 $route['admin-home'] = 'adminhome';
 $route['user'] = 'user/login';
+$route['user/info'] = 'user/info';
 $route['logout'] = 'user/logout';
 $route['user/forgot'] = 'user/forgotPassword';
 $route['user/resetpass'] = 'user/saveNewPassword';

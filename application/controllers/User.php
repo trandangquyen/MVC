@@ -110,6 +110,16 @@ class User extends CI_Controller
         }
         $this->load->view('site/forgotpass',$data);
     }
+    public function info() {
+        $data = null;
+        $data['title'] = 'Thông tin người dùng';
+        $data['active'] = '';
+        $data['user'] = getUser();
+        //var_dump($data['user']);
+        $this->load->view('site/common/header', $data);
+        $this->load->view('site/user',$data);
+        $this->load->view('site/common/footer', $data);
+    }
 
 //    public function index()
 //    {
@@ -213,8 +223,8 @@ class User extends CI_Controller
             //xoa session login
             $this->session->unset_userdata('login');
             $this->session->unset_userdata('cart');
-// xoa session face book
-            $this->facebook->destroySession();
+            // xoa session face book
+            //$this->facebook->destroySession();
         }
         $this->session->set_flashdata('flash_message', 'Đăng xuất thành công');
         redirect();
