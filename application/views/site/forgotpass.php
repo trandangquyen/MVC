@@ -58,7 +58,7 @@
         <form method="post" action="user/forgot" name="login">
             <input type="hidden" name="dologin" value="true"/>
             <div class="input-container">
-                <input name="email" type="text" id="email"/>
+                <input name="email" type="text" id="email" autocomplete="on" />
                 <label for="email">Email đăng nhập</label>
             </div>
             <div class="button-container">

@@ -33,7 +33,20 @@ $config['gg_secret'] = 'it4cXsRlZkcvSIxXviBgUdHq';
 $config['gg_redirect_uri'] = $config['base_url'].'login/google';
 $config['gg_api_key'] = 'AIzaSyBIM6WaSmQiObb4u5-sFrndvKGGR47IhN4';
 
-/*
+
+$config['mail'] = [
+					'protocol' => 'smtp',
+					'smtp_host' => 'ssl://smtp.gmail.com',
+					'smtp_port' => '465',
+					'smtp_timeout' => '30',
+					'smtp_user' => 'cdtd35a@gmail.com',
+					'smtp_pass' => 'tracdia35a',
+					'charset' => 'utf-8',
+					'newline' => "\r\n",
+					'wordwrap' => TRUE,
+					'mailtype' => 'html',
+				];
+
 /*
 |--------------------------------------------------------------------------
 | Index File

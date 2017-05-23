@@ -31,15 +31,20 @@ class User extends CI_Controller
         $this->load->helper('email');
         $this->load->model('user_model');
         $this->load->library('session');
-        $this->load->library('facebook');
+        //$this->load->library('facebook');
+        $this->load->library('email');
 
     }
     public function saveNewPassword() {
         $data = null;
         $data['email']    = $this->input->get('email');
         $data['token']    = $this->input->get('token');
-        if(empty($data['email'])) $data['error'] = 'Truy vấn không hợp lệ (unknown email)';
-        else if(empty($data['token'])) $data['error'] = 'Truy vấn không hợp lệ (unknown token)';
+        $user = $this->user_model->getUser($data['email']);
+        //var_dump($user);exit;
+        if(empty($data['email'])) $data['error'] = 'Truy vấn không hợp lệ (email unknown)';
+        else if(empty($data['token'])) $data['error'] = 'Truy vấn không hợp lệ (token unknown)';
+        else if(!$user) $data['error'] = 'Email không tồn tại';
+        else if($user['token_reset_pass'] != $data['token']) $data['error'] = 'Link reset không hợp lệ';
         else if($this->input->method() == 'post') {
             if(empty($this->input->post('password'))) $data['error'] = 'Hãy nhập mật khẩu mới';
             else {
@@ -52,7 +57,7 @@ class User extends CI_Controller
                     $user = $this->user_model->updateUser($update,$email);
                     $data['message'] = 'Đã thiết lập lại mật khẩu';
                 } else {
-                    $data['error'] = 'Truy vấn không hợp lệ';
+                    $data['error'] = 'Truy vấn không hợp lệ (token invalid)';
                 }
             }
         }
@@ -72,33 +77,33 @@ class User extends CI_Controller
                     $update['token_reset_pass'] = $token;
                     $linkreset = base_url().'user/resetpass?email='.$email.'&token='.$update['token_reset_pass'];
                     $user = $this->user_model->updateUser($update,$email);
+                    if($this->config->item('mail')) {
+                        
+                        /*$config['protocol'] = 'smtp';
+                        $config['smtp_host'] ='ssl://smtp.gmail.com';
+                        $config['smtp_port'] ='465';
+                        $config['smtp_timeout'] ='30';
+                        $config['smtp_user'] ='cdtd35a@gmail.com';
+                        $config['smtp_pass'] ='tracdia35a';
+                        $config['charset'] ='utf-8';
+                        $config['newline'] ="\r\n";
+                        $config['wordwrap'] = TRUE;
+                        $config['mailtype'] = 'html';*/
+                        $this->email->initialize($this->config->item('mail'));
+                        $this->email->from('cdtd35a@gmail.com', 'Support');
+                        $this->email->to('khoazero123@gmail.com');
+                        $this->email->subject('Reset password for '.base_url());
+                        $this->email->message('Click <a href="'.$linkreset.'">here</a> to reset your password ('.$linkreset.')');
+                        //$this->email->send();
+                        //echo $this->email->print_debugger();
 
-                    $this->load->library('email');
-                    $config['protocol']='smtp';
-                    $config['smtp_host']='ssl://smtp.gmail.com';
-                    $config['smtp_port']='465';
-                    $config['smtp_timeout']='30';
-                    $config['smtp_user']='cdtd35a@gmail.com';
-                    $config['smtp_pass']='tracdia35a';
-                    $config['charset']='utf-8';
-                    $config['newline']="\r\n";
-                    $config['wordwrap'] = TRUE;
-                    $config['mailtype'] = 'html';
-                    $this->email->initialize($config);
-                    $this->email->from('cdtd35a@gmail.com', 'Support');
-                    $this->email->to('khoazero123@gmail.com');
-                    $this->email->subject('Reset password for '.base_url());
-                    $this->email->message('Click <a href="'.$linkreset.'">here</a> to reset your password ('.$linkreset.')');
-                    //$this->email->send();
-                    //echo $this->email->print_debugger();
-
-                    if ( ! $this->email->send()) {
-                        // Generate error
-                        echo $this->email->print_debugger();
-                        $data['error'] = 'Không thể gửi email reset password';
-                    }else{
-                        $data['message'] = 'Đã gửi link reset qua email: '.$email.'';
-                    }
+                        if (!$this->email->send()) {
+                            echo $this->email->print_debugger();
+                            $data['error'] = 'Không thể gửi email reset password';
+                        } else {
+                            $data['message'] = 'Đã gửi link reset qua email: '.$email.'';
+                        }
+                    } else $data['error'] = 'Cần thiết lập cấu hình send mail in config.php';
                 }
             }
         }
@@ -140,7 +145,7 @@ class User extends CI_Controller
             //chuyen trang
             redirect();
         }
-//        Facebook login
+/*//        Facebook login
         $user = $this->facebook->getUser();
 
         if ($user) {
@@ -149,7 +154,7 @@ class User extends CI_Controller
             } catch (FacebookApiException $e) {
                 $user = null;
             }
-        }else {
+        } else {
             // Solves first time login issue. (Issue: #10)
             //$this->facebook->destroySession();
         }
@@ -167,7 +172,7 @@ class User extends CI_Controller
                 'scope' => array("email") // permissions here
             ));
         }
-//        End facebook login
+//        End facebook login*/
         if($this->input->post('dologin')) {
             //tao cac tap luat
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
