@@ -11,7 +11,11 @@ class Order_model extends CI_Model
     	parent::__construct();
         $this->load->database();
     }
-
+    /**
+     * get order from db
+     * @param  int $id
+     * @return array
+     */
     public function getOrder($id) {
         $this->db->where("id",$id);
         $query = $this->db->get($this->table);
@@ -22,7 +26,11 @@ class Order_model extends CI_Model
         }
         return null;
     }
-
+    /**
+     * get order details, use for function getOrder
+     * @param  int $order_id
+     * @return array
+     */
     public function getOrderDetails($order_id) {
         $this->db->select("product_id, quantity");
         $this->db->where("order_id",$order_id);
@@ -30,16 +38,32 @@ class Order_model extends CI_Model
         if($query->num_rows()>0) return $query->result_array();
         return null;
     }
+    public function getOrderUser($user_id) {
+        //$this->db->select("product_id, quantity");
+        $this->db->where("user",$user_id);
+        $query=$this->db->get($this->table);
+        if($query->num_rows()>0) {
+            $listOrders = $query->result_array();
+            return $listOrders;
+        }
+        return null;
+    }
     /**
-     * [createOrder description]
-     * @param  array  $data array(
-     *                            'user'=>int,
-     *                            'price'=>float
-     *                            'products'=> [
-     *                                'id' => int,
-     *                                'quantity'=>int
-     *                            ])
-     * @return [type]       [description]
+     * [createOrder insert cart to order table]
+     * @param  $data array(
+                            'order' => [
+                                'user' => int,
+                                'price' => float,
+                                'ship_name' => string,
+                                'ship_phone' => string,
+                                'ship_address' => string,
+                                'ship_note' => string,
+                                'payment' => string,
+                                'transport' => string,
+                            ],
+                            'order_details' => array('product_id'=>int,'quantity'=>int),
+                        );
+     * @return int order id if insert success
      */
     public function createOrder($data=array()) {
         //echo '<pre>';var_dump($data);echo '</pre>';

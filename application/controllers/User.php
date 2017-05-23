@@ -3,23 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
-
-    /**
-     * Index Page for this controller.
-     *
-     * Maps to the following URL
-     *        http://example.com/index.php/welcome
-     *    - or -
-     *        http://example.com/index.php/welcome/index
-     *    - or -
-     * Since this controller is set as the default controller in
-     * config/routes.php, it's displayed at http://example.com/
-     *
-     * So any other public methods not prefixed with an underscore will
-     * map to /index.php/welcome/<method_name>
-     * @see https://codeigniter.com/user_guide/general/urls.html
-     */
-
     public function __construct()
     {
         parent::__construct();
@@ -35,6 +18,10 @@ class User extends CI_Controller
         $this->load->library('email');
 
     }
+    /**
+     * print form and save new password
+     * @return [type] [description]
+     */
     public function saveNewPassword() {
         $data = null;
         $data['email']    = $this->input->get('email');
@@ -64,6 +51,9 @@ class User extends CI_Controller
         }
         $this->load->view('site/setpass',$data);
     }
+    /**
+     * print form enter email to reset password
+     */
     public function forgotPassword() {
         $data=null;
         if($this->input->method() == 'post') {
@@ -110,6 +100,10 @@ class User extends CI_Controller
         }
         $this->load->view('site/forgotpass',$data);
     }
+    /**
+     * print html info user
+     * @return [type] [description]
+     */
     public function info() {
         $data = null;
         $data['title'] = 'Thông tin người dùng';
@@ -120,11 +114,18 @@ class User extends CI_Controller
         $this->load->view('site/user',$data);
         $this->load->view('site/common/footer', $data);
     }
-
-//    public function index()
-//    {
-//        $this->load->view('site/login');
-//    }
+    public function listorder() {
+        $this->load->model('Order_model');
+        $data = null;
+        $data['title'] = 'Thông tin người dùng';
+        $data['active'] = '';
+        $data['user'] = getUser();
+        $data['orders'] = $this->Order_model->getOrderUser($data['user']['id']);
+        //var_dump($data['orders']);exit;
+        $this->load->view('site/common/header', $data);
+        $this->load->view('site/listorder',$data);
+        $this->load->view('site/common/footer', $data);
+    }
     /*
     * Kiem tra dang nhap
     */

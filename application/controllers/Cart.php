@@ -44,6 +44,10 @@ class Cart extends CI_Controller {
                 break;
         }
     }
+    /**
+     * print html input info shipping and confirm put order
+     * @return print html
+     */
     public function confirmCart() {
         $data['title'] = 'Thông tin giỏ hàng';
         if(!empty($this->cart) && is_array($this->cart)) {
@@ -66,6 +70,11 @@ class Cart extends CI_Controller {
         $this->load->view('site/order',$data);
         $this->load->view('site/common/footer');
     }
+    /**
+     * print details of order
+     * @param  int $id
+     * @return print html
+     */
     public function viewOrder($id) {
         $data['order'] = $this->Order_model->getOrder($id);
         if(!empty($data['order'])) for ($i=0;$i<count($data['order']['details']);$i++) {
@@ -76,7 +85,10 @@ class Cart extends CI_Controller {
         $data['user'] = $this->User_model->getUser($data['order']['user']);
         $this->load->view('site/invoice',$data);
     }
-
+    /**
+     * save order to db
+     * @return redirect to viewOrder
+     */
     public function putOrder() {
         $data['title'] = 'Đặt hàng';
         if(empty($this->input->post('user_info'))) $data['error'] = 'Hãy điền đầy đủ thông tin';
