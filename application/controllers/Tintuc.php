@@ -77,6 +77,7 @@ class Tintuc extends CI_Controller {
         $start = !empty($_REQUEST['start']) ? $_REQUEST['start'] : 0;
         //echo "Start at $start\n";
         $data['news'] = $this->News_model->listNews(null,$start,6);
+        $data['news'] = array_map("cutcontent", $data['news']);
         $this->load->view('site/tintuc/listtintucajax', $data);
     }
 	
