@@ -52,4 +52,11 @@ function isAdmin($user_id=false) {
     }
     return false;
 }
+function cutcontent($new) {
+    $string = $new['content'];
+    $desired_width = 250;
+    $shortcontent = substr($string, 0, strpos(wordwrap($string, $desired_width), "\n"));
+    $new['content'] = $shortcontent.' ...';
+    return $new;
+}
 ?>

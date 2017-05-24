@@ -10,6 +10,7 @@ class Products_model extends CI_Model
     }
     public function listProducts($category=null,$order=null,$offset=0,$limit=0) {
         $this->db->select("*");
+        $this->db->where("display",1);
         if($category) $this->db->where("FIND_IN_SET(".$category.",category_id) !=", 0);
 
         switch ($order) {
@@ -36,7 +37,7 @@ class Products_model extends CI_Model
     }
 	public function search($keyword,$order=null,$offset=0,$limit=0) {
 		$this->db->select("*");
-
+        $this->db->where("display",1);
         $this->db->like('name', $keyword);
         $this->db->or_like('description', $keyword);
 
@@ -55,6 +56,7 @@ class Products_model extends CI_Model
     }
     public function getProductArray($id) {
         $this->db->where("id",$id);
+        $this->db->where("display",1);
         $query=$this->db->get("product");
         $result=$query->row_array();
         if($result) return $result;
@@ -62,6 +64,7 @@ class Products_model extends CI_Model
     }
     public function getProducts($ids) {
         $this->db->where_in("id",$ids);
+        $this->db->where("display",1);
         $query=$this->db->get("product");
         $result=$query->result_array();
         if($result) return $result;

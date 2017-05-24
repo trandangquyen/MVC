@@ -27,6 +27,9 @@ class Tintuc extends CI_Controller {
 
 
         $data['news'] = $this->News_model->listNews(null,0,6);
+        $data['news'] = array_map("cutcontent", $data['news']);
+        //var_dump($data['news']);exit;
+
 
         $this->load->view('site/tintuc/list',$data);        
         // $this->load->model('News_model');
@@ -34,7 +37,7 @@ class Tintuc extends CI_Controller {
         $this->load->view('site/common/mainright', ['news'=>$listNews]);
         $this->load->view('site/common/footer', $data);
 	}
-
+    
 	public function deleteTintuc($id) {
 		$this->News_model->deleteTintuc($id);
 	}

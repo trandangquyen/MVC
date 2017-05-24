@@ -38,7 +38,7 @@ if(isset($debug)) echo "<!-- ".json_encode($debug)." -->\n";
             <div class="header container">
 				<div id="Icon_search">
                     <a href="<?php echo base_url(); ?>"><img src="public/images/header.png" alt="Home"></a>
-                    <div id="cart" style="cursor:pointer;" onclick="window.location='cart'"><span class="icon_cart"><img src="public/images/icon_cart.png" alt="cart"></span><span id="count_shopping_cart_store"><?=count($this->session->userdata('cart')) ?></span> sản phẩm <a href="cart" rel="nofollow"><img src="public/images/btn_giohang.png" alt="thanh toán"></a></div>
+                    <div id="cart" style="cursor:pointer;" onclick="window.location='cart'"><span class="icon_cart"><img src="public/images/icon_cart.png" alt="cart"></span><span id="count_shopping_cart_store"><?=count($this->session->userdata('cart')) ?></span> sản phẩm <a href="cart" id="img-cart" rel="nofollow"><img src="public/images/btn_giohang.png" alt="thanh toán"></a></div>
                 </div>
                 <?php
                     $user = $this->session->userdata('login');
