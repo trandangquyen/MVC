@@ -51,7 +51,7 @@
                         </div>
                         <div class="clearfix"></div>
                         <div style="text-align: center;">
-                            <button type="button" class="btn btn-primary btn-buy" data-product-id="'.$product->id.'">Mua ngay</button> 
+                            <button type="button" class="btn btn-primary btn-buy" data-product-id="<?=$product->id?>">Mua ngay</button> 
                             <?php 
                             //var_dump($this->session->userdata("cart"));exit;
                             //var_dump($this->session->userdata("compare"));exit;

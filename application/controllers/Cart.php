@@ -148,7 +148,7 @@ class Cart extends CI_Controller {
         if(is_array($product_id)) {
             if($update) $this->cart = null;
             foreach ($product_id as $id => $quantity) {
-                if($id) $this->cart[$id] = $quantity;
+                if($id && $this->Products_model->getProduct($id)) $this->cart[$id] = $quantity;
             }
             $this->saveCart($this->cart);
             $response['debug']['thiscart'] = $this->cart;
@@ -156,7 +156,7 @@ class Cart extends CI_Controller {
             //$response = array('message' => 'Sản phẩm đã có trong giỏ hàng');
             $this->cart[$product_id] = $this->cart[$product_id] + 1;
         } else {
-            $this->cart[$product_id] = $quantity;
+            if($this->Products_model->getProduct($product_id)) $this->cart[$product_id] = $quantity;
         }
 
         $this->saveCart(); // $user_id
