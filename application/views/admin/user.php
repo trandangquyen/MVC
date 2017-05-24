@@ -1,5 +1,5 @@
 
-            <div class="top-bar"> <a href="admin/category/add" class="button">Thêm mới</a>
+            <div class="top-bar"> <!-- <a href="admin/user/add" class="button">Thêm mới</a> -->
                 <h1>Quản trị người dùng</h1>
                 <div class="breadcrumbs"><a href="#">Homepage</a> / <a href="#">Người dùng</a></div>
             </div>

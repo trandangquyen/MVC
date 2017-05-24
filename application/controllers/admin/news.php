@@ -6,6 +6,7 @@ class News extends CI_Controller {
 		$this->load->model('News_model');
 	}
     function index($data=null) {
+        $data = $this->session->flashdata('data');
         if(!empty($_POST['delete'])) return $this->deteleNews();
         $this->load->library('pagination');
 
@@ -41,9 +42,10 @@ class News extends CI_Controller {
                 );
                 if($id=$this->News_model->insertNews($insert)) {
                     $data['success'] = 'Thêm tin tức thành công';
-                    return $this->index($data);
+                    //return $this->index($data);
                 } else $data['error'] = 'Thêm tin tức thất bại';
             }
+            $this->session->set_flashdata('data', $data);
             redirect('admin/news');
         }
         $data['active'] = 'news';
@@ -80,8 +82,9 @@ class News extends CI_Controller {
         $id = !empty($_POST['delete']) ? $_POST['delete'] : $id;
         if($this->News_model->deleteNews($id)) $data['success'] = 'Xóa thể loại thành công';
         else $data['error'] = 'Xóa thể loại thất bại';
-        unset($_POST['delete']);
-        return $this->index($data);
+
+        $this->session->set_flashdata('data', $data);
+        redirect('admin/news');
     }
 }
 

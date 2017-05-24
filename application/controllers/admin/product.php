@@ -9,6 +9,7 @@ class Product extends CI_Controller {
         $this->load->database();
 	}
     function index($data=null) {
+        $data = $this->session->flashdata('data');
         if(!empty($_POST['delete'])) return $this->deteleProduct();
         $this->load->library('pagination');
         //$data['products'] = $this->Products_model->listProducts();
@@ -37,7 +38,7 @@ class Product extends CI_Controller {
         $this->load->view('admin/common/admin-footer.php', $data);
 
     }
-    function addProduct() { 
+    function addProduct() {
         if(!empty($_POST['product'])) {
             if(empty($_POST['product']['name'])) $data['error'] = 'Hãy điền tên sản phẩm';
             else { 
@@ -82,9 +83,11 @@ class Product extends CI_Controller {
                         $this->Products_model->addImageProducts($images);
                     }
                     $data['success'] = 'Thêm sản phẩm thành công';
-                    return $this->index($data);
+                    //return $this->index($data);
                 } else $data['error'] = 'Thêm sản phẩm thất bại';
         	}
+            $this->session->set_flashdata('data', $data);
+            redirect('admin/product');
         }
         $data['active'] = 'sanpham';
         $data['categorys'] = $this->Category_model->getAllCategory();
@@ -129,16 +132,16 @@ class Product extends CI_Controller {
             else $data['error'] = 'Xóa sản phẩm thất bại';
         } else if(!empty($_POST['delete'])) {
             foreach ($_POST['delete'] as $key => $value) {
-
                 $ids[] = (int) $value;
-
             }
             if($this->Products_model->deleteProducts($ids))
                 $data['success'] = 'Xóa các sản phẩm thành công';
             else $data['error'] = 'Xóa các sản phẩm thất bại';
         }
-        unset($_POST['delete']);
-        return $this->index($data);
+        $this->session->set_flashdata('data', $data);
+        redirect('admin/product');
+        //unset($_POST['delete']);
+        //return $this->index($data);
     }
 }
 

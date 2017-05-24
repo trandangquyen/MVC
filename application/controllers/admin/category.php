@@ -5,11 +5,12 @@ class Category extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Category_model');
 	}
-    function index($data=null) {
+    function index() {
+        $data = $this->session->flashdata('data');
         if(!empty($_POST['delete'])) return $this->deteleCategory();
         $this->load->library('pagination');
 
-        $data['categorys'] = $this->Category_model->getAllCategory();
+        $data['categorys'] = $this->Category_model->listCategory();
 
         $config['base_url'] = base_url('/admin/category');
         $config['total_rows'] = count((array)$data['categorys']);
@@ -25,7 +26,7 @@ class Category extends CI_Controller {
         $start = ($page-1)*$config['per_page'];
 
         $data['active'] = 'category';
-    	$data['categorys'] = $this->Category_model->getAllCategory();
+    	$data['categorys'] = $this->Category_model->listCategory();
         $this->load->view('admin/common/admin-header.php', $data);
         $this->load->view('admin/category',$data);
         $this->load->view('admin/common/admin-footer.php', $data);
@@ -33,7 +34,7 @@ class Category extends CI_Controller {
     function addCategory() {
         if(!empty($_POST['category'])) {
             if(empty($_POST['category']['name'])) $data['error'] = 'Hãy điền tên thể loại';
-            else { 
+            else {
                 $insert = array(
                     'name' => $_POST['category']['name'],
                     'parent' => (int)$_POST['category']['perent'],
@@ -41,10 +42,14 @@ class Category extends CI_Controller {
                 );
                 if($id=$this->Category_model->addCategory($insert)) {
                     $data['success'] = 'Thêm thể loại thành công';
-                    return $this->index($data);
+                    //return $this->index($data);
                 } else $data['error'] = 'Thêm thể loại thất bại';
+
+                $this->session->set_flashdata('data', $data);
+                redirect('admin/category');
             }
         }
+
         $data['active'] = 'category';
         $data['categorys'] = $this->Category_model->getAllCategory();
         //var_dump($data['categorys']);exit;
@@ -87,8 +92,8 @@ class Category extends CI_Controller {
                 $data['success'] = 'Xóa các thể loại thành công';
             else $data['error'] = 'Xóa các thể loại thất bại';
         }
-        unset($_POST['delete']);
-        return $this->index($data);
+        $this->session->set_flashdata('data', $data);
+        redirect('admin/category');
     }
 }
 

@@ -24,10 +24,10 @@
                     <h3>Gửi thông tin yêu cầu</h3>
                     <div class="row">
                         <div class="col-md-3 col-sm-4 col-xs-12">
-                            <label id="label_user_name">Tên của bạn</label>
+                            <label id="label_user_name">Tên của bạn *</label>
                         </div>
                         <div class="col-md-6 col-sm-8 col-xs-12">
-                            <input type="text" name="info[user_name]" id="info_user_name" class="form-control" value="">
+                            <input type="text" name="info[user_name]" id="info_user_name" class="form-control" value="" required>
                         </div>
                     </div>
                     <div class="space10"></div>
@@ -36,7 +36,7 @@
                             <label id="label_user_email">Email</label>
                         </div>
                         <div class="col-md-6 col-sm-8 col-xs-12">
-                            <input type="text" name="info[user_email]" id="info_user_email" class="form-control" value="">
+                            <input type="text" name="info[user_email]" id="info_user_email" class="form-control">
                         </div>
                     </div>
                     <div class="space10"></div>
@@ -45,16 +45,16 @@
                             <label id="label_tel">Số điện thoại</label>
                         </div>
                         <div class="col-md-6 col-sm-8 col-xs-12">
-                            <input type="text" name="info[user_mobile]" id="info_user_mobile" class="form-control" value="">
+                            <input type="text" name="info[user_mobile]" id="info_user_mobile" class="form-control">
                         </div>
                     </div>
                     <div class="space10"></div>
                     <div class="row">
                         <div class="col-md-3 col-xs-12">
-                            <label id="label_form_data_content">Nội dung cần liên hệ</label>
+                            <label id="label_form_data_content">Nội dung cần liên hệ *</label>
                         </div>
                         <div class="col-md-9 col-xs-12">
-                            <textarea rows="6" name="info[form_data][content]" id="info_form_data_content" class="form-control" style="height: 134px; overflow: hidden; word-wrap: break-word; resize: horizontal;"></textarea>
+                            <textarea rows="6" name="info[form_data][content]" id="info_form_data_content" class="form-control" style="height: 134px; overflow: hidden; word-wrap: break-word; resize: horizontal;" required></textarea>
                         </div>
                     </div>
                     <div class="space10"></div>

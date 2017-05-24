@@ -6,6 +6,7 @@ class Support extends CI_Controller {
         $this->load->model('Support_model');
     }
     function index($data=null) {
+        $data = $this->session->flashdata('data');
         $this->load->library('pagination');
 
         $data['support'] = $this->Support_model->getSupport();

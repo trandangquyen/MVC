@@ -6,6 +6,7 @@ class Comment extends CI_Controller {
 		$this->load->model('Comments_model');
 	}
     function index($data=null) {
+        $data = $this->session->flashdata('data');
     	var_dump($this->Comment_model->getAllComment());
     }
     function deteleComment($id) {

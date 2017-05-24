@@ -51,7 +51,7 @@
                         </div>
                         <div class="clearfix"></div>
                         <div style="text-align: center;">
-                            <button type="button" class="btn btn-primary btn-buy">Mua ngay</button> 
+                            <button type="button" class="btn btn-primary btn-buy" data-product-id="'.$product->id.'">Mua ngay</button> 
                             <?php 
                             //var_dump($this->session->userdata("cart"));exit;
                             //var_dump($this->session->userdata("compare"));exit;
@@ -77,7 +77,6 @@
                             $('.product-price').text(format_curency(price));
 
                             $('.btn-compare').click(function() {
-                                
                                 var param = {
                                     type: 'addtocompare',
                                     products: $('.btn-compare').data('product-id'),
@@ -94,7 +93,7 @@
                             $('.btn-buy').click(function() {
                                 $.post('cart', {
                                     type: 'addtocart',
-                                    products: $('.btn-addtocart').data('product-id'),
+                                    products: $('.btn-buy').data('product-id'),
                                 }, function(data) {
                                     if(data.status) {
                                         location.href = 'cart/';
@@ -108,7 +107,8 @@
                                 };
                                 $.post('cart', param, function(data) {
                                     if(data.status) {
-                                        $('.btn-addtocart').text('Đã thêm vào giỏ hàng').prop('disabled', true);
+                                        $('.btn-addtocart').text('Đã thêm vào giỏ hàng');//.prop('disabled', true);
+                                        $('.btn-addtocart').attr("onclick","window.location='cart'");
                                         var number = parseInt($('span#count_shopping_cart_store').text())+1;
                                         if(data.number) number = data.number;
                                         $('span#count_shopping_cart_store').text(number);

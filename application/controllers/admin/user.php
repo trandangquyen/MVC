@@ -8,6 +8,7 @@ class User extends CI_Controller {
         $this->load->database();
 	}
     function index($data=null) {
+        $data = $this->session->flashdata('data');
         $data['users'] = $this->User_model->listUser();
         $data['active'] = 'user';
 
@@ -53,7 +54,7 @@ class User extends CI_Controller {
                 $data['success'] = 'Xóa các người dùng thành công';
             else $data['error'] = 'Xóa các người dùng thất bại';
         }
-        //return $this->index($data);
+        $this->session->set_flashdata('data', $data);
         redirect('admin/user');
     }
 }

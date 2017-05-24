@@ -7,10 +7,18 @@ class Category_model extends CI_Model
     	parent::__construct();
         $this->load->database();
     }
+    public function listCategory() {
+        $this->db->select("*");
+        //$this->db->where("parent",null);
+        $this->db->order_by("name asc");
+        //$this->db->limit(1,0);
+        $query=$this->db->get($this->table);
+        return $query->result_array();
+    }
 	public function getMainCategory(){
         $this->db->select("*");
         $this->db->where("parent",null);
-        $this->db->order_by("name desc");
+        $this->db->order_by("name asc");
         //$this->db->limit(1,0);
         $query=$this->db->get($this->table);
         return $query->result_array();
@@ -18,7 +26,7 @@ class Category_model extends CI_Model
     public function getSubCategory($parent){
         $this->db->select("*");
         $this->db->where("parent",$parent);
-        $this->db->order_by("name desc");
+        $this->db->order_by("name asc");
         $query=$this->db->get($this->table);
         return $query->result_array();
     }
@@ -54,7 +62,10 @@ class Category_model extends CI_Model
         return false;
     }
     public function deleteCategory($id) {
-        $this->db->where("id",$id);
+        if(is_array($id))
+            $this->db->where_in("id",$id);
+        else
+            $this->db->where("id",$id);
         if($this->db->delete($this->table)) return true;
         return false;
     }
