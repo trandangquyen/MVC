@@ -26,7 +26,7 @@ class User extends CI_Controller {
                 'admin' => (isset($_POST['user']['admin']) && (int)$_POST['user']['admin']==1) ? 1 : 0,
             );
             if($this->User_model->updateUser($update,$id)) $data['success'] = 'Cập nhập người dùng thành công';
-            else $data['error'] = 'Cập nhập người dùng thất bại: '.$this->db->last_query();;
+            else $data['error'] = 'Cập nhập người dùng thất bại: '.$this->db->last_query();
 
 
         }

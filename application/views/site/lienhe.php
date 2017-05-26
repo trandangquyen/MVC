@@ -20,7 +20,7 @@
             ?>
         <div class="row">          
           	<div class="col-xs-12 col-sm-6">
-                <form method="post" autocomplete="off" action="lienhe/save">
+                <form method="post" autocomplete="off" action="lienhe">
                     <h3>Gửi thông tin yêu cầu</h3>
                     <div class="row">
                         <div class="col-md-3 col-sm-4 col-xs-12">
@@ -36,7 +36,7 @@
                             <label id="label_user_email">Email</label>
                         </div>
                         <div class="col-md-6 col-sm-8 col-xs-12">
-                            <input type="text" name="info[user_email]" id="info_user_email" class="form-control">
+                            <input type="email" name="info[user_email]" id="info_user_email" class="form-control">
                         </div>
                     </div>
                     <div class="space10"></div>

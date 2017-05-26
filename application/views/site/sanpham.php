@@ -25,9 +25,6 @@
                     <div class="col-xs-10 col-xs-push-1 smallimage">
                         <img id="zoom_03f"  width="65%" style="text-align: center; border:1px solid #e8e8e6;" src="<?php echo @$product->image[0]['url'] ?>" data-zoom-image="<?php echo @$product->image[0]['url'] ?>" >
                     </div>
-
-
-
                     <script type="text/javascript">
                         jQuery(document).ready(function ($) {
                             $("#zoom_03f").elevateZoom({
@@ -124,8 +121,6 @@
         <div class="commnent">
             <h3>Ý kiến đánh giá sản phẩm:</h3>
             <p>Hãy cho chúng tôi biết nhận xét của bạn về sản phẩm này:</p>
-            <form>
-
             <form action="<?=base_url(uri_string());?>" method="POST">
             	<input type="hidden" name="comment[product_id]" value="<?=$product->id ?>">
             	<input type="hidden" name="comment[rate]" value="0">
@@ -142,6 +137,8 @@
                 </div>
                 <input type="submit" class="btn btn-info" value="Gửi bình luận">
             </form>
+            <script type="text/javascript"
+    src="public/themes/js/jquery.shorten.1.0.js"></script>
             <div class="all-comments">
             <?php
             if(!empty($product->comments)) {
@@ -151,11 +148,12 @@
                     for($i=1;$i<=($comment['rate']);$i++) $star .= '<i class="star"></i>';
                     echo '<div class="user-com">
                         <div class="com-title">'.$star .'<div class="title">'.$comment['title'].'</div></div>
-                        <div class="by-user"><span>Khách hàng:</span>'.$comment['name'].'</div>
-                        <p>'.$comment['content'].'</p>
+                        <div class="by-user"><span>Khách hàng:</span>'.$comment['name'].' (<span>'.$comment['time'].'</span>)</div>
+                        <p class="comment more">'.$comment['content'].'</p>
                     </div>';
+                    echo '<hr/>';
                 }
-                }
+            }
             ?>
             </div>
         </div>
@@ -166,3 +164,10 @@
 
 
 </div><!-- end col-xs-9 -->
+<script type="text/javascript">
+    $(document).ready(function() {
+    
+        $(".comment").shorten();
+    
+    });
+</script>

@@ -5,7 +5,7 @@ class Lienhe extends CI_Controller {
 
 	public function __construct(){
         parent::__construct();
-        $this->load->helper(array('url'));
+        $this->load->helper(array('url','form'));
         $this->load->model('Contact_model');
         $this->load->model('Support_model');
     }
@@ -35,10 +35,5 @@ class Lienhe extends CI_Controller {
 		}
 		$this->session->set_flashdata('data', $data);
 		redirect('lienhe');
-		$data['title'] = 'Liên hệ';
-		$data['active'] = 'lienhe';
-		$this->load->view('site/common/header', $data);
-        $this->load->view('site/lienhe',$data);
-        $this->load->view('site/common/footer', $data);
 	}
 }

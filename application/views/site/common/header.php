@@ -41,7 +41,6 @@ if(isset($debug)) echo "<!-- ".json_encode($debug)." -->\n";
                     <div id="cart" style="cursor:pointer;" onclick="window.location='cart'"><span class="icon_cart"><img src="public/images/icon_cart.png" alt="cart"></span><span id="count_shopping_cart_store"><?=count($this->session->userdata('cart')) ?></span> sản phẩm <a href="cart" id="img-cart" rel="nofollow"><img src="public/images/btn_giohang.png" alt="thanh toán"></a></div>
                 </div>
                 <?php
-                //var_dump($this->session->userdata('cart'));exit;
                     $user = $this->session->userdata('login');
                     if ($user && $user['admin'] == 1) {
                         echo "<div class='login'><a href='admin'><img src='public/themes/images/user-login.png' alt=''>Xin chào: ".$user['name']."</a><a href='logout'> Đăng xuất</a></div>";

@@ -123,6 +123,7 @@ class Cart extends CI_Controller {
             if($order_id=$this->Order_model->createOrder($insert)) {
                 $data['message'] = 'Đặt hóa đơn thành công: #'.$order_id;
                 $data['order']['id'] = $order_id;
+                
                 $this->session->unset_userdata('cart');
                 redirect('order/'.$order_id);
             } else exit('Đặt hóa đơn thất bại');
