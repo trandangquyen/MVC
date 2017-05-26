@@ -1,4 +1,4 @@
-<div class="row" style="margin-top:10px">
+<?php if(isset($items)) { ?><div class="row" style="margin-top:10px">
 <form method="POST" enctype="application/x-www-form-urlencoded">
     <div class="col-sm-4">
         <div class="panel panel-default">
@@ -62,7 +62,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">Xác nhận đơn hàng</div>
             <div class="panel-body">
-            <?php if(isset($items)) { ?>
+            
                 <div class="tbl_cart3">
                     <table style="border-collapse: collapse;border: 1px solid #ccc;width: 100%;">
                     <?php 
@@ -86,7 +86,7 @@
                       </tr>
                     </table>
                 </div>
-                <?php } ?>
+                
             </div>
         </div>
         <button type="submit" class="btn btn-primary" style="width: 100%">Đặt hàng</button>
@@ -113,3 +113,6 @@
             $('textarea[name="user_info[ship_to_address]"]').val(address);
         }
 </script>
+<?php } else {
+    echo '<h1>Giỏ hàng trống</h1>';
+    } ?>
