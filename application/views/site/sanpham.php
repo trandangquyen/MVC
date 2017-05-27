@@ -109,6 +109,7 @@
                                         var number = parseInt($('span#count_shopping_cart_store').text())+1;
                                         if(data.number) number = data.number;
                                         $('span#count_shopping_cart_store').text(number);
+                                        $('#img-cart').show();
                                     }
                                 });
                             });

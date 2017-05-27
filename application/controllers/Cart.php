@@ -155,7 +155,7 @@ class Cart extends CI_Controller {
             $response['debug']['thiscart'] = $this->cart;
         } else if(isset($this->cart[$product_id])) {
             //$response = array('message' => 'Sản phẩm đã có trong giỏ hàng');
-            $this->cart[$product_id] = $this->cart[$product_id] + 1;
+            //$this->cart[$product_id] = $this->cart[$product_id] + 1;
         } else {
             if($this->Products_model->getProduct($product_id)) $this->cart[$product_id] = $quantity;
         }
