@@ -84,7 +84,6 @@
 	                </div>
 	               <br>
 	               <table>
-	                      
 	                      <tbody><tr>
 	                        <td>Hotline     :</td>
 	                        <td><?php echo $support->hotline ?></td>
@@ -106,7 +105,9 @@
 </section>
 
 <script type="text/javascript">
-    
+    $('#info_user_mobile').on('input', function() {
+      $(this).val($(this).val().replace(/[^0-9\+]/gi, ''));
+    });
 </script>
 
 <div class="space20"></div>
