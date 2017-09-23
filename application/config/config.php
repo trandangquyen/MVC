@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['sess_expiration'] = 0;
-$config['base_url'] = 'http://localhost/fgc/MVC/';
+$config['base_url'] = 'http://localhost:8080/MVC/';
 
 $config['fb_appid'] = '582442021872439';
 $config['fb_secret'] = '883570c57cad900d3ff41907e895629a';
